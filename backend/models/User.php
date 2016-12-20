@@ -34,7 +34,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id]);
+        return static::findOne(['admin_id' => $id]);
     }
 
     /**
@@ -54,7 +54,7 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
 
-        return static::findOne(['username' => $username]);
+        return static::findOne(['admin_username' => $username]);
     }
 
     /**
@@ -126,7 +126,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function validatePassword($password)
     {
 
-	    if('888888' == $this->password){
+	    if('888888' == $this->admin_password){
 			//默认密码
 			if ($password == '888888'){
 				return true;
@@ -134,7 +134,7 @@ class User extends ActiveRecord implements IdentityInterface
 				return false;
 			}
 		}else{
-			if(md5($password) == $this->password){
+			if(md5($password) == $this->admin_password){
 				return true;
 			}else{
 				return false;

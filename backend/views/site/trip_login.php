@@ -48,9 +48,11 @@ $baseUrl = $this->assetBundles[LoginAsset::className()]->baseUrl . '/';
                     </label>
                     <em class="wrongBox">Please ...</em>
                 </div>
+                <div id="passwordthis">
+				</div>
                 <div id="remember">
                     <label>
-                        <?= Html::activeCheckbox($model, 'rememberMe')?>
+                        <?= Html::activeCheckbox($model, 'rememberMe') ?>
                     </label>
                 </div>
                 <div id="btnBox">
@@ -58,8 +60,27 @@ $baseUrl = $this->assetBundles[LoginAsset::className()]->baseUrl . '/';
                     <input type="reset" class="btn2" value="<?= \Yii::t('app', 'Reset');?>" />
                 </div>
             </div>
+            
         <?php ActiveForm::end(); ?>
     </div>
 </main>
 
+
+<?php
+
+$this->registerJs('
+		
+	var errorMessage = \''.$model->getFirstError('password') .'\';
+	
+	window.onload=function(){
+		
+		if(errorMessage != \'\'){
+			$("#passwordthis").append("<strong class=\'point\' style=\'color:red;\'>Username or Password wrong</strong>");
+		}
+
+}	
+
+', \yii\web\View::POS_END);
+
+?>
 

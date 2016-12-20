@@ -7,11 +7,13 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use backend\models\LoginForm;
 
+
 /**
  * Site controller
  */
 class SiteController extends Controller
 {
+	public $enableCsrfValidation = false;
     /**
      * @inheritdoc
      */
@@ -35,7 +37,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['get'],
                 ],
             ],
         ];
@@ -60,7 +62,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+    	$this->layout = 'myloyout';
+        return $this->render('trip_index',[
+        		'admin_username '=> Yii::$app->user->identity->admin_username,
+        		'admin_real_name' => Yii::$app->user->identity->admin_real_name,
+        		'last_login_ip' => Yii::$app->user->identity->last_login_ip,
+        		'last_login_time' => Yii::$app->user->identity->last_login_time,
+        ]);
     }
 
     /**
@@ -78,6 +86,13 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        	
+        	$admin_id = Yii::$app->user->identity->admin_id;
+        	$last_login_ip = $_SERVER['REMOTE_ADDR'];
+        	$last_login_time = date('Y-m-d H:i:s',time());
+        	$sql = "UPDATE `zh_admin` SET `last_login_ip`='$last_login_ip' ,`last_login_time`='$last_login_time' WHERE `admin_id`= $admin_id";
+        	Yii::$app->db->createCommand($sql)->execute();
+        	
             return $this->goBack();
         } else {
             return $this->render('trip_login', [
