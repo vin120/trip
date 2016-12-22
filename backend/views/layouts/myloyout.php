@@ -8,7 +8,6 @@ use yii\helpers\Url;
 
 use backend\views\myasset\PublicAsset;
 
-PublicAsset::register($this);
 $baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 
 $controller = Yii::$app->controller->id;
@@ -25,37 +24,32 @@ $controller = Yii::$app->controller->id;
     <?php $this->head() ?>
 </head>
 <body>
-
 <?php $this->beginBody() ?>
 <!-- header start -->
-<header id="mainHeader" class="clearfix">
-    <!-- logo start -->
-    <h1 id="logo" class="l">
+<header id="header">
+    <div class="l" id="title">
         <img src="<?=$baseUrl ?>images/logo.png">
-        <?= \Yii::t('app', '后台管理系统') ?>
-    </h1>
-    <!-- logo end -->
-    <!-- user start -->
-    <div id="user" class="r clearfix">
-        <div class="l" id="userImg">
+        <h1><?= \Yii::t('app', '后台管理系统') ?></h1>
+    </div>
+    <div class="r" id="user">
+        <div class="l" id="user_img">
             <img src="<?=$baseUrl ?>images/user.png">
         </div>
-        <div class="l">
+        <div class="r">
             <span id="userName"><?= Yii::$app->user->identity->admin_username;?></span>
             <span id="exit"><a href="/site/logout" ><?= \Yii::t('app', 'Logout') ?></a></span>
         </div>
     </div>
-    <!-- user end -->
 </header>
 <!-- header end -->
 <!-- main start -->
-<main id="main" class="pBox">
+<main id="main">
     <!-- asideNav start -->
-    <aside id="asideNav">
-        <nav id="openNav">
+    <aside id="asideNav" class="l">
+       <nav id="asideNav_open">
             <!-- 一级 -->
             <ul>
-                <li class="open">
+                <li>
                     <a><img src="<?=$baseUrl ?>images/icon.png"><?= \Yii::t('app', '公司信息管理') ?></a>
                 </li>
                 <!-- 二级 -->
@@ -63,7 +57,6 @@ $controller = Yii::$app->controller->id;
                     <li<?= $controller=='compony'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['compony/index']);?>"><?= \Yii::t('app', '公司信息') ?></a></li>
                   </ul>
             </ul>
-            
             <!-- 一级 -->
             <ul>
                 <li>
@@ -72,13 +65,11 @@ $controller = Yii::$app->controller->id;
                 <!-- 二级 -->
                 <ul>
                     <li<?= $controller=='zone'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['zone/index']);?>"><?= \Yii::t('app', '地区管理') ?></a></li>
-                    <li<?= $controller=='apartmenttype'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['apartmenttype/index']);?>"><?= \Yii::t('app', '公寓类别') ?></a></li>
                     <li<?= $controller=='apartment'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['apartment/index']);?>"><?= \Yii::t('app', '公寓信息') ?></a></li>
                     <li<?= $controller=='service'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['service/index']);?>"><?= \Yii::t('app', '服务类别') ?></a></li>
                     <li<?= $controller=='comment'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['comment/index']);?>"><?= \Yii::t('app', '评论管理') ?></a></li>
                   </ul>
             </ul>
-            
             <!-- 一级 -->
             <ul>
                 <li>
@@ -89,8 +80,6 @@ $controller = Yii::$app->controller->id;
                     <li<?= $controller=='user'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['user/index']);?>"><?= \Yii::t('app', '用户信息') ?></a></li>
                   </ul>
             </ul>
-            
-            
               <!-- 一级 -->
             <ul>
                 <li>
@@ -101,8 +90,6 @@ $controller = Yii::$app->controller->id;
                     <li<?= $controller=='admin'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['admin/index']);?>"><?= \Yii::t('app', '管理员信息') ?></a></li>
                   </ul>
             </ul>
-            
-            
             <!-- 一级 -->
             <ul>
                 <li>
@@ -114,7 +101,6 @@ $controller = Yii::$app->controller->id;
                     <li<?= $controller=='insurance'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['insurance/index']);?>"><?= \Yii::t('app', '保险管理') ?></a></li>
                   </ul>
             </ul>
-            
             <!-- 一级 -->
             <ul>
                 <li>
@@ -126,7 +112,6 @@ $controller = Yii::$app->controller->id;
                     <li<?= $controller=='route'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['route/index']);?>"><?= \Yii::t('app', '推荐路线') ?></a></li>
                   </ul>
             </ul>
-            
             <!-- 一级 -->
             <ul>
                 <li>
@@ -139,8 +124,6 @@ $controller = Yii::$app->controller->id;
                     <li<?= $controller=='job'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['job/index']);?>"><?= \Yii::t('app', '应聘信息') ?></a></li>
                   </ul>
             </ul>
-            
-            
             <!-- 一级 -->
             <ul>
                 <li>
@@ -152,19 +135,13 @@ $controller = Yii::$app->controller->id;
                     <li<?= $controller=='message'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['message/index']);?>"><?= \Yii::t('app', '信息发布') ?></a></li>
                   </ul>
             </ul>
-            
-            
-            <div class="extendBtn">
-                <a href="#"><span><<</span></a>
-            </div>
+            <a href="#" id="closeAsideNav"><img src="<?=$baseUrl ?>images/asideNav_close.png"></a>
         </nav>
-        <nav id="closeNav">
+        <nav id="asideNav_close">
             <ul>
-                <li><img src="<?=$baseUrl ?>images/icon.png"></li>
+                <li><img src="<?=$baseUrl ?>images/routeManage_icon.png"></li>
+                <a href="#" id="openAsideNav"><img src="<?=$baseUrl ?>images/asideNav_open.png"></a>
             </ul>
-            <div class="extendBtn">
-                <a href="#"><span><<</span></a>
-            </div>
         </nav>
     </aside>
     <!-- asideNav end -->
@@ -172,11 +149,8 @@ $controller = Yii::$app->controller->id;
     <?= $content ?>
     <!-- content end -->
 </main>
-
 <!-- main end -->
-
 <?php $this->endBody() ?>
-
 </body>
 </html>
 <?php $this->endPage() ?>

@@ -4,7 +4,7 @@ namespace backend\controllers;
 use Yii;
 use yii\web\Controller;
 
-class RecruitmentController extends Controller
+class RecruitmentController extends BaseController
 {
 	public $layout = "myloyout";
 	

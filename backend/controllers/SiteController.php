@@ -11,7 +11,7 @@ use backend\models\LoginForm;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
 	public $enableCsrfValidation = false;
     /**

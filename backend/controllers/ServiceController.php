@@ -4,7 +4,7 @@ namespace backend\controllers;
 use Yii;
 use yii\web\Controller;
 
-class ServiceController extends Controller
+class ServiceController extends BaseController
 {
 	public $layout = "myloyout";
 	

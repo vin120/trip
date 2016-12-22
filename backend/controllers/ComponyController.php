@@ -4,7 +4,7 @@ namespace backend\controllers;
 use Yii;
 use yii\web\Controller;
 
-class ComponyController extends Controller
+class ComponyController extends BaseController
 {
 	public $layout = "myloyout";
 	

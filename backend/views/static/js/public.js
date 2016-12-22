@@ -1,4 +1,17 @@
 $(document).ready(function() {
+
+	//表格全选反选功能
+	$('table th input:checkbox').on('click' , function(){
+        var that = this;
+        $(this).closest('table').find('tr > td:first-child input:checkbox')
+        .each(function(){
+            this.checked = that.checked;
+            $(this).closest('tr').toggleClass('selected');
+        });
+    });
+	
+	
+	
 	// 收缩侧边导航
 	$("#openNav .extendBtn").on("click",function() {
 		$("#openNav").hide();
@@ -240,12 +253,11 @@ function createDate(time){
 	return date;
 }
 
+
 //动态改变右边部分宽度
-function changeMainRWith(){
-	$("#main > .r").css("width",($("#main").width() - 44 - $("#asideNav").width()) + "px");
+function changeMainRWith() {
+	$("#main > .r").css("width",($("#main").width() - 44 - $("#asideNav").width())+"px");
 }
-
-
 
 
 //封装alert

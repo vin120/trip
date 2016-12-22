@@ -6,10 +6,10 @@ use yii\web\AssetBundle;
 class PublicAsset extends AssetBundle
 {
 
-    public $sourcePath = '@app/views/static';
+    public $sourcePath = '@backend/views/static';
     public $css = [
         'css/public.css',
-        'css/page.css',
+    	'css/page.css',
     ];
 
     public $js = [
