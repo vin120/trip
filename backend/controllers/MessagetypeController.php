@@ -37,7 +37,6 @@ class MessagetypeController extends BaseController
 	}
 	
 	
-	
 	public function actionEdit()
 	{
 		$id = $_GET['id'];
@@ -62,6 +61,37 @@ class MessagetypeController extends BaseController
 		
 		return $this->render('edit',['story_type' => $story_type]);
 	}
+	
+	public function actionDelete()
+	{
+		//单项删除
+		if(isset($_GET['id'])) {
+			$id = isset($_GET['id']) ? $_GET['id'] : '' ;
+				
+			$sql = " DELETE FROM `zh_story_type` WHERE `id`= $id ";
+			$count = Yii::$app->db->createCommand($sql)->execute();
+				
+			if($count > 0) {
+				Helper::show_message('删除成功', Url::toRoute(['index']));
+			}else{
+				Helper::show_message('删除失败');
+			}
+		}
+		//多项删除
+		if(isset($_POST['ids'])) {
 		
+			$ids = implode('\',\'', $_POST['ids']);
+				
+			$sql = "DELETE FROM `zh_story_type` WHERE id in ('$ids')";
+			$count = Yii::$app->db->createCommand($sql)->execute();
+				
+			if($count>0){
+				Helper::show_message('删除成功', Url::toRoute(['index']));
+			}else{
+				Helper::show_message('删除失败 ');
+			}
+		}
+	}
+	
 	
 }

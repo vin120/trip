@@ -75,7 +75,7 @@ $this->registerJs('
 	window.onload=function(){
 		
 		if(errorMessage != \'\'){
-			$("#passwordthis").append("<strong class=\'point\' style=\'color:red;\'>Username or Password wrong</strong>");
+			$("#passwordthis").append("<strong class=\'point\' style=\'color:red;\'>用户名或密码错误,请确认无误后再输入</strong>");
 		}
 
 }	

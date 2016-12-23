@@ -11,7 +11,7 @@ use backend\models\LoginForm;
 /**
  * Site controller
  */
-class SiteController extends BaseController
+class SiteController extends Controller
 {
 	public $enableCsrfValidation = false;
     /**
@@ -24,7 +24,7 @@ class SiteController extends BaseController
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error','auth'],
                         'allow' => true,
                     ],
                     [
@@ -111,5 +111,11 @@ class SiteController extends BaseController
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+    
+    public function actionAuth()
+    {
+    	$this->layout = 'myloyout';
+    	return $this->render('auth');
     }
 }
