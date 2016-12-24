@@ -10,6 +10,7 @@ class PublicAsset extends AssetBundle
     public $css = [
         'css/public.css',
     	'css/page.css',
+    	'css/base.css',
     ];
 
     public $js = [
@@ -17,10 +18,8 @@ class PublicAsset extends AssetBundle
         'js/My97DatePicker/WdatePicker.js',
         'js/public.js',
     	'js/jqPaginator.js',
-    	'js/addGuestInfo.js',
     	'js/template.js',
     	'js/js_session.js',
-    	'js/surchargeAndCabinAssignments.js'
     ];
 
     //依赖关系

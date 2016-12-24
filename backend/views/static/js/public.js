@@ -14,20 +14,20 @@ $(document).ready(function() {
 			str_con += '<input type="button" class="confirm_but" value="确定"></input>';
 			str_con += '<input type="button" class="cancel_but" value="取消"></input>';
 			str_con += '</p></div>';
-			
-		 //$("#promptBox").before(str); 
+
+		 //$("#promptBox").before(str);
 		 $(document.body).append(str);
 		 $(document.body).append(str_con);
 		 //$("#promptBox").removeClass('hide');
-		 
+
 		 $(".btn > .confirm_but").attr('id',val);
-	 }); 
-	
+	 });
+
 	//多选删除弹框
 	$("#del_submit").on('click',function(){
 		 $(".ui-widget-overlay").remove();
 		 $("#promptBox").remove();
-		 
+
 		 var str = "<div class='ui-widget-overlay ui-front'></div>";
 		 var str_con = '<div id="promptBox" class="pop-ups write ui-dialog" >';
 			str_con += '<h3>消息</h3>';
@@ -44,7 +44,7 @@ $(document).ready(function() {
 			no_str += '<p class="btn">';
 			no_str += '<input type="button" class="cancel_but" value="取消"></input>';
 			no_str += '</p></div>';
-			
+
 		var checkbox = $("table  tbody input[type='checkbox']:checked").length;
 		 if(checkbox == 0){
 			 $(document.body).append(str);
@@ -53,50 +53,50 @@ $(document).ready(function() {
 			 $(document.body).append(str);
 			 $(document.body).append(str_con);
 		 }
-	 }); 
-	 
+	 });
+
 	 //鼠标拖拽
-	 var _move=false;//移动标记  
-	 var _x,_y;//鼠标离控件左上角的相对位置  
+	 var _move=false;//移动标记
+	 var _x,_y;//鼠标离控件左上角的相对位置
      $(document).on('click',"#promptBox >h3",function(){
-         //alert("click");//点击（松开后触发）  
-     }).mousedown(function(e){ 
+         //alert("click");//点击（松开后触发）
+     }).mousedown(function(e){
          _move=true;
-         _x=e.pageX-parseInt($("#promptBox").css('left'));  
+         _x=e.pageX-parseInt($("#promptBox").css('left'));
          _y=e.pageY-parseInt($("#promptBox").css('top'));
-//	     $("#promptBox").fadeTo(20, 0.5);//点击后开始拖动并透明显示 
-     });  
-     
-     
-     $(document).on('mousemove',"#promptBox >h3",function(e){ 
+//	     $("#promptBox").fadeTo(20, 0.5);//点击后开始拖动并透明显示
+     });
+
+
+     $(document).on('mousemove',"#promptBox >h3",function(e){
     	 $("#promptBox >h3").css('cursor','move');	//出现移动图标
          if(_move){
-             var x=e.pageX-_x;//移动时根据鼠标位置计算控件左上角的绝对位置 
+             var x=e.pageX-_x;//移动时根据鼠标位置计算控件左上角的绝对位置
              if (x < 0) {
             	 x = 0;
              } else if (x > $(window).width() - $("#promptBox").width()) {
             	 x = $(window).width() - $("#promptBox").width();
              }
-             var y=e.pageY-_y;  
+             var y=e.pageY-_y;
              if(y < 0){
             	 y = 0;
              }else if (y > $(window).height()){
             	 y = $(window).height();
              }
-             $("#promptBox").css({top:y,left:x});//控件新位置  
+             $("#promptBox").css({top:y,left:x});//控件新位置
          }
-     }).mouseup(function(){ 
+     }).mouseup(function(){
     	 _move=false;
-//	     $("#promptBox").fadeTo("fast", 1);//松开鼠标后停止移动并恢复成不透明  
-     }); 
-	     
-	   
-	   //close 
+//	     $("#promptBox").fadeTo("fast", 1);//松开鼠标后停止移动并恢复成不透明
+     });
+
+
+	   //close
 	   $(document).on('click',"#promptBox >span.op,#promptBox > .btn .cancel_but",function(){
 		   $(".ui-widget-overlay ui-front").addClass('hide');
 		   $("#promptBox").addClass('hide');
 	   })
-	
+
 	 //表格全选反选功能
 		$('table th input:checkbox').on('click' , function(){
 	        var that = this;
@@ -106,8 +106,8 @@ $(document).ready(function() {
 	            $(this).closest('tr').toggleClass('selected');
 	        });
 	    });
-		
-		
+
+
 		//添加编辑页面取消填写按钮
 		$(".btn > .cancle").on('click',function(){
 			$("form input#code").val('');
@@ -124,8 +124,8 @@ $(document).ready(function() {
 			$("form input#harbour_taxes").val('');
 			$("form input#deposit_ratio").val('');
 		});
-		
-		
+
+
 
 		// 动态改变右边部分宽度
 		changeMainRWith();
@@ -174,7 +174,7 @@ $(document).ready(function() {
 			$($(".tab_content > div")[index]).addClass("active");
 		});
 
-	   
+
 });
 
 
@@ -197,8 +197,8 @@ function Alert(info){
 		str_con += '<p class="btn">';
 		str_con += '<input type="button" class="cancel_but" value="OK"></input>';
 		str_con += '</p></div>';
-		
-	 //$("#promptBox").before(str); 
+
+	 //$("#promptBox").before(str);
 	 $(document.body).append(str);
 	 $(document.body).append(str_con);
 }
@@ -211,6 +211,3 @@ function createDate(time){
 	date = year[2]+'/'+year[1]+'/'+year[0]+' '+time.substr(11,8);
 	return date;
 }
-
-
-

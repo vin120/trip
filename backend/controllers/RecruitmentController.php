@@ -13,6 +13,13 @@ class RecruitmentController extends BaseController
 		
 		return $this->render('index');
 	}
-		
+
+	public function actionAdd(){
+		return $this->render('add');
+	}
+	
+	public function actionEdit(){
+		return $this->render('edit');
+	}
 	
 }

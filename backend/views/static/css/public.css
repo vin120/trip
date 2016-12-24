@@ -1,5 +1,5 @@
 /*reset*/
-html,body { min-width: 1350px; margin: 0; padding: 0; background-color: #fff; font-family: Arial, "黑体";  }
+html,body { min-width: 1350px; margin: 0; padding: 0; background-color: #fff; font-family: Arial, "微软雅黑"; color:#585858;  }
 header,div,input,select,textarea { box-sizing: border-box; }
 input[type="button"] { cursor: pointer; }
 ul { list-style: none; }
@@ -65,7 +65,7 @@ td.op_btn  a:first-child {margin-right:5px;}
 /*main content*/
 .content { min-width: 1070px; border: 1px solid #e0e9f4; box-sizing: border-box; }
 .content > div { padding: 1em; }
-.content > div+div { border-top: 1px solid #e0e9f4; }
+/*.content > div+div { border-top: 1px solid #e0e9f4; }*/
 
 .content form > div { padding: 1em; }
 .content form > .search { border-top: 1px solid #e0e9f4;border-bottom: 1px solid #e0e9f4; }
@@ -79,7 +79,7 @@ td.op_btn  a:first-child {margin-right:5px;}
 
 .search p label span { display: inline-block; width: 130px; text-align: right; }
 .search p .btn { display: inline-block; width: 160px; text-align: right; }
-	
+
 
 .btn { text-align: center; }
 /*.btn input { width: 90px; height: 28px; color: #fff; border: none; }*/

@@ -14,5 +14,9 @@ class ZoneController extends BaseController
 		return $this->render('index');
 	}
 		
+
+	public function actionZoomadd(){
+		return $this->render('zoomadd');
 	
+	}
 }

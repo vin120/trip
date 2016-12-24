@@ -2,6 +2,7 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\db\Query;
 use yii\helpers\Url;
 use yii\web\Controller;
 use backend\components\Helper;
@@ -9,68 +10,82 @@ use backend\components\Helper;
 class MessagetypeController extends BaseController
 {
 	public $layout = "myloyout";
-	
+
 	public function actionIndex()
 	{
-		$sql = "SELECT * FROM zh_story_type";
-		$result = Yii::$app->db->createCommand($sql)->queryAll();
-		$count = count($result);
-		return $this->render('index',['result'=>$result,'count'=>$count]);
+        $query = new Query();
+        $result = $query->select(['*'])
+                ->from('zh_message_type')
+                ->limit(10)
+                ->all();
+
+
+        $query  = new Query();
+        $count = $query->select(['*'])
+                ->from('zh_message_type')
+                ->count();
+
+		return $this->render('index',['result'=>$result,'count'=>$count,'message_type_page'=>1]);
 	}
-	
+
 	public function actionAdd()
 	{
 		if($_POST){
 			$name = isset($_POST['name']) ? $_POST['name'] : '';
 			$status = isset($_POST['status']) ? $_POST['status'] : 1;
-			
-			$sql = "INSERT INTO `zh_story_type` (`name` , `status`) VALUES ('$name' , $status)";
-			$result = Yii::$app->db->createCommand($sql)->execute();
+
+            $result = Yii::$app->db->createCommand()
+                    ->insert('zh_message_type',['name'=>$name,'status'=>$status,])
+                    ->execute();
+
 			if($result){
 				Helper::show_message('保存成功', Url::toRoute(['index']));
 			} else {
-				Helper::show_message('保存失败', '#');
+				Helper::show_message('保存失败','#');
 			}
 		}
-		
+
 		return $this->render('add');
 	}
-	
-	
+
+
 	public function actionEdit()
 	{
 		$id = $_GET['id'];
-		
+
 		if($_POST){
 			$name = isset($_POST['name']) ? $_POST['name'] : '';
 			$status = isset($_POST['status']) ? $_POST['status'] : 1;
-			
-			$sql = " UPDATE `zh_story_type` SET `name` = '$name' ,`status` = $status WHERE `id` = $id";
-			$result = Yii::$app->db->createCommand($sql)->execute();
-			
+
+            $result = Yii::$app->db->createCommand()
+                    ->update('zh_message_type',['name'=>$name,'status'=>$status],"id=$id")
+                    ->execute();
+
 			if($result){
 				Helper::show_message('保存成功', Url::toRoute(['index']));
 			} else {
-				Helper::show_message('保存失败', '#');
+				Helper::show_message('保存失败','#');
 			}
 		}
-		
-		
-		$sql = " SELECT * FROM zh_story_type WHERE id= $id ";
-		$story_type = Yii::$app->db->createCommand($sql)->queryOne();
-		
+
+        $query = new Query();
+        $story_type = $query->select(['*'])
+                    ->from('zh_message_type')
+                    ->where(['id'=>$id])
+                    ->one();
+
 		return $this->render('edit',['story_type' => $story_type]);
 	}
-	
+
 	public function actionDelete()
 	{
 		//单项删除
 		if(isset($_GET['id'])) {
 			$id = isset($_GET['id']) ? $_GET['id'] : '' ;
-				
-			$sql = " DELETE FROM `zh_story_type` WHERE `id`= $id ";
+
+			$sql = " DELETE FROM `zh_message_type` WHERE `id`= $id ";
 			$count = Yii::$app->db->createCommand($sql)->execute();
-				
+
 			if($count > 0) {
 				Helper::show_message('删除成功', Url::toRoute(['index']));
 			}else{
@@ -79,12 +94,12 @@ class MessagetypeController extends BaseController
 		}
 		//多项删除
 		if(isset($_POST['ids'])) {
-		
+
 			$ids = implode('\',\'', $_POST['ids']);
-				
-			$sql = "DELETE FROM `zh_story_type` WHERE id in ('$ids')";
+
+			$sql = "DELETE FROM `zh_message_type` WHERE id in ('$ids')";
 			$count = Yii::$app->db->createCommand($sql)->execute();
-				
+
 			if($count>0){
 				Helper::show_message('删除成功', Url::toRoute(['index']));
 			}else{
@@ -92,6 +107,24 @@ class MessagetypeController extends BaseController
 			}
 		}
 	}
-	
-	
+
+    //ajax获取分页
+    public function actionGetmessagetypepage()
+    {
+        $pag = isset($_GET['pag']) ? $_GET['pag'] == 1 ? 0 : ($_GET['pag'] - 1) * 10 : 0;
+
+        $query = new Query();
+        $result = $query->select(['*'])
+                    ->from('zh_message_type')
+                    ->offset($pag)
+                    ->limit(10)
+                    ->all();
+        if($result) {
+            echo json_encode($result);
+        } else {
+            echo 0;
+        }
+    }
+
+
 }

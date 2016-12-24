@@ -56,20 +56,20 @@ class BaseController extends Controller
     	if (!parent::beforeAction($action)) {
     		return false;
     	}
-    	 
+
     	$admin_tag = Yii::$app->user->identity->tag;		//0是超级管理员
     	$controller = Yii::$app->controller->id;
     	$action = Yii::$app->controller->action->id;
     	$permissionName = $controller.'/'.$action;
-    	 
+
     	$sql = "SELECT tag FROM `zh_menu` WHERE `controller` = '$controller' AND `action` = '$action' ";
     	$menu_tag = Yii::$app->db->createCommand($sql)->queryOne()['tag'];
-    
+
     	if($admin_tag != 0 && $menu_tag != $admin_tag) {
 //     		return $this->goHome();
-    		return $this->redirect(Url::toRoute(['site/auth']));
+//     		return $this->redirect(Url::toRoute(['site/auth']));
     	}
-    	 
+
     	return true;
     }
 }
