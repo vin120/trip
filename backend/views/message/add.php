@@ -20,8 +20,6 @@
 	.uploadFile { float: right; position: relative; display: inline-block; background-color: #3f7fcf; padding: 6px 12px; overflow: hidden; color: #fff; text-decoration: none; text-indent: 0; line-height: 20px; }
 	.uploadFile input { position: absolute; font-size: 100px; right: 0; top: 0; opacity: 0; }
     #pic img {display: block; width: 17%; min-height: 100px; margin-bottom: 20px; border: 1px solid #dcdcdc;position: relative;left: 160px;}
-
-
 </style>
 
 <!-- content start -->

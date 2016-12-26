@@ -20,6 +20,7 @@ class PublicAsset extends AssetBundle
     	'js/jqPaginator.js',
     	'js/template.js',
     	'js/js_session.js',
+        'js/verifyjs.js',
     ];
 
     //依赖关系

@@ -13,15 +13,16 @@ class MessageController extends BaseController
     public function actionIndex() {
 
         $query = new Query();
-        $result = $query->select(['a.*','b.name'])
+        $result = $query->select(['a.id','a.title','a.time','a.author','a.status','a.img_url','b.name'])
                 ->from('zh_message a')
                 ->join('LEFT JOIN','zh_message_type b','a.type_id=b.id')
                 ->limit(10)
+                ->orderby('id desc')
                 ->all();
 
 
         $query = new Query();
-        $count = $query->select(['*'])
+        $count = $query->select(['id'])
                 ->from('zh_message')
                 ->count();
 
@@ -100,7 +101,8 @@ class MessageController extends BaseController
 			}
 
             $result = Yii::$app->db->createCommand()
-                    ->update('zh_message',['type_id'=>$type,'title'=>$title,'author'=>$author,'status'=>$status,'content'=>$content,'img_url'=>$photo,'time'=>$time],"id=$id")->execute();
+                    ->update('zh_message',['type_id'=>$type,'title'=>$title,'author'=>$author,'status'=>$status,'content'=>$content,'img_url'=>$photo,'time'=>$time],"id=$id")
+            		->execute();
 
             if($result) {
                 Helper::show_message('保存成功', Url::toRoute(['index']));
@@ -164,11 +166,12 @@ class MessageController extends BaseController
 
 
         $query = new Query();
-        $result = $query->select(['a.*','b.name'])
+        $result = $query->select(['a.id','a.title','a.time','a.author','a.status','a.img_url','b.name'])
                 ->from('zh_message a')
                 ->join('LEFT JOIN','zh_message_type b','a.type_id=b.id')
                 ->offset($pag)
                 ->limit(10)
+                ->orderby('id desc')
                 ->all();
 
         if($result) {

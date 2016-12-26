@@ -1,14 +1,15 @@
 <?php
 	$this->title = '公司信息';
 	use backend\views\myasset\PublicAsset;
-	
+    use yii\helpers\Url;
+
 	PublicAsset::register($this);
 	$baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 ?>
 
 <!-- content start -->
 <div class="r content" id="user_content">
-    <div class="topNav">公司信息管理&nbsp;&gt;&gt;&nbsp;<a href="/compony/index">公司信息</a></div>
+    <div class="topNav">公司信息管理&nbsp;&gt;&gt;&nbsp;<a href="<?php echo Url::toRoute(['index']);?>">公司信息</a></div>
     <div id="mainContent_content" class="pBox">
     	<div id="componyInfo" >
          <h2>公司基本信息</h2>
@@ -44,9 +45,9 @@
 	           	</li>
             </ul>
         </div>
-        
+
         <div class="btnBox2">
-        	<a href="/compony/edit"><input type="button" value="<?php echo yii::t('app','修改公司信息')?>" class="btn2"></input></a>
+        	<a href="<?php echo Url::toRoute(['edit']);?>"><input type="button" value="<?php echo yii::t('app','修改公司信息')?>" class="btn2"></input></a>
         </div>
         </div>
 	</div>

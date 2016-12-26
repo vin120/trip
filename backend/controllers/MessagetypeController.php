@@ -21,7 +21,7 @@ class MessagetypeController extends BaseController
 
 
         $query  = new Query();
-        $count = $query->select(['*'])
+        $count = $query->select(['id'])
                 ->from('zh_message_type')
                 ->count();
 

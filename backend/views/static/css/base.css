@@ -31,5 +31,19 @@ div.topNav{
 	border-bottom: 1px solid #e0e9f4;
 }
 em{
+ font-style: unset;
+}
 
+/*错误提示信息*/
+em.error_tips{
+	color:red;
+	margin-left: 10px;
+}
+
+em.required_tips{
+	color:red;
+}
+
+.hidden{
+	display: none;
 }
