@@ -90,7 +90,7 @@ window.onload = function(){
 		    	if(this_page==num){$("input#pag_input").val('fail');return false;}
 
 		    	$.ajax({
-	                url:"<?php echo Url::toRoute(['getzoompage']);?>",
+	                url:"<?php echo Url::toRoute(['getzomepage']);?>",
 	                type:'get',
 	                data:'pag='+num,
 	             	dataType:'json',
@@ -107,8 +107,8 @@ window.onload = function(){
 								var state = data[key]['status']==1?"启用":"禁用";
 								str += '<td>'+state+'</td>';
 								str += '<td class="op_btn">';
-								str += '<a href="<?php echo Url::toRoute(['zone/zoneedit']);?>?id='+data[key]['zone_id']+'"><img src="<?php echo $baseUrl; ?>images/write.png" class="btn1"></a>';
-								str += '<a class="delete" id="'+data[key]['zone_id']+'" ><img src="<?php echo $baseUrl; ?>images/delete.png" class="btn2"></a>';
+								str += '<a href="<?php echo Url::toRoute(['zone/zoneedit']);?>?id='+data[key]['zone_id']+'"><img src="<?php echo $baseUrl; ?>images/write.png" ></a>';
+								str += '<a class="delete" id="'+data[key]['zone_id']+'" ><img src="<?php echo $baseUrl; ?>images/delete.png"></a>';
 								str += '</td>';
 								str += '</tr>';
 

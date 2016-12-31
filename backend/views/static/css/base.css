@@ -1,12 +1,12 @@
 
 
 .searchResult p{
-	display: block;
-	width:100%;
+/*	display: block;
+	width:100%;*/
 	/*margin-left: 30%; */
 
 }
-.searchResult p input{
+.searchResult p input[type='text'],select,input[type='password']{
 	width: 180px;
 	height:30px;
 	line-height: 30x;

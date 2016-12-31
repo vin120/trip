@@ -20,7 +20,7 @@ class ZoneController extends BaseController
 		$sql = "SELECT a.*,b.zone_name parent_zone_name FROM `zh_zone` a
 		LEFT JOIN `zh_zone` b ON a.parent_id=b.zone_id LIMIT 10 ";
 		$data = Yii::$app->db->createCommand($sql)->queryAll();
-		
+		// var_dump($data);exit;
 		return $this->render('index',['data'=>$data,'count'=>$count['count'],'pag'=>'1']);
 	}
 
@@ -71,7 +71,7 @@ class ZoneController extends BaseController
 		}
 	}
 
-	public function actionGetzoompage(){
+	public function actionGetzomepage(){
 		$pag = isset($_GET['pag']) ? $_GET['pag'] == 1 ? 0 : ($_GET['pag'] - 1) * 10 : 0;
 
 		$sql = "SELECT a.*,b.zone_name parent_zone_name FROM `zh_zone` a
@@ -79,6 +79,7 @@ class ZoneController extends BaseController
 		$result = Yii::$app->db->createCommand($sql)->queryAll();
 
 
+       
         if($result) {
             echo json_encode($result);
         } else {
@@ -93,9 +94,19 @@ class ZoneController extends BaseController
 			$parent_zone_name = isset($_POST['parent_zone_name'])?trim($_POST['parent_zone_name']):'';
 			$state = isset($_POST['state'])?trim($_POST['state']):'';
 			$is_highlight = isset($_POST['is_highlight'])?trim($_POST['is_highlight']):"";
+			$level = 1;
+			if($parent_zone_name!=0){
+				$sql = "SELECT level FROM `zh_zone` WHERE zone_id='{$parent_zone_name}'  ";
+				$level_res = Yii::$app->db->createCommand($sql)->queryOne();
+				if($level_res['level'] == 1){
+					$level = 2;
+				}else if($level_res['level'] == 2){
+					$level = 3;
+				}
+			}
+			
 
-
-			$sql = "INSERT INTO `zh_zone` (zone_name,parent_id,status,highlight) VALUES ('{$zone_name}','{$parent_zone_name}','{$state}','{$is_highlight}') ";
+			$sql = "INSERT INTO `zh_zone` (zone_name,parent_id,status,highlight,level) VALUES ('{$zone_name}','{$parent_zone_name}','{$state}','{$is_highlight}','{$level}') ";
 
 			$commen = $db->beginTransaction();
 			try{
@@ -108,7 +119,7 @@ class ZoneController extends BaseController
 			}
 
 		}
-		$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE status='1' ";
+		$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE status='1' AND level!=3 ";
 		$parent_zone = Yii::$app->db->createCommand($sql)->queryAll();
 		return $this->render('zoneadd',['parent_zone'=>$parent_zone]);
 	
@@ -123,9 +134,19 @@ class ZoneController extends BaseController
 			$parent_zone_name = isset($_POST['parent_zone_name'])?trim($_POST['parent_zone_name']):'';
 			$state = isset($_POST['state'])?trim($_POST['state']):'';
 			$is_highlight = isset($_POST['is_highlight'])?trim($_POST['is_highlight']):"";
+			$level = 1;
+			if($parent_zone_name!=0){
+				$sql = "SELECT level FROM `zh_zone` WHERE zone_id='{$parent_zone_name}'  ";
+				$level_res = Yii::$app->db->createCommand($sql)->queryOne();
+				if($level_res['level'] == 1){
+					$level = 2;
+				}else if($level_res['level'] == 2){
+					$level = 3;
+				}
+			}
 
 
-			$sql = "UPDATE `zh_zone` SET zone_name='{$zone_name}',parent_id='{$parent_zone_name}',status='{$state}',highlight='{$is_highlight}' WHERE zone_id = '{$zone_id}' ";
+			$sql = "UPDATE `zh_zone` SET zone_name='{$zone_name}',parent_id='{$parent_zone_name}',status='{$state}',highlight='{$is_highlight}',level='{$level}' WHERE zone_id = '{$zone_id}' ";
 
 			$commen = $db->beginTransaction();
 			try{
@@ -143,7 +164,7 @@ class ZoneController extends BaseController
 		$sql = "SELECT * FROM `zh_zone` WHERE zone_id='{$id}' ";
 		$data = Yii::$app->db->createCommand($sql)->queryOne();
 
-		$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE (status='1' OR zone_id='{$data['parent_id']}') AND zone_id != '{$id}' ";
+		$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE (status='1' OR zone_id='{$data['parent_id']}') AND zone_id != '{$id}' AND level!=3 ";
 		$parent_zone = Yii::$app->db->createCommand($sql)->queryAll();
 
 

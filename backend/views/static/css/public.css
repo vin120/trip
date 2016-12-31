@@ -11,7 +11,7 @@ a { text-decoration: none; }
 .cb { clear: both; }
 
 label span { color: #333; }
-input, select { color: #666; }
+input, select ,textarea{ color: #666; }
 input[type='text'] { width: 180px; height: 20px; }
 select { width: 100px; height: 26px; }
 
