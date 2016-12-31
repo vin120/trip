@@ -16,6 +16,7 @@ class MessagetypeController extends BaseController
         $query = new Query();
         $result = $query->select(['*'])
                 ->from('zh_message_type')
+                ->orderby('id desc')
                 ->limit(10)
                 ->all();
 
@@ -33,9 +34,20 @@ class MessagetypeController extends BaseController
 		if($_POST){
 			$name = isset($_POST['name']) ? $_POST['name'] : '';
 			$status = isset($_POST['status']) ? $_POST['status'] : 1;
-
+			
+			
+			$allow_size = 3;
+			if($_FILES['image']['error']!=4){
+				$result=Helper::upload_file('image',"./".Yii::$app->params['img_url_prefix'].date('Ymd',time()), 'image', $allow_size);
+				$photo=date('Ymd',time()).'/'.$result['filename'];
+			}
+			if(!isset($photo)){
+				$photo="";
+			}
+			
+			
             $result = Yii::$app->db->createCommand()
-                    ->insert('zh_message_type',['name'=>$name,'status'=>$status,])
+                    ->insert('zh_message_type',['name'=>$name,'status'=>$status,'img_url'=>$photo])
                     ->execute();
 
 			if($result){
@@ -57,8 +69,22 @@ class MessagetypeController extends BaseController
 			$name = isset($_POST['name']) ? $_POST['name'] : '';
 			$status = isset($_POST['status']) ? $_POST['status'] : 1;
 
+			$allow_size = 3;
+			if($_FILES['image']['error']!=4){
+				$result=Helper::upload_file('image',"./".Yii::$app->params['img_url_prefix'].date('Ymd',time()), 'image', $allow_size);
+				$photo=date('Ymd',time()).'/'.$result['filename'];
+			}
+			
+			if(!isset($photo)){
+				$query=new Query();
+				$photo= $query->select(['img_url'])
+						->from('zh_message_type')
+						->where("id=$id")
+						->one()['img_url'];
+			}
+			
             $result = Yii::$app->db->createCommand()
-                    ->update('zh_message_type',['name'=>$name,'status'=>$status],"id=$id")
+                    ->update('zh_message_type',['name'=>$name,'status'=>$status,'img_url'=>$photo,],"id=$id")
                     ->execute();
 
 			if($result){
@@ -117,6 +143,7 @@ class MessagetypeController extends BaseController
         $result = $query->select(['*'])
                     ->from('zh_message_type')
                     ->offset($pag)
+                    ->orderby('id desc')
                     ->limit(10)
                     ->all();
         if($result) {
@@ -125,6 +152,5 @@ class MessagetypeController extends BaseController
             echo 0;
         }
     }
-
 
 }

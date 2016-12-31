@@ -1,0 +1,101 @@
+
+#ui-datepicker-div{
+    width: 285px;
+    padding: 0 1em;
+}
+#ui-datepicker-div:before,#ui-datepicker-div:after{
+    content:"";
+    display:none; /*隐藏气泡框*/
+    border-width:10px;
+    position:absolute;
+    top:-20px;
+    left:30px;
+    border-style:solid dashed dashed;
+    border-color:transparent transparent #aaa;
+    font-size:0;
+    line-height:0;
+}
+#ui-datepicker-div:after{
+    top:-18px;
+    border-color:transparent transparent #fff;
+}
+.ui-datepicker .ui-datepicker-header{
+    padding:0.8em 0;
+    background: none;
+    width: 100%;
+    border:none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+
+}
+.ui-widget-header .ui-icon{
+
+}
+.ui-datepicker .ui-datepicker-title{
+    margin: 0 3.3em;
+    font-size: 14px;
+}
+.ui-datepicker .ui-datepicker-title span{
+    font-size: 14px;
+}
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next{
+    height: 3.4em;
+    top:2px;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    border: none;
+}
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span{
+
+}
+.ui-datepicker table{
+    margin: 1em 0;
+}
+.ui-datepicker-calendar th{
+    color:#999;
+}
+
+.ui-datepicker-calendar th:nth-of-type(6),.ui-datepicker-calendar th:nth-of-type(7){
+    color:#fd8023;
+}
+
+.ui-datepicker td{
+    width: 40px;
+    height: 40px;
+}
+.ui-datepicker td span, .ui-datepicker td a{
+    text-align: center;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: none;
+    border: none;
+    color: #555;
+    font-weight: normal;
+    text-align: center;
+    width: 20px;
+    margin-left: 8px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 20px;
+}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{
+    /* color: #fd8023;*/
+}
+.ui-state-highlight:after, .ui-widget-content .ui-state-highlight:after, .ui-widget-header .ui-state-highlight:after{
+    content:"";
+    display: block;
+    width:5px;
+    height: 5px;
+    background-color: #fd8023;
+    border-radius: 5px;
+    margin-left: 8px;
+    margin-top: 3px;
+
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{
+    background-color: #fd8023;
+    color: #fff;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
+    background-color: #eee;
+}

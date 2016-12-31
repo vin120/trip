@@ -14,15 +14,15 @@
 	<div class="topNav"><?php echo yii::t('app','咨询中心')?>&nbsp;&gt;&gt;&nbsp;<a href="<?php echo Url::toRoute(['index']);?>"><?php echo yii::t('app','信息发布')?></a></div>
 
 	<div class="searchResult">
-        <?php
-    		$form = ActiveForm::begin([
-    			'id'=>'message_form',
-    			'action'=>'delete',
-    			'method'=>'post',
-    			'enableClientValidation'=>false,
-    			'enableClientScript'=>false
-    		]);
-    	?>
+	<?php
+		$form = ActiveForm::begin([
+			'id'=>'message_form',
+    		'action'=>'delete',
+    		'method'=>'post',
+    		'enableClientValidation'=>false,
+    		'enableClientScript'=>false
+    	]);
+	?>
 		<table id="message_table">
             <input type="hidden" id="message_page" value="<?php echo $message_page;?>" />
 			<thead>

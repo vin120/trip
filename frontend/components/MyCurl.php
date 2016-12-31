@@ -47,7 +47,8 @@ class MyCurl
 		//$dc		消息内容编码，默认15,GBK编码 ,15: GBK,8: Unicode,0: ISO8859-1	必须
 		//$sm		消息内容，经编码后的字符串	必须
 		//返回响应:	成功：mtmsgid=21426847850888196661& mtstat =ACCEPTD & mterrcode=000  	失败：mtmsgid=21426847850888196661& mtstat=REJECTD& mterrcode=错误代码
-		$url = Yii::$app->params['wifi_url']."?command=".$command."&cpid=".$cpid."&cppwd=".$cppwd."&da=".$da."&dc=".$dc."&sm=".$sm;
+		
+		$url = Yii::$app->params['message_url']."?command=".$command."&cpid=".$cpid."&cppwd=".$cppwd."&da=".$da."&dc=".$dc."&sm=".$sm;
 		MyCurl::vcurl($url);
 	}
 	

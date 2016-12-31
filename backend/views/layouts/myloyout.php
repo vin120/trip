@@ -13,6 +13,7 @@ $baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 $controller = Yii::$app->controller->id;
 
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -28,7 +29,6 @@ $controller = Yii::$app->controller->id;
 <!-- header start -->
 <header id="header">
     <div class="l" id="title">
-        <img src="<?=$baseUrl ?>images/logo.png">
         <h1><?= \Yii::t('app', '后台管理系统') ?></h1>
     </div>
     <div class="r" id="user">
@@ -60,12 +60,12 @@ $controller = Yii::$app->controller->id;
             <!-- 一级 -->
             <ul>
                 <li <?= $controller=='zone'||$controller=='apartment'||$controller=='service'||$controller=='comment'? ' class="open"':'' ?>>
-                   	<a><img src="<?=$baseUrl ?>images/icon.png"><?= \Yii::t('app', '公寓管理') ?></a>
+                   	<a><img src="<?=$baseUrl ?>images/icon.png"><?= \Yii::t('app', '度假屋管理') ?></a>
                 </li>
                 <!-- 二级 -->
                 <ul style="<?= $controller=='zone'||$controller=='apartment'||$controller=='service'||$controller=='comment'? 'display: block;':'display: none;' ?>">
                     <li<?= $controller=='zone'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['zone/index']);?>"><?= \Yii::t('app', '地区管理') ?></a></li>
-                    <li<?= $controller=='apartment'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['apartment/index']);?>"><?= \Yii::t('app', '公寓信息') ?></a></li>
+                    <li<?= $controller=='apartment'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['apartment/index']);?>"><?= \Yii::t('app', '度假屋信息') ?></a></li>
                     <li<?= $controller=='service'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['service/index']);?>"><?= \Yii::t('app', '服务类别') ?></a></li>
                     <li<?= $controller=='comment'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['comment/index']);?>"><?= \Yii::t('app', '评论管理') ?></a></li>
                   </ul>

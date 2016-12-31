@@ -50,9 +50,9 @@
 					<td><?php echo $value['gender']==0 ? yii::t('app','男') : yii::t('app','女') ?></td>
 					<td><?php echo $value['phone_number']?></td>
 					<td><?php echo $value['email']?></td>
-					<td><?php echo $value['is_already_show']==0 ? yii::t('app','未查看') : yii::t('app','已查看') ?></td>
+					<td><?php if($value['is_already_show']==0 ){ ?><font color="red"><?php echo  yii::t('app','未查看');?></font> <?php } else { ?><font color="green"><?php echo  yii::t('app','已查看');}?>
 					<td>
-						<a href="<?php echo Url::toRoute(['detail','id'=>$value['id']]);?>"><img src="<?=$baseUrl ?>images/write.png"></a>
+						<a href="<?php echo Url::toRoute(['detail','id'=>$value['id']]);?>"><img src="<?=$baseUrl ?>images/text.png"></a>
 						<a class="delete" style="cursor:pointer" id="<?php echo $value['id'];?>"><img src="<?=$baseUrl ?>images/delete.png"></a>
 					</td>
 				</tr>
@@ -115,13 +115,12 @@ window.onload = function(){
 	                            else if(data[key]['gender']==0)
 	                            	var gender = "<?php echo yii::t('app','男')?>";
                                 str += "<td>"+gender+"</td>";
-                                str += "<td>"+data[key]['gender']+"</td>";
                                 str += "<td>"+data[key]['phone_number']+"</td>";
                                 str += "<td>"+data[key]['email']+"</td>";
                                 if(data[key]['is_already_show']==1)
-	                            	var status = "<?php echo yii::t('app','已查看')?>";
+	                            	var is_already_show = "<?php echo yii::t('app','已查看')?>";
 	                            else if(data[key]['is_already_show']==0)
-	                            	var status = "<?php echo yii::t('app','未查看')?>";
+	                            	var is_already_show = "<?php echo yii::t('app','未查看')?>";
                                 str += "<td>"+is_already_show+"</td>";
                                 str += "<td  class='op_btn'>";
 	                            str += '<a href="<?php echo Url::toRoute(['edit']);?>?id='+data[key]['id']+'"><img src="<?=$baseUrl ?>images/write.png"></a>';

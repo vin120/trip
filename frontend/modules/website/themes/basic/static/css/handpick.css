@@ -1,0 +1,37 @@
+.Clt {position:relative;z-index:1;top:-100px;}
+.Clt .handpick{width:1200px;}
+.Clt .lists {width:542px;height:350px;overflow:hidden;margin-bottom:16px;text-align:center;position:relative;color:#FFF;float: left;margin-right:16px;}
+.Clt .lists img {width:100%;position:absolute;left:0px;top:0px;z-index:-1;height:350px;}
+.Clt .lists h2 {margin-top:150px;font-size:30px;font-weight:100;text-shadow:0 0 5px #000;}
+.Clt .lists p {font-size:24px;text-shadow:0 0 5px #000;}
+
+.TPList {overflow:hidden;width:1200px;}
+.TPList  li {width:542px;float:left;margin-right:16px;background:#FFF;margin-bottom:15px;padding-bottom:10px;}
+.TPList  li a {display:block;}
+.TPList  li p {text-align:right;overflow:hidden;height:26px;line-height:26px;padding:0px 15px;}
+.TPList  li .aImg img{width:542px;height:350px;margin-bottom:10px;}
+
+.TPList  li .title a {font-size:16px;color:#000;}
+.TPList  li .title,.TPList  li .title span {color:#444444;font-size:16px;}
+.TPList  li .title .nomoney{text-decoration: line-through;padding-right:10px;}
+.TPList  li .title .money {color:#fa600c;font-size:22px;}
+
+.TPList  li .DQ,.TPList  li .JJ span {font-size:14px;color:#626262;}
+.TPList  li .DQ .Lfll {font-size:14px;color:#626262;}
+.TPList  li .DQ .money {color:#fa600c;font-size:20px;}
+.TPList .JJ {position:relative;}
+.TP h3 ,.TP .etitle {text-align:center;color:#444;}
+.TP h3 {font-size:28px;font-weight:100;margin-top:25px;}
+.TP .etitle {font-size:24px;margin-bottom:25px;}
+.tag {color: #626262;display: inline-block;font-weight: normal;text-decoration: none;z-index: 1;}
+.t_l { float: right;}
+.t_r {float: right;}
+.tag img {height: 15px;margin: 0 3px -2px 0;}
+.CltBanner {text-align:center;background:url(../img/handpickbanner.png) no-repeat center 0px;overflow:hidden;height:485px;color:#FFF;}
+.CltBanner h2 {font-size:50px;font-weight:100;margin-top:150px;}
+.CltBanner p {font-size:30px;font-weight:100;margin:10px 0px 80px;}
+.hdImgDiv {width:427px;height:297px;overflow:hidden;}
+.hdImgDiv img {width:427px;}
+
+
+

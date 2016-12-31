@@ -10,8 +10,20 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+	'timezone' => 'Asia/ShangHai',
     'controllerNamespace' => 'frontend\controllers',
+	'modules' => [
+		'website' => [
+			'class' => 'frontend\modules\website\Website',
+			],
+		'wechat' => [
+			'class' => 'frontend\modules\wechat\Wechat',
+		],
+	],
     'components' => [
+		'assetManager' => [
+			'linkAssets' => true,
+		],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
@@ -36,14 +48,13 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        
     ],
     'params' => $params,
 ];

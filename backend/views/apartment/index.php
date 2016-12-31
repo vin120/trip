@@ -31,13 +31,13 @@
 			<tbody>
 				<tr>
 					<td><input type="checkbox"></input></td>
-					<td>12345678</td>
-					<td>苏州太湖国际旅行社责任有限公司</td>
-					<td>刘珍凤</td>
-					<td>刘珍凤</td>
-					<td>苏州太湖国际旅行社责任有限公司</td>
-					<td>刘珍凤</td>
-					<td>刘珍凤</td>
+					<td>广东</td>
+					<td>珠海度假屋</td>
+					<td>1299</td>
+					<td>299</td>
+					<td>5</td>
+					<td>启用</td>
+					<td>是</td>
 					<td>
 						<a href="<?php echo Url::toRoute(['apartment/apartmentedit']);?>"><img src="<?php echo $baseUrl; ?>images/write.png" class="btn1"></a>
 						<a href="#"><img src="<?php echo $baseUrl; ?>images/delete.png" class="btn2"></a>
@@ -45,7 +45,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<p class="records">记录数:<span>26</span></p>
+		<p class="records">记录数:<span>1</span></p>
 		<div class="btn">
 			<a href="<?php echo Url::toRoute(['apartment/apartmentadd']);?>"><input type="button" value="添加"></input></a>
 			<input type="button" value="批量删除"></input>

@@ -28,6 +28,7 @@
 				<tr>
 					<th><input type="checkbox"></input></th>
 					<th><?php echo yii::t('app','序号')?></th>
+					<th><?php echo yii::t('app','图片')?></th>
 					<th><?php echo yii::t('app','消息类型')?></th>
 					<th><?php echo yii::t('app','状态')?></th>
 					<th><?php echo yii::t('app','操作')?></th>
@@ -38,6 +39,7 @@
 				<tr>
 					<td><input type="checkbox" name="ids[]" value="<?php echo $value['id']?>" class="checkall"></input></td>
 					<td><?php echo $key + 1;?></td>
+					<td><img src="<?php echo "/".Yii::$app->params['img_url_prefix']. $value['img_url']?>" align="absmiddle" width="90" height="50"/></td>
 					<td><?php echo $value['name']?></td>
 					<td><?php echo $value['status'] == 1 ?  yii::t('app','启用') :  yii::t('app','禁用')?></td>
 					<td>
@@ -95,6 +97,7 @@ window.onload = function(){
 	                        	str += "<tr>";
 	                        	str += "<td><input name='ids[]' type='checkbox' value='"+data[key]['id']+"' class='checkall'></input></td>";
 	                            str += "<td>"+(key+1)+"</td>";
+	                            str += "<td><img src="+"<?php echo "/".Yii::$app->params['img_url_prefix']?>"+data[key]['img_url']+ " align='absmiddle' width='90' height='50'/></td>"
                                 str += "<td>"+data[key]['name']+"</td>";
                                 if(data[key]['status']==1)
 	                            	var status = "<?php echo yii::t('app','启用')?>";
