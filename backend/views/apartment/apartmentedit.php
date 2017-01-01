@@ -191,7 +191,8 @@
 			</p>
 			<p>
 				<span style="vertical-align:top;">简介：</span>
-				<textarea id="desc" name="desc"><?php echo $basic['desc']; ?></textarea>
+				<?php $desc_rep =  str_replace('src="','src="'.Yii::$app->params['img_url'],$basic['desc']); ?> 
+				<textarea id="desc" name="desc"><?php echo $desc_rep; ?></textarea>
 			</p>
 
 

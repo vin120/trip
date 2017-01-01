@@ -90,13 +90,14 @@ class ZoneController extends BaseController
 	public function actionZoneadd(){
 		$db = Yii::$app->db;
 		if($_POST){
-			$zone_name = isset($_POST['zone_name'])?trim($_POST['zone_name']):"";
-			$parent_zone_name = isset($_POST['parent_zone_name'])?trim($_POST['parent_zone_name']):'';
+			// var_dump($_POST);exit;
+			$name = isset($_POST['name'])?trim($_POST['name']):"";
+			$parent_zone_id = isset($_POST['parent_zone_id'])?trim($_POST['parent_zone_id']):'';
 			$state = isset($_POST['state'])?trim($_POST['state']):'';
 			$is_highlight = isset($_POST['is_highlight'])?trim($_POST['is_highlight']):"";
 			$level = 1;
-			if($parent_zone_name!=0){
-				$sql = "SELECT level FROM `zh_zone` WHERE zone_id='{$parent_zone_name}'  ";
+			if($parent_zone_id!=0){
+				$sql = "SELECT level FROM `zh_zone` WHERE zone_id='{$parent_zone_id}'  ";
 				$level_res = Yii::$app->db->createCommand($sql)->queryOne();
 				if($level_res['level'] == 1){
 					$level = 2;
@@ -106,7 +107,7 @@ class ZoneController extends BaseController
 			}
 			
 
-			$sql = "INSERT INTO `zh_zone` (zone_name,parent_id,status,highlight,level) VALUES ('{$zone_name}','{$parent_zone_name}','{$state}','{$is_highlight}','{$level}') ";
+			$sql = "INSERT INTO `zh_zone` (zone_name,parent_id,status,highlight,level) VALUES ('{$name}','{$parent_zone_id}','{$state}','{$is_highlight}','{$level}') ";
 
 			$commen = $db->beginTransaction();
 			try{
@@ -119,7 +120,7 @@ class ZoneController extends BaseController
 			}
 
 		}
-		$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE status='1' AND level!=3 ";
+		$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE parent_id='0' ";
 		$parent_zone = Yii::$app->db->createCommand($sql)->queryAll();
 		return $this->render('zoneadd',['parent_zone'=>$parent_zone]);
 	
@@ -130,13 +131,13 @@ class ZoneController extends BaseController
 		if($_POST){
 			// var_dump($_POST);exit;
 			$zone_id = isset($_POST['zone_id'])?trim($_POST['zone_id']):'';
-			$zone_name = isset($_POST['zone_name'])?trim($_POST['zone_name']):"";
-			$parent_zone_name = isset($_POST['parent_zone_name'])?trim($_POST['parent_zone_name']):'';
+			$name = isset($_POST['name'])?trim($_POST['name']):"";
+			$parent_zone_id = isset($_POST['parent_zone_id'])?trim($_POST['parent_zone_id']):'';
 			$state = isset($_POST['state'])?trim($_POST['state']):'';
 			$is_highlight = isset($_POST['is_highlight'])?trim($_POST['is_highlight']):"";
 			$level = 1;
-			if($parent_zone_name!=0){
-				$sql = "SELECT level FROM `zh_zone` WHERE zone_id='{$parent_zone_name}'  ";
+			if($parent_zone_id!=0){
+				$sql = "SELECT level FROM `zh_zone` WHERE zone_id='{$parent_zone_id}'  ";
 				$level_res = Yii::$app->db->createCommand($sql)->queryOne();
 				if($level_res['level'] == 1){
 					$level = 2;
@@ -146,7 +147,7 @@ class ZoneController extends BaseController
 			}
 
 
-			$sql = "UPDATE `zh_zone` SET zone_name='{$zone_name}',parent_id='{$parent_zone_name}',status='{$state}',highlight='{$is_highlight}',level='{$level}' WHERE zone_id = '{$zone_id}' ";
+			$sql = "UPDATE `zh_zone` SET zone_name='{$name}',parent_id='{$parent_zone_id}',status='{$state}',highlight='{$is_highlight}',level='{$level}' WHERE zone_id = '{$zone_id}' ";
 
 			$commen = $db->beginTransaction();
 			try{
@@ -164,11 +165,30 @@ class ZoneController extends BaseController
 		$sql = "SELECT * FROM `zh_zone` WHERE zone_id='{$id}' ";
 		$data = Yii::$app->db->createCommand($sql)->queryOne();
 
-		$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE (status='1' OR zone_id='{$data['parent_id']}') AND zone_id != '{$id}' AND level!=3 ";
+		$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE parent_id='0' AND zone_id!='{$id}' ";
 		$parent_zone = Yii::$app->db->createCommand($sql)->queryAll();
+		$parent_zone1 = array();
+
+		if($data['parent_id']==0){
+			$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE parent_id='{$id}' AND zone_id!='{$id}' ";
+			$parent_zone1 = Yii::$app->db->createCommand($sql)->queryAll();
+		}else if($data['level']==2){
+			$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE parent_id='{$data['parent_id']}' AND zone_id !='{$id}' ";
+			$parent_zone1 = Yii::$app->db->createCommand($sql)->queryAll();
+		}else if($data['level']==3){
+			$sql = "SELECT parent_id FROM `zh_zone` WHERE zone_id='{$data['parent_id']}' ";
+			$parent = Yii::$app->db->createCommand($sql)->queryOne();
+			$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE parent_id='{$parent['parent_id']}' AND zone_id !='{$id}' ";
+			$parent_zone1 = Yii::$app->db->createCommand($sql)->queryAll();
+		}
+
+		
+
+		// $sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE (status='1' OR zone_id='{$data['parent_id']}') AND zone_id != '{$id}' AND level!=3 ";
+		// $parent_zone = Yii::$app->db->createCommand($sql)->queryAll();
 
 
-		return $this->render('zoneedit',['parent_zone'=>$parent_zone,'data'=>$data]);
+		return $this->render('zoneedit',['parent_zone'=>$parent_zone,'parent_zone1'=>$parent_zone1,'data'=>$data]);
 	
 	}
 
@@ -187,5 +207,85 @@ class ZoneController extends BaseController
 		echo (int)$data['count'];
 
 	}
+
+	public function actionZonegetzonedata(){
+		$zone = isset($_POST['zone'])?trim($_POST['zone']):'';
+		$curr_zone_id = isset($_POST['curr_zone_id'])?trim($_POST['curr_zone_id']):'';
+		if($curr_zone_id != ''){
+			$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE status='1' AND parent_id='{$zone}' AND zone_id!='{$curr_zone_id}' ";
+		
+		}else{
+			$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE status='1' AND parent_id='{$zone}' ";
+		
+		}
+		$data = Yii::$app->db->createCommand($sql)->queryAll();
+		echo json_encode($data);
+	}
+
+	public function actionVerifyparentzoneusable(){
+		$parent_zone_id = isset($_POST['parent_zone_id'])?trim($_POST['parent_zone_id']):'';
+		$zone_id = isset($_POST['zone_id'])?trim($_POST['zone_id']):'';
+		$level = isset($_POST['level'])?trim($_POST['level']):'';
+		$flag = 0;	//1：可用 0:不可用
+
+
+		//获取当前等级
+		$sql = "SELECT level FROM `zh_zone` WHERE zone_id='{$zone_id}' ";
+		$level_res = Yii::$app->db->createCommand($sql)->queryOne();
+
+		if($level_res['level'] == 3 ){	//说明不存在子级
+			$flag = 1;
+		}else if($level_res['level'] == 2){
+			$sql = "SELECT count(*) count FROM `zh_zone` WHERE parent_id='{$zone_id}' ";
+			$count = Yii::$app->db->createCommand($sql)->queryOne();
+			if((int)$count['count'] == 0){
+				$flag = 1;
+			}else{
+				if($level==1){
+					$flag = 1;
+				}
+			}
+
+		}else if($level_res['level'] == 1){
+			$sql = "SELECT zone_id FROM `zh_zone` WHERE parent_id='{$zone_id}' ";
+			$res = Yii::$app->db->createCommand($sql)->queryAll();
+			if(count($res) == 0){	//不存在二级，说明没三级
+				$flag = 1;
+			}else{	//存在二级，查看是否有三级
+				if($level != 2){
+					$str = '';
+					foreach ($res as $key => $value) {
+						$str .= $value['zone_id'];
+					}
+					$str = trim($str,',');
+					$sql = "SELECT count(*) count FROM `zh_zone` WHERE parent_id IN ('{$str}') ";
+					$res = Yii::$app->db->createCommand($sql)->queryOne();
+					if($res['count']==0){
+						$flag = 1;
+					}
+				}
+			}
+
+		}
+
+		echo $flag;
+
+	}
+
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

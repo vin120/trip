@@ -47,19 +47,29 @@
     //        'print', 'preview', 'searchreplace', 'help', 'drafts'
     //    ]]
 
+    // , toolbars: [[
+    //     'fullscreen', 'source', '|', 'undo', 'redo', '|',
+    //     'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+    //     'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+    //     'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+    //     'directionalityltr', 'directionalityrtl', 'indent', '|',
+    //     'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+    //     'link', 'unlink',  '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+    //     'simpleupload', 'insertimage', 'emotion', 'scrawl',  'map', 'gmap', 'insertframe',  'pagebreak', 'template', 'background', '|',
+    //     'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
+    //     'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
+    //     'print', 'preview', 'searchreplace'
+    // ]]
+
     , toolbars: [[
-        'fullscreen', 'source', '|', 'undo', 'redo', '|',
-        'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
-        'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
-        'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
-        'directionalityltr', 'directionalityrtl', 'indent', '|',
-        'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
-        'link', 'unlink',  '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
-        'simpleupload', 'insertimage', 'emotion', 'scrawl',  'map', 'gmap', 'insertframe',  'pagebreak', 'template', 'background', '|',
-        'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
-        'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
-        'print', 'preview', 'searchreplace'
-    ]]
+          'undo', 'redo', '|',
+          'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript','|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+          'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+          'fontfamily', 'fontsize', '|',
+          'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify','|',
+          'insertimage','imagefloat',
+          
+      ]]
 
 
 

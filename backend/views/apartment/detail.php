@@ -85,7 +85,8 @@
 		<div class="div-box-content">
 			<label>
 				<span class="box-desc-title">简介：</span>
-				<div class="box-desc" style=" max-height: 500px;"><?php echo $basic['desc'] ?></div>
+				<?php $desc_rep =  str_replace('src="','src="'.Yii::$app->params['img_url'],$basic['desc']); ?> 
+				<div class="box-desc" style=" max-height: 500px;"><?php echo $desc_rep ?></div>
 			</label>
 		</div>
 	</div>

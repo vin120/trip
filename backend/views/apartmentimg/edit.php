@@ -12,7 +12,7 @@
 <style type="text/css">
     /*upload*/
 	.uploadFileBox { display: inline-block; width: 180px; line-height: 20px; border: 1px solid #dcdcdc; border-radius: 4px; box-sizing: border-box; overflow: hidden; }
-	.fileName { display: inline-block; width: 50px; line-height: 10px; margin-left: 10px;vertical-align: -moz-middle-with-baseline;  overflow: visible; }
+	.fileName { display: inline-block; width: 50px; line-height: 10px; margin-left: 10px; vertical-align: middle; overflow: visible; }
 	.uploadFile { float: right; position: relative; display: inline-block; background-color: #3f7fcf; padding: 6px 12px; overflow: hidden; color: #fff; text-decoration: none; text-indent: 0; line-height: 20px; }
 	.uploadFile input { position: absolute; font-size: 100px; right: 0; top: 0; opacity: 0; }
     #pic img {display: block; width: 17%; min-height: 100px; margin-bottom: 20px; border: 1px solid #dcdcdc;position: relative;left: 160px;}
@@ -39,46 +39,48 @@
 		<input type="hidden" name="img_id" value="<?php echo $data['img_id'] ?>" />
 		<p>
 			<span>地区名：</span>
-			<input type="hidden" name="zone_id" value="<?php echo $data['zone_id'] ?>" />
-			<?php $ex_zone_index = explode('-',$level_index) ?>
+			<?php echo $zone_name; ?>
+			<!--<input type="hidden" name="zone_id" value="< ?php echo $data['zone_id'] ?>" />
+			< ?php $ex_zone_index = explode('-',$level_index) ?>
 			<select name="zone_name">
 				<option value="0">全部</option>
-				<?php foreach ($zone_data as $value) {?>
-				<option value="<?php echo $value['zone_id']?>" <?php echo $value['zone_id']==$ex_zone_index[0]?"selected='selected'":"" ?>><?php echo $value['zone_name']?></option>
-				<?php }?>
+				< ?php foreach ($zone_data as $value) {?>
+				<option value="< ?php echo $value['zone_id']?>" < ?php echo $value['zone_id']==$ex_zone_index[0]?"selected='selected'":"" ?>>< ?php echo $value['zone_name']?></option>
+				< ?php }?>
 			</select>
-			<select name="zone_name1" class="<?php echo empty($zone_data1)?"hidden":"";?>">
+			<select name="zone_name1" class="< ?php echo empty($zone_data1)?"hidden":"";?>">
 				<option value="0">全部</option>
-				<?php foreach($zone_data1 as $row){?>
-				<option value="<?php echo $row['zone_id'] ?>" <?php echo $row['zone_id']==$ex_zone_index[1]?"selected='selected'":"" ?> ><?php echo $row['zone_name'] ?></option>
-				<?php }?>
+				< ?php foreach($zone_data1 as $row){?>
+				<option value="< ?php echo $row['zone_id'] ?>" < ?php echo $row['zone_id']==$ex_zone_index[1]?"selected='selected'":"" ?> >< ?php echo $row['zone_name'] ?></option>
+				< ?php }?>
 			</select>
 			</select>
-			<select name="zone_name2" class="<?php echo empty($zone_data2)?"hidden":"";?>">
+			<select name="zone_name2" class="< ?php echo empty($zone_data2)?"hidden":"";?>">
 				<option value="0">全部</option>
-				<?php foreach($zone_data2 as $row){?>
-				<option value="<?php echo $row['zone_id'] ?>" <?php echo $row['zone_id']==$ex_zone_index[2]?"selected='selected'":"" ?> ><?php echo $row['zone_name'] ?></option>
-				<?php }?>
-			</select>
+				< ?php foreach($zone_data2 as $row){?>
+				<option value="< ?php echo $row['zone_id'] ?>" < ?php echo $row['zone_id']==$ex_zone_index[2]?"selected='selected'":"" ?> >< ?php echo $row['zone_name'] ?></option>
+				< ?php }?>
+			</select>-->
 		</p>
 
 		<p>
 			<span>公寓：</span>
-			<select name='apartment_name'>
+			<?php echo $data['apartment_name'] ?>
+			<!--<select name='apartment_name'>
 				<option value="0">请选择</option>
-				<?php foreach($apartment_name as $v){?>
-				<option value="<?php  echo $v['apartment_id']?>" <?php echo $data['apartment_id']==$v['apartment_id']?"selected='selected'":"" ?> ><?php echo $v['apartment_code'].'|'.$v['apartment_name'] ?></option>
-				<?php }?>
-			</select>
+				< ?php foreach($apartment_name as $v){?>
+				<option value="< ?php  echo $v['apartment_id']?>" < ?php echo $data['apartment_id']==$v['apartment_id']?"selected='selected'":"" ?> >< ?php echo $v['apartment_code'].'|'.$v['apartment_name'] ?></option>
+				< ?php }?>
+			</select>-->
 		</p>
 		<p>
             <span><?php echo yii::t('app','图片预览：');?></span>
             <div id="pic" >
-                <img id="ImgPr" src="/<?= Yii::$app->params['img_url_prefix'].$data['img_url']?>">
+                <img id="ImgPr" src="<?= Yii::$app->params['img_url'].'/'.$data['img_url']?>">
             </div>
         </p>
         <p>
-            <span style="vertical-align: top;position: relative;top:5px;"><?php echo yii::t('app','图片：')?></span>
+            <span><?php echo yii::t('app','图片：')?></span>
 			<label class="uploadFileBox" >
                 <span class="fileName"><?php echo yii::t('app','Select')?></span>
 				<a href="#"  class="uploadFile"><?php echo yii::t('app','请选择')?><input type="file"  name="image" id="image"></input></a>
@@ -118,6 +120,7 @@ window.onload = function(){
 		$(".fileName").attr("title",fileName);
 	});
 
+/*
 	$("form#apartmentimg_form").submit(function(){
 		//判断地区
 		var zone_id = '';
@@ -162,7 +165,7 @@ window.onload = function(){
 		
 
 
-	});
+	});*/
 
 	$(document).on('change',"select[name='apartment_name']",function(){
 		$("form#apartmentimg_form select[name='apartment_name']").parents('p').find("em.error_tips").remove();

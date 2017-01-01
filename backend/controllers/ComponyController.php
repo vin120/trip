@@ -12,7 +12,7 @@ class ComponyController extends BaseController
 
 	public function actionIndex()
 	{
-		$sql = "SELECT telephone_number,phone_number,400_number,fax_number,address,email,QQ FROM zh_compony WHERE id= 1";
+		$sql = "SELECT telephone_number,phone_number,400_number,fax_number,address,email,QQ,introduct FROM zh_compony WHERE id= 1";
 		$compony = Yii::$app->db->createCommand($sql)->queryOne();
 
 		return $this->render('index',['compony'=>$compony,]);

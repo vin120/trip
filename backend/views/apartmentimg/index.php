@@ -43,7 +43,7 @@
 					<td><?php echo $row['zone_name']?></td>
 					<td><?php echo $row['apartment_name']?></td>
 					<td>
-						<img style="width:50px;height:50px;" src="<?php echo "/".Yii::$app->params['img_url_prefix']. $row['img_url']?>" />
+						<img style="width:50px;height:50px;" src="<?php echo Yii::$app->params['img_url'].'/'. $row['img_url']?>" />
 					</td>
 					<td><?php echo $row['status']==1?"启用":"禁用";?></td>
 					<td class="op_btn">
@@ -107,7 +107,7 @@ window.onload = function(){
 								str += '<td>'+data[key]['zone_name']+'</td>';
 								str += '<td>'+data[key]['apartment_name']+'</td>';
 								str += '<td>';
-								str += '<img style="width:50px;height:50px;" src="<?php echo "/".Yii::$app->params['img_url_prefix']?>'+data[key]['img_url']+'" />';
+								str += '<img style="width:50px;height:50px;" src="<?php echo Yii::$app->params['img_url']?>/'+data[key]['img_url']+'" />';
 								str += '</td>';
 								var state = data[key]['status']==1?"启用":"禁用";
 								str += '<td>'+state+'</td>';

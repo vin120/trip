@@ -15,7 +15,21 @@ $(document).ready(function() {
 	$("form#zone_form").submit(function(){
 		var error_str = "<em class='error_tips'>必填字段</em>";
 		var zone_id = $("form#zone_form input[type='hidden'][name='zone_id']").val();
-		var zone_name = $("form#zone_form input[type='text'][name='zone_name']").val();
+		var name = $("form#zone_form input[name='name']").val();
+		var zone_name = $("form#zone_form select[name='zone_name']").val();
+		var zone_name1 = $("form#zone_form select[name='zone_name1']").val();
+		var parent_zone_id = '';
+		var level = 1;
+		if(zone_name1==0){
+			parent_zone_id = zone_name;
+			level = 1;
+			$("form#zone_form input[type='hidden'][name='parent_zone_id']").val(parent_zone_id);
+		}else{
+			parent_zone_id = zone_name1;
+			level = 2;
+			$("form#zone_form input[type='hidden'][name='parent_zone_id']").val(parent_zone_id);
+		}
+
 		// alert(zone_name);return false;
 		var flag = 1;
 		$("form#zone_form input[type='text']").each(function(){
@@ -32,7 +46,7 @@ $(document).ready(function() {
 			url:verify_zone_name,
 			type:'POST',
 			dataType:'json',
-			data:'zone_name='+zone_name+'&zone_id='+zone_id,
+			data:'zone_name='+name+'&zone_id='+zone_id,
 			async:false,
 			success:function(data){
 				if(data==0){ 
@@ -44,6 +58,26 @@ $(document).ready(function() {
 			}
 		});
 		if(flag == 0){return false;}
+
+		if(zone_id!=''){
+			//验证地区是否可选修改的父级
+			$.ajax({
+				url:verify_parent_zone_usable,
+				type:'POST',
+				dataType:'json',
+				data:'parent_zone_id='+parent_zone_id+'&zone_id='+zone_id+'&level='+level,
+				async:false,
+				success:function(data){
+					if(data==0){ 
+						$("form#zone_form select[name='zone_name1']").parents('p').append("<em class='error_tips'>当前地区存在子级,指定父级不可选,请更换</em>");flag = 0;return false;
+					}
+				}
+			});
+			if(flag == 0){return false;}
+		}
+
+
+
 		// return false;
 	});
 
@@ -248,6 +282,86 @@ $(document).ready(function() {
 		});
 		if(flag == 0){return false;}
 
+
+	});
+
+	$("form#insurance_form").submit(function(){
+		var error_str = "<em class='error_tips'>必填字段</em>";
+		var insurance_name = $("form#insurance_form input[name='insurance_name']").val();
+		var insurance_id = $("form#insurance_form input[type='hidden'][name='insurance_id']").val();
+		var flag = 1;
+		$("form#insurance_form input[type='text']").each(function(){
+			$(this).parents('p').find("em.error_tips").remove();
+			var this_val = $(this).val();
+			if(this_val == ''){
+				$(this).parents('p').append(error_str);flag = 0;return false;
+			}
+
+		});
+		if(flag == 0){return false;}
+
+		//验证保险名称唯一性
+		$.ajax({
+			url:verify_insurance_name,
+			type:'POST',
+			dataType:'json',
+			data:'insurance_name='+insurance_name+'&insurance_id='+insurance_id,
+			async:false,
+			success:function(data){
+				if(data!=0){
+					$("form#insurance_form select[name='insurance_name']").parents('p').append("<em class='error_tips'>账户名已存在,请更换</em>");flag = 0;
+				}
+			}
+		});
+		if(flag == 0){return false;}
+
+		// return false;
+	});
+
+
+	//关于我们提交保存验证
+	$("form#about_form").submit(function(){
+		var error_str = "<em class='error_tips'>必填字段</em>";
+		var name = $("form#about_form input[name='name']").val();
+		var about_id = $("form#about_form input[type='hidden'][name='about_id']").val();
+
+		var flag = 1;
+		$.ajax({
+			url:verify_about_name,
+			type:'POST',
+			dataType:'json',
+			data:'name='+name+'&about_id='+about_id,
+			async:false,
+			success:function(data){
+				if(data!=0){
+					$("form#about_form input[name='name']").parents('p').append("<em class='error_tips'>标题已存在,请更换</em>");flag = 0;
+				}
+			}
+		});
+		if(flag == 0){return false;}
+
+	});
+
+	//活动分类保存验证
+	$("form#activitytype_form").submit(function(){
+		var error_str = "<em class='error_tips'>必填字段</em>";
+		var name = $("form#activitytype_form input[name='name']").val();
+		var activitytype_id = $("form#activitytype_form input[type='hidden'][name='activitytype_id']").val();
+
+		var flag = 1;
+		$.ajax({
+			url:verify_activitytype_name,
+			type:'POST',
+			dataType:'json',
+			data:'name='+name+'&activitytype_id='+activitytype_id,
+			async:false,
+			success:function(data){
+				if(data!=0){
+					$("form#activitytype_form input[name='name']").parents('p').append("<em class='error_tips'>活动名称已存在,请更换</em>");flag = 0;
+				}
+			}
+		});
+		if(flag == 0){return false;}
 
 	});
 

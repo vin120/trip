@@ -13,7 +13,7 @@
     <div id="mainContent_content" class="pBox">
     	<div id="componyInfo" >
          <h2>公司基本信息</h2>
-         <div class="pBox" id="info">
+         <div class="pBox" id="info" style="padding-bottom: 20px;">
             <ul>
                 <li>
                     <span>座机号码:</span>
@@ -42,6 +42,10 @@
 	           	<li>
 	           		<span>客服QQ:</span>
 	           		<span><?php echo $compony['QQ'];?></span>
+	           	</li>
+	           	<li>
+	           		<span>简介:</span>
+	           		<span><?php echo $compony['introduct'];?></span>
 	           	</li>
             </ul>
         </div>

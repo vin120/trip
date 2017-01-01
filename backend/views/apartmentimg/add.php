@@ -129,7 +129,27 @@ window.onload = function(){
           return false;
       	}
 
+      	var max_img_number = "<?php echo Yii::$app->params['max_img_number'] ?>";	//最多可上传图片数
+		var curr_img_number = $("#preview").find('.upload_append_list').length;	//当前多图选择图片数
+		var choose_apartment_img_num = $("select[name='apartment_name'] option:selected").attr('img_num');
+		// alert(choose_apartment_img_num);alert(max_img_number);alert(curr_img_number);
+
+		// if(choose_apartment_img_num == undefined ){
+		// 	choose_apartment_img_num = '';
+		// }
+
+		var num = parseInt(max_img_number)-parseInt(choose_apartment_img_num);
+		if( num < parseInt(curr_img_number) ) {
+			Alert("当前公寓剩余图片"+num+"张可上传,最多可上传已超出上传图片数");return false; 	//图片数超出
+		}
+
+
 	});
+
+	$(document).on('click',"#promptBox >span.op,#promptBox > .btn .cancel_but",function(){
+		   $(".ui-widget-overlay").addClass('hide');
+		   $("#promptBox").addClass('hide');
+	   });
 
 	$(document).on('change',"select[name='apartment_name']",function(){
 		$("form#apartmentimg_form select[name='apartment_name']").parents('p').find("em.error_tips").remove();
@@ -166,7 +186,9 @@ window.onload = function(){
 				});
 
 				$.each(apartment,function(key){
-					apartment_str += '<option value="'+apartment[key]['apartment_id']+'">'+apartment[key]['apartment_code']+'|'+apartment[key]['apartment_name']+'</option>';
+					if(apartment[key]['apartment_id']!='' && apartment[key]['apartment_id']!=null){
+					apartment_str += '<option img_num="'+apartment[key]['img_num']+'" value="'+apartment[key]['apartment_id']+'">'+apartment[key]['apartment_code']+'|'+apartment[key]['apartment_name']+'</option>';
+					}
 				});
 
 
@@ -209,7 +231,9 @@ window.onload = function(){
 				var apartment_str = '<option value="0">请选择</option>';
 
 				$.each(apartment,function(key){
-					apartment_str += '<option value="'+apartment[key]['apartment_id']+'">'+apartment[key]['apartment_code']+'|'+apartment[key]['apartment_name']+'</option>';
+					if(apartment[key]['apartment_id']!='' && apartment[key]['apartment_id']!=null){
+					apartment_str += '<option  img_num="'+apartment[key]['img_num']+'" value="'+apartment[key]['apartment_id']+'">'+apartment[key]['apartment_code']+'|'+apartment[key]['apartment_name']+'</option>';
+					}
 				});
 
 				$("select[name='apartment_name']").html(apartment_str);
@@ -236,7 +260,9 @@ window.onload = function(){
 				});
 
 				$.each(apartment,function(key){
-					apartment_str += '<option value="'+apartment[key]['apartment_id']+'">'+apartment[key]['apartment_code']+'|'+apartment[key]['apartment_name']+'</option>';
+					if(apartment[key]['apartment_id']!='' && apartment[key]['apartment_id']!=null){
+					apartment_str += '<option  img_num="'+apartment[key]['img_num']+'" value="'+apartment[key]['apartment_id']+'">'+apartment[key]['apartment_code']+'|'+apartment[key]['apartment_name']+'</option>';
+					}
 				});
 
 				if(str!=''){
@@ -277,7 +303,9 @@ window.onload = function(){
 				var apartment_str = '<option value="0">请选择</option>';
 
 				$.each(apartment,function(key){
-					apartment_str += '<option value="'+apartment[key]['apartment_id']+'">'+apartment[key]['apartment_code']+'|'+apartment[key]['apartment_name']+'</option>';
+					if(apartment[key]['apartment_id']!='' && apartment[key]['apartment_id']!=null){
+					apartment_str += '<option  img_num="'+apartment[key]['img_num']+'" value="'+apartment[key]['apartment_id']+'">'+apartment[key]['apartment_code']+'|'+apartment[key]['apartment_name']+'</option>';
+					}
 				});
 
 				$("select[name='apartment_name']").html(apartment_str);
@@ -300,7 +328,9 @@ window.onload = function(){
 				var apartment_str = '<option value="0">请选择</option>';
 
 				$.each(apartment,function(key){
-					apartment_str += '<option value="'+apartment[key]['apartment_id']+'">'+apartment[key]['apartment_code']+'|'+apartment[key]['apartment_name']+'</option>';
+					if(apartment[key]['apartment_id']!='' && apartment[key]['apartment_id']!=null ){
+					apartment_str += '<option  img_num="'+apartment[key]['img_num']+'" value="'+apartment[key]['apartment_id']+'">'+apartment[key]['apartment_code']+'|'+apartment[key]['apartment_name']+'</option>';
+					}
 				});
 
 				$("select[name='apartment_name']").html(apartment_str);
@@ -318,21 +348,35 @@ window.onload = function(){
 
 	//点击图片时验证图片数量
 
-	// $(document).on('click',".filePicker",function(){
-	// 	var curr_img_number = 
-	// 	$.ajax({
-	// 		url:"<?php echo Url::toRoute(['apartmentimg/verifyimgnumber']);?>",
-	// 		type:'POST',
-	// 		dataType:'json',
-	// 		data:'zone='+zone_3,
-	// 		async:false,
-	// 		success:function(count){
-	// 			if(count){
+	$(document).on('click',".filePicker",function(){
+		// return false;
+		var max_img_number = "<?php echo Yii::$app->params['max_img_number'] ?>";	//最多可上传图片数
+		var curr_img_number = $("#preview").find('.upload_append_list').length;	//当前多图选择图片数
+		var choose_apartment_img_num = $("select[name='apartment_name'] option:selected").attr('img_num');
+		// alert(choose_apartment_img_num);alert(max_img_number);alert(curr_img_number);
+
+		if(choose_apartment_img_num == undefined ){
+			choose_apartment_img_num = '';
+		}
+
+		if(choose_apartment_img_num!=''){
+			var num = parseInt(max_img_number)-parseInt(curr_img_number)-parseInt(choose_apartment_img_num);
+			if(num <=20){return false;} 	//不可再点击
+		}
+		
+		// $.ajax({
+		// 	url:"< ?php echo Url::toRoute(['apartmentimg/verifyimgnumber']);?>",
+		// 	type:'POST',
+		// 	dataType:'json',
+		// 	data:'zone='+zone_3,
+		// 	async:false,
+		// 	success:function(count){
+		// 		if(count){
 					
-	// 			}
-	// 		}
-	// 	});
-	// });
+		// 		}
+		// 	}
+		// });
+	});
 
 
 

@@ -20,18 +20,19 @@
   <div class=" tr-main">
     <div class="tr-left tr-fll tr-mb20">
       <div class="tr-list-content">
+      <?php foreach ($recruitment as $key => $value) {?>
         <a target="_blank" href="zp_xiangqing.html">
           <div class="tr-mt15 tr-bgcw tr-pro_box ">
             <div class="tr-cfl tr-ml20 tr-mr20">
               <div class="tr-mt10">
                 <div class="tr-cfl">
-                  <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px">web前端开发工程师</div>
-                  <div class="tr-caf tr-fz12">分类：技术<div class="tr-flr tr-caf tr-fz12" style="line-height:18px">2016.12.25</div></div>
+                  <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px"><?php echo $value['job_name'] ?></div>
+                  <div class="tr-caf tr-fz12">分类：<?php echo $value['type_name'] ?><div class="tr-flr tr-caf tr-fz12" style="line-height:18px">2016.12.25</div></div>
 
                 </div>
                 <div class="tr-cfb"></div>
               </div>
-              <div class="tr-c444 tr-mt15 tr-mb15">4年以上前端经验，2年以上专门JavaScript研发经验，精通Angular.js、Bakebone等第三方原生开发技术优先考虑
+              <div class="tr-c444 tr-mt15 tr-mb15"><?php echo substr($value['introduct'], 0,50) ?>
                 <a target="_blank" href="zp_xiangqing.html">
                   <span class="tr-curp tr-ml5 tr-c9e">[查看详情]</span></a>
               </div>
@@ -39,176 +40,25 @@
             <div class="tr-cfb"></div>
           </div>
         </a>
-        <a target="_blank" href="zp_xiangqing.html">
-          <div class="tr-mt15 tr-bgcw tr-pro_box ">
-            <div class="tr-cfl tr-ml20 tr-mr20">
-              <div class="tr-mt10">
-                <div class="tr-cfl">
-                  <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px">高级PHP开发工程师</div>
-                  <div class="tr-caf tr-fz12">分类：技术<div class="tr-flr tr-caf tr-fz12" style="line-height:18px">2016.12.25</div></div>
-                </div>
-                <div class="tr-cfb"></div>
-              </div>
-              <div class="tr-c444 tr-mt15 tr-mb15">3年以上 LNMP 网站开发经验，至少1年中大型互联网企业研发工作经验
-                <a target="_blank" href="zp_xiangqing.html">
-                  <span class="tr-curp tr-ml5 tr-c9e">[查看详情]</span></a>
-              </div>
-              </div>
-            <div class="tr-cfb"></div>
-          </div>
-        </a>
+        <?php }?>
 
-        <a target="_blank" href="zp_xiangqing.html">
-          <div class="tr-mt15 tr-bgcw tr-pro_box ">
-            <div class="tr-cfl tr-ml20 tr-mr20">
-              <div class="tr-mt10">
-                <div class="tr-cfl">
-                  <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px">企划总监</div>
-                  <div class="tr-caf tr-fz12">分类：策划<div class="tr-flr tr-caf tr-fz12" style="line-height:18px">2016.12.25</div></div>
-                </div>
-                <div class="tr-cfb"></div>
-              </div>
-              <div class="tr-c444 tr-mt15 tr-mb15">工作经验：5年以上企业文化建设工作经验
-                <a target="_blank" href="zp_xiangqing.html">
-                  <span class="tr-curp tr-ml5 tr-c9e">[查看详情]</span></a>
-              </div>
-              </div>
-            <div class="tr-cfb"></div>
-          </div>
-        </a>
-
-        <a target="_blank" href="zp_xiangqing.html">
-          <div class="tr-mt15 tr-bgcw tr-pro_box ">
-            <div class="tr-cfl tr-ml20 tr-mr20">
-              <div class="tr-mt10">
-                <div class="tr-cfl">
-                  <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px">高级JAVA研发工程师</div>
-                  <div class="tr-caf tr-fz12">分类：技术<div class="tr-flr tr-caf tr-fz12" style="line-height:18px">2016.12.25</div></div>
-                </div>
-                <div class="tr-cfb"></div>
-              </div>
-              <div class="tr-c444 tr-mt15 tr-mb15">本科及以上学历，5年以上java相关开发经验
-                <a target="_blank" href="zp_xiangqing.html">
-                  <span class="tr-curp tr-ml5 tr-c9e">[查看详情]</span></a>
-              </div>
-              </div>
-            <div class="tr-cfb"></div>
-          </div>
-        </a>
-
-        <a target="_blank" href="zp_xiangqing.html">
-          <div class="tr-mt15 tr-bgcw tr-pro_box ">
-            <div class="tr-cfl tr-ml20 tr-mr20">
-              <div class="tr-mt10">
-                <div class="tr-cfl">
-                  <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px">行政助理</div>
-                  <div class="tr-caf tr-fz12">分类：文职<div class="tr-flr tr-caf tr-fz12" style="line-height:18px">2016.12.25</div></div>
-                </div>
-                <div class="tr-cfb"></div>
-              </div>
-              <div class="tr-c444 tr-mt15 tr-mb15">大学专科及以上学历，英语、行政管理、人力资源管理等专业优先
-                <a target="_blank" href="zp_xiangqing.html">
-                  <span class="tr-curp tr-ml5 tr-c9e">[查看详情]</span></a>
-              </div>
-              </div>
-            <div class="tr-cfb"></div>
-          </div>
-        </a>
-
-        <a target="_blank" href="zp_xiangqing.html">
-          <div class="tr-mt15 tr-bgcw tr-pro_box ">
-            <div class="tr-cfl tr-ml20 tr-mr20">
-              <div class="tr-mt10">
-                <div class="tr-cfl">
-                  <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px">董事长助理</div>
-                  <div class="tr-caf tr-fz12">分类：文职<div class="tr-flr tr-caf tr-fz12" style="line-height:18px">2016.12.25</div></div>
-                </div>
-                <div class="tr-cfb"></div>
-              </div>
-              <div class="tr-c444 tr-mt15 tr-mb15">35岁以下，本科及以上学历，形象气质佳；英文熟练的优先考虑
-                <a target="_blank" href="zp_xiangqing.html">
-                  <span class="tr-curp tr-ml5 tr-c9e">[查看详情]</span></a>
-              </div>
-              </div>
-            <div class="tr-cfb"></div>
-          </div>
-        </a>
-
-        <a target="_blank" href="zp_xiangqing.html">
-          <div class="tr-mt15 tr-bgcw tr-pro_box ">
-            <div class="tr-cfl tr-ml20 tr-mr20">
-              <div class="tr-mt10">
-                <div class="tr-cfl">
-                  <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px">.net开发工程师</div>
-                  <div class="tr-caf tr-fz12">分类：技术<div class="tr-flr tr-caf tr-fz12" style="line-height:18px">2016.12.25</div></div>
-                </div>
-                <div class="tr-cfb"></div>
-              </div>
-              <div class="tr-c444 tr-mt15 tr-mb15">计算机相关专业本科毕业以上，4~6年IT相关工作经验，3年以上.VB/.net的工作经验
-                <a target="_blank" href="zp_xiangqing.html">
-                  <span class="tr-curp tr-ml5 tr-c9e">[查看详情]</span></a>
-              </div>
-              </div>
-            <div class="tr-cfb"></div>
-          </div>
-        </a>
-
-        <a target="_blank" href="zp_xiangqing.html">
-          <div class="tr-mt15 tr-bgcw tr-pro_box ">
-            <div class="tr-cfl tr-ml20 tr-mr20">
-              <div class="tr-mt10">
-                <div class="tr-cfl">
-                  <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px">HTML5工程师</div>
-                  <div class="tr-caf tr-fz12">分类：技术<div class="tr-flr tr-caf tr-fz12" style="line-height:18px">2016.12.25</div></div>
-                </div>
-                <div class="tr-cfb"></div>
-              </div>
-              <div class="tr-c444 tr-mt15 tr-mb15">负责公司移动互联网产品前端交互开发,负责与后端工程师配合，为产品提供最优化的技术解决方案
-                <a target="_blank" href="zp_xiangqing.html">
-                  <span class="tr-curp tr-ml5 tr-c9e">[查看详情]</span></a>
-              </div>
-              </div>
-            <div class="tr-cfb"></div>
-          </div>
-        </a>
-        
       </div>
       <div class="tr-mt25 tr-tac tr-mb25 tr-fanyi" date-page-now="1" date-page-all="5"></div>
     </div>
     <div class="tr-right tr-flr tr-mb20">
       <div class="tr-mt10 tr-bottom-line tr-fz16 tr-pb10">招聘分类</div>
-      <a href="#">
+
+      <?php foreach($recruitment_type as $row){ ?>
+      <a href="<?php echo Url::toRoute(['job','type'=>$row['id']]);?>" >
         <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
           <div class="tr-pb10 tr-pt10">
             <i class=" tr-ml5 tr-ic"></i>
-            <span class="tr-caf tr-ml5">文职</span>
+            <span class="tr-caf tr-ml5"><?php echo $row['name'] ?></span>
           </div>
         </div>
       </a>
-      <a href="#">
-        <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
-          <div class="tr-pb10 tr-pt10">
-            <i class=" tr-ml5 tr-ic"></i>
-            <span class="tr-caf tr-ml5">客服</span>
-          </div>
-        </div>
-      </a>
-      <a href="#">
-        <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
-          <div class="tr-pb10 tr-pt10">
-            <i class=" tr-ml5 tr-ic"></i>
-            <span class="tr-caf tr-ml5">策划</span>
-          </div>
-        </div>
-      </a>
-      <a href="#">
-        <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
-          <div class="tr-pb10 tr-pt10">
-            <i class=" tr-ml5 tr-ic"></i>
-            <span class="tr-caf tr-ml5">技术</span>
-          </div>
-        </div>
-      </a>
+      <?php }?>
+      
     </div>
     <div class="tr-cfb"></div>
   </div>

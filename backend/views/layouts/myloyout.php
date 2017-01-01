@@ -12,6 +12,9 @@ $baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 
 $controller = Yii::$app->controller->id;
 
+$menu = Yii::$app->view->params['menu'];
+
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -46,95 +49,28 @@ $controller = Yii::$app->controller->id;
     <!-- asideNav start -->
     <aside id="asideNav" class="l">
        <nav id="asideNav_open">
+            <?php foreach($menu as $k=>$row){
+                $child = array();
+                foreach ($row['child'] as $value) {
+                    $child[] = $value['controller'];
+                }
+             ?>
             <!-- 一级 -->
             <ul>
-                <li <?= $controller=='compony'? ' class="open"':'' ?>>
-                    <a><img src="<?=$baseUrl ?>images/icon.png"><?= \Yii::t('app', '公司信息管理') ?></a>
+                <li <?= in_array($controller,$child)? ' class="open"':'' ?>>
+                    <a><img src="<?=$baseUrl ?>images/icon.png"><?php echo $row['menu_name'] ?></a>
                 </li>
+                <?php if(isset($row['child'])){ ?>
                 <!-- 二级 -->
-                <ul style="<?= $controller=='compony'? 'display: block;':'display: none;' ?>">
-                    <li<?= $controller=='compony'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['compony/index']);?>"><?= \Yii::t('app', '公司信息') ?></a></li>
-                  </ul>
+                <ul style="<?= in_array($controller,$child) ? 'display: block;':'display: none;' ?>">
+                    <?php foreach($row['child'] as $v){ ?>
+                    <li<?= $controller==$v['controller']? ' class="active"':'' ?>><a href="<?php echo Url::toRoute([$v['controller'].'/'.$v['action']]);?>"><?php echo $v['menu_name']?></a></li>
+                    <?php }?>
+                </ul>
+                <?php }?>
             </ul>
-            <!-- 一级 -->
-            <ul>
-                <li <?= $controller=='zone'||$controller=='apartment'||$controller=='service'||$controller=='comment'? ' class="open"':'' ?>>
-                   	<a><img src="<?=$baseUrl ?>images/icon.png"><?= \Yii::t('app', '度假屋管理') ?></a>
-                </li>
-                <!-- 二级 -->
-                <ul style="<?= $controller=='zone'||$controller=='apartment'||$controller=='apartmentimg'||$controller=='service'||$controller=='comment'? 'display: block;':'display: none;' ?>">
-                    <li<?= $controller=='zone'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['zone/index']);?>"><?= \Yii::t('app', '地区管理') ?></a></li>
-                    <li<?= $controller=='apartment'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['apartment/index']);?>"><?= \Yii::t('app', '度假屋信息') ?></a></li>
-                    <li<?= $controller=='apartmentimg'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['apartmentimg/index']);?>"><?= \Yii::t('app', '度假屋图片管理') ?></a></li>
-                    <li<?= $controller=='service'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['service/index']);?>"><?= \Yii::t('app', '服务类别') ?></a></li>
-                    <li<?= $controller=='comment'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['comment/index']);?>"><?= \Yii::t('app', '评论管理') ?></a></li>
-                  </ul>
-            </ul>
-            <!-- 一级 -->
-            <ul>
-                <li <?= $controller=='user'? ' class="open"':'' ?>>
-                    <a><img src="<?=$baseUrl ?>images/icon.png"><?= \Yii::t('app', '用户管理') ?></a>
-                </li>
-                <!-- 二级 -->
-                <ul style="<?= $controller=='user'? 'display: block;':'display: none;' ?>">
-                    <li<?= $controller=='user'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['user/index']);?>"><?= \Yii::t('app', '用户信息') ?></a></li>
-                  </ul>
-            </ul>
-              <!-- 一级 -->
-            <ul>
-                <li <?= $controller=='admin'? ' class="open"':'' ?>>
-                    <a><img src="<?=$baseUrl ?>images/icon.png"><?= \Yii::t('app', '管理员管理') ?></a>
-                </li>
-                <!-- 二级 -->
-                <ul style="<?= $controller=='admin'? 'display: block;':'display: none;' ?>">
-                    <li<?= $controller=='admin'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['admin/index']);?>"><?= \Yii::t('app', '管理员信息') ?></a></li>
-                  </ul>
-            </ul>
-            <!-- 一级 -->
-            <ul>
-                <li <?= $controller=='order'||$controller=='insurance'? ' class="open"':'' ?>>
-                    <a><img src="<?=$baseUrl ?>images/icon.png"><?= \Yii::t('app', '订单管理') ?></a>
-                </li>
-                <!-- 二级 -->
-                <ul style="<?= $controller=='order'||$controller=='insurance'? 'display: block;':'display: none;' ?>">
-                    <li<?= $controller=='order'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['order/index']);?>"><?= \Yii::t('app', '查看订单') ?></a></li>
-                    <li<?= $controller=='insurance'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['insurance/index']);?>"><?= \Yii::t('app', '保险管理') ?></a></li>
-                  </ul>
-            </ul>
-            <!-- 一级 -->
-            <ul>
-                <li <?= $controller=='partner'||$controller=='route'? ' class="open"':'' ?>>
-                    <a><img src="<?=$baseUrl ?>images/icon.png"><?= \Yii::t('app', '合作伙伴管理') ?></a>
-                </li>
-                <!-- 二级 -->
-                <ul style="<?= $controller=='partner'||$controller=='route'? 'display: block;':'display: none;' ?>">
-                    <li<?= $controller=='partner'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['partner/index']);?>"><?= \Yii::t('app', '合作伙伴信息') ?></a></li>
-                    <li<?= $controller=='route'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['route/index']);?>"><?= \Yii::t('app', '推荐路线') ?></a></li>
-                  </ul>
-            </ul>
-            <!-- 一级 -->
-            <ul>
-                <li <?= $controller=='recruitmenttype'||$controller=='recruitment'|| $controller=='job'? ' class="open"':'' ?>>
-                    <a><img src="<?=$baseUrl ?>images/icon.png"><?= \Yii::t('app', '招聘管理') ?></a>
-                </li>
-                <!-- 二级 -->
-                <ul style="<?= $controller=='recruitmenttype'||$controller=='recruitment'||$controller=='job'? 'display: block;':'display: none;' ?>">
-                    <li<?= $controller=='recruitmenttype'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['recruitmenttype/index']);?>"><?= \Yii::t('app', '招聘分类') ?></a></li>
-                    <li<?= $controller=='recruitment'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['recruitment/index']);?>"><?= \Yii::t('app', '职位信息发布') ?></a></li>
-                    <li<?= $controller=='job'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['job/index']);?>"><?= \Yii::t('app', '应聘信息') ?></a></li>
-                  </ul>
-            </ul>
-            <!-- 一级 -->
-            <ul>
-                <li <?= $controller=='messagetype'||$controller=='message'? ' class="open"':'' ?>>
-                    <a><img src="<?=$baseUrl ?>images/icon.png"><?= \Yii::t('app', '咨询中心') ?></a>
-                </li>
-                <!-- 二级 -->
-                <ul style="<?= $controller=='messagetype'||$controller=='message'? 'display: block;':'display: none;' ?>">
-                    <li<?= $controller=='messagetype'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['messagetype/index']);?>"><?= \Yii::t('app', '信息分类') ?></a></li>
-                    <li<?= $controller=='message'? ' class="active"':'' ?>><a href="<?php echo Url::toRoute(['message/index']);?>"><?= \Yii::t('app', '信息发布') ?></a></li>
-                  </ul>
-            </ul>
+            <?php } ?>
+            
             <a href="#" id="closeAsideNav"><img src="<?=$baseUrl ?>images/asideNav_close.png"></a>
         </nav>
         <nav id="asideNav_close">

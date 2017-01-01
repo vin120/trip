@@ -145,7 +145,9 @@ class ApartmentimgController extends BaseController
 		$data = Yii::$app->db->createCommand($sql)->queryAll();
 
 		//获取当前地区公寓
-		$sql = "SELECT apartment_id,apartment_code,apartment_name FROM `zh_apartment` WHERE zone_id='{$zone}' ";
+		$sql = "SELECT a.apartment_id,a.apartment_code,a.apartment_name,count(b.img_id) img_num 
+		FROM `zh_apartment` a 
+		LEFT JOIN `zh_apartment_img` b ON a.apartment_id=b.apartment_id  WHERE a.zone_id='{$zone}'  ";
 		$apartment = Yii::$app->db->createCommand($sql)->queryAll();
 
 		$result = array();
@@ -159,9 +161,10 @@ class ApartmentimgController extends BaseController
 		$zone = isset($_POST['zone'])?trim($_POST['zone']):'';
 
 		//获取当前地区公寓
-		$sql = "SELECT apartment_id,apartment_code,apartment_name FROM `zh_apartment` WHERE zone_id='{$zone}' ";
+		$sql = "SELECT a.apartment_id,a.apartment_code,a.apartment_name,count(b.img_id) img_num 
+		FROM `zh_apartment` a 
+		LEFT JOIN `zh_apartment_img` b ON a.apartment_id=b.apartment_id  WHERE a.zone_id='{$zone}' ";
 		$apartment = Yii::$app->db->createCommand($sql)->queryAll();
-
 
 		echo json_encode($apartment);
 	}
@@ -171,11 +174,31 @@ class ApartmentimgController extends BaseController
 		$id = isset($_GET['id'])?trim($_GET['id']):'';
 
 
-		$sql = "SELECT zai.*,za.zone_id FROM `zh_apartment_img` zai
+		$sql = "SELECT zai.*,za.zone_id,za.apartment_name FROM `zh_apartment_img` zai
 		LEFT JOIN `zh_apartment` za ON za.apartment_id=zai.apartment_id
 		WHERE zai.img_id='{$id}' ";
 		$data = Yii::$app->db->createCommand($sql)->queryOne();
 
+
+		$zone_name = '';
+		$sql = "SELECT zone_id,zone_name,parent_id,level FROM `zh_zone` WHERE zone_id='{$data['zone_id']}' ";
+		$res = Yii::$app->db->createCommand($sql)->queryOne();
+		if($res['levle'] = 3){
+			$sql = "SELECT a.zone_name zone_name2,b.zone_name zone_name1 FROM `zh_zone` a
+			LEFT JOIN `zh_zone` b ON a.parent_id=b.zone_id WHERE a.zone_id='{$res['parent_id']}' LIMIT 1 ";
+			$res1 = Yii::$app->db->createCommand($sql)->queryOne();
+			$zone_name = $res1['zone_name1'].'-'.$res1['zone_name2'].'-'.$res['zone_name'];
+		}else if($res['levle'] = 2){
+			$sql = "SELECT zone_name FROM `zh_zone` WHERE zone_id='{$res['parent_id']}'  ";
+			$res1 = Yii::$app->db->createCommand($sql)->queryOne();
+			$zone_name = $res1['zone_name'].'-'.$res['zone_name'];
+		}else{
+			$zone_name = $res['zone_name'];
+		}
+
+
+
+		/*
 		//获取地区名
 		$sql = "SELECT zone_id,zone_name FROM `zh_zone` WHERE parent_id='0' " ;
 		$zone_data = Yii::$app->db->createCommand($sql)->queryAll();
@@ -205,9 +228,11 @@ class ApartmentimgController extends BaseController
 		$sql = "SELECT apartment_id,apartment_code,apartment_name FROM `zh_apartment` WHERE zone_id='{$data['zone_id']}' ";
 
 		$apartment_name = Yii::$app->db->createCommand($sql)->queryAll();
+		*/
 
 
-		return $this->render('edit',['data'=>$data,'zone_data'=>$zone_data,'zone_data1'=>$zone_data1,'zone_data2'=>$zone_data2,'level_index'=>$level_index,'apartment_name'=>$apartment_name]);
+		// return $this->render('edit',['data'=>$data,'zone_data'=>$zone_data,'zone_data1'=>$zone_data1,'zone_data2'=>$zone_data2,'level_index'=>$level_index,'apartment_name'=>$apartment_name]);
+		return $this->render('edit',['data'=>$data,'zone_name'=>$zone_name]);
 
 	}
 
@@ -216,8 +241,8 @@ class ApartmentimgController extends BaseController
 
 		if($_POST){
 			$img_id = isset($_POST['img_id'])?trim($_POST['img_id']):'';
-			$zone_id = isset($_POST['zone_id'])?trim($_POST['zone_id']):'';
-			$apartment_name = isset($_POST['apartment_name'])?trim($_POST['apartment_name']):'';
+			// $zone_id = isset($_POST['zone_id'])?trim($_POST['zone_id']):'';
+			// $apartment_name = isset($_POST['apartment_name'])?trim($_POST['apartment_name']):'';
 			$state = isset($_POST['state'])?trim($_POST['state']):'';
 
 			$allow_size = 3;
@@ -227,9 +252,9 @@ class ApartmentimgController extends BaseController
 			}
 			$up_sql = '';
 			if(!isset($photo)){
-				$up_sql = "UPDATE `zh_apartment_img` SET apartment_id='{$apartment_name}',status='{$state}' WHERE img_id='{$img_id}' ";
+				$up_sql = "UPDATE `zh_apartment_img` SET status='{$state}' WHERE img_id='{$img_id}' ";
 			}else{
-				$up_sql = "UPDATE `zh_apartment_img` SET apartment_id='{$apartment_name}',img_url='{$photo}',status='{$state}' WHERE img_id='{$img_id}' ";
+				$up_sql = "UPDATE `zh_apartment_img` SET img_url='{$photo}',status='{$state}' WHERE img_id='{$img_id}' ";
 			}
 
 			$commen = $db->beginTransaction();
@@ -251,15 +276,15 @@ class ApartmentimgController extends BaseController
 
 
 	//验证指定公寓图片数据
-	public function actiononVerifyimgnumber(){
-		$apartment_id = isset($_POST['apartment_id'])?trim($_POST['apartment_id']):'';
+	// public function actiononVerifyimgnumber(){
+	// 	$apartment_id = isset($_POST['apartment_id'])?trim($_POST['apartment_id']):'';
 
-		$sql = "SELECT count(*) count FROM `zh_apartment_img` WHERE apartment_id='{$apartment_id}' ";
-		$count = Yii::$app->db->createCommand($sql)->queryOne();
+	// 	$sql = "SELECT count(*) count FROM `zh_apartment_img` WHERE apartment_id='{$apartment_id}' ";
+	// 	$count = Yii::$app->db->createCommand($sql)->queryOne();
 
-		echo (int)$count['count'];
+	// 	echo (int)$count['count'];
 
-	}
+	// }
 
 
 

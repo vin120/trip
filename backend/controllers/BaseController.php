@@ -35,6 +35,35 @@ class BaseController extends Controller
             ],
         ];
     }
+    public function init(){
+        $admin_tag = Yii::$app->user->identity->tag;
+        //获取菜单
+        $menu_arr = array();
+        if($admin_tag == 1){
+            $sql = "SELECT * FROM `zh_menu` WHERE tag='1' AND status='1' AND parent_menu_id='0' ORDER BY sort  ";
+            $menu = Yii::$app->db->createCommand($sql)->queryAll();
+            foreach ($menu as $key => $value) {
+                $sql = "SELECT * FROM `zh_menu` WHERE parent_menu_id='{$value['menu_id']}' AND tag='1' AND status='1' ORDER BY sort  ";
+                $menu1 = Yii::$app->db->createCommand($sql)->queryAll();
+                $value['child'] = $menu1;
+                $menu_arr[] = $value;
+            }
+        }else{
+            $sql = "SELECT * FROM `zh_menu` WHERE status='1' AND parent_menu_id='0' ORDER BY sort  ";
+            $menu = Yii::$app->db->createCommand($sql)->queryAll();
+             foreach ($menu as $key => $value) {
+                $sql = "SELECT * FROM `zh_menu` WHERE parent_menu_id='{$value['menu_id']}' AND status='1' ORDER BY sort  ";
+                $menu1 = Yii::$app->db->createCommand($sql)->queryAll();
+                $value['child'] = $menu1;
+                $menu_arr[] = $value;
+            }
+        }
+        
+        Yii::$app->view->params['menu'] = $menu_arr;
+
+
+    }
+
 
 //    public function beforeAction_($action)
 //    {
@@ -67,7 +96,7 @@ class BaseController extends Controller
 
     	if($admin_tag != 0 && $menu_tag != $admin_tag) {
 //     		return $this->goHome();
-//     		return $this->redirect(Url::toRoute(['site/auth']));
+    		// return $this->redirect(Url::toRoute(['site/auth']));
     	}
 
     	return true;

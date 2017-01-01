@@ -113,6 +113,12 @@ class ApartmentController extends BaseController
 			$is_highlight = isset($_POST['is_highlight'])?trim($_POST['is_highlight']):0;
 			$desc = isset($_POST['desc'])?trim($_POST['desc']):'';
 
+			// var_dump($desc);
+
+			$img_url = Yii::$app->params['img_url'];
+			$desc =  addslashes(str_replace('src="'.$img_url,'src="',$desc));
+			// var_dump($desc);exit;
+
 			$sql = "INSERT INTO `zh_apartment` (apartment_code,apartment_name,zone_id,total_price,avg_price,star,status,highlight,`desc`) VALUES ('{$apartment_code}','{$apartment_name}','{$zone_id}','{$total_price}','{$avg_price}','{$star}','{$state}','{$is_highlight}','{$desc}')";
 
 			$commen = $db->beginTransaction();
@@ -256,6 +262,9 @@ class ApartmentController extends BaseController
 			$state = isset($_POST['state'])?trim($_POST['state']):1;
 			$is_highlight = isset($_POST['is_highlight'])?trim($_POST['is_highlight']):0;
 			$desc = isset($_POST['desc'])?trim($_POST['desc']):'';
+
+			$img_url = Yii::$app->params['img_url'];
+			$desc =  addslashes(str_replace('src="'.$img_url,'src="',$desc));
 
 			$sql = "UPDATE `zh_apartment` SET apartment_code='{$apartment_code}',apartment_name='{$apartment_name}',zone_id='{$zone_id}',total_price='{$total_price}',avg_price='{$avg_price}',star='{$star}',status='{$state}',highlight='{$is_highlight}',`desc`='{$desc}' WHERE apartment_id='{$apartment_id}' ";
 

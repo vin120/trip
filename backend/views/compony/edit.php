@@ -1,12 +1,12 @@
 <?php
 	$this->title = '公司信息';
 	use backend\views\myasset\PublicAsset;
-    use backend\views\myasset\ThemeAssetUeditor;
+    // use backend\views\myasset\ThemeAssetUeditor;
     use yii\helpers\Url;
     use yii\widgets\ActiveForm;
 
 	PublicAsset::register($this);
-	ThemeAssetUeditor::register($this);
+	// ThemeAssetUeditor::register($this);
 	$baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 ?>
 
@@ -86,8 +86,8 @@
 				</p>
 				<p>
 					<label>
-                        <span><?php echo yii::t('app','内容：')?></span>
-        				<textarea id="introduct" name="introduct"><?php echo $compony['introduct']?></textarea>
+                        <span>简介:</span>
+        				<textarea id="introduct" style="resize: none;height:150px;" name="introduct"><?php echo $compony['introduct']?></textarea>
 					</label>
 				</p>
                 <div class="btn">
@@ -104,6 +104,6 @@
 
 <script type="text/javascript">
 window.onload = function(){
-	UE.getEditor('introduct');
+	// UE.getEditor('introduct');
 }
 </script>

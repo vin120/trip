@@ -93,7 +93,7 @@ $(document).ready(function() {
 
 	   //close
 	   $(document).on('click',"#promptBox >span.op,#promptBox > .btn .cancel_but",function(){
-		   $(".ui-widget-overlay ui-front").addClass('hide');
+		   $(".ui-widget-overlay").addClass('hide');
 		   $("#promptBox").addClass('hide');
 	   })
 
