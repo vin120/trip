@@ -26,7 +26,7 @@
 		<div class="form">
 			<p>
 				<label>
-					<span class='max_l'><?php echo yii::t('app','类型名:')?>:</span>
+					<span class='max_l'><?php echo yii::t('app','类型名')?>:</span>
 					<input type="text" id="name" name="name" ></input>
 				</label>
 			</p>

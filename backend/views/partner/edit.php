@@ -43,10 +43,22 @@
 				<span><?php echo yii::t('app','合作伙伴名称：')?></span>
 				<input type="text" name="name"  value="<?php echo $partner['name']?>"/>
 			</p>
+			<p>
+				<span><?php echo yii::t('app','电话：')?></span>
+				<input type="text" name="telephone"  value="<?php echo $partner['telephone']?>"/>
+			</p>
+			<p>
+				<span><?php echo yii::t('app','邮箱：')?></span>
+				<input type="text" name="email"  value="<?php echo $partner['email']?>"/>
+			</p>
+			<p>
+				<span><?php echo yii::t('app','地址：')?></span>
+				<input type="text" name="address"  value="<?php echo $partner['address']?>"/>
+			</p>
 			 <p>
                 <span><?php echo yii::t('app','图片预览：');?></span>
                 <div id="pic" >
-                    <img id="ImgPr" src="/<?= Yii::$app->params['img_url_prefix'].$partner['img_url']?>">
+                    <img id="ImgPr" src="<?= Yii::$app->params['img_url']."/".$partner['img_url']?>">
                 </div>
             </p>
             <p>

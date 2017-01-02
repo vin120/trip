@@ -40,12 +40,12 @@
 	margin-top: 0px;
 }
 .width-screen .logo-xmas{
-	background: url(header_images/logo_xmas.png) no-repeat;
+	background: url(header_images/new-logo.png) no-repeat;
 	background-size: contain;
 	width: 70px;
 	height: 80px;
 	position:relative;
-	top:-8px;
+	top:-4px;
 	margin-right: 5px;
 	margin-top: 0px;
 }

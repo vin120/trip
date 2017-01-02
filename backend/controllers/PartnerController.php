@@ -15,7 +15,7 @@ class PartnerController extends BaseController
 	{
 		
 		$query = new Query();
-		$result = $query->select(['id','name','img_url','introduct','time','author','status'])
+		$result = $query->select(['id','name','telephone','email','address','img_url','introduct','time','author','status'])
 				->from('zh_partner')
 				->limit(10)
 				->orderby('id desc')
@@ -36,6 +36,9 @@ class PartnerController extends BaseController
 		if($_POST) {
 		
 			$name = isset($_POST['name']) ? $_POST['name'] : '';
+			$telephone = isset($_POST['telephone']) ? $_POST['telephone'] : '';
+			$email = isset($_POST['email']) ? $_POST['email'] : '';
+			$address = isset($_POST['address']) ? $_POST['address'] : '';
 			$status = isset($_POST['status']) ? $_POST['status'] : '';
 			$introduct = isset($_POST['introduct']) ? $_POST['introduct'] : '';
 			$time = date("Y-m-d H:i:s",time());
@@ -50,7 +53,7 @@ class PartnerController extends BaseController
 			}
 		
 			$result = Yii::$app->db->createCommand()
-					->insert('zh_partner',['name'=>$name,'status'=>$status,'introduct'=>$introduct,'img_url'=>$photo,'time'=>$time])->execute();
+					->insert('zh_partner',['name'=>$name,'telephone'=>$telephone,'email'=>$email,'address'=>$address,'status'=>$status,'introduct'=>$introduct,'img_url'=>$photo,'time'=>$time])->execute();
 		
 			if($result) {
 				Helper::show_message('保存成功', Url::toRoute(['index']));
@@ -72,6 +75,9 @@ class PartnerController extends BaseController
 		if($_POST){
 			
 			$name = isset($_POST['name']) ? $_POST['name'] : '';
+			$telephone = isset($_POST['telephone']) ? $_POST['telephone'] : '';
+			$email = isset($_POST['email']) ? $_POST['email'] : '';
+			$address = isset($_POST['address']) ? $_POST['address'] : '';
 			$status = isset($_POST['status']) ? $_POST['status'] : '';
 			$introduct = isset($_POST['introduct']) ? $_POST['introduct'] : '';
 			$time = date("Y-m-d H:i:s",time());
@@ -92,7 +98,7 @@ class PartnerController extends BaseController
 			}
 		
 			$result = Yii::$app->db->createCommand()
-					->update('zh_partner',['name'=>$name,'status'=>$status,'introduct'=>$introduct,'img_url'=>$photo,'time'=>$time],"id=$id")
+					->update('zh_partner',['name'=>$name,'telephone'=>$telephone,'email'=>$email,'address'=>$address,'status'=>$status,'introduct'=>$introduct,'img_url'=>$photo,'time'=>$time],"id=$id")
 					->execute();
 		
 			if($result) {
@@ -104,7 +110,7 @@ class PartnerController extends BaseController
 		}
 		
 		$query = new Query();
-		$partner = $query->select(['name','img_url','introduct','author','status'])
+		$partner = $query->select(['name','telephone','email','address','img_url','introduct','author','status'])
 				->from('zh_partner')
 				->where(['id'=>$id])
 				->one();

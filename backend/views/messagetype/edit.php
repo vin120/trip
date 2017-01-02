@@ -49,7 +49,7 @@
 			<p>
                 <span><?php echo yii::t('app','图片预览：');?></span>
                 <div id="pic" >
-                    <img id="ImgPr" src="/<?= Yii::$app->params['img_url_prefix'].$story_type['img_url']?>">
+                    <img id="ImgPr" src="<?= Yii::$app->params['img_url'].'/'.$story_type['img_url']?>">
                 </div>
             </p>
             <p>

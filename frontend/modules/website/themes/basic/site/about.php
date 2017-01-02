@@ -10,13 +10,9 @@
 <div class=" tr-main tr-pb20">
   <div class="tr-pro_box tr-posr">
     <div class="tr-header  tr-ovh tr-posr">
-      <img style="width:100%;" src="http://file.hivilla.com/uploads/travels/large_1481881042.jpg">
+      <img style="width:100%;" src="<?php echo $baseUrl?>img/large_1481881042.jpg">
       <div class="tr-mask tr-posa"></div>
     </div>
-    <!-- <div class="tr-posa tr-ml35 " style="bottom: 0px;z-index: 2">
-      <img class="tr-list-head tr-fll " src="http://file.hivilla.com/uploads/travels/header_1481881042.jpg">
-      <h1 class="tr-fz32 tr-ml15 tr-mt5 tr-cfff tr-fll tr-ellipsis" style="width: 900px;font-weight:normal;">那片白，是我深爱的颜色</h1></div> -->
-
   </div>
   <div class="tr-left tr-fll tr-bgcw tr-mt20 ">
 

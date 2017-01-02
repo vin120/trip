@@ -45,6 +45,18 @@
 				<input type="text" name="name" />
 			</p>
 			<p>
+				<span><?php echo yii::t('app','电话：')?></span>
+				<input type="text" name="telephone" />
+			</p>
+			<p>
+				<span><?php echo yii::t('app','邮箱：')?></span>
+				<input type="text" name="email" />
+			</p>
+			<p>
+				<span><?php echo yii::t('app','地址：')?></span>
+				<input type="text" name="address" />
+			</p>
+			<p>
                 <span><?php echo yii::t('app','图片预览：');?></span>
                 <div id="pic" >
                     <img id="ImgPr" src="">

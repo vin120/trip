@@ -1,0 +1,36 @@
+.Cconsult_dialog .larea .limg { width: 316px; }
+.Cconsult_dialog .larea .limg img { height: 374px;  }
+.Cconsult_dialog .rarea { width: 388px; padding-left: 28px; padding-right: 28px; color: #666666; background-color:#F2F2F2; }
+.DT_banner .dt_slides { height: 430px; overflow: hidden; zoom: 1; }
+.TM_mbox .tm_main .terminiblock .img { width: 800px; height: 370px; overflow: hidden; zoom: 1; }
+.TM_mbox .tm_main .terminiblock .img img { float: left; width: 800px; margin: -40px 0; }
+.Csearchbox .dropbox i { font-style: normal; color: #ff8000; font-size: 10px; vertical-align: top; }
+.DT_mbox .telbox .tel { line-height: 40px; padding-left: 30px; background: url(index_images/bg_icon1.png?t=1021) 0 10px no-repeat; }
+.TM_mbox .tm_left .tel { line-height: 40px; padding-left: 30px; background: url(index_images/bg_icon1.png?t=1021) 0 10px no-repeat; }
+.TM_top .inner { width: 980px; margin-left: auto; margin-right: auto; position: relative; height: 300px; }
+.TM_top .lmask, .TM_top .rmask { display: none; width: 100px; height: 300px; background-image: url(index_images/bg_banner_mask.png?t=1021); background-repeat: repeat-y; float: left; }
+@media screen and (min-width: 1440px) { .TM_top .lmask, .TM_top .rmask { display: block; } }
+.TM_top .rmask { float: right; background-position: -100px 0; }
+/* .Ctop .tel { color: #FFFFFF; padding-left: 25px; font-size: 18px; position: relative; margin-top: 5px; line-height: 20px; } */
+.Ctop .nav .dropbox.termini i { font-style: normal; color: #ff8000; font-size: 10px; vertical-align: top; }
+.Cfoot .contact .qrcode { border: 7px solid #121212; position: absolute; right: 0; top: 0; width: 100px; }
+.CT_top .info .qrcode { position: absolute; right: 4px; top: 4px; width: 100px; }
+.AB_tip { margin-top: 0px; }
+.AB_main .item { color: #eeeeee; font-size: 14px; line-height: 1.6em; }
+.AB_main .inner { width: 980px; margin-left: auto; margin-right: auto; background-color: #eeeeee; position: relative; padding:40px 0 0;}
+.AB_main .item .icon { width: 66px; height: 66px; background-image: url(index_images/bg_large_icon.png?t=1021); background-repeat: no-repeat; position: absolute; top: 85px; left: 65px; }
+.AB_main .item .atitle { font-size: 18px; color: #ff8000; line-height: 4em; }
+/* .Ctop .userlink { color: #FFFFFF; line-height: 20px; margin-top: 7px; } */
+/* .Ctop .userlink a { color: #FFFFFF; } */
+.Cfoot .info .logo { width: 100px; height: 100px; position: absolute; top: 0; left: -13px; background: url(index_images/logo.png) 0 -116px no-repeat; }
+.ER_mbox .logo {width: 210px;height: 91px;margin-left: auto;margin-right: auto;background: url(index_images/logo.png?t=1021) 0 -208px no-repeat;}
+.Ctop .logo {background: url("index_images/logo.png") no-repeat scroll -8px 0 rgba(0, 0, 0, 0); height: 100px; width: 300px; }
+.Ctop .nav .dropbox.termini a { font-size: 12px; color: #999999; line-height: 18px; display: inline; white-space: pre; }
+.Cflowwidget .qrcode { border: 1px solid lightgrey; display: none; position: absolute; z-index: 5; top: -13px; left: 0; width: 166px; height: 166px; margin-left: -185px; }
+.Cbacktop { width: 46px; height: 46px; background-color: #c6c6c6; background: #c6c6c6 url(index_images/bg_icon2.png?t=1021) 0 -500px no-repeat; position: fixed; right: 50%; margin-right: -581px; bottom: 25px; text-decoration: none; }
+.DT_banner .picon { background-image: url(index_images/bg_icon3.png?t=1021); background-position: -25px -50px; }
+.DT_banner .picon:hover, .DT_banner .picon.curr { background-position: -25px -50px; }
+.DT_banner .share { background-image: url(index_images/bg_icon2.png?t=1021); background-position: -25px -50px; }
+.DT_banner .share:hover, .DT_banner .share.curr { background-position: -25px -50px; }
+.DT_banner .favorite { background-image: url(index_images/bg_icon1.png?t=1021); background-position: -3px -400px; }
+.DT_banner .favorite:hover, .DT_banner .favorite.curr { background-position: -3px -400px; }

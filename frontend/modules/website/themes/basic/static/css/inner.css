@@ -518,10 +518,10 @@ body {
 	float:left
 }
 .header .logo {
-	width:70px;
-	background:url(index_images/new-logo.svg) no-repeat;
-	margin-top:30px;
-	margin-right:20px;
+	width:110px;
+	background:url(index_images/new-logo.png) no-repeat;
+	margin-top:33px;
+	margin-right:10px;
 	padding:55px 0 0 75px;
 	font-size:16.5px;
 	font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","华文细黑","STHeiti","微软雅黑","Microsoft YaHei",SimHei,sans-serif!important;

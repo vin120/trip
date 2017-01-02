@@ -27,7 +27,7 @@
 			<p>
 				<label>
 				<input type="hidden">
-					<span class='max_l'><?php echo yii::t('app','类型名:')?>:</span>
+					<span class='max_l'><?php echo yii::t('app','类型名')?>:</span>
 					<input type="text" id="name" name="name" value="<?php echo $recruitment_type['name']?>"></input>
 				</label>
 			</p>

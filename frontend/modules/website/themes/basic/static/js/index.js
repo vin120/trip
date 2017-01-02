@@ -1020,66 +1020,1058 @@ this.closing=true;this._trigger("close",event,{tooltip:tooltip});this.closing=fa
  * Copyright 2013 Klaus Hartl
  * Released under the MIT license
  */
-(function(factory){if(typeof define==='function'&&define.amd){define(['jquery'],factory);}else{factory(jQuery);}}(function($){var pluses=/\+/g;function encode(s){return config.raw?s:encodeURIComponent(s);}
-function decode(s){return config.raw?s:decodeURIComponent(s);}
-function stringifyCookieValue(value){return encode(config.json?JSON.stringify(value):String(value));}
-function parseCookieValue(s){if(s.indexOf('"')===0){s=s.slice(1,-1).replace(/\\"/g,'"').replace(/\\\\/g,'\\');}
-try{s=decodeURIComponent(s.replace(pluses,' '));}catch(e){return;}
-try{return config.json?JSON.parse(s):s;}catch(e){}}
-function read(s,converter){var value=config.raw?s:parseCookieValue(s);return $.isFunction(converter)?converter(value):value;}
-var config=$.cookie=function(key,value,options){if(value!==undefined&&!$.isFunction(value)){options=$.extend({},config.defaults,options);if(typeof options.expires==='number'){var days=options.expires,t=options.expires=new Date();t.setDate(t.getDate()+days);}
-return(document.cookie=[encode(key),'=',stringifyCookieValue(value),options.expires?'; expires='+options.expires.toUTCString():'',options.path?'; path='+options.path:'',options.domain?'; domain='+options.domain:'',options.secure?'; secure':''].join(''));}
-var result=key?undefined:{};var cookies=document.cookie?document.cookie.split('; '):[];for(var i=0,l=cookies.length;i<l;i++){var parts=cookies[i].split('=');var name=decode(parts.shift());var cookie=parts.join('=');if(key&&key===name){result=read(cookie,value);break;}
-if(!key&&(cookie=read(cookie))!==undefined){result[name]=cookie;}}
-return result;};config.defaults={};$.removeCookie=function(key,options){if($.cookie(key)!==undefined){$.cookie(key,'',$.extend({},options,{expires:-1}));return true;}
-return false;};}));;jQuery(function($){$.datepicker.regional['zh-CN']={closeText:'关闭',prevText:'&#x3C;上月',nextText:'下月&#x3E;',currentText:'今天',monthNames:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],monthNamesShort:['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],dayNames:['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],dayNamesShort:['周日','周一','周二','周三','周四','周五','周六'],dayNamesMin:['日','一','二','三','四','五','六'],weekHeader:'周',dateFormat:'yy/mm/dd',firstDay:1,isRTL:false,showMonthAfterYear:true,yearSuffix:'年'};$.datepicker.setDefaults($.datepicker.regional['zh-CN']);});;var senseluxuryFed={loadIndexFun:function(){var _this=this;_this.commonFun();if($("#about").val()==="about")
-return false;_this.indexFun();_this.indexFunV1();},loadListFun:function(){var _this=this;_this.commonFun();_this.listFun();_this.weixinFun();_this.commonFun.fixedFun('.tm_left','fixed');},loadDetailFun:function(){var _this=this;_this.commonFun();_this.detailFun();_this.weixinFun();_this.commonFun.fixedFun('.data-fiexd','fiexd');},loadFqaFun:function(){var _this=this;_this.commonFun();_this.FqaFun();},loadDetailFunV1:function(){var _this=this;_this.detailFunV1();_this.commonFunV1.fixedFunRight('.double_fixed','fixed');_this.commonFunV1.fixedFun('.yybgs','fixed');var _this=this;_this.commonFun.loginFun();_this.commonFun.loginRegFun();_this.Autocomplete('#AutoSearch');_this.commonFun.ShouCan();_this.commonFun.ShouCanFun($.cookie("willdata"));_this.commonFun.closeShouCan();_this.commonFun.zixunSubmit();_this.commonFun.sideBarFun();}};senseluxuryFed.commonFunV1=function(){}
-senseluxuryFed.indexFunV1=function(){var _this=senseluxuryFed.indexFunV1;}
-senseluxuryFed.detailFunV1=function(){var _this=this,deFun=_this.detailFunV1;deFun.fixedMenuFun();deFun.fixedMenuFunA('#mapsA','3');deFun.dateFun();deFun.picSlide('#dt_slides','.tabLabel');var $queryPrice=$('.query-price');$queryPrice.find('.room-c').hover(function(){var $this=$(this);$this.find('.room-c-list').show();},function(){$(this).find('.room-c-list').hide();});$('.room-c-list').on('click','li',function(){var _index=$(this).index();$queryPrice.find('span').html($(this).html());$(this).parent('.room-c-list').hide();$queryPrice.siblings('.price-tabcont').hide();$queryPrice.siblings('.price-tabcont').eq(_index).show();});var $infoText=$('.info-cont');$infoText.on('click','.more',function(){var $this=$(this);if($this.hasClass('open')){$this.removeClass('open').html('【'+MESSAGE.show_more_details+' + 】');$this.siblings('.info-text').css('height','172px');}else{$this.addClass('open').html('【'+MESSAGE.show_less_details+' - 】');$this.siblings('.info-text').css('height','auto');};deFun.fixedMenuFun();});$('.detail-content_double_fw').find('a').hover(function(){$(this).next('p').css('opacity','0');$(this).next('p').css('display','block');$(this).next('p').animate({opacity:1},500,'linear');},function(){$(this).next('p').css('display','none');});$('.no-ss-bj_right').hover(function(){$('.detail-ss-bj-left').animate({width:0},120,'linear',function(){$('.detail-ss-bj-s').animate({left:-500},20,'linear');$('.detail-ss-bj-left').animate({left:-500},20,'linear');});},function(){$(".detail-ss-bj-left ,.detail-ss-bj-s,.detail-ss-bj-left").stop(false,false);$('.detail-ss-bj-left').css('width','190px');$('.detail-ss-bj-left').css('left','0px');$('.detail-ss-bj-s').css('left','0px');$('.detail-ss-bj-left').css('opacity','1');});}
-senseluxuryFed.detailFunV1.picSlide=function(id,page){var $content=$(id),$prevBtn=$content.find('.prev'),$nextBtn=$content.find('.next'),$tab_body=$content.find('.tab_body'),slideWidth=$tab_body.find('li').width(),liLength=$tab_body.find('li').length,iNow=0,$pageBtn=$(page);$tab_body.append($tab_body.html());$nextBtn.off().click(function(){if(!$tab_body.is(":animated")){iNow++;if(iNow>=liLength){iNow=0;}
-$tab_body.stop(true,true).animate({'margin-left':-iNow*slideWidth+'px'},500);pageFun();}});$prevBtn.off().click(function(){if(!$tab_body.is(":animated")){iNow--;if(iNow<=-1){iNow=liLength-1;}
-$tab_body.stop(true,true).animate({'margin-left':-iNow*slideWidth+'px'},500);pageFun();}});pageFun();function pageFun(){if($pageBtn.length){var pageHtml=$tab_body.find('li').eq(iNow).attr('data-label-text'),numb=pageHtml.split('/');$pageBtn.find('a').html('<i>'+numb[0]+'</i>'+'/'+numb[1]);$pageBtn.siblings('.tabCon').find('li').eq(numb[0]-1).addClass('active').siblings('li').removeClass('active');$pageBtn.siblings('.tabCon').on('click','li',function(){iNow=$(this).index();$(this).addClass('active').siblings('li').removeClass('active');$tab_body.stop(true,true).animate({'margin-left':-iNow*slideWidth+'px'},500);var pageHtml1=$tab_body.find('li').eq(iNow).attr('data-label-text');numb=pageHtml1.split('/');$pageBtn.find('a').html('<i>'+numb[0]+'</i>'+'/'+numb[1]);});}}}
-senseluxuryFed.detailFunV1.fixedMenuFun=function(){$('.yybgs').find('li').off().on('click','a',function(){var _index=$(this).parent('li').index();var _h=$('.detail-texts').find(".detail-content").eq(_index).offset().top
-$('html,body').animate({scrollTop:_h-$('.detail-texts').find(".detail-tab").height()},500);return false;});}
-senseluxuryFed.detailFunV1.fixedMenuFunA=function(className,linumb){$(className).on('click',function(){var _h=$('.detail-texts').find(".detail-content").eq(linumb).offset().top
-$('html,body').animate({scrollTop:_h-$('.detail-texts').find(".detail-tab").height()},500);return false;});}
-senseluxuryFed.detailFunV1.dateFun=function(){var comFun=senseluxuryFed.commonFunV1,$dateBox=$('.Date-box'),domain=$('#domain').val();comFun.datepickerFun('#start');comFun.datepickerFun('#start1');if(getCookie("c_start_time")){$("#start").val(getCookie("c_start_time"));$("#book_start").val(getCookie("c_start_time"));}
-$("#start").on('change',function(){setCookie("c_start_time",$(this).val(),'7d');$("#book_start").val(getCookie("c_start_time"));});if(getCookie("c_end_time")){$("#start1").val(getCookie("c_end_time"));$("#book_end").val(getCookie("c_end_time"));}
-$("#start1").on('change',function(){setCookie("c_end_time",$(this).val(),'7d');$("#book_end").val(getCookie("c_end_time"));});function datetime_to_unix(datetime){var arr=datetime.split("/");var now=new Date(Date.UTC(arr[0],arr[1]-1,arr[2]));return parseInt(now.getTime()/86400000);}
-function unix_to_datetime(unix){var now=new Date(parseInt(unix)*86400000),text='';return text=now.getFullYear()+'/'+setData((now.getMonth()+1))+'/'+setData(now.getDate());};function setData(numb){if(numb<9){return numb='0'+numb}else{return numb;};};$dateBox.find('.room-c').hover(function(){$(this).find('.room-c-list').show();},function(){$(this).find('.room-c-list').hide();});$dateBox.find('#start').change(function(){var qsDate=$dateBox.find('#start').val(),textVal=$dateBox.find('.room-c span').attr('data-val'),flag=$dateBox.find('.room-c span').attr('data-flag'),days=$dateBox.find('.room-c span').attr('date_diff'),pidVal=$('#pid').val(),qsDateTime=datetime_to_unix(qsDate),endTime=parseInt(qsDateTime)+parseInt(days),endDay=null;if($('#start1').val()==''){endDay=unix_to_datetime(endTime).split(' ')[0];$('#start1').val(endDay);$('#start1').trigger("change");}else{endDay=$('#start1').val();};$.ajax({url:domain+'/web/detail/countcost',type:"GET",data:{pid:pidVal,start:qsDate,end:endDay,bedroom:textVal,flag:flag},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(parseInt(data)==-1){$('#cost').html('参数错误');}else{$('#cost').html('¥'+data.price);$('#service').html('¥'+data.service_fee);$('#tax').html('¥'+data.tax);$('#total').html('¥'+data.total);if(data.mini_stay>data.day_diff){$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为"+data.mini_stay+"天，小于该天数将无法预订成功");}else{$("#price_cal_notice").html("");}}}});});$dateBox.find('#start1').change(function(){var qsDate=$dateBox.find('#start').val(),textVal=$dateBox.find('.room-c span').attr('data-val'),flag=$dateBox.find('.room-c span').attr('data-flag'),days=$dateBox.find('.room-c span').attr('date_diff'),pidVal=$('#pid').val(),endDay=$('#start1').val();if(qsDate==''){return false;}else{$.ajax({url:domain+'/web/detail/countcost',type:"GET",data:{pid:pidVal,start:qsDate,end:endDay,bedroom:textVal,flag:flag},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){$('#cost').html('¥'+data.price);$('#service').html('¥'+data.service_fee);$('#tax').html('¥'+data.tax);$('#total').html('¥'+data.total);if(data.mini_stay>data.day_diff){$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为"+data.mini_stay+"天，小于该天数将无法预订成功");}else{$("#price_cal_notice").html("");}}});}});$dateBox.find('.room-c-list').on('click','li',function(){var qsDate=$dateBox.find('#start').val(),jsDate=$dateBox.find('#start1').val(),textVal=$(this).attr('data-val'),flag=$(this).attr('data-flag'),dateDiffVal=$(this).attr('date_diff'),pidVal=$('#pid').val(),spanCont=$dateBox.find('.room-c span');spanCont.text($(this).text());spanCont.attr({'data-val':textVal,'date_diff':dateDiffVal,'data-flag':flag});if(qsDate==''||jsDate==''){alert('请选择起住日期和离开日期！')
-return false;}else{if(datetime_to_unix(qsDate)>=datetime_to_unix(jsDate)){alert('离开日期应该在起住日期之后！')}else{$.ajax({url:domain+'/web/detail/countcost',type:"GET",data:{pid:pidVal,start:qsDate,end:jsDate,bedroom:textVal,flag:flag,},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(parseInt(data)==-1){$('#cost').html('参数错误');}else{$('#cost').html('¥'+data.price);$('#service').html('¥'+data.service_fee);$('#tax').html('¥'+data.tax);$('#total').html('¥'+data.total);if(data.mini_stay>data.day_diff){$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为"+data.mini_stay+"天，小于该天数将无法预订成功");}else{$("#price_cal_notice").html("");}}}});}}});var init_get_price=function(){var qsDate=$dateBox.find('#start').val(),jsDate=$dateBox.find('#start1').val(),textVal=$("#bedroom_show").attr('data-val'),flag=$("#bedroom_show").attr('data-flag'),pidVal=$('#pid').val();if(qsDate==''||jsDate==''){return false;}else{if(datetime_to_unix(qsDate)>=datetime_to_unix(jsDate)){}else{$.ajax({url:domain+'/web/detail/countcost',type:"GET",data:{pid:pidVal,start:qsDate,end:jsDate,bedroom:textVal,flag:flag,},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(parseInt(data)==-1){$('#cost').html('参数错误');}else{$('#cost').html('¥'+data.price);$('#service').html('¥'+data.service_fee);$('#tax').html('¥'+data.tax);$('#total').html('¥'+data.total);if(data.mini_stay>data.day_diff){$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为"+data.mini_stay+"天，小于该天数将无法预订成功");}else{$("#price_cal_notice").html("");}}}});}}}
-init_get_price();};senseluxuryFed.commonFunV1.loginFun=function(){var $cont=$('.userlink'),$loginCont=$('.Cuser_dialog');$cont.on('click','.login-btn',function(){$('.Cmask').show();$loginCont.show();$loginCont.find('.signintab').trigger('click');});$cont.on('click','.reg-btn',function(){$('.Cmask').show();$loginCont.show();$loginCont.find('.signuptab').trigger('click');});$loginCont.on('click','.close',function(){$('.Cmask').hide();$loginCont.hide();});$loginCont.on('click','.signuptab',function(){$(this).addClass('curr').siblings('a').removeClass('curr');$loginCont.find('.signup_area').removeClass('Ldn').siblings('.signin_area').addClass('Ldn');});$loginCont.on('click','.signintab',function(){$(this).addClass('curr').siblings('a').removeClass('curr');$loginCont.find('.signin_area').removeClass('Ldn').siblings('.signup_area').addClass('Ldn');});};senseluxuryFed.commonFunV1.datepickerFun=function(id){var _text='请选择入住选择日期';if(id=='#rz_time_end'){_text='请选择退房结束日期';}
-$(id).datepicker({showOn:"div",buttonImage:"",buttonImageOnly:true,buttonText:_text,minDate:0,onClose:function(selectedDate){if(id=='#start1'){}
-if(id=="#start"){$("#start1").datepicker("option","minDate",selectedDate);}
-if(id=="#rz_time_start"){$("#rz_time_end").datepicker("option","minDate",selectedDate);$("#rz_time_end").datepicker("show");}
-if(id=="#rz_time_end"){}
-if(id=="#inquire_end"){}
-if(id=="#inquireus_start"){$("#inquireus_end").datepicker("option","minDate",selectedDate);}
-if(id=="#inquireus_end"){}
-if(id=="#book_start"){$("#book_end").datepicker("option","minDate",selectedDate);}
-if(id=="#book_end"){}}});};senseluxuryFed.commonFunV1.fixedFun=function(obj,className){try{var dom=$(obj),h=$(obj).offset().top,isIE6=window.XMLHttpRequest?false:true,pageName=pageID,leftHeight=$('.TM_mbox').find('.tm_left').height();}catch(e){}
-if(!dom.length)return false;if(!isIE6){$(window).on('scroll',function(){var windowTop=$(window).scrollTop();if(windowTop>=h){dom.addClass(className);}else{dom.removeClass(className);};});}};senseluxuryFed.commonFunV1.fixedFun=function(obj,className){try{var dom=$(obj),h=$(obj).offset().top,isIE6=window.XMLHttpRequest?false:true,pageName=pageID,leftHeight=$('.TM_mbox').find('.tm_left').height();}catch(e){}
-if(!dom.length)return false;if(!isIE6){$(window).on('scroll',function(){var windowTop=$(window).scrollTop();if(windowTop>=h){dom.addClass(className);}else{dom.removeClass(className);};});}};senseluxuryFed.commonFunV1.fixedFunRight=function(obj,className){try{var dom=$(obj),h=$(obj).offset().top,uh=$('.yybgs').offset().top,isIE6=window.XMLHttpRequest?false:true,pageName=pageID,leftHeight=$('.TM_mbox').find('.tm_left').height();}catch(e){}
-if(!dom.length)return false;if(!isIE6){$(window).on('scroll',function(){var windowTop=$(window).scrollTop();if(windowTop>=h){dom.addClass(className);if(windowTop>=uh){dom.removeClass(className);dom.css('top','520px');}else{dom.css('top','0px');}}else{dom.removeClass(className);dom.css('top','0px');};});}};senseluxuryFed.commonFunV1.relativeFun=function(obj,className){try{var dom=$(obj),h=$(obj).offset().top,isIE6=window.XMLHttpRequest?false:true,pageName=pageID;}catch(e){}
-if(!dom.length)return false;if(!isIE6){$(window).on('scroll',function(){var windowTop=$(window).scrollTop();if(windowTop>=h){if(windowTop>$('.detail-info').height()-$('.double_fixed').height()){dom.stop(true);dom.animate({top:($('.detail-info').height()-$('.double_fixed').height())},50);}else{dom.stop(true);dom.animate({top:(windowTop-h-399)},(windowTop-h)*0.3);}}else{dom.stop(true);dom.css('top','0px');};});}};senseluxuryFed.commonFun=function(){var _this=this,$topBar=$('.topbar'),$header=$('.header'),$winW=$(window).width();$topBar.find('.rssarea').hover(function(){$(this).find('.rssbox').show();},function(){$(this).find('.rssbox').hide();});if($header.find('.navlink1').length){var li0=$header.find('.navlink1').offset().left,li1=$header.find('.navlink2').offset().left;$header.find('.termini').width($winW).css('left','-'+li0+'px');$header.find('.theme-box').width($winW).css('left','-'+li1+'px');$header.find('.nav .items').on('mouseenter','li',function(){$this=$(this);$this.addClass('cur').find('.dropbox').show();});}
-$header.find('.nav .items').on('mouseleave','li',function(e){var $dropbox,$el,$self;$self=$(this);$self.removeClass('cur');$dropbox=$self.find('.dropbox');$el=$(e.relatedTarget);if($el.hasClass('ui-datepicker')||$el.parents('.ui-datepicker').length){return void 0;}
-if($dropbox.length){$dropbox.hide();}});$('.clause_more').on('click',function(){var $this=$(this);if($this.hasClass('open')){$this.removeClass('open').html('【查看全部声明 + 】');$(".clause_text").hide();}else{$this.addClass('open').html('【收起全部声明 - 】');$(".clause_text").show();};});$(function(){_this.commonFun.loginFun();_this.commonFun.loginRegFun();_this.Autocomplete('#AutoSearch');_this.commonFun.ShouCan();_this.commonFun.ShouCanFun($.cookie("willdata"));_this.commonFun.closeShouCan();_this.commonFun.zixunSubmit();_this.commonFun.sideBarFun();});};senseluxuryFed.commonFun.sideBarFun=function(){var $sideCont=$('#side-bar'),$window=$(window),winH=$window.height();$sideCont.find('.items li').hover(function(){var $this=$(this);$this.find('.list').show();},function(){var $this=$(this);$this.find('.list').hide();});$window.scroll(function(){var scrTop=$(window).scrollTop();var topbar=parseInt($('.IN_main').css('height'));var winhei=parseInt($(window).height());var _top=$('#side-bar').offset().top;var _search=$('.D1Search').offset().top;if(scrTop<topbar){$('#side-bar').css('display','none');}else{$('#side-bar').css('display','block');$('#side-bar').css('z-index',10);}
-if(scrTop>winhei){$sideCont.find('.goTop').show();}else{$sideCont.find('.goTop').hide();}});$sideCont.find('.items').on('click','.goTop a',function(){$('html,body').animate({scrollTop:0},500);});};senseluxuryFed.commonFun.fixedFun=function(obj,className){try{var dom=$(obj),h=$(obj).offset().top,isIE6=window.XMLHttpRequest?false:true,pageName=pageID,leftHeight=$('.TM_mbox').find('.tm_left').height();}catch(e){}
-if(!dom.length)return false;if(!isIE6){$(window).on('scroll',function(){var windowTop=$(window).scrollTop();if(windowTop>=h){dom.addClass(className);if(pageName=='detail'||pageName=='bankdetail'){if(windowTop>($('.like-wp').offset().top-510)){dom.removeClass(className).addClass('absiexd');dom.css('bottom','20px');}else{dom.removeClass('absiexd').addClass(className);dom.css('bottom','auto');};}else{if(windowTop>($('.Cfoot').offset().top-leftHeight)){dom.removeClass(className).addClass('absiexd');dom.css('bottom','20px');}else{dom.removeClass('absiexd').addClass(className);dom.css('bottom','auto');};};}else{dom.removeClass(className);};});}};senseluxuryFed.commonFun.loginFun=function(){var $cont=$('.userlink'),$loginCont=$('.Cuser_dialog');$cont.on('click','.login-btn',function(){$('.Cmask').show();$loginCont.show();$loginCont.find('.signintab').trigger('click');});$cont.on('click','.reg-btn',function(){$('.Cmask').show();$loginCont.show();$loginCont.find('.signuptab').trigger('click');});$loginCont.on('click','.close',function(){$('.Cmask').hide();$loginCont.hide();});$loginCont.on('click','.signuptab',function(){$(this).addClass('curr').siblings('a').removeClass('curr');$loginCont.find('.signup_area').removeClass('Ldn').siblings('.signin_area').addClass('Ldn');});$loginCont.on('click','.signintab',function(){$(this).addClass('curr').siblings('a').removeClass('curr');$loginCont.find('.signin_area').removeClass('Ldn').siblings('.signup_area').addClass('Ldn');});};senseluxuryFed.commonFun.loginRegFun=function(){var $centent=$('.signin_area'),emailInput=$centent.find('.input1[name = "username"]'),submitBtn=$centent.find('.Cbtn_middle_yellow');$("#register_select span").each(function(i){$(this).on('click',function(){$("#register_select span").removeClass('register_check');$(this).addClass('register_check');if(i==1){$(".registerByPhone").hide();$(".registerByEmail").show();}else{$(".registerByEmail").hide()
-$(".registerByPhone").show();}});});var mark;$("#registerByPhoneForm").click(function(){var data={username:$(".registerByPhone .phonenumber").val(),password:$(".registerByPhone input[name='password']").val(),repassword:$(".registerByPhone input[name='repassword']").val(),code:$(".registerByPhone input[name='registerByCode']").val()};if(!data.username){alert("请输入手机号！")
-return;}
-if(data.password!=data.repassword||!data.password||!data.repassword){alert("两次密码不一致！");return;}
-$.ajax({data:{pwd:data.password,phone:data.username,code:data.code,imported:$(".registerByPhone input[name='imported']").val(),mark:mark},type:'post',url:"/activity/double/register",dataType:'json',success:function(data){if(data.code){$('.Cuser_dialog').find('.close').trigger('click');alert("注册成功！");window.location.reload();}else{alert(data.msg);}}});});$("#getCode").click(function(){if($(this).attr("clock")!=0){return;}
-var $that=$(this);var phone_number=$(this).parent().parent().parent().find(".phonenumber").val();var data={'phone':phone_number};$(this).val("验证码获取中。。。");if(phone_number.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)){$.ajax({type:'POST',url:'/activity/double/phone_verify',data:data,dataType:'json',success:function(data){if(!data.code){alert(data.msg);$that.attr('clock',0);clearInterval(t);$that.val("获取验证码");return;}
-$that.attr('clock',1);mark=data.mark;var seconds=0;var t=setInterval(function(){seconds+=1;$that.val(50-seconds+"秒后重新获取验证码");if(seconds==50){$that.attr('clock',0);clearInterval(t);$that.val("获取验证码");}},1000);}})}else{alert("请输入合适的手机号！");$that.attr('clock',0);$that.val("获取验证码");}});$("#validation_phone").click(function(){var code=$(this).parent().parent().find(".code").val();var phone_number=$(this).parent().parent().parent().find(".phonenumber").val();if(!code){alert("请输入验证码！");return;}
-if(phone_number.match(/^1[3|4|5|8][0-9]\d{4,8}$/)){var data={mark:mark,code:code,phone:phone_number};$.ajax({type:'POST',url:'/activity/double/phone_available',data:data,dataType:'json',success:function(data){if(data.code){$(".registerCode").hide(function(){$(".registerPwd").show();});}else{alert("验证码错误！")}}});}});$('.Cuser_dialog .signin_area form').validate({rules:{username:{required:true},password:{required:true,minlength:6,maxlength:16}},errorPlacement:function(error,element){var $element;$element=$(element);$element.parents('.item').find('.msg').show().css({"display":"block"});$element.parents('.item').find('.inputbox').css({"border":"1px solid red"});},submitHandler:function(form){var $self;$self=$(form);$self.ajaxSubmit(function(data){if(typeof data==='string'){data=$.parseJSON(data);}
-if(data.success!==1){}else{$('.Cuser_dialog').find('.close').trigger('click');var html='<div class="userName"><a title="'+data.username+'" href="/ucenter">我的账户</a><span>|</span><a  href="/web/user/logout">退出</a></div>'
-$(html).insertBefore('.userlink_lg');$('.userlink_lg').remove();$('.detail-app').find('.my-pl span').html('');$('#top_textarea').val('').css('color','#333');window.location.reload();}});}});$('.Cuser_dialog .signup_area form').validate({rules:{username:{required:true,email:true,remote:{url:'/web/user/checkusername',type:'post',data:{'username':function(){return $('.Cuser_dialog .signup_area input[name=username]').val();}}}},password:{required:true,minlength:6,maxlength:16},repassword:{required:true,minlength:6,maxlength:16,equalTo:"#regpassword"}},messages:{username:{email:"邮箱不正确",remote:"邮箱已被注册"},},success:function(){$('.msg').remove();},errorPlacement:function(error,element){var $element;$element=$(element);if($element.parents('.item').find('.msg')){$('.msg').remove();}
-$element.parents('.item').append('<span class="msg err Lcfl Ldn" style="display: none;"><label for="username" class="error"></label></span>');$element.parents('.item').find('.msg').css('display','block');$element.parents('.item').find('.msg').html(error);},submitHandler:function(form){var $self;$self=$(form);$self.ajaxSubmit(function(data){if(typeof data==='string'){data=$.parseJSON(data);}
-if(data.success!==1){}else{$('.Cuser_dialog').find('.close').trigger('click');$('.userlink_lg').html('<div class="userName"><a title="'+data.username+'" href="/ucenter">我的账户</a><span>|</span><a  href="/web/user/logout">退出</a></div>');$('.detail-app').find('.my-pl span').html('');$('#top_textarea').val('').css('color','#333');}});}});$('.userlink').find('.rssbox').on('click','button.btn1',function(){var text=$(this).siblings('.input1').val();$('.signup_area').find('input[name="username"]').val(text);$(this).val('').parents('.rssbox').hide();$('.userlink').find('.reg-btn').trigger('click');return false;});};
-senseluxuryFed.indexFun = function(){
-	var _this=senseluxuryFed.indexFun,
-	comFunV1=senseluxuryFed.commonFunV1;
+(function(factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(['jquery'], factory);
+	} else {
+		factory(jQuery);
+	}
+}(function($) {
+	var pluses = /\+/g;
+
+	function encode(s) {
+		return config.raw ? s : encodeURIComponent(s);
+	}
+
+	function decode(s) {
+		return config.raw ? s : decodeURIComponent(s);
+	}
+
+	function stringifyCookieValue(value) {
+		return encode(config.json ? JSON.stringify(value) : String(value));
+	}
+
+	function parseCookieValue(s) {
+		if (s.indexOf('"') === 0) {
+			s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+		}
+		try {
+			s = decodeURIComponent(s.replace(pluses, ' '));
+		} catch (e) {
+			return;
+		}
+		try {
+			return config.json ? JSON.parse(s) : s;
+		} catch (e) {}
+	}
+
+	function read(s, converter) {
+		var value = config.raw ? s : parseCookieValue(s);
+		return $.isFunction(converter) ? converter(value) : value;
+	}
+	var config = $.cookie = function(key, value, options) {
+			if (value !== undefined && !$.isFunction(value)) {
+				options = $.extend({}, config.defaults, options);
+				if (typeof options.expires === 'number') {
+					var days = options.expires,
+						t = options.expires = new Date();
+					t.setDate(t.getDate() + days);
+				}
+				return (document.cookie = [encode(key), '=', stringifyCookieValue(value), options.expires ? '; expires=' + options.expires.toUTCString() : '', options.path ? '; path=' + options.path : '', options.domain ? '; domain=' + options.domain : '', options.secure ? '; secure' : ''].join(''));
+			}
+			var result = key ? undefined : {};
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			for (var i = 0, l = cookies.length; i < l; i++) {
+				var parts = cookies[i].split('=');
+				var name = decode(parts.shift());
+				var cookie = parts.join('=');
+				if (key && key === name) {
+					result = read(cookie, value);
+					break;
+				}
+				if (!key && (cookie = read(cookie)) !== undefined) {
+					result[name] = cookie;
+				}
+			}
+			return result;
+		};
+	config.defaults = {};
+	$.removeCookie = function(key, options) {
+		if ($.cookie(key) !== undefined) {
+			$.cookie(key, '', $.extend({}, options, {
+				expires: -1
+			}));
+			return true;
+		}
+		return false;
+	};
+}));;
+jQuery(function($) {
+	$.datepicker.regional['zh-CN'] = {
+		closeText: '关闭',
+		prevText: '&#x3C;上月',
+		nextText: '下月&#x3E;',
+		currentText: '今天',
+		monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+		monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+		dayNames: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+		dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+		dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
+		weekHeader: '周',
+		dateFormat: 'yy/mm/dd',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: true,
+		yearSuffix: '年'
+	};
+	$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+});;
+var senseluxuryFed = {
+	loadIndexFun: function() {
+		var _this = this;
+		_this.commonFun();
+		if ($("#about").val() === "about") return false;
+		_this.indexFun();
+		_this.indexFunV1();
+	},
+	loadListFun: function() {
+		var _this = this;
+		_this.commonFun();
+		_this.listFun();
+		_this.weixinFun();
+		_this.commonFun.fixedFun('.tm_left', 'fixed');
+	},
+	loadDetailFun: function() {
+		var _this = this;
+		_this.commonFun();
+		_this.detailFun();
+		_this.weixinFun();
+		_this.commonFun.fixedFun('.data-fiexd', 'fiexd');
+	},
+	loadFqaFun: function() {
+		var _this = this;
+		_this.commonFun();
+		_this.FqaFun();
+	},
+	loadDetailFunV1: function() {
+		var _this = this;
+		_this.detailFunV1();
+		_this.commonFunV1.fixedFunRight('.double_fixed', 'fixed');
+		_this.commonFunV1.fixedFun('.yybgs', 'fixed');
+		var _this = this;
+		_this.commonFun.loginFun();
+		_this.commonFun.loginRegFun();
+		_this.Autocomplete('#AutoSearch');
+		_this.commonFun.ShouCan();
+		_this.commonFun.ShouCanFun($.cookie("willdata"));
+		_this.commonFun.closeShouCan();
+		_this.commonFun.zixunSubmit();
+		_this.commonFun.sideBarFun();
+	}
+};
+senseluxuryFed.commonFunV1 = function() {}
+senseluxuryFed.indexFunV1 = function() {
+	var _this = senseluxuryFed.indexFunV1;
+}
+senseluxuryFed.detailFunV1 = function() {
+	var _this = this,
+		deFun = _this.detailFunV1;
+	deFun.fixedMenuFun();
+	deFun.fixedMenuFunA('#mapsA', '3');
+	deFun.dateFun();
+	deFun.picSlide('#dt_slides', '.tabLabel');
+	var $queryPrice = $('.query-price');
+	$queryPrice.find('.room-c').hover(function() {
+		var $this = $(this);
+		$this.find('.room-c-list').show();
+	}, function() {
+		$(this).find('.room-c-list').hide();
+	});
+	$('.room-c-list').on('click', 'li', function() {
+		var _index = $(this).index();
+		$queryPrice.find('span').html($(this).html());
+		$(this).parent('.room-c-list').hide();
+		$queryPrice.siblings('.price-tabcont').hide();
+		$queryPrice.siblings('.price-tabcont').eq(_index).show();
+	});
+	var $infoText = $('.info-cont');
+	$infoText.on('click', '.more', function() {
+		var $this = $(this);
+		if ($this.hasClass('open')) {
+			$this.removeClass('open').html('【' + MESSAGE.show_more_details + ' + 】');
+			$this.siblings('.info-text').css('height', '172px');
+		} else {
+			$this.addClass('open').html('【' + MESSAGE.show_less_details + ' - 】');
+			$this.siblings('.info-text').css('height', 'auto');
+		};
+		deFun.fixedMenuFun();
+	});
+	$('.detail-content_double_fw').find('a').hover(function() {
+		$(this).next('p').css('opacity', '0');
+		$(this).next('p').css('display', 'block');
+		$(this).next('p').animate({
+			opacity: 1
+		}, 500, 'linear');
+	}, function() {
+		$(this).next('p').css('display', 'none');
+	});
+	$('.no-ss-bj_right').hover(function() {
+		$('.detail-ss-bj-left').animate({
+			width: 0
+		}, 120, 'linear', function() {
+			$('.detail-ss-bj-s').animate({
+				left: -500
+			}, 20, 'linear');
+			$('.detail-ss-bj-left').animate({
+				left: -500
+			}, 20, 'linear');
+		});
+	}, function() {
+		$(".detail-ss-bj-left ,.detail-ss-bj-s,.detail-ss-bj-left").stop(false, false);
+		$('.detail-ss-bj-left').css('width', '190px');
+		$('.detail-ss-bj-left').css('left', '0px');
+		$('.detail-ss-bj-s').css('left', '0px');
+		$('.detail-ss-bj-left').css('opacity', '1');
+	});
+}
+senseluxuryFed.detailFunV1.picSlide = function(id, page) {
+	var $content = $(id),
+		$prevBtn = $content.find('.prev'),
+		$nextBtn = $content.find('.next'),
+		$tab_body = $content.find('.tab_body'),
+		slideWidth = $tab_body.find('li').width(),
+		liLength = $tab_body.find('li').length,
+		iNow = 0,
+		$pageBtn = $(page);
+	$tab_body.append($tab_body.html());
+	$nextBtn.off().click(function() {
+		if (!$tab_body.is(":animated")) {
+			iNow++;
+			if (iNow >= liLength) {
+				iNow = 0;
+			}
+			$tab_body.stop(true, true).animate({
+				'margin-left': -iNow * slideWidth + 'px'
+			}, 500);
+			pageFun();
+		}
+	});
+	$prevBtn.off().click(function() {
+		if (!$tab_body.is(":animated")) {
+			iNow--;
+			if (iNow <= -1) {
+				iNow = liLength - 1;
+			}
+			$tab_body.stop(true, true).animate({
+				'margin-left': -iNow * slideWidth + 'px'
+			}, 500);
+			pageFun();
+		}
+	});
+	pageFun();
+
+	function pageFun() {
+		if ($pageBtn.length) {
+			var pageHtml = $tab_body.find('li').eq(iNow).attr('data-label-text'),
+				numb = pageHtml.split('/');
+			$pageBtn.find('a').html('<i>' + numb[0] + '</i>' + '/' + numb[1]);
+			$pageBtn.siblings('.tabCon').find('li').eq(numb[0] - 1).addClass('active').siblings('li').removeClass('active');
+			$pageBtn.siblings('.tabCon').on('click', 'li', function() {
+				iNow = $(this).index();
+				$(this).addClass('active').siblings('li').removeClass('active');
+				$tab_body.stop(true, true).animate({
+					'margin-left': -iNow * slideWidth + 'px'
+				}, 500);
+				var pageHtml1 = $tab_body.find('li').eq(iNow).attr('data-label-text');
+				numb = pageHtml1.split('/');
+				$pageBtn.find('a').html('<i>' + numb[0] + '</i>' + '/' + numb[1]);
+			});
+		}
+	}
+}
+senseluxuryFed.detailFunV1.fixedMenuFun = function() {
+	$('.yybgs').find('li').off().on('click', 'a', function() {
+		var _index = $(this).parent('li').index();
+		var _h = $('.detail-texts').find(".detail-content").eq(_index).offset().top
+		$('html,body').animate({
+			scrollTop: _h - $('.detail-texts').find(".detail-tab").height()
+		}, 500);
+		return false;
+	});
+}
+senseluxuryFed.detailFunV1.fixedMenuFunA = function(className, linumb) {
+	$(className).on('click', function() {
+		var _h = $('.detail-texts').find(".detail-content").eq(linumb).offset().top
+		$('html,body').animate({
+			scrollTop: _h - $('.detail-texts').find(".detail-tab").height()
+		}, 500);
+		return false;
+	});
+}
+senseluxuryFed.detailFunV1.dateFun = function() {
+	var comFun = senseluxuryFed.commonFunV1,
+		$dateBox = $('.Date-box'),
+		domain = $('#domain').val();
+	comFun.datepickerFun('#start');
+	comFun.datepickerFun('#start1');
+	if (getCookie("c_start_time")) {
+		$("#start").val(getCookie("c_start_time"));
+		$("#book_start").val(getCookie("c_start_time"));
+	}
+	$("#start").on('change', function() {
+		setCookie("c_start_time", $(this).val(), '7d');
+		$("#book_start").val(getCookie("c_start_time"));
+	});
+	if (getCookie("c_end_time")) {
+		$("#start1").val(getCookie("c_end_time"));
+		$("#book_end").val(getCookie("c_end_time"));
+	}
+	$("#start1").on('change', function() {
+		setCookie("c_end_time", $(this).val(), '7d');
+		$("#book_end").val(getCookie("c_end_time"));
+	});
+
+	function datetime_to_unix(datetime) {
+		var arr = datetime.split("/");
+		var now = new Date(Date.UTC(arr[0], arr[1] - 1, arr[2]));
+		return parseInt(now.getTime() / 86400000);
+	}
+
+	function unix_to_datetime(unix) {
+		var now = new Date(parseInt(unix) * 86400000),
+			text = '';
+		return text = now.getFullYear() + '/' + setData((now.getMonth() + 1)) + '/' + setData(now.getDate());
+	};
+
+	function setData(numb) {
+		if (numb < 9) {
+			return numb = '0' + numb
+		} else {
+			return numb;
+		};
+	};
+	$dateBox.find('.room-c').hover(function() {
+		$(this).find('.room-c-list').show();
+	}, function() {
+		$(this).find('.room-c-list').hide();
+	});
+	$dateBox.find('#start').change(function() {
+		var qsDate = $dateBox.find('#start').val(),
+			textVal = $dateBox.find('.room-c span').attr('data-val'),
+			flag = $dateBox.find('.room-c span').attr('data-flag'),
+			days = $dateBox.find('.room-c span').attr('date_diff'),
+			pidVal = $('#pid').val(),
+			qsDateTime = datetime_to_unix(qsDate),
+			endTime = parseInt(qsDateTime) + parseInt(days),
+			endDay = null;
+		if ($('#start1').val() == '') {
+			endDay = unix_to_datetime(endTime).split(' ')[0];
+			$('#start1').val(endDay);
+			$('#start1').trigger("change");
+		} else {
+			endDay = $('#start1').val();
+		};
+		$.ajax({
+			url: domain + '/web/detail/countcost',
+			type: "GET",
+			data: {
+				pid: pidVal,
+				start: qsDate,
+				end: endDay,
+				bedroom: textVal,
+				flag: flag
+			},
+			dataType: "jsonp",
+			jsonpCallback: 'jsonp',
+			success: function(data) {
+				if (parseInt(data) == -1) {
+					$('#cost').html('参数错误');
+				} else {
+					$('#cost').html('¥' + data.price);
+					$('#service').html('¥' + data.service_fee);
+					$('#tax').html('¥' + data.tax);
+					$('#total').html('¥' + data.total);
+					if (data.mini_stay > data.day_diff) {
+						$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为" + data.mini_stay + "天，小于该天数将无法预订成功");
+					} else {
+						$("#price_cal_notice").html("");
+					}
+				}
+			}
+		});
+	});
+	$dateBox.find('#start1').change(function() {
+		var qsDate = $dateBox.find('#start').val(),
+			textVal = $dateBox.find('.room-c span').attr('data-val'),
+			flag = $dateBox.find('.room-c span').attr('data-flag'),
+			days = $dateBox.find('.room-c span').attr('date_diff'),
+			pidVal = $('#pid').val(),
+			endDay = $('#start1').val();
+		if (qsDate == '') {
+			return false;
+		} else {
+			$.ajax({
+				url: domain + '/web/detail/countcost',
+				type: "GET",
+				data: {
+					pid: pidVal,
+					start: qsDate,
+					end: endDay,
+					bedroom: textVal,
+					flag: flag
+				},
+				dataType: "jsonp",
+				jsonpCallback: 'jsonp',
+				success: function(data) {
+					$('#cost').html('¥' + data.price);
+					$('#service').html('¥' + data.service_fee);
+					$('#tax').html('¥' + data.tax);
+					$('#total').html('¥' + data.total);
+					if (data.mini_stay > data.day_diff) {
+						$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为" + data.mini_stay + "天，小于该天数将无法预订成功");
+					} else {
+						$("#price_cal_notice").html("");
+					}
+				}
+			});
+		}
+	});
+	$dateBox.find('.room-c-list').on('click', 'li', function() {
+		var qsDate = $dateBox.find('#start').val(),
+			jsDate = $dateBox.find('#start1').val(),
+			textVal = $(this).attr('data-val'),
+			flag = $(this).attr('data-flag'),
+			dateDiffVal = $(this).attr('date_diff'),
+			pidVal = $('#pid').val(),
+			spanCont = $dateBox.find('.room-c span');
+		spanCont.text($(this).text());
+		spanCont.attr({
+			'data-val': textVal,
+			'date_diff': dateDiffVal,
+			'data-flag': flag
+		});
+		if (qsDate == '' || jsDate == '') {
+			alert('请选择起住日期和离开日期！')
+			return false;
+		} else {
+			if (datetime_to_unix(qsDate) >= datetime_to_unix(jsDate)) {
+				alert('离开日期应该在起住日期之后！')
+			} else {
+				$.ajax({
+					url: domain + '/web/detail/countcost',
+					type: "GET",
+					data: {
+						pid: pidVal,
+						start: qsDate,
+						end: jsDate,
+						bedroom: textVal,
+						flag: flag,
+					},
+					dataType: "jsonp",
+					jsonpCallback: 'jsonp',
+					success: function(data) {
+						if (parseInt(data) == -1) {
+							$('#cost').html('参数错误');
+						} else {
+							$('#cost').html('¥' + data.price);
+							$('#service').html('¥' + data.service_fee);
+							$('#tax').html('¥' + data.tax);
+							$('#total').html('¥' + data.total);
+							if (data.mini_stay > data.day_diff) {
+								$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为" + data.mini_stay + "天，小于该天数将无法预订成功");
+							} else {
+								$("#price_cal_notice").html("");
+							}
+						}
+					}
+				});
+			}
+		}
+	});
+	var init_get_price = function() {
+			var qsDate = $dateBox.find('#start').val(),
+				jsDate = $dateBox.find('#start1').val(),
+				textVal = $("#bedroom_show").attr('data-val'),
+				flag = $("#bedroom_show").attr('data-flag'),
+				pidVal = $('#pid').val();
+			if (qsDate == '' || jsDate == '') {
+				return false;
+			} else {
+				if (datetime_to_unix(qsDate) >= datetime_to_unix(jsDate)) {} else {
+					$.ajax({
+						url: domain + '/web/detail/countcost',
+						type: "GET",
+						data: {
+							pid: pidVal,
+							start: qsDate,
+							end: jsDate,
+							bedroom: textVal,
+							flag: flag,
+						},
+						dataType: "jsonp",
+						jsonpCallback: 'jsonp',
+						success: function(data) {
+							if (parseInt(data) == -1) {
+								$('#cost').html('参数错误');
+							} else {
+								$('#cost').html('¥' + data.price);
+								$('#service').html('¥' + data.service_fee);
+								$('#tax').html('¥' + data.tax);
+								$('#total').html('¥' + data.total);
+								if (data.mini_stay > data.day_diff) {
+									$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为" + data.mini_stay + "天，小于该天数将无法预订成功");
+								} else {
+									$("#price_cal_notice").html("");
+								}
+							}
+						}
+					});
+				}
+			}
+		}
+	init_get_price();
+};
+senseluxuryFed.commonFunV1.loginFun = function() {
+	var $cont = $('.userlink'),
+		$loginCont = $('.Cuser_dialog');
+	$cont.on('click', '.login-btn', function() {
+		$('.Cmask').show();
+		$loginCont.show();
+		$loginCont.find('.signintab').trigger('click');
+	});
+	$cont.on('click', '.reg-btn', function() {
+		$('.Cmask').show();
+		$loginCont.show();
+		$loginCont.find('.signuptab').trigger('click');
+	});
+	$loginCont.on('click', '.close', function() {
+		$('.Cmask').hide();
+		$loginCont.hide();
+	});
+	$loginCont.on('click', '.signuptab', function() {
+		$(this).addClass('curr').siblings('a').removeClass('curr');
+		$loginCont.find('.signup_area').removeClass('Ldn').siblings('.signin_area').addClass('Ldn');
+	});
+	$loginCont.on('click', '.signintab', function() {
+		$(this).addClass('curr').siblings('a').removeClass('curr');
+		$loginCont.find('.signin_area').removeClass('Ldn').siblings('.signup_area').addClass('Ldn');
+	});
+};
+senseluxuryFed.commonFunV1.datepickerFun = function(id) {
+	var _text = '请选择入住选择日期';
+	if (id == '#rz_time_end') {
+		_text = '请选择退房结束日期';
+	}
+	$(id).datepicker({
+		showOn: "div",
+		buttonImage: "",
+		buttonImageOnly: true,
+		buttonText: _text,
+		minDate: 0,
+		onClose: function(selectedDate) {
+			if (id == '#start1') {}
+			if (id == "#start") {
+				$("#start1").datepicker("option", "minDate", selectedDate);
+			}
+			if (id == "#rz_time_start") {
+				$("#rz_time_end").datepicker("option", "minDate", selectedDate);
+				$("#rz_time_end").datepicker("show");
+			}
+			if (id == "#rz_time_end") {}
+			if (id == "#inquire_end") {}
+			if (id == "#inquireus_start") {
+				$("#inquireus_end").datepicker("option", "minDate", selectedDate);
+			}
+			if (id == "#inquireus_end") {}
+			if (id == "#book_start") {
+				$("#book_end").datepicker("option", "minDate", selectedDate);
+			}
+			if (id == "#book_end") {}
+		}
+	});
+};
+senseluxuryFed.commonFunV1.fixedFun = function(obj, className) {
+	try {
+		var dom = $(obj),
+			h = $(obj).offset().top,
+			isIE6 = window.XMLHttpRequest ? false : true,
+			pageName = pageID,
+			leftHeight = $('.TM_mbox').find('.tm_left').height();
+	} catch (e) {}
+	if (!dom.length) return false;
+	if (!isIE6) {
+		$(window).on('scroll', function() {
+			var windowTop = $(window).scrollTop();
+			if (windowTop >= h) {
+				dom.addClass(className);
+			} else {
+				dom.removeClass(className);
+			};
+		});
+	}
+};
+senseluxuryFed.commonFunV1.fixedFun = function(obj, className) {
+	try {
+		var dom = $(obj),
+			h = $(obj).offset().top,
+			isIE6 = window.XMLHttpRequest ? false : true,
+			pageName = pageID,
+			leftHeight = $('.TM_mbox').find('.tm_left').height();
+	} catch (e) {}
+	if (!dom.length) return false;
+	if (!isIE6) {
+		$(window).on('scroll', function() {
+			var windowTop = $(window).scrollTop();
+			if (windowTop >= h) {
+				dom.addClass(className);
+			} else {
+				dom.removeClass(className);
+			};
+		});
+	}
+};
+senseluxuryFed.commonFunV1.fixedFunRight = function(obj, className) {
+	try {
+		var dom = $(obj),
+			h = $(obj).offset().top,
+			uh = $('.yybgs').offset().top,
+			isIE6 = window.XMLHttpRequest ? false : true,
+			pageName = pageID,
+			leftHeight = $('.TM_mbox').find('.tm_left').height();
+	} catch (e) {}
+	if (!dom.length) return false;
+	if (!isIE6) {
+		$(window).on('scroll', function() {
+			var windowTop = $(window).scrollTop();
+			if (windowTop >= h) {
+				dom.addClass(className);
+				if (windowTop >= uh) {
+					dom.removeClass(className);
+					dom.css('top', '520px');
+				} else {
+					dom.css('top', '0px');
+				}
+			} else {
+				dom.removeClass(className);
+				dom.css('top', '0px');
+			};
+		});
+	}
+};
+senseluxuryFed.commonFunV1.relativeFun = function(obj, className) {
+	try {
+		var dom = $(obj),
+			h = $(obj).offset().top,
+			isIE6 = window.XMLHttpRequest ? false : true,
+			pageName = pageID;
+	} catch (e) {}
+	if (!dom.length) return false;
+	if (!isIE6) {
+		$(window).on('scroll', function() {
+			var windowTop = $(window).scrollTop();
+			if (windowTop >= h) {
+				if (windowTop > $('.detail-info').height() - $('.double_fixed').height()) {
+					dom.stop(true);
+					dom.animate({
+						top: ($('.detail-info').height() - $('.double_fixed').height())
+					}, 50);
+				} else {
+					dom.stop(true);
+					dom.animate({
+						top: (windowTop - h - 399)
+					}, (windowTop - h) * 0.3);
+				}
+			} else {
+				dom.stop(true);
+				dom.css('top', '0px');
+			};
+		});
+	}
+};
+senseluxuryFed.commonFun = function() {
+	var _this = this,
+		$topBar = $('.topbar'),
+		$header = $('.header'),
+		$winW = $(window).width();
+	$topBar.find('.rssarea').hover(function() {
+		$(this).find('.rssbox').show();
+	}, function() {
+		$(this).find('.rssbox').hide();
+	});
+	if ($header.find('.navlink1').length) {
+		var li0 = $header.find('.navlink1').offset().left,
+			li1 = $header.find('.navlink2').offset().left;
+		$header.find('.termini').width($winW).css('left', '-' + li0 + 'px');
+		$header.find('.theme-box').width($winW).css('left', '-' + li1 + 'px');
+		$header.find('.nav .items').on('mouseenter', 'li', function() {
+			$this = $(this);
+			$this.addClass('cur').find('.dropbox').show();
+		});
+	}
+	$header.find('.nav .items').on('mouseleave', 'li', function(e) {
+		var $dropbox, $el, $self;
+		$self = $(this);
+		$self.removeClass('cur');
+		$dropbox = $self.find('.dropbox');
+		$el = $(e.relatedTarget);
+		if ($el.hasClass('ui-datepicker') || $el.parents('.ui-datepicker').length) {
+			return void 0;
+		}
+		if ($dropbox.length) {
+			$dropbox.hide();
+		}
+	});
+	$('.clause_more').on('click', function() {
+		var $this = $(this);
+		if ($this.hasClass('open')) {
+			$this.removeClass('open').html('【查看全部声明 + 】');
+			$(".clause_text").hide();
+		} else {
+			$this.addClass('open').html('【收起全部声明 - 】');
+			$(".clause_text").show();
+		};
+	});
+	$(function() {
+		_this.commonFun.loginFun();
+		_this.commonFun.loginRegFun();
+		_this.Autocomplete('#AutoSearch');
+		_this.commonFun.ShouCan();
+		_this.commonFun.ShouCanFun($.cookie("willdata"));
+		_this.commonFun.closeShouCan();
+		_this.commonFun.zixunSubmit();
+		_this.commonFun.sideBarFun();
+	});
+};
+senseluxuryFed.commonFun.sideBarFun = function() {
+	var $sideCont = $('#side-bar'),
+		$window = $(window),
+		winH = $window.height();
+	$sideCont.find('.items li').hover(function() {
+		var $this = $(this);
+		$this.find('.list').show();
+	}, function() {
+		var $this = $(this);
+		$this.find('.list').hide();
+	});
+	$window.scroll(function() {
+		var scrTop = $(window).scrollTop();
+		var topbar = parseInt($('.IN_main').css('height'));
+		var winhei = parseInt($(window).height());
+		var _top = $('#side-bar').offset().top;
+		var _search = $('.D1Search').offset().top;
+		if (scrTop < topbar) {
+			$('#side-bar').css('display', 'none');
+		} else {
+			$('#side-bar').css('display', 'block');
+			$('#side-bar').css('z-index', 10);
+		}
+		if (scrTop > winhei) {
+			$sideCont.find('.goTop').show();
+		} else {
+			$sideCont.find('.goTop').hide();
+		}
+	});
+	$sideCont.find('.items').on('click', '.goTop a', function() {
+		$('html,body').animate({
+			scrollTop: 0
+		}, 500);
+	});
+};
+senseluxuryFed.commonFun.fixedFun = function(obj, className) {
+	try {
+		var dom = $(obj),
+			h = $(obj).offset().top,
+			isIE6 = window.XMLHttpRequest ? false : true,
+			pageName = pageID,
+			leftHeight = $('.TM_mbox').find('.tm_left').height();
+	} catch (e) {}
+	if (!dom.length) return false;
+	if (!isIE6) {
+		$(window).on('scroll', function() {
+			var windowTop = $(window).scrollTop();
+			if (windowTop >= h) {
+				dom.addClass(className);
+				if (pageName == 'detail' || pageName == 'bankdetail') {
+					if (windowTop > ($('.like-wp').offset().top - 510)) {
+						dom.removeClass(className).addClass('absiexd');
+						dom.css('bottom', '20px');
+					} else {
+						dom.removeClass('absiexd').addClass(className);
+						dom.css('bottom', 'auto');
+					};
+				} else {
+					if (windowTop > ($('.Cfoot').offset().top - leftHeight)) {
+						dom.removeClass(className).addClass('absiexd');
+						dom.css('bottom', '20px');
+					} else {
+						dom.removeClass('absiexd').addClass(className);
+						dom.css('bottom', 'auto');
+					};
+				};
+			} else {
+				dom.removeClass(className);
+			};
+		});
+	}
+};
+senseluxuryFed.commonFun.loginFun = function() {
+	var $cont = $('.userlink'),
+		$loginCont = $('.Cuser_dialog');
+	$cont.on('click', '.login-btn', function() {
+		$('.Cmask').show();
+		$loginCont.show();
+		$loginCont.find('.signintab').trigger('click');
+	});
+	$cont.on('click', '.reg-btn', function() {
+		$('.Cmask').show();
+		$loginCont.show();
+		$loginCont.find('.signuptab').trigger('click');
+	});
+	$loginCont.on('click', '.close', function() {
+		$('.Cmask').hide();
+		$loginCont.hide();
+	});
+	$loginCont.on('click', '.signuptab', function() {
+		$(this).addClass('curr').siblings('a').removeClass('curr');
+		$loginCont.find('.signup_area').removeClass('Ldn').siblings('.signin_area').addClass('Ldn');
+	});
+	$loginCont.on('click', '.signintab', function() {
+		$(this).addClass('curr').siblings('a').removeClass('curr');
+		$loginCont.find('.signin_area').removeClass('Ldn').siblings('.signup_area').addClass('Ldn');
+	});
+};
+senseluxuryFed.commonFun.loginRegFun = function() {
+	var $centent = $('.signin_area'),
+		emailInput = $centent.find('.input1[name = "username"]'),
+		submitBtn = $centent.find('.Cbtn_middle_yellow');
+	$("#register_select span").each(function(i) {
+		$(this).on('click', function() {
+			$("#register_select span").removeClass('register_check');
+			$(this).addClass('register_check');
+			if (i == 1) {
+				$(".registerByPhone").hide();
+				$(".registerByEmail").show();
+			} else {
+				$(".registerByEmail").hide()
+				$(".registerByPhone").show();
+			}
+		});
+	});
+	var mark;
+	$("#registerByPhoneForm").click(function() {
+		var data = {
+			username: $(".registerByPhone .phonenumber").val(),
+			password: $(".registerByPhone input[name='password']").val(),
+			repassword: $(".registerByPhone input[name='repassword']").val(),
+			code: $(".registerByPhone input[name='registerByCode']").val()
+		};
+		if (!data.username) {
+			alert("请输入手机号！")
+			return;
+		}
+		if (data.password != data.repassword || !data.password || !data.repassword) {
+			alert("两次密码不一致！");
+			return;
+		}
+		$.ajax({
+			data: {
+				pwd: data.password,
+				phone: data.username,
+				code: data.code,
+				imported: $(".registerByPhone input[name='imported']").val(),
+				mark: mark
+			},
+			type: 'post',
+			url: "/activity/double/register",
+			dataType: 'json',
+			success: function(data) {
+				if (data.code) {
+					$('.Cuser_dialog').find('.close').trigger('click');
+					alert("注册成功！");
+					window.location.reload();
+				} else {
+					alert(data.msg);
+				}
+			}
+		});
+	});
+	$("#getCode").click(function() {
+		if ($(this).attr("clock") != 0) {
+			return;
+		}
+		var $that = $(this);
+		var phone_number = $(this).parent().parent().parent().find(".phonenumber").val();
+		var data = {
+			'phone': phone_number
+		};
+		$(this).val("验证码获取中。。。");
+		if (phone_number.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
+			$.ajax({
+				type: 'POST',
+				url: '/activity/double/phone_verify',
+				data: data,
+				dataType: 'json',
+				success: function(data) {
+					if (!data.code) {
+						alert(data.msg);
+						$that.attr('clock', 0);
+						clearInterval(t);
+						$that.val("获取验证码");
+						return;
+					}
+					$that.attr('clock', 1);
+					mark = data.mark;
+					var seconds = 0;
+					var t = setInterval(function() {
+						seconds += 1;
+						$that.val(50 - seconds + "秒后重新获取验证码");
+						if (seconds == 50) {
+							$that.attr('clock', 0);
+							clearInterval(t);
+							$that.val("获取验证码");
+						}
+					}, 1000);
+				}
+			})
+		} else {
+			alert("请输入合适的手机号！");
+			$that.attr('clock', 0);
+			$that.val("获取验证码");
+		}
+	});
+	$("#validation_phone").click(function() {
+		var code = $(this).parent().parent().find(".code").val();
+		var phone_number = $(this).parent().parent().parent().find(".phonenumber").val();
+		if (!code) {
+			alert("请输入验证码！");
+			return;
+		}
+		if (phone_number.match(/^1[3|4|5|8][0-9]\d{4,8}$/)) {
+			var data = {
+				mark: mark,
+				code: code,
+				phone: phone_number
+			};
+			$.ajax({
+				type: 'POST',
+				url: '/activity/double/phone_available',
+				data: data,
+				dataType: 'json',
+				success: function(data) {
+					if (data.code) {
+						$(".registerCode").hide(function() {
+							$(".registerPwd").show();
+						});
+					} else {
+						alert("验证码错误！")
+					}
+				}
+			});
+		}
+	});
+	$('.Cuser_dialog .signin_area form').validate({
+		rules: {
+			username: {
+				required: true
+			},
+			password: {
+				required: true,
+				minlength: 6,
+				maxlength: 16
+			}
+		},
+		errorPlacement: function(error, element) {
+			var $element;
+			$element = $(element);
+			$element.parents('.item').find('.msg').show().css({
+				"display": "block"
+			});
+			$element.parents('.item').find('.inputbox').css({
+				"border": "1px solid red"
+			});
+		},
+		submitHandler: function(form) {
+			var $self;
+			$self = $(form);
+			$self.ajaxSubmit(function(data) {
+				if (typeof data === 'string') {
+					data = $.parseJSON(data);
+				}
+				if (data.success !== 1) {} else {
+					$('.Cuser_dialog').find('.close').trigger('click');
+					var html = '<div class="userName"><a title="' + data.username + '" href="/ucenter">我的账户</a><span>|</span><a  href="/web/user/logout">退出</a></div>'
+					$(html).insertBefore('.userlink_lg');
+					$('.userlink_lg').remove();
+					$('.detail-app').find('.my-pl span').html('');
+					$('#top_textarea').val('').css('color', '#333');
+					window.location.reload();
+				}
+			});
+		}
+	});
+	$('.Cuser_dialog .signup_area form').validate({
+		rules: {
+			username: {
+				required: true,
+				email: true,
+				remote: {
+					url: '/web/user/checkusername',
+					type: 'post',
+					data: {
+						'username': function() {
+							return $('.Cuser_dialog .signup_area input[name=username]').val();
+						}
+					}
+				}
+			},
+			password: {
+				required: true,
+				minlength: 6,
+				maxlength: 16
+			},
+			repassword: {
+				required: true,
+				minlength: 6,
+				maxlength: 16,
+				equalTo: "#regpassword"
+			}
+		},
+		messages: {
+			username: {
+				email: "邮箱不正确",
+				remote: "邮箱已被注册"
+			},
+		},
+		success: function() {
+			$('.msg').remove();
+		},
+		errorPlacement: function(error, element) {
+			var $element;
+			$element = $(element);
+			if ($element.parents('.item').find('.msg')) {
+				$('.msg').remove();
+			}
+			$element.parents('.item').append('<span class="msg err Lcfl Ldn" style="display: none;"><label for="username" class="error"></label></span>');
+			$element.parents('.item').find('.msg').css('display', 'block');
+			$element.parents('.item').find('.msg').html(error);
+		},
+		submitHandler: function(form) {
+			var $self;
+			$self = $(form);
+			$self.ajaxSubmit(function(data) {
+				if (typeof data === 'string') {
+					data = $.parseJSON(data);
+				}
+				if (data.success !== 1) {} else {
+					$('.Cuser_dialog').find('.close').trigger('click');
+					$('.userlink_lg').html('<div class="userName"><a title="' + data.username + '" href="/ucenter">我的账户</a><span>|</span><a  href="/web/user/logout">退出</a></div>');
+					$('.detail-app').find('.my-pl span').html('');
+					$('#top_textarea').val('').css('color', '#333');
+				}
+			});
+		}
+	});
+	$('.userlink').find('.rssbox').on('click', 'button.btn1', function() {
+		var text = $(this).siblings('.input1').val();
+		$('.signup_area').find('input[name="username"]').val(text);
+		$(this).val('').parents('.rssbox').hide();
+		$('.userlink').find('.reg-btn').trigger('click');
+		return false;
+	});
+};
+senseluxuryFed.indexFun = function() {
+	var _this = senseluxuryFed.indexFun,
+		comFunV1 = senseluxuryFed.commonFunV1;
 	_this.banSlideFun('#in_slides');
 	_this.searchFixde();
 	_this.ajaxLoadXilie();
@@ -1090,249 +2082,3380 @@ senseluxuryFed.indexFun = function(){
 	comFunV1.datepickerFun('#rz_time_end');
 	_this.peopleNumb();
 };
-senseluxuryFed.indexFun.peopleNumb=function(){$('#people_numb').hover(function(){$(this).find('div').show();},function(){$(this).find('div').hide();});$('#people_numb').find('div a').click(function(){$('#people_numb').find('p').html($(this).html());$('#people_numb').find('input').val($(this).html());$('#people_numb').find('div').hide();if($(this).attr('class')=='cleans'){$('#people_numb').find('p').html('选择入住人数');$('#people_numb').find('input').val('');}});};
-senseluxuryFed.indexFun.imgList=function(obj,cat){var obj=obj,_this=$(obj),sctop=0,fobj='.slV1_I_L_con_div',forID=0,dataID=new Array(606,77,762,85,26,25),dbg=0;function db_list(isID){var isdataID='',classshow='';if(isID>0){isdataID=isID;classshow=' slV1_cur';}else{isdataID=dataID[0];}
-if(dataID=='')
-return false;if(dbg==1)
-return false;$.ajax({url:'getcityproductlist/'+isdataID+'/jsonp/jsonp',type:"POST",dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){var data=data['data'];var html="";html+='<ul class="slV1_I_L_con_ul'+classshow+'">';for(var i=0;i<data.length;i++){var price=(data[i]['price']>100)?'¥<span>'+data[i]['price']+'</span>/'+MESSAGE.night:'<span style="font-size: small">'+MESSAGE.inquire_rate+'</span>';html+='<li>';if(data[i]["is_panorama"])
-{html+='<a href="javascript:void(0)"><div class="panorama"><span>全景</span></div></a>'}
-html+='<div><a href="'+data[i]['href']+'"><img src="'+data[i]['data_url']+'"></a></div>';html+='<div class="con">'
-html+='<a class="title slV1_fs3" href="'+data[i]['href']+'">'+data[i]['title']+'</a>';html+='<span class="dsp slV1_fs5">'+data[i]['name']+'</span>';html+='<strong class="slV1_fs3">'+price+'</strong>';if(data[i]['rate_per_person']>0){html+='<span class="Lflr slV1_fs5">'+MESSAGE.perperson+' ￥'+data[i]['rate_per_person']+'/'+MESSAGE.night+'</span>';}
-html+='</div>';html+='<div class="icons"><div class="icon-ws"><span class="iconfont-home">&#xe606;</span>'+data[i]['bedroom']+'</div>';html+='<div class="icon-yc"><span class="iconfont-home">&#xe60e;</span>'+data[i]['shower_room']+'</div>';var pool=(data[i]['pool']!=0)?'<div class="icon-wsj"><span class="iconfont-home">&#xe607;</span> '+data[i]['pool']+'</div>':'';html+=pool;html+='</div></li>';}
-html+='</ul>';$('.con3').find('.ul_main').append(html);for(var i=0;i<=dataID.length;i++){if(dataID[i]==isdataID){dataID.shift(i);}}
-db_list(0);}});}
-_this.find(fobj).on('click','ul li',function(){dbg=1;if(db_is_array(dataID,$(this).attr('data-id'))){dbg=0;db_list($(this).attr('data-id'));}else{dbg=0;db_list(0);}
-var _index=$(this).index();_this.find(fobj+' ul li').removeClass('cur jieji_1s jieji_2s jieji_3s jieji_4s jieji_5s jieji_6s jieji_7s');$(this).addClass('cur '+'jieji_'+(_index+1)+'s');$("#site-name").html($(this).find('p').eq(0).html());$(".index-tab1A").attr('href','/destinations/'+$(this).attr('data-id'));_this.find('.slV1_I_L_con_ul').removeClass('slV1_cur');_this.find('.slV1_I_L_con_ul').animate({'opacity':'0'},100);_this.find('.slV1_I_L_con_ul').eq($(this).index()).addClass('slV1_cur');_this.find('.slV1_I_L_con_ul').eq($(this).index()).animate({'opacity':'1'},100);})
-function db_is_array(arr,str){for(var i=0;i<=arr.length;i++){if(arr[i]==str)
-return true;}
-return false;}
-$(window).bind('scroll',function(){if(_this.offset()&&_this.offset().top<(($(window).height()+$(window).scrollTop())+500)){if(sctop=='0'){sctop='1';db_list(0);}}})}
-senseluxuryFed.indexFun.imgList2=function(obj,cat){var obj=obj,_this=$(obj),sctop=0,fobj='.slV1_I_L_con_div',forID=0,dataID=new Array('27','38','20','22','327')
-dbg=0;function db_list(isID){var isdataID='',classshow='';if(isID>0){isdataID=isID;classshow=' slV1_cur';}else{isdataID=dataID[0];}
-if(dataID=='')
-return false;if(dbg==1)
-return false;$.ajax({url:'getsubjectlist/'+isdataID+'/jsonp/jsonp',type:"POST",dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){var data=data['data'];var html="";html+='<ul class="slV1_I_L_con_ul'+classshow+'">';for(var i=0;i<data.length;i++){var price=(data[i]['price']>100)?'¥<span>'+data[i]['price']+'</span>/'+MESSAGE.night:'<span style="font-size: small">'+MESSAGE.inquire_rate+'</span>';html+='<li>';if(data[i]["is_panorama"])
-{html+='<a href="javascript:void(0)"><div class="panorama"><span>全景</span></div></a>'}
-html+='<div><a href="'+data[i]['href']+'"><img src="'+data[i]['data_url']+'"></a></div>';html+='<div class="con">'
-html+='<a class="title slV1_fs3" href="'+data[i]['href']+'">'+data[i]['title']+'</a>';html+='<span class="dsp slV1_fs5">'+data[i]['parent_name']+" "+data[i]['name']+'</span>';html+='<strong class="slV1_fs3">'+price+'</strong>';if(data[i]['rate_per_person']>0){html+='<span class="Lflr slV1_fs5">'+MESSAGE.perperson+' ￥'+data[i]['rate_per_person']+'/'+MESSAGE.night+'</span>';}
-html+='</div>';html+='<div class="icons"><div class="icon-ws"><span class="iconfont-home">&#xe606;</span>'+data[i]['bedroom']+'</div>';html+='<div class="icon-yc"><span class="iconfont-home">&#xe60e;</span>'+data[i]['shower_room']+'</div>';var pool=(data[i]['pool']!=0)?'<div class="icon-wsj"><span class="iconfont-home">&#xe607;</span> '+data[i]['pool']+'</div>':'';html+=pool;html+='</div></li>';}
-html+='</ul>';$('.con4').find('.ul_main').append(html);for(var i=0;i<=dataID.length;i++){if(dataID[i]==isdataID){dataID.shift(i);}}
-db_list(0);}});}
-_this.find(fobj).on('click','ul li',function(){dbg=1;if(db_is_array(dataID,$(this).attr('data-id'))){dbg=0;db_list($(this).attr('data-id'));}else{dbg=0;db_list(0);}
-_this.find(fobj+' ul li').removeClass('cur');$(this).addClass('cur');_this.find('.slV1_I_L_con_ul').removeClass('slV1_cur');_this.find('.slV1_I_L_con_ul').animate({'opacity':'0'},100);_this.find('.slV1_I_L_con_ul').eq($(this).index()).addClass('slV1_cur');_this.find('.slV1_I_L_con_ul').eq($(this).index()).animate({'opacity':'1'},100);$("#site-name1").html($(this).attr('data-name'));$(".index-tab2A").attr('href','/subject/'+$(this).attr('data-id'));_this.find('.slV1_I_L_con_div ul li').css('height','94px');$(this).css('height','160px');})
-function db_is_array(arr,str){for(var i=0;i<=arr.length;i++){if(arr[i]==str)
-return true;}
-return false;}
-$(window).bind('scroll',function(){if(_this.offset()&&_this.offset().top<(($(window).height()+$(window).scrollTop())+500)){if(sctop=='0'){sctop='1';db_list(0);}}})}
-senseluxuryFed.indexFun.searchFixde=function(){var comFun=senseluxuryFed.commonFun,$fixMenu=$('.D1Search'),menuTop=$fixMenu.offset()?$fixMenu.offset().top:-1;if(menuTop===-1)
-return false;$(window).scroll(function(){var winTop=$(window).scrollTop();if(winTop>menuTop){$fixMenu.addClass('fiexd');}else{$fixMenu.removeClass('fiexd');};});};senseluxuryFed.indexFun.ajaxLoadXilie=function(){var $xlCont=$('.index-lvyou');$xlCont.find('.index-tab1').on('click','li',function(){var $this=$(this),dataId=$this.attr('data-id'),siteTitle=$this.attr('data-name');var domain="/";$this.addClass('cur').siblings('li').removeClass('cur');$.ajax({url:domain+'getcityproductlist/'+dataId+'/jsonp/jsonp',type:"GET",dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){var sData=data;console.log(sData);addHtmlFun(sData.data);$('#site-name').html(siteTitle);}});});function addHtmlFun(data){var html="";html+='<ul>';for(var i=0;i<data.length;i++){var price=(data[i]['price']>100)?'¥'+data[i]['price']+'/'+MESSAGE.night:'<span style="font-size: small">'+MESSAGE.inquire_rate+'</span>';html+='<li>';html+='<div class="zhu-len Lposa">'+price+'</div>';html+='<div><a href="'+data[i]['href']+'"><img src="'+data[i]['data_url']+'"></a></div>';html+='<div class="Lpl10 Lpr10 Lmt10"><a href="'+data[i]['href']+'" class="Lfz16">'+data[i]['title']+'</a></div>';html+='<div class="Lc999 Lpl10 Lpr10">'+data[i]['parent_name']+" "+data[i]['name']+'</div>';html+='<div class="divyy"><span>'+data[i]['tag']+'</span></div>';html+='</li>';}
-html+='</ul>';$('#con_tab_1').html(html);$('.index-tab1A').attr("href",'/discounts/'+$('.index-tab1').find('.cur').attr("data-id"));};$('#con_tab_1').on('click','li .newsicon2',function(){var $this=$(this);$this.addClass('newsicon3');});};senseluxuryFed.indexFun.ajaxLoadTheme=function(){var $xlCont=$('.index-lvyou');$xlCont.find('.index-tab2').on('click','li',function(){var $this=$(this),dataId=$this.attr('data-id'),siteTitle=$this.attr('data-name');var domain="/";$this.css('height',190).siblings('li').css('height',92);$this.addClass('cur').siblings('li').removeClass('cur');$.ajax({url:domain+'getsubjectlist/'+dataId+'/jsonp/jsonp',type:"GET",dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){var sData=data;console.log(sData);addHtmlFun(sData.data);$('#site-name1').html(siteTitle);}});});function addHtmlFun(data){var html="";html+='<ul>';for(var i=0;i<data.length;i++){var price=(data[i]['price']>100)?'¥'+data[i]['price']+'/'+MESSAGE.night:'<span style="font-size: small">'+MESSAGE.inquire_rate+'</span>';html+='<li><div class="zhu-len Lposa">'+price+'</div><div><a href="'+data[i]['href']+'"><img src="'+data[i]['data_url']+'"></a></div><div class="Lpl10 Lpr10 Lmt10"><a href="'+data[i]['href']+'" class="Lfz16">'+data[i]['title']+'</a></div><div class="Lc999 Lpl10 Lpr10">'+data[i]['parent_name']+" "+data[i]['name']+'</div><div class="divyy"><span>'+data[i]['tag']+'</span></div></li>';}
-html+='</ul>';$('#con_tabs_1').html(html);$('.index-tab2A').attr("href",'/discounts/'+$('.index-tab2').find('.cur').attr("data-id"));};$('#con_tab_1').on('click','li .newsicon2',function(){var $this=$(this),id=$this.attr('data-id');$this.addClass('newsicon3');_this.setCookie($this,id,'default');});};senseluxuryFed.weixinFun=function(){$('.Cflowwidget').find('a.wx').hover(function(){$(this).children('.qrcode').show();},function(){$(this).children('.qrcode').hide();});};senseluxuryFed.listFun=function(){var _this=senseluxuryFed.listFun;_this.priceSlide('#slider-range');_this.houseSlide('#slider-range1');_this.classFun('.class-search');_this.priceTipFun();_this.hotSlideFun('#likeCont');_this.mapFun();var $pageCont=$('.page-list'),iNowNumb=$pageCont.attr('date-page-now'),allNumb=$pageCont.attr('date-page-all');senseluxuryFed.getPageFun(iNowNumb,allNumb);$pageCont.on('click','.pageNumb',function(){var pageIndex=$(this).attr('data-num');senseluxuryFed.pageClickFun(parseInt(pageIndex));iNowNumb=parseInt(pageIndex);return false;});$pageCont.on('click','.prve',function(){senseluxuryFed.pageClickFun(parseInt(iNowNumb)-1);iNowNumb=parseInt(iNowNumb)-1;return false;});$pageCont.on('click','.next',function(){senseluxuryFed.pageClickFun(parseInt(iNowNumb)+1);iNowNumb=parseInt(iNowNumb)+1;return false;});};senseluxuryFed.detailFun=function(){var _this=this,deFun=_this.detailFun;_this.indexFun.picSlide('#dt_slides','.tabLabel');deFun.dateFun();deFun.fixedMenuFun();deFun.likeSlideFun('#likeCont');deFun.zixunPop();deFun.yudingPop();deFun.commentFun();var $queryPrice=$('.query-price');$queryPrice.find('.room-c').hover(function(){var $this=$(this);$this.find('.room-c-list').show();},function(){$(this).find('.room-c-list').hide();});$('.room-c-list').on('click','li',function(){var _index=$(this).index();$queryPrice.find('span').html($(this).html());$(this).parent('.room-c-list').hide();$queryPrice.siblings('.price-tabcont').hide();$queryPrice.siblings('.price-tabcont').eq(_index).show();});$('.price-tabcont').find('.bz-cont').on('click','a',function(){var $this=$(this);if($this.hasClass('show')){$this.parent('.bz-cont').siblings('.price-tab').find('tbody tr').hide().siblings('tr').eq(0).show();$this.removeClass('show').html('【'+MESSAGE.show_more_rates+' + 】');}else{$this.parent('.bz-cont').siblings('.price-tab').find('tr').show();$this.addClass('show').html('【'+MESSAGE.show_less_rates+' - 】');}
-return false;});var $infoText=$('.info-cont');$infoText.on('click','.more',function(){var $this=$(this);if($this.hasClass('open')){$this.removeClass('open').html('【'+MESSAGE.show_more_details+' + 】');$this.siblings('.info-text').css('height','72px');}else{$this.addClass('open').html('【'+MESSAGE.show_less_details+' - 】');$this.siblings('.info-text').css('height','113px');};deFun.fixedMenuFun();});var $infoTop=$('.de-info');$infoTop.find('.add').on('click','a',function(){$('.detail-type').find('li').eq(3).children('a').trigger('click');});var villa=$("#extend_code").val();function SignInViewModel(){var self=this;self.CalendarArray=ko.observableArray([]);self.CalendarEndArray=ko.observableArray([]);self.SignInDate=ko.observableArray([]);self.year=ko.observable("");self.month=ko.observable("");self.isFirstInit=true;self.toDays='2014-07-27';self.intervalMonth=1;self.IsToday=function(day){return day==self.currentDay&&self.month()==self.currentMonth&&self.year()==self.currentYear;}
-self.SetCurrentDate=function(date){self.currentYear=date.getFullYear();self.currentDay=date.getDate();self.currentMonth=date.getMonth()+1;self.year(date.getFullYear());self.month(date.getMonth()+1);}
-self.SignIn=function(){}
-self.Init=function(){if(arguments[0]){self.toDays=arguments[0];}
-if(arguments[1]){self.intervalMonth=arguments[1];}
-if(self.isFirstInit){self.isFirstInit=false;var todayDate=self.toDays;var todays=todayDate.split("-");self.SetCurrentDate(new Date(todays[0],todays[1]-1,todays[2]));}
-$.ajax({url:"/web/detail/getUnavailableDates/villa/"+villa,dataType:"json",data:{"year":self.year(),"month":self.month(),"timestamp":Date.parse(new Date())},success:function(_result){if(self.isFirstInit){self.isFirstInit=false;var todayDate=self.toDays;var todays=todayDate.split("-");self.SetCurrentDate(new Date(todays[0],todays[1]-1,todays[2]));}
-if(null==_result){_result=[];}
-self.SignInDate(_result);self.SetCalendarDays(self.year(),self.month());}});self.SetCalendarDays(self.year(),self.month());}
-self.SetCalendarDays=function(year,month){var nowDate=new Date(year,month-1,1);var day=nowDate.getDay()==0?7:nowDate.getDay();nowDate=new Date(year,month,0);var monthDays=nowDate.getDate();var monthDaysArray=new Array();for(var i=1;i<day;i++){monthDaysArray.push("");}
-for(var i=1;i<=monthDays;i++){monthDaysArray.push(i);}
-var rows=parseInt((monthDays+day-1)/7)+((monthDays+day-1)%7==0?0:1);var monthDaysEndArray=new Array();for(var i=1;i<=6*7-(monthDays+day-1);i++){monthDaysEndArray.push(i);}
-self.CalendarArray(monthDaysArray);self.CalendarEndArray(monthDaysEndArray);}
-self.SetSignInDate=function(signInDate){for(var i=0;i<self.SignInDate().length;i++){if(self.SignInDate()[i]==signInDate)
-return true;}
-return false;}
-self.prevMonth=function(){var tempDate=new Date(self.year(),self.month()-self.intervalMonth-1);self.year(tempDate.getFullYear());self.month(tempDate.getMonth()+1);self.Init();}
-self.nextMonth=function(){var tempDate=new Date(self.year(),self.month()-self.intervalMonth+(2*self.intervalMonth-1));self.year(tempDate.getFullYear());self.month(tempDate.getMonth()+1);self.Init();}}
-if(villa!=""){var firstDayOfMonth=$("#first_day_of_month").val();var firstDayOfNextMonth=$("#first_day_of_next_month").val();$("#prev").on("click",function(){viewModel_1.prevMonth();viewModel_2.prevMonth();})
-$("#next").on("click",function(){viewModel_1.nextMonth();viewModel_2.nextMonth();})
-var viewModel_1=new SignInViewModel();viewModel_1.Init(firstDayOfMonth,2);ko.applyBindings(viewModel_1,$("#signInCalendar_1")[0]);var viewModel_2=new SignInViewModel();viewModel_2.Init(firstDayOfNextMonth,2);ko.applyBindings(viewModel_2,$("#signInCalendar_2")[0]);}};senseluxuryFed.detailFun.zixunPop=function(){var comFun=senseluxuryFed.commonFun,$zxCont=$('.zxDialog'),_this=senseluxuryFed;;$('#seek-btn').click(function(){$('.Cmask').show();$zxCont.show();if(getCookie("c_start_time")){$("#inquireus_start").val(getCookie("c_start_time"));}
-$("#inquireus_start").on('change',function(){setCookie("c_start_time",$(this).val(),'7d');});if(getCookie("c_end_time")){$("#inquireus_end").val(getCookie("c_end_time"));}
-$("#inquireus_end").on('change',function(){setCookie("c_end_time",$(this).val(),'7d');});});$zxCont.on('click','.close',function(){$('.Cmask').hide();$zxCont.hide();});$('.zxDialog form').validate({rules:{'Inquire[user_name]':{required:true},'Inquire[user_email]':{required:true,email:true}},errorPlacement:function(error,element){var $element;$element=$(element);$element.parents('.inputbox').find('.msg').html(error);},submitHandler:function(form){var $self,pidId=$('#pid').val(),$thisBtn=$('.d-Icon-r').find('.favorite');$self=$(form);$self.find('.msg').html('&nbsp;');$self.ajaxSubmit(function(data){var $msg;if(typeof data==='string'){data=$.parseJSON(data);}
-$msg=$self.find('>.msg');if(data.success!==1){$self.find('>.msg').removeClass('suc').addClass('err').html(data.message);}else{$self.resetForm();$self.find('>.msg').removeClass('err').addClass('suc').html(data.message);setTimeout(function(){$('.Cconsult_dialog .close').click();$msg.fadeOut();$msg.html('&nbsp;');return $msg.show();},3000);}});}});};senseluxuryFed.detailFun.yudingPop=function(){var comFun=senseluxuryFed.commonFun,$orderCont=$('.orderDialog'),_this=senseluxuryFed;;comFun.datepickerFun('#book_start');comFun.datepickerFun('#book_end');if(getCookie("c_start_time")){$("#book_start").val(getCookie("c_start_time"));$("#start").val(getCookie("c_start_time"));}
-$("#book_start").on('change',function(){setCookie("c_start_time",$(this).val(),'7d');$("#start").val(getCookie("c_start_time"));});if(getCookie("c_end_time")){$("#book_end").val(getCookie("c_end_time"));$("#start1").val(getCookie("c_end_time"));}
-$("#book_end").on('change',function(){setCookie("c_end_time",$(this).val(),'7d');$("#start1").val(getCookie("c_end_time"));});$('#order-btn').click(function(){$('.Cmask').show();$orderCont.show();});$orderCont.on('click','.close',function(){$('.Cmask').hide();$orderCont.hide();});$('.orderDialog form').validate({rules:{'book_user_name':{required:true},'book_user_email':{required:true,email:true}},errorPlacement:function(error,element){var $element;$element=$(element);$element.parents('.inputbox').find('.msg').html(error);},submitHandler:function(form){var $self,pidId=$('#pid').val(),$thisBtn=$('.d-Icon-r').find('.favorite');$self=$(form);$self.find('.msg').html('&nbsp;');$self.ajaxSubmit(function(data){var $msg;if(typeof data==='string'){data=$.parseJSON(data);}
-$msg=$self.find('>.msg');if(data.success!==1){$self.find('>.msg').removeClass('suc').addClass('err').html(data.message);}else{$self.resetForm();$self.find('>.msg').removeClass('err').addClass('suc').html(data.message);setTimeout(function(){$('.Cconsult_dialog .close').click();$msg.fadeOut();$msg.html('&nbsp;');window.location.href=data.redirect;return $msg.show();},50);}});}});};senseluxuryFed.detailFun.dateFun=function(){var comFun=senseluxuryFed.commonFun,$dateBox=$('.Date-box'),domain=$('#domain').val();comFun.datepickerFun('#start');comFun.datepickerFun('#start1');if(getCookie("c_start_time")){$("#start").val(getCookie("c_start_time"));$("#book_start").val(getCookie("c_start_time"));}
-$("#start").on('change',function(){setCookie("c_start_time",$(this).val(),'1d');$("#book_start").val(getCookie("c_start_time"));});if(getCookie("c_end_time")){$("#start1").val(getCookie("c_end_time"));$("#book_end").val(getCookie("c_end_time"));}
-$("#start1").on('change',function(){setCookie("c_end_time",$(this).val(),'1d');$("#book_end").val(getCookie("c_end_time"));});function datetime_to_unix(datetime){var arr=datetime.split("/");var now=new Date(Date.UTC(arr[0],arr[1]-1,arr[2]));return parseInt(now.getTime()/86400000);}
-function unix_to_datetime(unix){var now=new Date(parseInt(unix)*86400000),text='';return text=now.getFullYear()+'/'+setData((now.getMonth()+1))+'/'+setData(now.getDate());};function setData(numb){if(numb<9){return numb='0'+numb}else{return numb;};};$dateBox.find('.room-c').hover(function(){$(this).find('.room-c-list').show();},function(){$(this).find('.room-c-list').hide();});$dateBox.find('#start').change(function(){var qsDate=$dateBox.find('#start').val(),textVal=$dateBox.find('.room-c span').attr('data-val'),flag=$dateBox.find('.room-c span').attr('data-flag'),days=$dateBox.find('.room-c span').attr('date_diff'),pidVal=$('#pid').val(),qsDateTime=datetime_to_unix(qsDate),endTime=parseInt(qsDateTime)+parseInt(days),endDay=null;if($('#start1').val()==''){endDay=unix_to_datetime(endTime).split(' ')[0];$('#start1').val(endDay);$('#start1').trigger("change");}else{endDay=$('#start1').val();};$.ajax({url:domain+'/web/detail/countcost',type:"GET",data:{pid:pidVal,start:qsDate,end:endDay,bedroom:textVal,flag:flag},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(parseInt(data)==-1){$('#cost').html('参数错误');}else{$('#cost').html('¥'+data.price);$('#service').html('¥'+data.service_fee);$('#tax').html('¥'+data.tax);$('#total').html('¥'+data.total);if(data.mini_stay>data.day_diff){$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为"+data.mini_stay+"天，小于该天数将无法预订成功");}else{$("#price_cal_notice").html("");}}}});});$dateBox.find('#start1').change(function(){var qsDate=$dateBox.find('#start').val(),textVal=$dateBox.find('.room-c span').attr('data-val'),days=$dateBox.find('.room-c span').attr('date_diff'),pidVal=$('#pid').val(),flag=$dateBox.find('.room-c span').attr('data-flag'),endDay=$('#start1').val();if(qsDate==''){return false;}else{$.ajax({url:domain+'/web/detail/countcost',type:"GET",data:{pid:pidVal,start:qsDate,end:endDay,bedroom:textVal,flag:flag,},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){$('#cost').html('¥'+data.price);$('#service').html('¥'+data.service_fee);$('#tax').html('¥'+data.tax);$('#total').html('¥'+data.total);if(data.mini_stay>data.day_diff){$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为"+data.mini_stay+"天，小于该天数将无法预订成功");}else{$("#price_cal_notice").html("");}}});}});$dateBox.find('.room-c-list').on('click','li',function(){var qsDate=$dateBox.find('#start').val(),jsDate=$dateBox.find('#start1').val(),textVal=$(this).attr('data-val'),flag=$(this).attr('data-flag'),dateDiffVal=$(this).attr('date_diff'),pidVal=$('#pid').val(),spanCont=$dateBox.find('.room-c span');spanCont.text($(this).text());spanCont.attr({'data-val':textVal,'date_diff':dateDiffVal,'data-flag':flag,});if(qsDate==''||jsDate==''){alert('请选择起住日期和离开日期！')
-return false;}else{if(datetime_to_unix(qsDate)>=datetime_to_unix(jsDate)){alert('离开日期应该在起住日期之后！')}else{$.ajax({url:domain+'/web/detail/countcost',type:"GET",data:{pid:pidVal,start:qsDate,end:jsDate,bedroom:textVal,flag:flag,},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(parseInt(data)==-1){$('#cost').html('参数错误');}else{$('#cost').html('¥'+data.price);$('#service').html('¥'+data.service_fee);$('#tax').html('¥'+data.tax);$('#total').html('¥'+data.total);if(data.mini_stay>data.day_diff){$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为"+data.mini_stay+"天，小于该天数将无法预订成功");}else{$("#price_cal_notice").html("");}}}});}}});var init_get_price=function(){var qsDate=$dateBox.find('#start').val(),jsDate=$dateBox.find('#start1').val(),textVal=$("#bedroom_show").attr('data-val'),flag=$("#bedroom_show").attr('data-flag'),pidVal=$('#pid').val();if(qsDate==''||jsDate==''){return false;}else{if(datetime_to_unix(qsDate)>=datetime_to_unix(jsDate)){alert('离开日期应该在起住日期之后！')}else{$.ajax({url:domain+'/web/detail/countcost',type:"GET",data:{pid:pidVal,start:qsDate,end:jsDate,bedroom:textVal,flag:flag,},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(parseInt(data)==-1){$('#cost').html('参数错误');}else{$('#cost').html('¥'+data.price);$('#service').html('¥'+data.service_fee);$('#tax').html('¥'+data.tax);$('#total').html('¥'+data.total);if(data.mini_stay>data.day_diff){$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为"+data.mini_stay+"天，小于该天数将无法预订成功");}else{$("#price_cal_notice").html("");}}}});}}}
-init_get_price();};senseluxuryFed.listFun.hotSlideFun=function(id){$item=$(id);var $ul=$item.find("ul");var $prev=$item.find(".prev").eq(0);var $next=$item.find(".next").eq(0);var isSliding=false;$prev.click(function(event){if(isSliding)
-return false;var $li=$item.find("ul li");var $last=$li.eq($li.length-1);var $first=$li.eq(0);$last.insertBefore($first);$ul.css({"left":"-274px"});$ul.animate({"left":"0px"},500,function(){$ul.css({"left":"","right":""});isSliding=false;});isSliding=true;return false;});$next.click(function(event){if(isSliding)
-return false;$ul.animate({"right":"274px"},500,function(){var $li=$item.find("ul li");var $first=$li.eq(0);var $last=$li.eq($li.length-1);$first.insertAfter($last);$ul.css({"left":"","right":""});isSliding=false;});isSliding=true;return false;});$ul.find("[style='display:none;']").remove();$ul.append($ul.html());};senseluxuryFed.listFun.priceTipFun=function(){var $searchNav=$('.search-result-hd'),tipVal='',domain=$('#domain').val();$searchNav.find('.items').on('click','.price a',function(){var $this=$(this).parent('li');if($this.hasClass('cur')){$this.find('.list').hide();$this.removeClass('cur');}else{$this.find('.list').show();$this.addClass('cur');};});$searchNav.find('.list').on('click','span',function(){var $this=$(this);tipVal=$this.attr('data-price');$this.parents('li').attr('data-tip',tipVal);$this.parents('li').children('a').html($this.html()+'<i></i>');$this.parent('.list').hide();$searchNav.find('.price').removeClass('cur');paixuFun(tipVal);});function paixuFun(val){var $pageName=$('#pageName').val(),$mddCont=$('.class-search'),_this=senseluxuryFed,$subId=$('#subId').val(),$destina_as=$mddCont.find('.sele-items').eq(0).find('a.cur'),$destina_arr=[],$destina_val='',$style_as=$mddCont.find('.sele-items').eq(1).find('a.cur'),$style_arr=[],$style_val='',$minPrice=$('#slider-range').attr('iNowMin'),$maxPrice=$('#slider-range').attr('iNowMax'),$minRoom=$('#slider-range1').attr('iNowMin'),$maxRoom=$('#slider-range1').attr('iNowMax');$destina_as.each(function(i){$destina_arr.push($(this).attr('c_id'));});$destina_val=$destina_arr.join('|');$style_as.each(function(i){$style_arr.push($(this).attr('tag_id'));});$style_val=$style_arr.join('|');switch($pageName){case'subject':$.ajax({url:domain+'/subject_list/'+$subId,type:"POST",data:{destination:$destina_val,order:val,styles:$style_val,min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){_this.getSearchList(data['val'],$pageName);};}});break;case'destinations':$.ajax({url:domain+'/destinations_list/'+$subId,type:"POST",data:{order:val,styles:$style_val,min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){_this.getSearchList(data['val'],$pageName);};}});break;};};};senseluxuryFed.listFun.mapFun=function(){var $mapBtn=$('.search-result-hd').find('.items .map'),mapHtml='<div id="map_canvas"></div>',$mapCont=$('#map-warp'),domain=$('#domain').val();$mapBtn.on('click','a',function(){$mapCont.fadeIn(400,'swing',function(){var $pageName=$('#pageName').val(),$mddCont=$('.class-search'),_this=senseluxuryFed,$subId=$('#subId').val(),$destina_as=$mddCont.find('.sele-items').eq(0).find('a.cur'),$destina_arr=[],$destina_val='',$style_as=$mddCont.find('.sele-items').eq(1).find('a.cur'),$style_arr=[],$style_val='',priceTip=$('.search-result-hd').find('.price').attr('data-tip')||'',$minPrice=$('#slider-range').attr('iNowMin')||'',$maxPrice=$('#slider-range').attr('iNowMax')||'',$minRoom=$('#slider-range1').attr('iNowMin')||'',$maxRoom=$('#slider-range1').attr('iNowMax')||'',pageNum=$('.page-list').attr('date-page-now');$destina_as.each(function(i){$destina_arr.push($(this).attr('c_id'));});$destina_val=$destina_arr.join('|');$style_as.each(function(i){$style_arr.push($(this).attr('tag_id'));});$style_val=$style_arr.join('|');switch($pageName){case'subject':$.ajax({url:domain+'/subject_list/'+$subId+'?page='+pageNum,type:"POST",data:{destination:$destina_val,order:priceTip,styles:$style_val,min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){initialize(data['val']['data']);};}});break;case'destinations':$.ajax({url:domain+'/destinations_list/'+$subId+'?page='+pageNum,type:"POST",data:{order:priceTip,styles:$style_val,min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){initialize(data['val']['data']);};}});break;};});});$mapCont.on('click','.close',function(){$mapCont.hide();});function initialize(data){var myMap;var aData=data,locations=[],_this=senseluxuryFed;var lat,lon,a_len=0;for(var i=0;i<aData.length;i++){if(aData[i]['longitude']!=''&&aData[i]['latitude']!=''){if(a_len==0){lat=aData[i]['latitude'];lon=aData[i]['longitude'];}
-a_len=a_len+1;locations.push(aData[i]['latitude']+','+aData[i]['longitude']);};};var latlng=new google.maps.LatLng(lat,lon);var myOptions={zoom:12,center:latlng,mapTypeId:google.maps.MapTypeId.ROADMAP};myMap=new google.maps.Map(document.getElementById("map_canvas"),myOptions);for(var i=0;i<locations.length;i++){mapMarker(i,locations[i]);};function mapMarker(index,locations){var loc=locations.split(',');var marker=new google.maps.Marker({position:new google.maps.LatLng(loc[0],loc[1]),map:myMap,title:aData[i]['title']});var infowindow=new google.maps.InfoWindow({content:'<div class="search-result-map"><ul class="items-list"><li><a target="_blank" href="'+aData[i]['url']+'" class="pic"><img src="'+aData[i]['imageUrl']+'" /> </a><div class="msg-text"><h3 class="tit"><a target="_blank" href="'+aData[i]['url']+'">'+aData[i]['title']+'</a></h3><div class="add-type"><p class="address"><span>'+aData[i]['address']+'</span> </p><p class="type-text">'+aData[i]['memo']+'</p></div><div class="serve-type"><p class="ms">'+aData[i]['subject'].join('<span>|</span>')+' </p></div><div class="inner"><a target="_blank" href="'+aData[i]['url']+'" class="xq-btn">查看详情</i></a><p class="price">¥'+aData[i]['price']+'/<small>晚起</small><span>人均¥'+aData[i]['perCapita']+'/晚起</span></p></div></div></li></ul></div>',size:new google.maps.Size(200,200)});google.maps.event.addListener(marker,'click',function(){infowindow.open(myMap,marker);});};};};senseluxuryFed.detailFun.likeSlideFun=function(id){senseluxuryFed.listFun.hotSlideFun(id);};senseluxuryFed.commonFun.datepickerFun=function(id,type){if(type!='button'){type='div';}else{type='button';}
-$(id).datepicker({showOn:type,buttonImage:"http://www.senseluxury.com/statics/web/antarctica/img/calendar_icon.png",buttonImageOnly:true,minDate:0,onClose:function(selectedDate){if(id=='#start1'){$("#start").datepicker("option","maxDate",selectedDate);}
-if(id=="#start"){$("#start1").datepicker("option","minDate",selectedDate);}
-if(id=="#inquire_start"){$("#inquire_end").datepicker("option","minDate",selectedDate);}
-if(id=="#inquire_end"){$("#inquire_start").datepicker("option","maxDate",selectedDate);}
-if(id=="#inquireus_start"){$("#inquireus_end").datepicker("option","minDate",selectedDate);}
-if(id=="#inquireus_end"){$("#inquireus_start").datepicker("option","maxDate",selectedDate);}
-if(id=="#book_start"){$("#book_end").datepicker("option","minDate",selectedDate);}
-if(id=="#book_end"){$("#book_start").datepicker("option","maxDate",selectedDate);}}});};senseluxuryFed.commonFun.zixunSubmit=function(){var comFun=senseluxuryFed.commonFun;comFun.datepickerFun('#inquire_start','button');comFun.datepickerFun('#inquire_end','button');if(getCookie("c_start_time")){$("#inquire_start").val(getCookie("c_start_time"));}
-$("#inquire_start").on('change',function(){setCookie("c_start_time",$(this).val(),'1d');});if(getCookie("c_end_time")){$("#inquire_end").val(getCookie("c_end_time"));}
-$("#inquire_end").on('change',function(){setCookie("c_end_time",$(this).val(),'1d');});$('.header .will form').validate({rules:{'Inquire[user_name]':{required:true},'Inquire[user_email]':{required:true,email:true}},errorPlacement:function(error,element){var $element;$element=$(element);$element.parents('.inputbox').find('.msg').html(error);},submitHandler:function(form){var $self;$self=$(form);$self.find('.msg').html('&nbsp;');$self.ajaxSubmit(function(data){var $msg;if(typeof data==='string'){data=$.parseJSON(data);}
-$msg=$self.find('.consult>.msg');if(data.success!==1){$msg.removeClass('suc').addClass('err').html(data.message);}else{$self.resetForm();willdata=[];$.cookie('willdata',willdata);comFun.ShouCanFun(willdata);if($('.favorite').length){$('.favorite').removeClass('curr');};$msg.removeClass('err').addClass('suc').html('提交成功');setTimeout(function(){return $msg.fadeOut(function(){return $(this).html('&nbsp');}).fadeIn();},3000);}});}});};senseluxuryFed.setCookie=function($this,idVal,pageID){var $item,$self,data,id,will_item,willdata,_i,_j,_len,_len1;var _this=senseluxuryFed;$self=$this;willdata=$.cookie('willdata')||[];id=idVal;if($self.hasClass('curr')){$self.removeClass('curr');for(_i=0,_len=willdata.length;_i<_len;_i++){will_item=willdata[_i];if(will_item['p_id']===id){willdata.splice($.inArray(willdata[_i],willdata),1);break;}}}else{for(_j=0,_len1=willdata.length;_j<_len1;_j++){will_item=willdata[_j];if(will_item['p_id']===id){return false;}}
-if(pageID=='detail'){$item=$('.jg-left');data={id:idVal,links:window.location.href,img:$item.find('#dt_slides .tab_body').children('li').eq(0).find('img').attr('src'),title:$item.find('.de-info .tit').text(),address:$item.find('.add span').html(),typeText:$('#p_memo').val()};}else{$item=$self.parents('li');data={id:$self.attr('data-id'),links:$item.find('.pic').attr('href'),img:$item.find('.pic img').attr('src'),title:$item.find('.tit a').html(),address:$item.find('.address span').html(),typeText:$item.find('.type-text').html()};}
-$self.addClass('curr');willdata.push(data);};$.cookie('willdata',willdata,{expires:365,path:'/'});_this.commonFun.ShouCanFun(willdata);};senseluxuryFed.commonFun.ShouCan=function(){$.cookie.json=true;var $searchResult=$('.search-result-cm'),_this=senseluxuryFed,pageIdVal=pageID;if(pageIdVal=='detail'){var $thisBtn=$('.jg-right').find('.favorite');$thisBtn.click(function(){var $this=$(this),pid=$('#pid').val();_this.setCookie($this,pid,'detail');return false;});}else if(pageIdVal='default'){}else{$searchResult.on('click','.items-list .favorite',function(){var $this=$(this),id=$this.attr('data-id');_this.setCookie($this,id,'subject');return false;});}};senseluxuryFed.commonFun.ShouCanFun=function(data){var arrVal=data||[],$headerCont=$('.header'),$navCont=$headerCont.find('.nav'),$navListCont=$navCont.find('.navlink5'),shouCanHtmlList='',pageIdVal=pageID;if(arrVal.length>0){$navListCont.find('.ma').html(COMMON_MESSAGE.favorate+' ('+arrVal.length+')');$navListCont.find('.notice').addClass('Ldn');$navListCont.find('.consult').removeClass('Ldn');for(i in arrVal){var links=arrVal[i]['links'],picSrc=arrVal[i]['img'],title=arrVal[i]['title'],address=arrVal[i]['address'],type=arrVal[i]['typeText'];shouCanHtmlList+='<div id="willitem-'+arrVal[i]['p_id']+'" data-id="'+arrVal[i]['p_id']+'" class="willitem Lmt10"><a href="javascript:void(0);" class="close"></a> <a href="'+links+'" class="img"><img src="'+picSrc+'" width="140" height="66"></a> <b><a href="'+links+'">'+title+'</a></b> <p>'+address+'<br>'+type+'</p> <input type="hidden" name="product_id[]" value="'+arrVal[i]['p_id']+'"></div>'
-if(pageIdVal=='detail'){var $this=$('.jg-right').find('.favorite'),pid=$('#pid').val();if(pid==arrVal[i]['p_id']){$this.addClass('curr');};}else{var $this=$('.favorite[data-id = '+arrVal[i]['p_id']+']');$this.addClass('curr');}}
-$('#shoucanList').html($(shouCanHtmlList));}else{$navListCont.find('.ma').html(COMMON_MESSAGE.favorate+' (0)');$('#shoucanList').html('');$navListCont.find('.notice').removeClass('Ldn');$navListCont.find('.consult').addClass('Ldn');};};senseluxuryFed.commonFun.closeShouCan=function(){$('#shoucanList').on('click','.willitem .close',function(){var $item,$self,data,id,will_item,willdata,_i,_j,_len,_len1;_this=senseluxuryFed,pageIdVal=pageID;$self=$(this);id=$self.parent('.willitem').attr('data-id');if(pageIdVal=='detail'){var $this=$('.jg-right').find('.favorite'),pid=$('#pid').val();if(pid==id){$this.removeClass('curr');};}else{$('.favorite[data-id = '+id+']').removeClass('curr');}
-willdata=$.cookie('willdata')||[];for(_i=0,_len=willdata.length;_i<_len;_i++){will_item=willdata[_i];if(will_item['p_id']===id){willdata.splice($.inArray(willdata[_i],willdata),1);break;}}
-$.cookie('willdata',willdata,{expires:365,path:'/'});_this.commonFun.ShouCanFun(willdata);});};senseluxuryFed.getSearchList=function(data,pageName){var aData=data['data'],_this=this,aHtml='',subId=$('#subId').val(),searchResult=$('.search-result-cm'),dataIdArr=[];aHtml+='<ul class="items-list">';for(var i=0;i<aData.length;i++){aHtml+='<li>';aHtml+='<a class="tag t_l" href="'+aData[i]['url']+'#bspj-tit" title="'+MESSAGE.reviews+'（'+aData[i]['comments']+'）"><img src="/resource/img/js_images/comments.png"/>'+aData[i]['comments']+'<div class = "comment_tip">评论</div></a>'
-aHtml+='<a class="tag t_r" href="javascript:void(0);" title="'+MESSAGE.stayed+aData[i]['been']+'"><img src="/resource/img/js_images/been_orange.png"/>'+aData[i]['been']+'<div class = "been_tip">去过</div></a>';aHtml+='<a href="'+aData[i]['url']+'" class="pic"><img alt="度假别墅-'+aData[i]['title']+'" class="lazy" data-original="'+aData[i]['imageUrl']+'" /> </a>';aHtml+='<div class="msg-text">';aHtml+='<h3 class="tit"><a href="'+aData[i]['url']+'">'+aData[i]['title']+'</a></h3>';aHtml+='<div class="add-type"><p class="address"><span>'+aData[i]['address']+'</span> </p><p class="type-text">'+aData[i]['memo']+'</p></div>';aHtml+='<div class="serve-type"><p class="ms">'+aData[i]['subject'].join('<span>|</span>')+' </p><p class="fw">'+MESSAGE.service+'：'+aData[i]['server']+'</p></div>';aHtml+='<div class="inner">';aHtml+='<a href="'+aData[i]['url']+'" class="xq-btn">'+MESSAGE.book+'</a>';aHtml+='<a href="javascript:void(0);" data-id="'+aData[i]['id']+'" class="icon favorite"></a>';if(aData[i]['price']>100){aHtml+='<p class="price">¥'+aData[i]['price']+'/<small>'+MESSAGE.night+'</small><span>'+MESSAGE.percaptial+'¥'+aData[i]['perCapita']+'/'+MESSAGE.night+'</span></p>';}else{aHtml+=MESSAGE.inquire_rate;}
-aHtml+='</div></div>';if(aData[i]['discount_ratio']<1||aData[i]['is_discount']==1){aHtml+='<span class="xsyh-icon">';if(aData[i]['is_discount']==1){var di=aData[i]['discount_info'].split("#");aHtml+="<p>"+di[0]+"</p>";}else{var discout=parseInt((1-aData[i]['discount_ratio']).toFixed(2)*100);aHtml+="<font>"+discout+"%<em></em>OFF</font>";}
-aHtml+='<p>'+MESSAGE.promotion+'</p>';aHtml+='</span>';}
-aHtml+='</li>';}
-aHtml+='</ul>';searchResult.html('').html(aHtml);_this.getPageFun(data['page'],data['pageTotal']);$("#total").html(data['total']);$("#limitInfo").html(data['limitInfo']);$("img.lazy").lazyload({effect:"fadeIn",});};senseluxuryFed.getPageFun=function(iNow,total){var _this=this,iNowNumb=iNow,allPages=total,pageHtml='',pageName=$('#pageName').val(),subId=$('#subId').val(),$pageCont=$('.page-list'),showPageNum=11;$pageCont.attr({'date-page-now':iNowNumb,'date-page-all':allPages});if(allPages<=1){$pageCont.html('');}
-else{iNowNumb=iNowNumb<1?1:iNowNumb;if(iNowNumb<=5){pageHtml+=(iNowNumb<=1?'':'<a href="javascript:void(0);" class="prve"><img src= "/resource/img/js_images/pageprev.png"/></a>');var end=allPages-1>=5?5:allPages-1;for(var i=1;i<=end;i++){switch(pageName){case'subject':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/subject/'+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'destinations':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/destinations/'+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'search':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/search/?q='+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'discount':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/discounts/'+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'article':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/article'+'?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'place':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/place.html'+'?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'view':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/view'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'shop':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/shop'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'food':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/food'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'entertainment':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/entertainment'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'foods':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/food/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'views':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/sight/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'shops':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/shop/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'entertainments':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/entertainment/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;};}
-if(allPages>6){pageHtml+='<span>···</span>';}
-switch(pageName){case'subject':pageHtml+='<a href="/subject/'+subId+'/?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'destinations':pageHtml+='<a href="/destinations/'+subId+'/?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'search':pageHtml+='<a href="/search/?q='+subId+'/?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'discount':pageHtml+='<a href="/discounts/'+subId+'/?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'article':pageHtml+='<a href="/article'+'?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'place':pageHtml+='<a href="/place.html'+'?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'view':var artId=$('#artId').val();pageHtml+='<a href="/view'+'/'+'?page='+allPages+'&id='+artId+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'shop':var artId=$('#artId').val();pageHtml+='<a href="/shop'+'/'+'?page='+allPages+'&id='+artId+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'food':var artId=$('#artId').val();pageHtml+='<a href="/food'+'/'+'?page='+allPages+'&id='+artId+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'entertainment':var artId=$('#artId').val();pageHtml+='<a href="/entertainment'+'/'+'?page='+allPages+'&id='+artId+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'foods':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/food/'+desName+'-'+desId+'-'+allPages+'.html'+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'views':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/sight/'+desName+'-'+desId+'-'+allPages+'.html'+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'shops':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/shop/'+desName+'-'+desId+'-'+allPages+'.html'+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'entertainments':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/entertainment/'+desName+'-'+desId+'-'+allPages+'.html'+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;};pageHtml+=(iNowNumb==allPages?'':'<a href="javascript:void(0);" class="next"><img src= "/resource/img/js_images/pagenext.png" /></a>');}
-else if(iNowNumb>=allPages-4){pageHtml+=(iNowNumb<=1?'':'<a href="javascript:void(0);" class="prve"><img src= "/resource/img/js_images/pageprev.png"/></a>');switch(pageName){case'subject':pageHtml+='<a href="/subject/'+subId+'/?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'destinations':pageHtml+='<a href="/destinations/'+subId+'/?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'search':pageHtml+='<a href="/search/?q='+subId+'/?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'discount':pageHtml+='<a href="/discounts/'+subId+'/?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'article':pageHtml+='<a href="/article'+'?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'place':pageHtml+='<a href="/place.html'+'?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'view':var artId=$('#artId').val();pageHtml+='<a href="/view'+'/'+'?page='+'1'+'&id='+artId+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'shop':var artId=$('#artId').val();pageHtml+='<a href="/shop'+'/'+'?page='+'1'+'&id='+artId+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'food':var artId=$('#artId').val();pageHtml+='<a href="/food'+'/'+'?page='+'1'+'&id='+artId+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'entertainment':var artId=$('#artId').val();pageHtml+='<a href="/entertainment'+'/'+'?page='+'1'+'&id='+artId+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'foods':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/food/'+desName+'-'+desId+'-'+'1'+'.html'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'views':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/sight/'+desName+'-'+desId+'-'+'1'+'.html'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'shops':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/shop/'+desName+'-'+desId+'-'+'1'+'.html'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'entertainments':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/entertainment/'+desName+'-'+desId+'-'+allPages+'.html'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;};if(allPages>6){pageHtml+='<span>···</span>';}
-var start=allPages-4>2?allPages-4:2;for(var i=start;i<=allPages;i++){switch(pageName){case'subject':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/subject/'+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'destinations':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/destinations/'+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'search':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/search/?q='+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'discount':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/discounts/'+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'article':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/article'+'?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'place':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/place.html'+'?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'view':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/view'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'shop':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/shop'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'food':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/food'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'entertainment':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/entertainment'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'foods':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/food/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'views':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/sight/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'shops':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/shop/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'entertainments':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/entertainment/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;};}
-pageHtml+=(iNowNumb==allPages?'':'<a href="javascript:void(0);" class="next"><img src= "/resource/img/js_images/pagenext.png"/></a>');}
-else if(allPages>=9&&iNowNumb>=6&&iNowNumb<=allPages-5){pageHtml+=(iNowNumb<=1?'':'<a href="javascript:void(0);" class="prve"><img src= "/resource/img/js_images/pageprev.png"/></a>');switch(pageName){case'subject':pageHtml+='<a href="/subject/'+subId+'/?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'destinations':pageHtml+='<a href="/destinations/'+subId+'/?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'search':pageHtml+='<a href="/search/?q='+subId+'/?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'discount':pageHtml+='<a href="/discounts/'+subId+'/?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'article':pageHtml+='<a href="/article'+'?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'place':pageHtml+='<a href="/place.html'+'?page='+'1'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'view':var artId=$('#artId').val();pageHtml+='<a href="/view'+'/'+'?page='+'1'+'&id='+artId+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'shop':var artId=$('#artId').val();pageHtml+='<a href="/shop'+'/'+'?page='+'1'+'&id='+artId+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'food':var artId=$('#artId').val();pageHtml+='<a href="/food'+'/'+'?page='+'1'+'&id='+artId+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'entertainment':var artId=$('#artId').val();pageHtml+='<a href="/entertainment'+'/'+'?page='+'1'+'&id='+artId+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'foods':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/food/'+desName+'-'+desId+'-'+'1'+'.html'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'views':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/sight/'+desName+'-'+desId+'-'+'1'+'.html'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'shops':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/shop/'+desName+'-'+desId+'-'+'1'+'.html'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;case'entertainments':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/entertainment/'+desName+'-'+desId+'-'+allPages+'.html'+'" class="pageNumb" data-num="'+'1'+'">'+'1'+'</a>';break;};pageHtml+='<span>···</span>';for(var i=iNowNumb-2;i<=iNowNumb+2;i++){switch(pageName){case'subject':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/subject/'+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'destinations':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/destinations/'+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'search':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/search/?q='+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'discount':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/discounts/'+subId+'/?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'article':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/article'+'?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'place':if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/place.html'+'?page='+i+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'view':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/view'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'shop':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/shop'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'food':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/food'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'entertainment':var artId=$('#artId').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/entertainment'+'/'+'?page='+i+'&id='+artId+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'foods':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/food/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'views':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/sight/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'shops':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/shop/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;case'entertainments':var desId=$('#des_id').val();var desName=$('#des_name').val();if(i==iNowNumb){pageHtml+='<b>'+i+'</b>';}else{pageHtml+='<a href="/entertainment/'+desName+'-'+desId+'-'+i+'.html'+'" class="pageNumb" data-num="'+i+'">'+i+'</a>';}
-break;};}
-pageHtml+='<span>···</span>';switch(pageName){case'subject':pageHtml+='<a href="/subject/'+subId+'/?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'destinations':pageHtml+='<a href="/destinations/'+subId+'/?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'search':pageHtml+='<a href="/search/?q='+subId+'/?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'discount':pageHtml+='<a href="/discounts/'+subId+'/?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'article':pageHtml+='<a href="/article'+'?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'place':pageHtml+='<a href="/place.html'+'?page='+allPages+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'view':var artId=$('#artId').val();pageHtml+='<a href="/view'+'/'+'?page='+allPages+'&id='+artId+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'shop':var artId=$('#artId').val();pageHtml+='<a href="/shop'+'/'+'?page='+allPages+'&id='+artId+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'food':var artId=$('#artId').val();pageHtml+='<a href="/food'+'/'+'?page='+allPages+'&id='+artId+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'entertainment':var artId=$('#artId').val();pageHtml+='<a href="/entertainment'+'/'+'?page='+allPages+'&id='+artId+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'foods':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/food/'+desName+'-'+desId+'-'+allPages+'.html'+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'views':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/sight/'+desName+'-'+desId+'-'+allPages+'.html'+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'shops':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/shop/'+desName+'-'+desId+'-'+allPages+'.html'+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;case'entertainments':var desId=$('#des_id').val();var desName=$('#des_name').val();pageHtml+='<a href="/entertainment/'+desName+'-'+desId+'-'+allPages+'.html'+'" class="pageNumb" data-num="'+allPages+'">'+allPages+'</a>';break;};pageHtml+=(iNowNumb==allPages?'':'<a href="javascript:void(0);" class="next"><img src= "/resource/img/js_images/pagenext.png"/></a>');}
-$pageCont.html('').html(pageHtml);}};senseluxuryFed.pageClickFun=function(pageNum){var href=window.location.href,$pageName=$('#pageName').val(),$mddCont=$('.class-search'),$TM_mbox_top=$('.TM_mbox').offset().top,_this=senseluxuryFed,$subId=$('#subId').val(),$destina_as=$mddCont.find('.sele-items').eq(0).find('a.cur'),$destina_arr=[],$destina_val='',$style_as=$mddCont.find('.sele-items').eq(1).find('a.cur'),$style_arr=[],$style_val='',$minPrice=$('#slider-range').attr('iNowMin'),$maxPrice=$('#slider-range').attr('iNowMax'),$minRoom=$('#slider-range1').attr('iNowMin'),$maxRoom=$('#slider-range1').attr('iNowMax'),priceTip=$('.search-result-hd').find('.price').attr('data-tip')||'',domain=$('#domain').val();$destina_as.each(function(i){$destina_arr.push($(this).attr('c_id'));});$destina_val=$destina_arr.join('|');$style_as.each(function(i){$style_arr.push($(this).attr('tag_id'));});$style_val=$style_arr.join('|');switch($pageName){case'subject':$.ajax({url:domain+'/subject_list/'+$subId+'?page='+pageNum,type:"POST",data:{destination:$destina_val,order:priceTip,styles:$style_val,min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){$('html,body').animate({scrollTop:$TM_mbox_top},200,function(){_this.getSearchList(data['val'],$pageName);});};}});break;case'destinations':$.ajax({url:domain+'/destinations_list/'+$subId+'?page='+pageNum,type:"POST",data:{order:priceTip,styles:$style_val,min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){$('html,body').animate({scrollTop:$TM_mbox_top},200,function(){_this.getSearchList(data['val'],$pageName);});};}});break;case'search':$.ajax({url:domain+'/search_list?q='+$subId+'&page='+pageNum,type:"POST",data:{min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){$('html,body').animate({scrollTop:$TM_mbox_top},200,function(){_this.getSearchList(data['val'],$pageName);});};}});break;case'discount':$.ajax({url:domain+'/discount_list/'+$subId+'?page='+pageNum,type:"POST",data:{},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){$('html,body').animate({scrollTop:$TM_mbox_top},200,function(){_this.getSearchList(data['val'],$pageName);});};}});break;};};senseluxuryFed.detailFun.fixedMenuFun=function(){var $menuCont=$('.detail-type'),menuTop=710,arrTop=[],$fixMenu=$('#fixed-menu');if($(".dtit_date").length>0){menuTop=1120;}
-$('.floor-index').each(function(i){arrTop.push($(this).offset().top-150);});arrTop[0]=$('#dt_slides').offset().top-88;$(window).scroll(function(){var winTop=$(window).scrollTop();if(winTop>menuTop){$fixMenu.show();}else{$fixMenu.hide();};for(i in arrTop){if(winTop>arrTop[i]-150){$fixMenu.find('.detail-type li').eq(i).addClass('cur').siblings('li').removeClass('cur');};};});$menuCont.find('li').off().on('click','a',function(){var _index=$(this).parent('li').index();$('html,body').animate({scrollTop:arrTop[_index]},500);return false;});$('.facility-btn').click(function(){var facilityTop=$('#facility').offset().top;$('html,body').animate({scrollTop:facilityTop-88},500);return false;});$('.server-btn').click(function(){var serverTop=$('#server').offset().top;$('html,body').animate({scrollTop:serverTop-88},500);return false;});};senseluxuryFed.listFun.priceSlide=function(obj){var $slideId1=$(obj),slideArrType=$slideId1.attr('data-slider-type'),slideArr1=[parseInt($slideId1.attr('data-slider-min')),parseInt($slideId1.attr('data-slider-max')),parseInt($slideId1.attr('data-slider-step'))];$slideId1.slider({range:true,step:slideArr1[2],min:slideArr1[0],max:slideArr1[1],values:[slideArr1[0],slideArr1[1]],slide:function(event,ui){var $price_area,$self,lock,max_price;$self=$(this);$price_area=$self.parents('.slider_box').find('label small');max_price=parseInt($self.data('sliderMax'));if(parseInt(ui.values[1])==max_price){$price_area.html("¥"+ui.values[0]+"-¥"+ui.values[1]+"+");}else{$price_area.html("¥"+ui.values[0]+"-¥"+ui.values[1]);}},change:function(event,ui){var $self,max_price,suffix;$self=$(this);max_price=parseInt($self.data('sliderMax'));if(parseInt(ui.values[1])==max_price){suffix="+";}else{suffix="";}
-$slideId1.siblings('label').find('small').html("¥"+$slideId1.slider("values",0)+"-¥"+$slideId1.slider("values",1)+suffix);$slideId1.attr('iNowMin',$slideId1.slider("values",0));$slideId1.attr('iNowMax',$slideId1.slider("values",1));var $mddCont=$('.class-search'),$pageName=$('#pageName').val(),_this=senseluxuryFed,$subId=$('#subId').val(),$destina_as=$mddCont.find('.sele-items').eq(0).find('a.cur'),$destina_arr=[],$destina_val='',$style_as=$mddCont.find('.sele-items').eq(1).find('a.cur'),$style_arr=[],$style_val='',$minRoom=$('#slider-range1').attr('iNowMin'),$maxRoom=$('#slider-range1').attr('iNowMax'),priceTip=$('.search-result-hd').find('.price').attr('data-tip')||'',domain=$('#domain').val();$destina_as.each(function(i){$destina_arr.push($(this).attr('c_id'));});$destina_val=$destina_arr.join('|');$style_as.each(function(i){$style_arr.push($(this).attr('tag_id'));});$style_val=$style_arr.join('|');switch($pageName){case'subject':$.ajax({url:domain+'/subject_list/'+$subId,type:"POST",data:{destination:$destina_val,order:priceTip,styles:$style_val,min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$slideId1.slider("values",0),'max_price':$slideId1.slider("values",1)},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){_this.getSearchList(data['val'],$pageName);};}});break;case'destinations':$.ajax({url:domain+'/destinations_list/'+$subId,type:"POST",data:{order:priceTip,styles:$style_val,min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$slideId1.slider("values",0),'max_price':$slideId1.slider("values",1)},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){_this.getSearchList(data['val'],$pageName);};}});break;case'search':$.ajax({url:domain+'/search_list?q='+$subId,type:"POST",data:{min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$slideId1.slider("values",0),'max_price':$slideId1.slider("values",1)},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){_this.getSearchList(data['val'],$pageName);};}});break;};}});};senseluxuryFed.listFun.houseSlide=function(obj){var $slideId1=$(obj),slideArrType=$slideId1.attr('data-slider-type'),slideArr1=[parseInt($slideId1.attr('data-slider-min')),parseInt($slideId1.attr('data-slider-max')),parseInt($slideId1.attr('data-slider-step'))];$slideId1.slider({range:true,step:slideArr1[2],min:slideArr1[0],max:slideArr1[1],values:[slideArr1[0],slideArr1[1]],slide:function(event,ui){var $bedroom_area,$self,lock,max_bedroom;$self=$(this);$bedroom_area=$self.parents('.slider_box').find('label small');max_bedroom=parseInt($self.data('sliderMax'));$bedroom_area.html(ui.values[0]+"-"+ui.values[1]);},change:function(event,ui){$slideId1.siblings('label').html("卧室："+$slideId1.slider("values",0)+"-"+$slideId1.slider("values",1));$slideId1.attr('iNowMin',$slideId1.slider("values",0));$slideId1.attr('iNowMax',$slideId1.slider("values",1));var $mddCont=$('.class-search'),$pageName=$('#pageName').val(),_this=senseluxuryFed,$subId=$('#subId').val(),$destina_as=$mddCont.find('.sele-items').eq(0).find('a.cur'),$destina_arr=[],$destina_val='',$style_as=$mddCont.find('.sele-items').eq(1).find('a.cur'),$style_arr=[],$style_val='',$minRoom=$('#slider-range1').attr('iNowMin'),$maxRoom=$('#slider-range1').attr('iNowMax'),$minPrice=$('#slider-range').attr('iNowMin'),$maxPrice=$('#slider-range').attr('iNowMax'),priceTip=$('.search-result-hd').find('.price').attr('data-tip')||'',domain=$('#domain').val();$destina_as.each(function(i){$destina_arr.push($(this).attr('c_id'));});$destina_val=$destina_arr.join('|');$style_as.each(function(i){$style_arr.push($(this).attr('tag_id'));});$style_val=$style_arr.join('|');switch($pageName){case'subject':$.ajax({url:domain+'/subject_list/'+$subId,type:"POST",data:{destination:$destina_val,order:priceTip,styles:$style_val,min_bedroom:$slideId1.slider("values",0),max_bedroom:$slideId1.slider("values",1),min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){_this.getSearchList(data['val'],$pageName);};}});break;case'destinations':$.ajax({url:domain+'/destinations_list/'+$subId,type:"POST",data:{order:priceTip,styles:$style_val,min_bedroom:$slideId1.slider("values",0),max_bedroom:$slideId1.slider("values",1),min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){_this.getSearchList(data['val'],$pageName);};}});break;case'search':$.ajax({url:domain+'/search_list?q='+$subId,type:"POST",data:{min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){_this.getSearchList(data['val'],$pageName);};}});break;};}});};senseluxuryFed.listFun.classFun=function(obj){var $this=$(obj);$this.find('.sele-items').on('click','dt',function(){$(this).parent('.sele-items').toggleClass('curr');});$this.find('.sele-items').on('click','dd a',function(){$(this).toggleClass('cur');var $mddCont=$('.class-search'),$pageName=$('#pageName').val(),_this=senseluxuryFed,$subId=$('#subId').val(),$destina_as=$mddCont.find('.sele-items').eq(0).find('a.cur'),$destina_arr=[],$destina_val='',$style_as=$mddCont.find('.sele-items').eq(1).find('a.cur'),$style_arr=[],$style_val='',$minRoom=$('#slider-range1').attr('iNowMin'),$maxRoom=$('#slider-range1').attr('iNowMax'),$minPrice=$('#slider-range1').attr('iNowMin'),$maxPrice=$('#slider-range1').attr('iNowMax'),priceTip=$('.search-result-hd').find('.price').attr('data-tip')||'',domain=$('#domain').val();$destina_as.each(function(i){$destina_arr.push($(this).attr('c_id'));});$destina_val=$destina_arr.join('|');$style_as.each(function(i){$style_arr.push($(this).attr('tag_id'));});$style_val=$style_arr.join('|');switch($pageName){case'subject':$.ajax({url:domain+'/subject_list/'+$subId,type:"POST",data:{destination:$destina_val,order:priceTip,styles:$style_val,min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){_this.getSearchList(data['val']);};}});break;case'destinations':$.ajax({url:domain+'/destinations_list/'+$subId,type:"POST",data:{destination:$destina_val,order:priceTip,styles:$style_val,min_bedroom:$minRoom,max_bedroom:$maxRoom,min_price:$minPrice,'max_price':$maxPrice},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){_this.getSearchList(data['val']);};}});break;};});};senseluxuryFed.indexFun.banSlideFun=function(obj){var $this=$(obj),$winW=$(window).width();$ulItems=$this.find('.slides'),lis=$ulItems.find('li').length,iNow=0,timer=null;$this.hover(function(){$(this).find('.prev').show();$(this).find('.next').show();},function(){$(this).find('.prev').hide();$(this).find('.next').hide();});$ulItems.find('li').css('height',$winW*3/8+'px');$this.on('click','.next',function(){if(iNow<lis-1){iNow++;}else(iNow=0);$ulItems.find('li').eq(iNow).stop(true,true).fadeIn().siblings('li').fadeOut();return false;});$this.on('click','.prev',function(){if(iNow>0){iNow--;}else(iNow=lis-1);$ulItems.find('li').eq(iNow).stop(true,true).fadeIn().siblings('li').fadeOut();return false;});timer=setInterval(function(){$this.find('.next').trigger('click');},3000);$this.hover(function(){clearInterval(timer);},function(){timer=setInterval(function(){$this.find('.next').trigger('click');},3000);});};senseluxuryFed.Autocomplete=function(obj){var $inputId=$(obj),comFun=senseluxuryFed.commonFun,domain=$('#domain').val(),gourl=0;if(getCookieCn("destination")&&getCookieCn("destination")!="undefined")
-{$inputId.val(getCookieCn("destination"));$inputId.attr('data-type',getCookieCn("destination-type"));$("#AutoSearch").attr('data-id',getCookieCn("destination-id"))}
-if(getCookie("c_start_time")&&getCookie("c_start_time")!="undefined")
-{var date=new Date(getCookie("c_start_time"));if(date<=new Date()){date.setDate(new Date().getDate()+3);}
-date=formatDate(date);setCookie("c_start_time",date,'7d');$('#rz_time_start').val(date);$('#rz_time_start').attr("data-valname",date);}
-if(getCookie("c_end_time")&&getCookie("c_end_time")!="undefined")
-{var date=new Date(getCookie("c_start_time"));if(date.getDate()<=(new Date()).getDate()+3){date.setDate((new Date()).getDate()+6);}
-date=formatDate(date);setCookie("c_end_time",date,'7d');$('#rz_time_end').val(date);$('#rz_time_end').attr("data-valname",date);}
-if(getCookie("c_guest_amount")&&getCookie("c_guest_amount")!="undefined")
-{$('#people_numb').find('input').val(getCookie("c_guest_amount"))
-$('#people_numb').find('input').attr("data-valname",getCookie("c_guest_amount"));}
-var _keyWord=$.trim($("#AutoSearch").val());var _nilKeyWord='未能检索到相关结果';$('.D1main .txt-input').click(function(){var _this=$(this);if(_this.val()=='目的地/别墅'){_this.val('');}})
-$('.D1main .txt-input').blur(function(){var _this=$(this);if(_this.val()==''){_this.val('');}})
-$('.D1main ul .li1 b.clear').on('click',function(){$('#AutoSearch').val("");});$('#AutoSearch').click(function(){var _this=$(this);if($(this).val()!=''){$('.D1main ul .li1 b.clear').css('display','inline');}
-else{$('.D1main ul .li1 b.clear').css('display','none');}
-var getStr=getCookieCn("dest_history");var getArr=getStr.split(',');var thisItem;var pushed=0;var sHtml="";for(var i in getArr){if(pushed<=9){thisItem=getArr[i].split('_');if(thisItem.length==4){sHtml+='<li data-id="'+thisItem[3]+'" data-type="'+thisItem[2]+'"><span>'+thisItem[0]+'</span> <b>'+thisItem[1]+'</b></li>';}
-if(thisItem.length==3){sHtml+='<li  data-id="'+thisItem[2]+'" data-type="'+thisItem[1]+'"><span>'+thisItem[0]+'</span></li>';}
-pushed++;}}
-if(getArr[0]!=""){$('.defList>.history').css('display','block');$('.defList').css('display','block');$('.defList>ul').empty();$('.defList>ul').append($(sHtml));}
-else{$('.defList').css('display','block');$('.defList>ul').empty();}});$('.des-input').on("click","ul li",function(){keyw=$(this).text();$inputId.val($(this).text());$inputId.attr('data-id',$(this).attr('data-id'));$inputId.attr('data-type',$(this).attr('data-type'));$('.autoList').remove();$('.defList').css('display','none');$(obj).siblings('.s-btn').trigger('click');});$('.des-input').on("click","p span",function(){keyw=$(this).text();$inputId.val($(this).text());$inputId.attr('data-id',$(this).attr('data-id'));$inputId.attr('data-type',$(this).attr('data-type'));$('.autoList').remove();$('.defList').css('display','none');});$('.des-input').mouseleave(function(){$('.defList>ul').empty();$('.des-input .autoList').remove();$('.defList').css('display','none');})
-$(document).on('propertychange oninput','.D1main .txt-input',function(){var _this=$(this);if(_this.val()==_keyWord){_this.val('');}
-if(_this.val()==_nilKeyWord){_this.val('');}
-if(_this.attr('data-id')&&_this.attr('data-id')!=''){_this.attr('data-id','');}
-if(_this.attr('data-type')&&_this.attr('data-type')!=''){_this.attr('data-type','');}});var searchById=function(val){var vId=parseInt(val.substr(1,val.length));if(isNaN(vId))
-return;window.location="/villa/"+vId;};$('.search-btn').on('click','.btn',function(){var keyVal=$inputId.val(),guestAmount=$('#people_numb').find('input').val(),startTime=$('#rz_time_start').val(),endTime=$('#rz_time_end').val(),tourl='';guestAmount=guestAmount=="不限"?"":guestAmount=="10+"?11:guestAmount;var cookieArr;if(getCookieCn("dest_history")){cookieArr=getCookieCn("dest_history").split(',');}else{cookieArr=[];}
-if($("#AutoSearch").attr('data-type')=='1'){var thisArr=$.trim($("#AutoSearch").val()).split(' ');var thisPush=thisArr[0]+'_'+thisArr[1]+'_'+$("#AutoSearch").attr('data-type')+'_'+$("#AutoSearch").attr('data-id');if(cookieArr.indexOf(thisPush)==-1){cookieArr.push(thisPush);}}
-else{var thisStr=$.trim($inputId.val())+'_'+$("#AutoSearch").attr('data-type')+'_'+$("#AutoSearch").attr('data-id');if(cookieArr.indexOf(thisStr)==-1){cookieArr.push(thisStr);}}
-var cookieStr=cookieArr.join(',');setCookieCn("dest_history",cookieStr,30);if(keyVal.substr(0,1)==="#")
-searchById(keyVal);if(startTime==$('#rz_time_start').attr('data-valname')){startTime=false;}else{setCookie("c_start_time",startTime,'7d');}
-if(endTime==$('#rz_time_end').attr('data-valname')){endTime=false;}else{setCookie('c_end_time',endTime,'7d');}
-if(guestAmount==$('#people_numb').find('input').attr('data-valname')){guestAmount=false;}else{setCookie('c_guest_amount',guestAmount,'7d');}
-if(endTime&&!startTime){$(".li2 .ui-datepicker-trigger").css('outline','1px solid red');return false;}
-var d_id=$("#AutoSearch").attr('data-id');if($("#AutoSearch").attr('data-type')=='1'){tourl+='/villa/'+d_id;tourl+=startTime?'/checkin/'+startTime.replace('/','').replace('/',''):'';tourl+=endTime?'/checkout/'+endTime.replace('/','').replace('/',''):'';}else{tourl='/destinations/'+d_id;tourl+=guestAmount?'/pn/'+guestAmount:'';tourl+=startTime?'/checkin/'+startTime.replace('/','').replace('/',''):'';tourl+=endTime?'/checkout/'+endTime.replace('/','').replace('/',''):'';}
-var t=$inputId.attr('data-type');var d_name=$inputId.attr('data-valname')
-if(t&&keyVal!=d_name&&keyVal!=""){setCookieCn("destination",$inputId.val(),7);setCookieCn("destination-type",t,7);setCookieCn("destination-id",$("#AutoSearch").attr('data-id'),7);window.open(tourl);}else{$inputId.val("");}});var keyw='';var tipsHtml='';$inputId.on('keyup',$inputId,function(e){var val=$(this).val();if(val){$('.D1main ul .li1 b.clear').css('display','inline');}
-else{$('.D1main ul .li1 b.clear').css('display','none');}
-var getStr=getCookieCn("dest_history");var getArr=getStr.split(',');var thisItem;var pushed=0;var sHtml="";for(var i in getArr){if(pushed<=9){thisItem=getArr[i].split('_');if(thisItem.length==4){sHtml+='<li data-id="'+thisItem[3]+'" data-type="'+thisItem[2]+'"><span>'+thisItem[0]+'</span> <b>'+thisItem[1]+'</b></li>';}
-if(thisItem.length==3){sHtml+='<li  data-id="'+thisItem[2]+'" data-type="'+thisItem[1]+'"><span>'+thisItem[0]+'</span></li>';}
-pushed++;}}
-if($(this).val()==''){$('.des-input .autoList').remove();if(getArr[0]!=""){console.info(1);$('.defList>.history').css('display','block');$('.defList').css('display','block');$('.defList>ul').empty();$('.defList>ul').append($(sHtml));}
-else{$('.defList').css('display','block');$('.defList>ul').empty();}}
-else{$('.defList').css('display','none');}
-keyw="";$(".ll_input_tip").hide();$inputId.parent().css('outline','0px solid red');if(val==_nilKeyWord){$(this).val('');return false;}
-e=e||event;if(val.substr(0,1)==="#"){if(e.keyCode===13)
-searchById(val);$('.des-input .autoList').remove();return;}
-if(e.which==13&&$("#AutoSearch").attr('data-id')>0){$("#AutoSearch").val(keyw);$('.des-input .autoList').remove();$('#rz_time_start').focus();$("#rz_time_start").datepicker('show');return false;}
-$.ajax({url:domain+'/search_suggest/?q='+encodeURIComponent(val),type:"POST",dataType:"jsonp",jsonpCallback:'aaa',success:function(data){var sHtml='';sHtml+='<div class="autoList"><ul>';var num=0;for(var i in data){num++;sHtml+='<li data-id="'+data[i]['data_id']+'" data-type="'+data[i]['type']+'">'+data[i]['keywords']+'</li>';}
-if(num==0){sHtml+='<li data-id="-1">未能检索到相关结果</li>';}
-sHtml+='</ul></div>';if(data!=''){$("#AutoSearch").attr('data-id',data[0]['data_id']);$("#AutoSearch").attr('data-type',data[0]['type']);keyw=data[0]['keywords'];tipsHtml=sHtml;}
-if($('.autoList').length){$('.autoList').remove();$('.des-input').append($(sHtml));}else{$('.des-input').append($(sHtml));};$(obj).siblings('.s-btn').click(function(){if(!$inputId.attr('data-id')&&$('.autoList').length==0){return;}else if(!$inputId.attr('data-id')){var obj=$('.des-input').find('.autoList ul li').eq(0);$inputId.val(obj.text());$inputId.attr('data-id',obj.attr('data-id'));$inputId.attr('data-type',obj.attr('data-type'));}
-window.location.href=domain+'/search/?q='+$inputId.val()+'&id='+$inputId.attr('data-id')+'&type='+$inputId.attr('data-type');});}});});$('#clear_history').on('click',function(){$('#AutoSearch').val('');delCookie('dest_history');delCookie("destination");delCookie("c_start_time");delCookie("c_end_time");delCookie("c_guest_amount");$('.defList>ul').empty();$('.defList>ul').css('display','none');$('.defList>.history').css('display','none');});};senseluxuryFed.FqaFun=function(){var $fqaCont=$('.fqa-main');$fqaCont.find('.fqa-menu').on('click','li a',function(){var $this=$(this),_index=$this.parent('li').index();$this.parent('li').siblings('li').children('a').removeClass('cur');$this.addClass('cur');$fqaCont.find('.fqtab-cont').eq(_index).show().siblings('.fqtab-cont').hide();});};senseluxuryFed.detailFun.getCommentList=function(data){var aData=data['data'],_this=senseluxuryFed.detailFun,aHtml='',commentCont=$('.detail-app');for(i in aData){aHtml+='<li> <div class="com-top"><i class="rx-icon"></i><span class="hes">'+aData[i]["userName"]+'</span><span class="hus">'+aData[i]["addTime"]+'</span></div><div class="yhlf-bg"><div class="yhrt-bg"><p>'+aData[i]["info"]+'</p></div></div></li>';}
-commentCont.find('ul').html('').html(aHtml);_this.comGetPageFun(data['page'],data['pageTotal']);};senseluxuryFed.detailFun.comGetPageFun=function(iNow,total){var _this=this,iNow=iNow,allPage=total,pageHtml='',$pageCont=$('.page-list');$pageCont.attr({'date-page-now':iNow,'date-page-all':allPage});if(allPage<=1){$pageCont.html('');}else{if(iNow==1){pageHtml+='';}else{pageHtml+='<a href="javascript:void(0);" class="prve"><img src= "/resource/img/js_images/pageprev.png"/></a>';};for(var i=0;i<allPage;i++){if((i+1)==iNow){pageHtml+='<b>'+(i+1)+'</b>';}else{pageHtml+='a href="javacript:void(0);" class="pageNumb" data-num="'+(i+1)+'">'+(i+1)+'</a>';}};if(iNow==allPage){pageHtml+='';}else{pageHtml+='<a href="javascript:void(0);" class="next"><img src= "/resource/img/js_images/pagenext.png" /></a>';};$pageCont.html('').html(pageHtml);}};senseluxuryFed.detailFun.comPageClickFun=function(pageNum){var _this=senseluxuryFed.detailFun,$subId=$('#pid').val(),domain=$('#domain').val();$.ajax({url:domain+'/detail_review/'+$subId+'?page='+pageNum,type:"GET",dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){if(data['code']==200){_this.getCommentList(data['val']);$('.detail-type').find('.items li').eq(4).children('a').trigger('click');};}});};senseluxuryFed.detailFun.setcommentFun=function(infoText){var text=infoText,_this=senseluxuryFed.detailFun,$subId=$('#pid').val(),domain=$('#domain').val();;$.ajax({url:domain+'/detail_addreview/'+$subId,type:"POST",data:{info:text},dataType:"jsonp",jsonpCallback:'jsonp',success:function(data){$('#top_textarea').val(data['msg']).css('color','#f00');if(data['code']==200){_this.comPageClickFun(0);$('#top_textarea').val('');};}});};senseluxuryFed.detailFun.commentFun=function(){var _this=senseluxuryFed.detailFun,$commentCont=$('.detail-app'),$textarea=$('#top_textarea'),$pageCont=$('.page-list'),iNowNumb=$pageCont.attr('date-page-now'),allNumb=$pageCont.attr('date-page-all');_this.comGetPageFun(iNowNumb,allNumb);$commentCont.find('.login-btn').click(function(){$('.userlink').find('.login-btn').trigger('click');});$commentCont.find('.reg-btn').click(function(){$('.userlink').find('.reg-btn').trigger('click');});$pageCont.on('click','.pageNumb',function(){var pageIndex=$(this).attr('data-num');_this.comPageClickFun(parseInt(pageIndex));iNowNumb=parseInt(pageIndex);return false;});$pageCont.on('click','.prve',function(){_this.comPageClickFun(parseInt(iNowNumb)-1);iNowNumb=parseInt(iNowNumb)-1;return false;});$pageCont.on('click','.next',function(){_this.comPageClickFun(parseInt(iNowNumb)+1);iNowNumb=parseInt(iNowNumb)+1;return false;});$textarea.focus(function(){var text=$(this).val();if(text=='内容不能为空！'||text=='内容不能小于10个字符！'){$('#top_textarea').val('').css('color','#333');};});$commentCont.find('.fbplBtn').on('click','a',function(){var _text=$textarea.val();if(_text=='内容不能为空！'||_text=='内容不能小于10个字符！'){_text='';}
-if(_text==''){$textarea.val('内容不能为空！').css('color','#f00');}else if(_text.length<10){$textarea.val('内容不能小于10个字符！').css('color','#f00');}
-else{_this.setcommentFun(_text);}
-return false;});};function wrapAuto(){var wrapHeight=$('.botInfo').height();var wrapWidth=$(window).width();$('.djInfo,.enjoy,.leftBg,.rightBg').height(wrapHeight);$('.leftBg,.rightBg').width((wrapWidth-1100)/2);};$(function(){wrapAuto();var price_1=0,price_2=0,sumPrice=0;sumPrice=parseFloat($('#addPrice_3').val())+parseFloat($('#addPrice_4').val())+parseFloat($('#addPrice_5').val());if(sumPrice>0){$('.zj i').text(sumPrice);$('#sumPrice').val(sumPrice);}
-$('.f-price').click(function(){price_1=$(this).find('input').attr('data-value');var f_rate=$("#f-rate").val();if($(this).hasClass('cur')){$("#addPrice_1").val(0);$(this).removeClass('cur');price_1=-price_1;}else{$("#addPrice_1").val(f_rate);$(this).addClass('cur');price_1=price_1;}
-price_2=parseFloat(price_2)+parseFloat(price_1);sumPrice=parseFloat($('#addPrice_3').val())+parseFloat($('#addPrice_4').val())+parseFloat($('#addPrice_5').val())+parseFloat(price_2);if(sumPrice>0){$('.zj i').text(sumPrice);$('#sumPrice').val(sumPrice);}});$('#submit_inquire').click(function(){var input=$("<input>").attr("type","hidden").attr("name","t").val("inquire");$("#order_form").append($(input));$("#order_form").submit();});$('#pay_next').click(function(){$("#order_form").submit();});$('.select-c').hover(function(){$(this).find('.select-c-list').show();},function(){$(this).find('.select-c-list').hide();});var countPrice=function(){var url=$("#count-url").val();var bookStart=$('#book_start').val();var bookEnd=$('#book_end').val();var pidVal=$('#pid').val();var roomNumb=$('#book_bedroom').val();if(bookStart==''||bookEnd==''){}else{bookStart=bookStart.replace(/\//g,'-');bookEnd=bookEnd.replace(/\//g,'-');var startTime=new Date(Date.parse(bookStart)).getTime();var endTime=new Date(Date.parse(bookEnd)).getTime();var dates=Math.abs((startTime-endTime))/(1000*60*60*24);$.ajax({url:url,type:"get",dataType:"json",data:{pid:pidVal,start:bookStart,end:bookEnd,bedroom:roomNumb},success:function(data){if(data=='-1'){$('.sumPriceCon').html('<span>总价：</span><p><span class="f12">参数错误！</span></p>')}else{$('.sumPriceCon').find('p b').html(data.price);if(data.min_stay>dates){$('#booking_price_notice').html("提示：您预订的期间最短入住天数要求为"+data.min_stay+"天，小于该天数将无法预订成功");}else{$('#booking_price_notice').html("");}
-$('.sumPriceCon').find('p i').html(dates);};}});}}
-$('.select-c-list').eq(0).find('li').click(function(){var liVal=$(this).text();$(this).parents('.select-c-list').hide().siblings('span').text(liVal);var value=$(this).attr('data-val');$('#book_bedroom').val(value);countPrice();});$('.select-c-list').eq(1).find('li').click(function(){var liVal=$(this).text();$(this).parents('.select-c-list').hide().siblings('span').text(liVal);$('#book_adult').val(liVal);countPrice();});$('.select-c-list').eq(2).find('li').click(function(){var liVal=$(this).text();$(this).parents('.select-c-list').hide().siblings('span').text(liVal);$('#book_child').val(liVal);countPrice();});});window.onresize=function(){wrapAuto();};function setCookie(name,value,time,fun){delCookie(name);var strsec=getsec(time);var exp=new Date();exp.setTime(exp.getTime()+strsec*1);document.cookie=name+"="+escape(value)+";expires="+exp.toGMTString()+";path=/";if(fun){fun();}};function __setCookie(name,value,fun){delCookie(name);var exp=new Date();document.cookie=name+"="+escape(value)+";path=/";if(fun){fun();}};function getCookieCn(c_name)
-{if(document.cookie.length>0)
-{c_start=document.cookie.indexOf(c_name+"=");if(c_start!=-1)
-{c_start=c_start+c_name.length+1;c_end=document.cookie.indexOf(";",c_start);if(c_end==-1)c_end=document.cookie.length
-return unescape(document.cookie.substring(c_start,c_end));}}
-return"";}
-function setCookieCn(c_name,value,expiredays)
-{var exdate=new Date();exdate.setDate(exdate.getDate()+expiredays);document.cookie=c_name+"="+escape(value)+
-((expiredays==null)?"":"; expires="+exdate.toGMTString())+"; path=/";}
-function getsec(str){var str1=str.substr(0,str.length-1)*1;var str2=str.substr(str.length-1,str.length);if(str2=="s"){return str1*1000;}else if(str2=="h"){return str1*60*60*1000;}else if(str2=="d"){return str1*24*60*60*1000;}};function getCookie(name){var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");if(arr=document.cookie.match(reg))
-return(arr[2]);else
-return null;};function delCookie(name){var exp=new Date();exp.setTime(exp.getTime()-1);var cval=getCookie(name);if(cval!=null)
-document.cookie=name+"="+cval+";expires="+exp.toGMTString();};$(".immbook").click(function(){$("#order-btn").trigger("click");});$("ul").delegate('li[class="available"]','click',function(){$("#order-btn").trigger("click");});$(function(){var index=0;var speed=750;var $ul=$(".index-say .say-slider .slider-ul");var $arrowDown=$(".index-say .say-slider .slider-point .arrow-down");var $a=$(".index-say .say-slider .slider-point .point-list a");var slideTo=function(index,$this){var arrowDownLeft=-778+index*244.25;$arrowDown.animate({"left":arrowDownLeft+"px"},speed,function(){$a.removeClass("active");$this.addClass("active");});var ulLeft=1100*index;$ul.animate({"left":-ulLeft+"px"},speed,function(){});};$a.mouseenter(function(event){$arrowDown.stop();$ul.stop();var $this=$(this);index=$this.data().index;slideTo(index,$this);});});(function(){setInterval(autoA,7000);var n=0;var dir=0;function autoA()
-{var len=$(".testimotial-btn li").length;if(n>=len-1&&dir==1)
-dir=0;else if(n<=0)
-dir=1;if(dir==0)
-n--;else
-n++;$(".testimotial-btn li").removeClass("active");$(".testimotial-btn li").eq(n).addClass("active");$(".testimotial-box").attr("style","transform:translate3d("+(-n*730)+"px,0,0);transition-duration:0.5s")}
-$(".testimotial-btn li").click(function(){var index=$(this).index();n=index;$(".testimotial-btn li").removeClass("active")
-$(this).addClass("active");$(".testimotial-box").attr("style","transform:translate3d("+(-index*730)+"px,0,0);transition-duration:0.5s")})})()
-$(".icons-up-arrow").click(function()
-{nums=nums<(-lenght/3)?(-lenght/3):nums>=0?0:nums+1;autoS();})
-$(".icons-down-arrow").click(function()
-{nums=nums>0?(-lenght/3):nums-1;autoS();})
-var nums=0;var lenght
-function autoS(){lenght=$(".testimontial-right-item").length;if(nums<-lenght/3){nums=0;$(".testimotial-container").css("position","static");}
-if(nums==-1){$(".testimotial-container").css("position","absolute");}
-if(nums==(-lenght/3)+1){}
-$(".testimotial-container").css("top",147*3*nums+'px');}
-function ajaxGetD(){var limit=$(".testimotial-container").attr('data-limit');var size=51;var html="";$.ajax({type:'get',data:{'limit':limit,'size':size},url:rooturl,dataType:'jsonp',jsonpCallback:'jsonp',success:function(data){if(data&&data.code=="200"){$(".testimotial-container").attr('data-limit',limit-0+1);$.each(data.val,function(i,item){if(item.headerimg==""||item.headerimg==null){item.headerimg='/resource/img/js_images/morentouxiang_03.png';}
-item.u_name=item.u_name==""?'第六感别墅度假用户':item.u_name;html+=' <div class="testimontial-right-item">'
-+'<div><img class="testimotial-right-avatar" src="'+item.headerimg+'" alt="">'
-+'<div class="testimotial-right-c">'
-+'<p>'+item.u_name+'</p>'
-+'<a href="http://www.senseluxury.com/villa/'+item.pid+'_'+item.title_en+'"><p class="color-ff8 testimotial-left-l"><i class="icon-laction"></i>'+item.p_title+' | '+item.des+'</p></a>'
-+'</div>'
-+'<p class="testimotial-right-info">"'+item.info+'" </p>'
-+' </div></div>'})
-$(".testimotial-container").append(html);}}})}
-var formatDate=function(date){var y=date.getFullYear();var m=date.getMonth()+1;m=m<10?'0'+m:m;var d=date.getDate();d=d<10?('0'+d):d;return y+'/'+m+'/'+d;};
-;(function(a){a.fn.scrollLoading=function(b){var c={attr:"data-url",container:a(window),callback:a.noop};var d=a.extend({},c,b||{});d.cache=[];a(this).each(function(){var h=this.nodeName.toLowerCase(),g=a(this).attr(d.attr);var i={obj:a(this),tag:h,url:g};d.cache.push(i)});var f=function(g){if(a.isFunction(d.callback)){d.callback.call(g.get(0))}};var e=function(){var g=d.container.height();if(d.container.get(0)===window){contop=a(window).scrollTop()}else{contop=d.container.offset().top}a.each(d.cache,function(m,n){var p=n.obj,j=n.tag,k=n.url,l,h;if(p){l=p.offset().top-contop,h=l+p.height();if((l>=0&&l<g)||(h>0&&h<=g)){if(k){if(j==="img"){f(p.attr("src",k))}else{p.load(k,{},function(){f(p)})}}else{f(p)}n.obj=null}}})};e();d.container.bind("scroll",e)}})(jQuery);
+senseluxuryFed.indexFun.peopleNumb = function() {
+	$('#people_numb').hover(function() {
+		$(this).find('div').show();
+	}, function() {
+		$(this).find('div').hide();
+	});
+	$('#people_numb').find('div a').click(function() {
+		$('#people_numb').find('p').html($(this).html());
+		$('#people_numb').find('input').val($(this).html());
+		$('#people_numb').find('div').hide();
+		if ($(this).attr('class') == 'cleans') {
+			$('#people_numb').find('p').html('选择入住人数');
+			$('#people_numb').find('input').val('');
+		}
+	});
+};
+senseluxuryFed.indexFun.imgList = function(obj, cat) {
+	var obj = obj,
+		_this = $(obj),
+		sctop = 0,
+		fobj = '.slV1_I_L_con_div',
+		forID = 0,
+		dataID = new Array(606, 77, 762, 85, 26, 25),
+		dbg = 0;
+
+	function db_list(isID) {
+		var isdataID = '',
+			classshow = '';
+		if (isID > 0) {
+			isdataID = isID;
+			classshow = ' slV1_cur';
+		} else {
+			isdataID = dataID[0];
+		}
+		if (dataID == '') return false;
+		if (dbg == 1) return false;
+		$.ajax({
+			url: 'getcityproductlist/' + isdataID + '/jsonp/jsonp',
+			type: "POST",
+			dataType: "jsonp",
+			jsonpCallback: 'jsonp',
+			success: function(data) {
+				var data = data['data'];
+				var html = "";
+				html += '<ul class="slV1_I_L_con_ul' + classshow + '">';
+				for (var i = 0; i < data.length; i++) {
+					var price = (data[i]['price'] > 100) ? '¥<span>' + data[i]['price'] + '</span>/' + MESSAGE.night : '<span style="font-size: small">' + MESSAGE.inquire_rate + '</span>';
+					html += '<li>';
+					if (data[i]["is_panorama"]) {
+						html += '<a href="javascript:void(0)"><div class="panorama"><span>全景</span></div></a>'
+					}
+					html += '<div><a href="' + data[i]['href'] + '"><img src="' + data[i]['data_url'] + '"></a></div>';
+					html += '<div class="con">'
+					html += '<a class="title slV1_fs3" href="' + data[i]['href'] + '">' + data[i]['title'] + '</a>';
+					html += '<span class="dsp slV1_fs5">' + data[i]['name'] + '</span>';
+					html += '<strong class="slV1_fs3">' + price + '</strong>';
+					if (data[i]['rate_per_person'] > 0) {
+						html += '<span class="Lflr slV1_fs5">' + MESSAGE.perperson + ' ￥' + data[i]['rate_per_person'] + '/' + MESSAGE.night + '</span>';
+					}
+					html += '</div>';
+					html += '<div class="icons"><div class="icon-ws"><span class="iconfont-home">&#xe606;</span>' + data[i]['bedroom'] + '</div>';
+					html += '<div class="icon-yc"><span class="iconfont-home">&#xe60e;</span>' + data[i]['shower_room'] + '</div>';
+					var pool = (data[i]['pool'] != 0) ? '<div class="icon-wsj"><span class="iconfont-home">&#xe607;</span> ' + data[i]['pool'] + '</div>' : '';
+					html += pool;
+					html += '</div></li>';
+				}
+				html += '</ul>';
+				$('.con3').find('.ul_main').append(html);
+				for (var i = 0; i <= dataID.length; i++) {
+					if (dataID[i] == isdataID) {
+						dataID.shift(i);
+					}
+				}
+				db_list(0);
+			}
+		});
+	}
+	_this.find(fobj).on('click', 'ul li', function() {
+		dbg = 1;
+		if (db_is_array(dataID, $(this).attr('data-id'))) {
+			dbg = 0;
+			db_list($(this).attr('data-id'));
+		} else {
+			dbg = 0;
+			db_list(0);
+		}
+		var _index = $(this).index();
+		_this.find(fobj + ' ul li').removeClass('cur jieji_1s jieji_2s jieji_3s jieji_4s jieji_5s jieji_6s jieji_7s');
+		$(this).addClass('cur ' + 'jieji_' + (_index + 1) + 's');
+		$("#site-name").html($(this).find('p').eq(0).html());
+		$(".index-tab1A").attr('href', '/destinations/' + $(this).attr('data-id'));
+		_this.find('.slV1_I_L_con_ul').removeClass('slV1_cur');
+		_this.find('.slV1_I_L_con_ul').animate({
+			'opacity': '0'
+		}, 100);
+		_this.find('.slV1_I_L_con_ul').eq($(this).index()).addClass('slV1_cur');
+		_this.find('.slV1_I_L_con_ul').eq($(this).index()).animate({
+			'opacity': '1'
+		}, 100);
+	})
+
+	function db_is_array(arr, str) {
+		for (var i = 0; i <= arr.length; i++) {
+			if (arr[i] == str) return true;
+		}
+		return false;
+	}
+	$(window).bind('scroll', function() {
+		if (_this.offset() && _this.offset().top < (($(window).height() + $(window).scrollTop()) + 500)) {
+			if (sctop == '0') {
+				sctop = '1';
+				db_list(0);
+			}
+		}
+	})
+}
+senseluxuryFed.indexFun.imgList2 = function(obj, cat) {
+	var obj = obj,
+		_this = $(obj),
+		sctop = 0,
+		fobj = '.slV1_I_L_con_div',
+		forID = 0,
+		dataID = new Array('27', '38', '20', '22', '327')
+		dbg = 0;
+
+	function db_list(isID) {
+		var isdataID = '',
+			classshow = '';
+		if (isID > 0) {
+			isdataID = isID;
+			classshow = ' slV1_cur';
+		} else {
+			isdataID = dataID[0];
+		}
+		if (dataID == '') return false;
+		if (dbg == 1) return false;
+		$.ajax({
+			url: 'getsubjectlist/' + isdataID + '/jsonp/jsonp',
+			type: "POST",
+			dataType: "jsonp",
+			jsonpCallback: 'jsonp',
+			success: function(data) {
+				var data = data['data'];
+				var html = "";
+				html += '<ul class="slV1_I_L_con_ul' + classshow + '">';
+				for (var i = 0; i < data.length; i++) {
+					var price = (data[i]['price'] > 100) ? '¥<span>' + data[i]['price'] + '</span>/' + MESSAGE.night : '<span style="font-size: small">' + MESSAGE.inquire_rate + '</span>';
+					html += '<li>';
+					if (data[i]["is_panorama"]) {
+						html += '<a href="javascript:void(0)"><div class="panorama"><span>全景</span></div></a>'
+					}
+					html += '<div><a href="' + data[i]['href'] + '"><img src="' + data[i]['data_url'] + '"></a></div>';
+					html += '<div class="con">'
+					html += '<a class="title slV1_fs3" href="' + data[i]['href'] + '">' + data[i]['title'] + '</a>';
+					html += '<span class="dsp slV1_fs5">' + data[i]['parent_name'] + " " + data[i]['name'] + '</span>';
+					html += '<strong class="slV1_fs3">' + price + '</strong>';
+					if (data[i]['rate_per_person'] > 0) {
+						html += '<span class="Lflr slV1_fs5">' + MESSAGE.perperson + ' ￥' + data[i]['rate_per_person'] + '/' + MESSAGE.night + '</span>';
+					}
+					html += '</div>';
+					html += '<div class="icons"><div class="icon-ws"><span class="iconfont-home">&#xe606;</span>' + data[i]['bedroom'] + '</div>';
+					html += '<div class="icon-yc"><span class="iconfont-home">&#xe60e;</span>' + data[i]['shower_room'] + '</div>';
+					var pool = (data[i]['pool'] != 0) ? '<div class="icon-wsj"><span class="iconfont-home">&#xe607;</span> ' + data[i]['pool'] + '</div>' : '';
+					html += pool;
+					html += '</div></li>';
+				}
+				html += '</ul>';
+				$('.con4').find('.ul_main').append(html);
+				for (var i = 0; i <= dataID.length; i++) {
+					if (dataID[i] == isdataID) {
+						dataID.shift(i);
+					}
+				}
+				db_list(0);
+			}
+		});
+	}
+	_this.find(fobj).on('click', 'ul li', function() {
+		dbg = 1;
+		if (db_is_array(dataID, $(this).attr('data-id'))) {
+			dbg = 0;
+			db_list($(this).attr('data-id'));
+		} else {
+			dbg = 0;
+			db_list(0);
+		}
+		_this.find(fobj + ' ul li').removeClass('cur');
+		$(this).addClass('cur');
+		_this.find('.slV1_I_L_con_ul').removeClass('slV1_cur');
+		_this.find('.slV1_I_L_con_ul').animate({
+			'opacity': '0'
+		}, 100);
+		_this.find('.slV1_I_L_con_ul').eq($(this).index()).addClass('slV1_cur');
+		_this.find('.slV1_I_L_con_ul').eq($(this).index()).animate({
+			'opacity': '1'
+		}, 100);
+		$("#site-name1").html($(this).attr('data-name'));
+		$(".index-tab2A").attr('href', '/subject/' + $(this).attr('data-id'));
+		_this.find('.slV1_I_L_con_div ul li').css('height', '94px');
+		$(this).css('height', '160px');
+	})
+
+	function db_is_array(arr, str) {
+		for (var i = 0; i <= arr.length; i++) {
+			if (arr[i] == str) return true;
+		}
+		return false;
+	}
+	$(window).bind('scroll', function() {
+		if (_this.offset() && _this.offset().top < (($(window).height() + $(window).scrollTop()) + 500)) {
+			if (sctop == '0') {
+				sctop = '1';
+				db_list(0);
+			}
+		}
+	})
+}
+senseluxuryFed.indexFun.searchFixde = function() {
+	var comFun = senseluxuryFed.commonFun,
+		$fixMenu = $('.D1Search'),
+		menuTop = $fixMenu.offset() ? $fixMenu.offset().top : -1;
+	if (menuTop === -1) return false;
+	$(window).scroll(function() {
+		var winTop = $(window).scrollTop();
+		if (winTop > menuTop) {
+			$fixMenu.addClass('fiexd');
+		} else {
+			$fixMenu.removeClass('fiexd');
+		};
+	});
+};
+senseluxuryFed.indexFun.ajaxLoadXilie = function() {
+	var $xlCont = $('.index-lvyou');
+	$xlCont.find('.index-tab1').on('click', 'li', function() {
+		var $this = $(this),
+			dataId = $this.attr('data-id'),
+			siteTitle = $this.attr('data-name');
+		var domain = "/";
+		$this.addClass('cur').siblings('li').removeClass('cur');
+		$.ajax({
+			url: domain + 'getcityproductlist/' + dataId + '/jsonp/jsonp',
+			type: "GET",
+			dataType: "jsonp",
+			jsonpCallback: 'jsonp',
+			success: function(data) {
+				var sData = data;
+				console.log(sData);
+				addHtmlFun(sData.data);
+				$('#site-name').html(siteTitle);
+			}
+		});
+	});
+
+	function addHtmlFun(data) {
+		var html = "";
+		html += '<ul>';
+		for (var i = 0; i < data.length; i++) {
+			var price = (data[i]['price'] > 100) ? '¥' + data[i]['price'] + '/' + MESSAGE.night : '<span style="font-size: small">' + MESSAGE.inquire_rate + '</span>';
+			html += '<li>';
+			html += '<div class="zhu-len Lposa">' + price + '</div>';
+			html += '<div><a href="' + data[i]['href'] + '"><img src="' + data[i]['data_url'] + '"></a></div>';
+			html += '<div class="Lpl10 Lpr10 Lmt10"><a href="' + data[i]['href'] + '" class="Lfz16">' + data[i]['title'] + '</a></div>';
+			html += '<div class="Lc999 Lpl10 Lpr10">' + data[i]['parent_name'] + " " + data[i]['name'] + '</div>';
+			html += '<div class="divyy"><span>' + data[i]['tag'] + '</span></div>';
+			html += '</li>';
+		}
+		html += '</ul>';
+		$('#con_tab_1').html(html);
+		$('.index-tab1A').attr("href", '/discounts/' + $('.index-tab1').find('.cur').attr("data-id"));
+	};
+	$('#con_tab_1').on('click', 'li .newsicon2', function() {
+		var $this = $(this);
+		$this.addClass('newsicon3');
+	});
+};
+senseluxuryFed.indexFun.ajaxLoadTheme = function() {
+	var $xlCont = $('.index-lvyou');
+	$xlCont.find('.index-tab2').on('click', 'li', function() {
+		var $this = $(this),
+			dataId = $this.attr('data-id'),
+			siteTitle = $this.attr('data-name');
+		var domain = "/";
+		$this.css('height', 190).siblings('li').css('height', 92);
+		$this.addClass('cur').siblings('li').removeClass('cur');
+		$.ajax({
+			url: domain + 'getsubjectlist/' + dataId + '/jsonp/jsonp',
+			type: "GET",
+			dataType: "jsonp",
+			jsonpCallback: 'jsonp',
+			success: function(data) {
+				var sData = data;
+				console.log(sData);
+				addHtmlFun(sData.data);
+				$('#site-name1').html(siteTitle);
+			}
+		});
+	});
+
+	function addHtmlFun(data) {
+		var html = "";
+		html += '<ul>';
+		for (var i = 0; i < data.length; i++) {
+			var price = (data[i]['price'] > 100) ? '¥' + data[i]['price'] + '/' + MESSAGE.night : '<span style="font-size: small">' + MESSAGE.inquire_rate + '</span>';
+			html += '<li><div class="zhu-len Lposa">' + price + '</div><div><a href="' + data[i]['href'] + '"><img src="' + data[i]['data_url'] + '"></a></div><div class="Lpl10 Lpr10 Lmt10"><a href="' + data[i]['href'] + '" class="Lfz16">' + data[i]['title'] + '</a></div><div class="Lc999 Lpl10 Lpr10">' + data[i]['parent_name'] + " " + data[i]['name'] + '</div><div class="divyy"><span>' + data[i]['tag'] + '</span></div></li>';
+		}
+		html += '</ul>';
+		$('#con_tabs_1').html(html);
+		$('.index-tab2A').attr("href", '/discounts/' + $('.index-tab2').find('.cur').attr("data-id"));
+	};
+	$('#con_tab_1').on('click', 'li .newsicon2', function() {
+		var $this = $(this),
+			id = $this.attr('data-id');
+		$this.addClass('newsicon3');
+		_this.setCookie($this, id, 'default');
+	});
+};
+senseluxuryFed.weixinFun = function() {
+	$('.Cflowwidget').find('a.wx').hover(function() {
+		$(this).children('.qrcode').show();
+	}, function() {
+		$(this).children('.qrcode').hide();
+	});
+};
+senseluxuryFed.listFun = function() {
+	var _this = senseluxuryFed.listFun;
+	_this.priceSlide('#slider-range');
+	_this.houseSlide('#slider-range1');
+	_this.classFun('.class-search');
+	_this.priceTipFun();
+	_this.hotSlideFun('#likeCont');
+	_this.mapFun();
+	var $pageCont = $('.page-list'),
+		iNowNumb = $pageCont.attr('date-page-now'),
+		allNumb = $pageCont.attr('date-page-all');
+	senseluxuryFed.getPageFun(iNowNumb, allNumb);
+	$pageCont.on('click', '.pageNumb', function() {
+		var pageIndex = $(this).attr('data-num');
+		senseluxuryFed.pageClickFun(parseInt(pageIndex));
+		iNowNumb = parseInt(pageIndex);
+		return false;
+	});
+	$pageCont.on('click', '.prve', function() {
+		senseluxuryFed.pageClickFun(parseInt(iNowNumb) - 1);
+		iNowNumb = parseInt(iNowNumb) - 1;
+		return false;
+	});
+	$pageCont.on('click', '.next', function() {
+		senseluxuryFed.pageClickFun(parseInt(iNowNumb) + 1);
+		iNowNumb = parseInt(iNowNumb) + 1;
+		return false;
+	});
+};
+senseluxuryFed.detailFun = function() {
+	var _this = this,
+		deFun = _this.detailFun;
+	_this.indexFun.picSlide('#dt_slides', '.tabLabel');
+	deFun.dateFun();
+	deFun.fixedMenuFun();
+	deFun.likeSlideFun('#likeCont');
+	deFun.zixunPop();
+	deFun.yudingPop();
+	deFun.commentFun();
+	var $queryPrice = $('.query-price');
+	$queryPrice.find('.room-c').hover(function() {
+		var $this = $(this);
+		$this.find('.room-c-list').show();
+	}, function() {
+		$(this).find('.room-c-list').hide();
+	});
+	$('.room-c-list').on('click', 'li', function() {
+		var _index = $(this).index();
+		$queryPrice.find('span').html($(this).html());
+		$(this).parent('.room-c-list').hide();
+		$queryPrice.siblings('.price-tabcont').hide();
+		$queryPrice.siblings('.price-tabcont').eq(_index).show();
+	});
+	$('.price-tabcont').find('.bz-cont').on('click', 'a', function() {
+		var $this = $(this);
+		if ($this.hasClass('show')) {
+			$this.parent('.bz-cont').siblings('.price-tab').find('tbody tr').hide().siblings('tr').eq(0).show();
+			$this.removeClass('show').html('【' + MESSAGE.show_more_rates + ' + 】');
+		} else {
+			$this.parent('.bz-cont').siblings('.price-tab').find('tr').show();
+			$this.addClass('show').html('【' + MESSAGE.show_less_rates + ' - 】');
+		}
+		return false;
+	});
+	var $infoText = $('.info-cont');
+	$infoText.on('click', '.more', function() {
+		var $this = $(this);
+		if ($this.hasClass('open')) {
+			$this.removeClass('open').html('【' + MESSAGE.show_more_details + ' + 】');
+			$this.siblings('.info-text').css('height', '72px');
+		} else {
+			$this.addClass('open').html('【' + MESSAGE.show_less_details + ' - 】');
+			$this.siblings('.info-text').css('height', '113px');
+		};
+		deFun.fixedMenuFun();
+	});
+	var $infoTop = $('.de-info');
+	$infoTop.find('.add').on('click', 'a', function() {
+		$('.detail-type').find('li').eq(3).children('a').trigger('click');
+	});
+	var villa = $("#extend_code").val();
+
+	function SignInViewModel() {
+		var self = this;
+		self.CalendarArray = ko.observableArray([]);
+		self.CalendarEndArray = ko.observableArray([]);
+		self.SignInDate = ko.observableArray([]);
+		self.year = ko.observable("");
+		self.month = ko.observable("");
+		self.isFirstInit = true;
+		self.toDays = '2014-07-27';
+		self.intervalMonth = 1;
+		self.IsToday = function(day) {
+			return day == self.currentDay && self.month() == self.currentMonth && self.year() == self.currentYear;
+		}
+		self.SetCurrentDate = function(date) {
+			self.currentYear = date.getFullYear();
+			self.currentDay = date.getDate();
+			self.currentMonth = date.getMonth() + 1;
+			self.year(date.getFullYear());
+			self.month(date.getMonth() + 1);
+		}
+		self.SignIn = function() {}
+		self.Init = function() {
+			if (arguments[0]) {
+				self.toDays = arguments[0];
+			}
+			if (arguments[1]) {
+				self.intervalMonth = arguments[1];
+			}
+			if (self.isFirstInit) {
+				self.isFirstInit = false;
+				var todayDate = self.toDays;
+				var todays = todayDate.split("-");
+				self.SetCurrentDate(new Date(todays[0], todays[1] - 1, todays[2]));
+			}
+			$.ajax({
+				url: "/web/detail/getUnavailableDates/villa/" + villa,
+				dataType: "json",
+				data: {
+					"year": self.year(),
+					"month": self.month(),
+					"timestamp": Date.parse(new Date())
+				},
+				success: function(_result) {
+					if (self.isFirstInit) {
+						self.isFirstInit = false;
+						var todayDate = self.toDays;
+						var todays = todayDate.split("-");
+						self.SetCurrentDate(new Date(todays[0], todays[1] - 1, todays[2]));
+					}
+					if (null == _result) {
+						_result = [];
+					}
+					self.SignInDate(_result);
+					self.SetCalendarDays(self.year(), self.month());
+				}
+			});
+			self.SetCalendarDays(self.year(), self.month());
+		}
+		self.SetCalendarDays = function(year, month) {
+			var nowDate = new Date(year, month - 1, 1);
+			var day = nowDate.getDay() == 0 ? 7 : nowDate.getDay();
+			nowDate = new Date(year, month, 0);
+			var monthDays = nowDate.getDate();
+			var monthDaysArray = new Array();
+			for (var i = 1; i < day; i++) {
+				monthDaysArray.push("");
+			}
+			for (var i = 1; i <= monthDays; i++) {
+				monthDaysArray.push(i);
+			}
+			var rows = parseInt((monthDays + day - 1) / 7) + ((monthDays + day - 1) % 7 == 0 ? 0 : 1);
+			var monthDaysEndArray = new Array();
+			for (var i = 1; i <= 6 * 7 - (monthDays + day - 1); i++) {
+				monthDaysEndArray.push(i);
+			}
+			self.CalendarArray(monthDaysArray);
+			self.CalendarEndArray(monthDaysEndArray);
+		}
+		self.SetSignInDate = function(signInDate) {
+			for (var i = 0; i < self.SignInDate().length; i++) {
+				if (self.SignInDate()[i] == signInDate) return true;
+			}
+			return false;
+		}
+		self.prevMonth = function() {
+			var tempDate = new Date(self.year(), self.month() - self.intervalMonth - 1);
+			self.year(tempDate.getFullYear());
+			self.month(tempDate.getMonth() + 1);
+			self.Init();
+		}
+		self.nextMonth = function() {
+			var tempDate = new Date(self.year(), self.month() - self.intervalMonth + (2 * self.intervalMonth - 1));
+			self.year(tempDate.getFullYear());
+			self.month(tempDate.getMonth() + 1);
+			self.Init();
+		}
+	}
+	if (villa != "") {
+		var firstDayOfMonth = $("#first_day_of_month").val();
+		var firstDayOfNextMonth = $("#first_day_of_next_month").val();
+		$("#prev").on("click", function() {
+			viewModel_1.prevMonth();
+			viewModel_2.prevMonth();
+		})
+		$("#next").on("click", function() {
+			viewModel_1.nextMonth();
+			viewModel_2.nextMonth();
+		})
+		var viewModel_1 = new SignInViewModel();
+		viewModel_1.Init(firstDayOfMonth, 2);
+		ko.applyBindings(viewModel_1, $("#signInCalendar_1")[0]);
+		var viewModel_2 = new SignInViewModel();
+		viewModel_2.Init(firstDayOfNextMonth, 2);
+		ko.applyBindings(viewModel_2, $("#signInCalendar_2")[0]);
+	}
+};
+senseluxuryFed.detailFun.zixunPop = function() {
+	var comFun = senseluxuryFed.commonFun,
+		$zxCont = $('.zxDialog'),
+		_this = senseluxuryFed;;
+	$('#seek-btn').click(function() {
+		$('.Cmask').show();
+		$zxCont.show();
+		if (getCookie("c_start_time")) {
+			$("#inquireus_start").val(getCookie("c_start_time"));
+		}
+		$("#inquireus_start").on('change', function() {
+			setCookie("c_start_time", $(this).val(), '7d');
+		});
+		if (getCookie("c_end_time")) {
+			$("#inquireus_end").val(getCookie("c_end_time"));
+		}
+		$("#inquireus_end").on('change', function() {
+			setCookie("c_end_time", $(this).val(), '7d');
+		});
+	});
+	$zxCont.on('click', '.close', function() {
+		$('.Cmask').hide();
+		$zxCont.hide();
+	});
+	$('.zxDialog form').validate({
+		rules: {
+			'Inquire[user_name]': {
+				required: true
+			},
+			'Inquire[user_email]': {
+				required: true,
+				email: true
+			}
+		},
+		errorPlacement: function(error, element) {
+			var $element;
+			$element = $(element);
+			$element.parents('.inputbox').find('.msg').html(error);
+		},
+		submitHandler: function(form) {
+			var $self, pidId = $('#pid').val(),
+				$thisBtn = $('.d-Icon-r').find('.favorite');
+			$self = $(form);
+			$self.find('.msg').html('&nbsp;');
+			$self.ajaxSubmit(function(data) {
+				var $msg;
+				if (typeof data === 'string') {
+					data = $.parseJSON(data);
+				}
+				$msg = $self.find('>.msg');
+				if (data.success !== 1) {
+					$self.find('>.msg').removeClass('suc').addClass('err').html(data.message);
+				} else {
+					$self.resetForm();
+					$self.find('>.msg').removeClass('err').addClass('suc').html(data.message);
+					setTimeout(function() {
+						$('.Cconsult_dialog .close').click();
+						$msg.fadeOut();
+						$msg.html('&nbsp;');
+						return $msg.show();
+					}, 3000);
+				}
+			});
+		}
+	});
+};
+senseluxuryFed.detailFun.yudingPop = function() {
+	var comFun = senseluxuryFed.commonFun,
+		$orderCont = $('.orderDialog'),
+		_this = senseluxuryFed;;
+	comFun.datepickerFun('#book_start');
+	comFun.datepickerFun('#book_end');
+	if (getCookie("c_start_time")) {
+		$("#book_start").val(getCookie("c_start_time"));
+		$("#start").val(getCookie("c_start_time"));
+	}
+	$("#book_start").on('change', function() {
+		setCookie("c_start_time", $(this).val(), '7d');
+		$("#start").val(getCookie("c_start_time"));
+	});
+	if (getCookie("c_end_time")) {
+		$("#book_end").val(getCookie("c_end_time"));
+		$("#start1").val(getCookie("c_end_time"));
+	}
+	$("#book_end").on('change', function() {
+		setCookie("c_end_time", $(this).val(), '7d');
+		$("#start1").val(getCookie("c_end_time"));
+	});
+	$('#order-btn').click(function() {
+		$('.Cmask').show();
+		$orderCont.show();
+	});
+	$orderCont.on('click', '.close', function() {
+		$('.Cmask').hide();
+		$orderCont.hide();
+	});
+	$('.orderDialog form').validate({
+		rules: {
+			'book_user_name': {
+				required: true
+			},
+			'book_user_email': {
+				required: true,
+				email: true
+			}
+		},
+		errorPlacement: function(error, element) {
+			var $element;
+			$element = $(element);
+			$element.parents('.inputbox').find('.msg').html(error);
+		},
+		submitHandler: function(form) {
+			var $self, pidId = $('#pid').val(),
+				$thisBtn = $('.d-Icon-r').find('.favorite');
+			$self = $(form);
+			$self.find('.msg').html('&nbsp;');
+			$self.ajaxSubmit(function(data) {
+				var $msg;
+				if (typeof data === 'string') {
+					data = $.parseJSON(data);
+				}
+				$msg = $self.find('>.msg');
+				if (data.success !== 1) {
+					$self.find('>.msg').removeClass('suc').addClass('err').html(data.message);
+				} else {
+					$self.resetForm();
+					$self.find('>.msg').removeClass('err').addClass('suc').html(data.message);
+					setTimeout(function() {
+						$('.Cconsult_dialog .close').click();
+						$msg.fadeOut();
+						$msg.html('&nbsp;');
+						window.location.href = data.redirect;
+						return $msg.show();
+					}, 50);
+				}
+			});
+		}
+	});
+};
+senseluxuryFed.detailFun.dateFun = function() {
+	var comFun = senseluxuryFed.commonFun,
+		$dateBox = $('.Date-box'),
+		domain = $('#domain').val();
+	comFun.datepickerFun('#start');
+	comFun.datepickerFun('#start1');
+	if (getCookie("c_start_time")) {
+		$("#start").val(getCookie("c_start_time"));
+		$("#book_start").val(getCookie("c_start_time"));
+	}
+	$("#start").on('change', function() {
+		setCookie("c_start_time", $(this).val(), '1d');
+		$("#book_start").val(getCookie("c_start_time"));
+	});
+	if (getCookie("c_end_time")) {
+		$("#start1").val(getCookie("c_end_time"));
+		$("#book_end").val(getCookie("c_end_time"));
+	}
+	$("#start1").on('change', function() {
+		setCookie("c_end_time", $(this).val(), '1d');
+		$("#book_end").val(getCookie("c_end_time"));
+	});
+
+	function datetime_to_unix(datetime) {
+		var arr = datetime.split("/");
+		var now = new Date(Date.UTC(arr[0], arr[1] - 1, arr[2]));
+		return parseInt(now.getTime() / 86400000);
+	}
+
+	function unix_to_datetime(unix) {
+		var now = new Date(parseInt(unix) * 86400000),
+			text = '';
+		return text = now.getFullYear() + '/' + setData((now.getMonth() + 1)) + '/' + setData(now.getDate());
+	};
+
+	function setData(numb) {
+		if (numb < 9) {
+			return numb = '0' + numb
+		} else {
+			return numb;
+		};
+	};
+	$dateBox.find('.room-c').hover(function() {
+		$(this).find('.room-c-list').show();
+	}, function() {
+		$(this).find('.room-c-list').hide();
+	});
+	$dateBox.find('#start').change(function() {
+		var qsDate = $dateBox.find('#start').val(),
+			textVal = $dateBox.find('.room-c span').attr('data-val'),
+			flag = $dateBox.find('.room-c span').attr('data-flag'),
+			days = $dateBox.find('.room-c span').attr('date_diff'),
+			pidVal = $('#pid').val(),
+			qsDateTime = datetime_to_unix(qsDate),
+			endTime = parseInt(qsDateTime) + parseInt(days),
+			endDay = null;
+		if ($('#start1').val() == '') {
+			endDay = unix_to_datetime(endTime).split(' ')[0];
+			$('#start1').val(endDay);
+			$('#start1').trigger("change");
+		} else {
+			endDay = $('#start1').val();
+		};
+		$.ajax({
+			url: domain + '/web/detail/countcost',
+			type: "GET",
+			data: {
+				pid: pidVal,
+				start: qsDate,
+				end: endDay,
+				bedroom: textVal,
+				flag: flag
+			},
+			dataType: "jsonp",
+			jsonpCallback: 'jsonp',
+			success: function(data) {
+				if (parseInt(data) == -1) {
+					$('#cost').html('参数错误');
+				} else {
+					$('#cost').html('¥' + data.price);
+					$('#service').html('¥' + data.service_fee);
+					$('#tax').html('¥' + data.tax);
+					$('#total').html('¥' + data.total);
+					if (data.mini_stay > data.day_diff) {
+						$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为" + data.mini_stay + "天，小于该天数将无法预订成功");
+					} else {
+						$("#price_cal_notice").html("");
+					}
+				}
+			}
+		});
+	});
+	$dateBox.find('#start1').change(function() {
+		var qsDate = $dateBox.find('#start').val(),
+			textVal = $dateBox.find('.room-c span').attr('data-val'),
+			days = $dateBox.find('.room-c span').attr('date_diff'),
+			pidVal = $('#pid').val(),
+			flag = $dateBox.find('.room-c span').attr('data-flag'),
+			endDay = $('#start1').val();
+		if (qsDate == '') {
+			return false;
+		} else {
+			$.ajax({
+				url: domain + '/web/detail/countcost',
+				type: "GET",
+				data: {
+					pid: pidVal,
+					start: qsDate,
+					end: endDay,
+					bedroom: textVal,
+					flag: flag,
+				},
+				dataType: "jsonp",
+				jsonpCallback: 'jsonp',
+				success: function(data) {
+					$('#cost').html('¥' + data.price);
+					$('#service').html('¥' + data.service_fee);
+					$('#tax').html('¥' + data.tax);
+					$('#total').html('¥' + data.total);
+					if (data.mini_stay > data.day_diff) {
+						$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为" + data.mini_stay + "天，小于该天数将无法预订成功");
+					} else {
+						$("#price_cal_notice").html("");
+					}
+				}
+			});
+		}
+	});
+	$dateBox.find('.room-c-list').on('click', 'li', function() {
+		var qsDate = $dateBox.find('#start').val(),
+			jsDate = $dateBox.find('#start1').val(),
+			textVal = $(this).attr('data-val'),
+			flag = $(this).attr('data-flag'),
+			dateDiffVal = $(this).attr('date_diff'),
+			pidVal = $('#pid').val(),
+			spanCont = $dateBox.find('.room-c span');
+		spanCont.text($(this).text());
+		spanCont.attr({
+			'data-val': textVal,
+			'date_diff': dateDiffVal,
+			'data-flag': flag,
+		});
+		if (qsDate == '' || jsDate == '') {
+			alert('请选择起住日期和离开日期！')
+			return false;
+		} else {
+			if (datetime_to_unix(qsDate) >= datetime_to_unix(jsDate)) {
+				alert('离开日期应该在起住日期之后！')
+			} else {
+				$.ajax({
+					url: domain + '/web/detail/countcost',
+					type: "GET",
+					data: {
+						pid: pidVal,
+						start: qsDate,
+						end: jsDate,
+						bedroom: textVal,
+						flag: flag,
+					},
+					dataType: "jsonp",
+					jsonpCallback: 'jsonp',
+					success: function(data) {
+						if (parseInt(data) == -1) {
+							$('#cost').html('参数错误');
+						} else {
+							$('#cost').html('¥' + data.price);
+							$('#service').html('¥' + data.service_fee);
+							$('#tax').html('¥' + data.tax);
+							$('#total').html('¥' + data.total);
+							if (data.mini_stay > data.day_diff) {
+								$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为" + data.mini_stay + "天，小于该天数将无法预订成功");
+							} else {
+								$("#price_cal_notice").html("");
+							}
+						}
+					}
+				});
+			}
+		}
+	});
+	var init_get_price = function() {
+			var qsDate = $dateBox.find('#start').val(),
+				jsDate = $dateBox.find('#start1').val(),
+				textVal = $("#bedroom_show").attr('data-val'),
+				flag = $("#bedroom_show").attr('data-flag'),
+				pidVal = $('#pid').val();
+			if (qsDate == '' || jsDate == '') {
+				return false;
+			} else {
+				if (datetime_to_unix(qsDate) >= datetime_to_unix(jsDate)) {
+					alert('离开日期应该在起住日期之后！')
+				} else {
+					$.ajax({
+						url: domain + '/web/detail/countcost',
+						type: "GET",
+						data: {
+							pid: pidVal,
+							start: qsDate,
+							end: jsDate,
+							bedroom: textVal,
+							flag: flag,
+						},
+						dataType: "jsonp",
+						jsonpCallback: 'jsonp',
+						success: function(data) {
+							if (parseInt(data) == -1) {
+								$('#cost').html('参数错误');
+							} else {
+								$('#cost').html('¥' + data.price);
+								$('#service').html('¥' + data.service_fee);
+								$('#tax').html('¥' + data.tax);
+								$('#total').html('¥' + data.total);
+								if (data.mini_stay > data.day_diff) {
+									$("#price_cal_notice").html("提示：您预订的期间最短入住天数要求为" + data.mini_stay + "天，小于该天数将无法预订成功");
+								} else {
+									$("#price_cal_notice").html("");
+								}
+							}
+						}
+					});
+				}
+			}
+		}
+	init_get_price();
+};
+senseluxuryFed.listFun.hotSlideFun = function(id) {
+	$item = $(id);
+	var $ul = $item.find("ul");
+	var $prev = $item.find(".prev").eq(0);
+	var $next = $item.find(".next").eq(0);
+	var isSliding = false;
+	$prev.click(function(event) {
+		if (isSliding) return false;
+		var $li = $item.find("ul li");
+		var $last = $li.eq($li.length - 1);
+		var $first = $li.eq(0);
+		$last.insertBefore($first);
+		$ul.css({
+			"left": "-274px"
+		});
+		$ul.animate({
+			"left": "0px"
+		}, 500, function() {
+			$ul.css({
+				"left": "",
+				"right": ""
+			});
+			isSliding = false;
+		});
+		isSliding = true;
+		return false;
+	});
+	$next.click(function(event) {
+		if (isSliding) return false;
+		$ul.animate({
+			"right": "274px"
+		}, 500, function() {
+			var $li = $item.find("ul li");
+			var $first = $li.eq(0);
+			var $last = $li.eq($li.length - 1);
+			$first.insertAfter($last);
+			$ul.css({
+				"left": "",
+				"right": ""
+			});
+			isSliding = false;
+		});
+		isSliding = true;
+		return false;
+	});
+	$ul.find("[style='display:none;']").remove();
+	$ul.append($ul.html());
+};
+senseluxuryFed.listFun.priceTipFun = function() {
+	var $searchNav = $('.search-result-hd'),
+		tipVal = '',
+		domain = $('#domain').val();
+	$searchNav.find('.items').on('click', '.price a', function() {
+		var $this = $(this).parent('li');
+		if ($this.hasClass('cur')) {
+			$this.find('.list').hide();
+			$this.removeClass('cur');
+		} else {
+			$this.find('.list').show();
+			$this.addClass('cur');
+		};
+	});
+	$searchNav.find('.list').on('click', 'span', function() {
+		var $this = $(this);
+		tipVal = $this.attr('data-price');
+		$this.parents('li').attr('data-tip', tipVal);
+		$this.parents('li').children('a').html($this.html() + '<i></i>');
+		$this.parent('.list').hide();
+		$searchNav.find('.price').removeClass('cur');
+		paixuFun(tipVal);
+	});
+
+	function paixuFun(val) {
+		var $pageName = $('#pageName').val(),
+			$mddCont = $('.class-search'),
+			_this = senseluxuryFed,
+			$subId = $('#subId').val(),
+			$destina_as = $mddCont.find('.sele-items').eq(0).find('a.cur'),
+			$destina_arr = [],
+			$destina_val = '',
+			$style_as = $mddCont.find('.sele-items').eq(1).find('a.cur'),
+			$style_arr = [],
+			$style_val = '',
+			$minPrice = $('#slider-range').attr('iNowMin'),
+			$maxPrice = $('#slider-range').attr('iNowMax'),
+			$minRoom = $('#slider-range1').attr('iNowMin'),
+			$maxRoom = $('#slider-range1').attr('iNowMax');
+		$destina_as.each(function(i) {
+			$destina_arr.push($(this).attr('c_id'));
+		});
+		$destina_val = $destina_arr.join('|');
+		$style_as.each(function(i) {
+			$style_arr.push($(this).attr('tag_id'));
+		});
+		$style_val = $style_arr.join('|');
+		switch ($pageName) {
+		case 'subject':
+			$.ajax({
+				url: domain + '/subject_list/' + $subId,
+				type: "POST",
+				data: {
+					destination: $destina_val,
+					order: val,
+					styles: $style_val,
+					min_bedroom: $minRoom,
+					max_bedroom: $maxRoom,
+					min_price: $minPrice,
+					'max_price': $maxPrice
+				},
+				dataType: "jsonp",
+				jsonpCallback: 'jsonp',
+				success: function(data) {
+					if (data['code'] == 200) {
+						_this.getSearchList(data['val'], $pageName);
+					};
+				}
+			});
+			break;
+		case 'destinations':
+			$.ajax({
+				url: domain + '/destinations_list/' + $subId,
+				type: "POST",
+				data: {
+					order: val,
+					styles: $style_val,
+					min_bedroom: $minRoom,
+					max_bedroom: $maxRoom,
+					min_price: $minPrice,
+					'max_price': $maxPrice
+				},
+				dataType: "jsonp",
+				jsonpCallback: 'jsonp',
+				success: function(data) {
+					if (data['code'] == 200) {
+						_this.getSearchList(data['val'], $pageName);
+					};
+				}
+			});
+			break;
+		};
+	};
+};
+senseluxuryFed.listFun.mapFun = function() {
+	var $mapBtn = $('.search-result-hd').find('.items .map'),
+		mapHtml = '<div id="map_canvas"></div>',
+		$mapCont = $('#map-warp'),
+		domain = $('#domain').val();
+	$mapBtn.on('click', 'a', function() {
+		$mapCont.fadeIn(400, 'swing', function() {
+			var $pageName = $('#pageName').val(),
+				$mddCont = $('.class-search'),
+				_this = senseluxuryFed,
+				$subId = $('#subId').val(),
+				$destina_as = $mddCont.find('.sele-items').eq(0).find('a.cur'),
+				$destina_arr = [],
+				$destina_val = '',
+				$style_as = $mddCont.find('.sele-items').eq(1).find('a.cur'),
+				$style_arr = [],
+				$style_val = '',
+				priceTip = $('.search-result-hd').find('.price').attr('data-tip') || '',
+				$minPrice = $('#slider-range').attr('iNowMin') || '',
+				$maxPrice = $('#slider-range').attr('iNowMax') || '',
+				$minRoom = $('#slider-range1').attr('iNowMin') || '',
+				$maxRoom = $('#slider-range1').attr('iNowMax') || '',
+				pageNum = $('.page-list').attr('date-page-now');
+			$destina_as.each(function(i) {
+				$destina_arr.push($(this).attr('c_id'));
+			});
+			$destina_val = $destina_arr.join('|');
+			$style_as.each(function(i) {
+				$style_arr.push($(this).attr('tag_id'));
+			});
+			$style_val = $style_arr.join('|');
+			switch ($pageName) {
+			case 'subject':
+				$.ajax({
+					url: domain + '/subject_list/' + $subId + '?page=' + pageNum,
+					type: "POST",
+					data: {
+						destination: $destina_val,
+						order: priceTip,
+						styles: $style_val,
+						min_bedroom: $minRoom,
+						max_bedroom: $maxRoom,
+						min_price: $minPrice,
+						'max_price': $maxPrice
+					},
+					dataType: "jsonp",
+					jsonpCallback: 'jsonp',
+					success: function(data) {
+						if (data['code'] == 200) {
+							initialize(data['val']['data']);
+						};
+					}
+				});
+				break;
+			case 'destinations':
+				$.ajax({
+					url: domain + '/destinations_list/' + $subId + '?page=' + pageNum,
+					type: "POST",
+					data: {
+						order: priceTip,
+						styles: $style_val,
+						min_bedroom: $minRoom,
+						max_bedroom: $maxRoom,
+						min_price: $minPrice,
+						'max_price': $maxPrice
+					},
+					dataType: "jsonp",
+					jsonpCallback: 'jsonp',
+					success: function(data) {
+						if (data['code'] == 200) {
+							initialize(data['val']['data']);
+						};
+					}
+				});
+				break;
+			};
+		});
+	});
+	$mapCont.on('click', '.close', function() {
+		$mapCont.hide();
+	});
+
+	function initialize(data) {
+		var myMap;
+		var aData = data,
+			locations = [],
+			_this = senseluxuryFed;
+		var lat, lon, a_len = 0;
+		for (var i = 0; i < aData.length; i++) {
+			if (aData[i]['longitude'] != '' && aData[i]['latitude'] != '') {
+				if (a_len == 0) {
+					lat = aData[i]['latitude'];
+					lon = aData[i]['longitude'];
+				}
+				a_len = a_len + 1;
+				locations.push(aData[i]['latitude'] + ',' + aData[i]['longitude']);
+			};
+		};
+		var latlng = new google.maps.LatLng(lat, lon);
+		var myOptions = {
+			zoom: 12,
+			center: latlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		myMap = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		for (var i = 0; i < locations.length; i++) {
+			mapMarker(i, locations[i]);
+		};
+
+		function mapMarker(index, locations) {
+			var loc = locations.split(',');
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(loc[0], loc[1]),
+				map: myMap,
+				title: aData[i]['title']
+			});
+			var infowindow = new google.maps.InfoWindow({
+				content: '<div class="search-result-map"><ul class="items-list"><li><a target="_blank" href="' + aData[i]['url'] + '" class="pic"><img src="' + aData[i]['imageUrl'] + '" /> </a><div class="msg-text"><h3 class="tit"><a target="_blank" href="' + aData[i]['url'] + '">' + aData[i]['title'] + '</a></h3><div class="add-type"><p class="address"><span>' + aData[i]['address'] + '</span> </p><p class="type-text">' + aData[i]['memo'] + '</p></div><div class="serve-type"><p class="ms">' + aData[i]['subject'].join('<span>|</span>') + ' </p></div><div class="inner"><a target="_blank" href="' + aData[i]['url'] + '" class="xq-btn">查看详情</i></a><p class="price">¥' + aData[i]['price'] + '/<small>晚起</small><span>人均¥' + aData[i]['perCapita'] + '/晚起</span></p></div></div></li></ul></div>',
+				size: new google.maps.Size(200, 200)
+			});
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.open(myMap, marker);
+			});
+		};
+	};
+};
+senseluxuryFed.detailFun.likeSlideFun = function(id) {
+	senseluxuryFed.listFun.hotSlideFun(id);
+};
+senseluxuryFed.commonFun.datepickerFun = function(id, type) {
+	if (type != 'button') {
+		type = 'div';
+	} else {
+		type = 'button';
+	}
+	$(id).datepicker({
+		showOn: type,
+		buttonImage: "http://www.senseluxury.com/statics/web/antarctica/img/calendar_icon.png",
+		buttonImageOnly: true,
+		minDate: 0,
+		onClose: function(selectedDate) {
+			if (id == '#start1') {
+				$("#start").datepicker("option", "maxDate", selectedDate);
+			}
+			if (id == "#start") {
+				$("#start1").datepicker("option", "minDate", selectedDate);
+			}
+			if (id == "#inquire_start") {
+				$("#inquire_end").datepicker("option", "minDate", selectedDate);
+			}
+			if (id == "#inquire_end") {
+				$("#inquire_start").datepicker("option", "maxDate", selectedDate);
+			}
+			if (id == "#inquireus_start") {
+				$("#inquireus_end").datepicker("option", "minDate", selectedDate);
+			}
+			if (id == "#inquireus_end") {
+				$("#inquireus_start").datepicker("option", "maxDate", selectedDate);
+			}
+			if (id == "#book_start") {
+				$("#book_end").datepicker("option", "minDate", selectedDate);
+			}
+			if (id == "#book_end") {
+				$("#book_start").datepicker("option", "maxDate", selectedDate);
+			}
+		}
+	});
+};
+senseluxuryFed.commonFun.zixunSubmit = function() {
+	var comFun = senseluxuryFed.commonFun;
+	comFun.datepickerFun('#inquire_start', 'button');
+	comFun.datepickerFun('#inquire_end', 'button');
+	if (getCookie("c_start_time")) {
+		$("#inquire_start").val(getCookie("c_start_time"));
+	}
+	$("#inquire_start").on('change', function() {
+		setCookie("c_start_time", $(this).val(), '1d');
+	});
+	if (getCookie("c_end_time")) {
+		$("#inquire_end").val(getCookie("c_end_time"));
+	}
+	$("#inquire_end").on('change', function() {
+		setCookie("c_end_time", $(this).val(), '1d');
+	});
+	$('.header .will form').validate({
+		rules: {
+			'Inquire[user_name]': {
+				required: true
+			},
+			'Inquire[user_email]': {
+				required: true,
+				email: true
+			}
+		},
+		errorPlacement: function(error, element) {
+			var $element;
+			$element = $(element);
+			$element.parents('.inputbox').find('.msg').html(error);
+		},
+		submitHandler: function(form) {
+			var $self;
+			$self = $(form);
+			$self.find('.msg').html('&nbsp;');
+			$self.ajaxSubmit(function(data) {
+				var $msg;
+				if (typeof data === 'string') {
+					data = $.parseJSON(data);
+				}
+				$msg = $self.find('.consult>.msg');
+				if (data.success !== 1) {
+					$msg.removeClass('suc').addClass('err').html(data.message);
+				} else {
+					$self.resetForm();
+					willdata = [];
+					$.cookie('willdata', willdata);
+					comFun.ShouCanFun(willdata);
+					if ($('.favorite').length) {
+						$('.favorite').removeClass('curr');
+					};
+					$msg.removeClass('err').addClass('suc').html('提交成功');
+					setTimeout(function() {
+						return $msg.fadeOut(function() {
+							return $(this).html('&nbsp');
+						}).fadeIn();
+					}, 3000);
+				}
+			});
+		}
+	});
+};
+senseluxuryFed.setCookie = function($this, idVal, pageID) {
+	var $item, $self, data, id, will_item, willdata, _i, _j, _len, _len1;
+	var _this = senseluxuryFed;
+	$self = $this;
+	willdata = $.cookie('willdata') || [];
+	id = idVal;
+	if ($self.hasClass('curr')) {
+		$self.removeClass('curr');
+		for (_i = 0, _len = willdata.length; _i < _len; _i++) {
+			will_item = willdata[_i];
+			if (will_item['p_id'] === id) {
+				willdata.splice($.inArray(willdata[_i], willdata), 1);
+				break;
+			}
+		}
+	} else {
+		for (_j = 0, _len1 = willdata.length; _j < _len1; _j++) {
+			will_item = willdata[_j];
+			if (will_item['p_id'] === id) {
+				return false;
+			}
+		}
+		if (pageID == 'detail') {
+			$item = $('.jg-left');
+			data = {
+				id: idVal,
+				links: window.location.href,
+				img: $item.find('#dt_slides .tab_body').children('li').eq(0).find('img').attr('src'),
+				title: $item.find('.de-info .tit').text(),
+				address: $item.find('.add span').html(),
+				typeText: $('#p_memo').val()
+			};
+		} else {
+			$item = $self.parents('li');
+			data = {
+				id: $self.attr('data-id'),
+				links: $item.find('.pic').attr('href'),
+				img: $item.find('.pic img').attr('src'),
+				title: $item.find('.tit a').html(),
+				address: $item.find('.address span').html(),
+				typeText: $item.find('.type-text').html()
+			};
+		}
+		$self.addClass('curr');
+		willdata.push(data);
+	};
+	$.cookie('willdata', willdata, {
+		expires: 365,
+		path: '/'
+	});
+	_this.commonFun.ShouCanFun(willdata);
+};
+senseluxuryFed.commonFun.ShouCan = function() {
+	$.cookie.json = true;
+	var $searchResult = $('.search-result-cm'),
+		_this = senseluxuryFed,
+		pageIdVal = pageID;
+	if (pageIdVal == 'detail') {
+		var $thisBtn = $('.jg-right').find('.favorite');
+		$thisBtn.click(function() {
+			var $this = $(this),
+				pid = $('#pid').val();
+			_this.setCookie($this, pid, 'detail');
+			return false;
+		});
+	} else if (pageIdVal = 'default') {} else {
+		$searchResult.on('click', '.items-list .favorite', function() {
+			var $this = $(this),
+				id = $this.attr('data-id');
+			_this.setCookie($this, id, 'subject');
+			return false;
+		});
+	}
+};
+senseluxuryFed.commonFun.ShouCanFun = function(data) {
+	var arrVal = data || [],
+		$headerCont = $('.header'),
+		$navCont = $headerCont.find('.nav'),
+		$navListCont = $navCont.find('.navlink5'),
+		shouCanHtmlList = '',
+		pageIdVal = pageID;
+	if (arrVal.length > 0) {
+		$navListCont.find('.ma').html(COMMON_MESSAGE.favorate + ' (' + arrVal.length + ')');
+		$navListCont.find('.notice').addClass('Ldn');
+		$navListCont.find('.consult').removeClass('Ldn');
+		for (i in arrVal) {
+			var links = arrVal[i]['links'],
+				picSrc = arrVal[i]['img'],
+				title = arrVal[i]['title'],
+				address = arrVal[i]['address'],
+				type = arrVal[i]['typeText'];
+			shouCanHtmlList += '<div id="willitem-' + arrVal[i]['p_id'] + '" data-id="' + arrVal[i]['p_id'] + '" class="willitem Lmt10"><a href="javascript:void(0);" class="close"></a> <a href="' + links + '" class="img"><img src="' + picSrc + '" width="140" height="66"></a> <b><a href="' + links + '">' + title + '</a></b> <p>' + address + '<br>' + type + '</p> <input type="hidden" name="product_id[]" value="' + arrVal[i]['p_id'] + '"></div>'
+			if (pageIdVal == 'detail') {
+				var $this = $('.jg-right').find('.favorite'),
+					pid = $('#pid').val();
+				if (pid == arrVal[i]['p_id']) {
+					$this.addClass('curr');
+				};
+			} else {
+				var $this = $('.favorite[data-id = ' + arrVal[i]['p_id'] + ']');
+				$this.addClass('curr');
+			}
+		}
+		$('#shoucanList').html($(shouCanHtmlList));
+	} else {
+		$navListCont.find('.ma').html(COMMON_MESSAGE.favorate + ' (0)');
+		$('#shoucanList').html('');
+		$navListCont.find('.notice').removeClass('Ldn');
+		$navListCont.find('.consult').addClass('Ldn');
+	};
+};
+senseluxuryFed.commonFun.closeShouCan = function() {
+	$('#shoucanList').on('click', '.willitem .close', function() {
+		var $item, $self, data, id, will_item, willdata, _i, _j, _len, _len1;
+		_this = senseluxuryFed, pageIdVal = pageID;
+		$self = $(this);
+		id = $self.parent('.willitem').attr('data-id');
+		if (pageIdVal == 'detail') {
+			var $this = $('.jg-right').find('.favorite'),
+				pid = $('#pid').val();
+			if (pid == id) {
+				$this.removeClass('curr');
+			};
+		} else {
+			$('.favorite[data-id = ' + id + ']').removeClass('curr');
+		}
+		willdata = $.cookie('willdata') || [];
+		for (_i = 0, _len = willdata.length; _i < _len; _i++) {
+			will_item = willdata[_i];
+			if (will_item['p_id'] === id) {
+				willdata.splice($.inArray(willdata[_i], willdata), 1);
+				break;
+			}
+		}
+		$.cookie('willdata', willdata, {
+			expires: 365,
+			path: '/'
+		});
+		_this.commonFun.ShouCanFun(willdata);
+	});
+};
+senseluxuryFed.getSearchList = function(data, pageName) {
+	var aData = data['data'],
+		_this = this,
+		aHtml = '',
+		subId = $('#subId').val(),
+		searchResult = $('.search-result-cm'),
+		dataIdArr = [];
+	aHtml += '<ul class="items-list">';
+	for (var i = 0; i < aData.length; i++) {
+		aHtml += '<li>';
+		aHtml += '<a class="tag t_l" href="' + aData[i]['url'] + '#bspj-tit" title="' + MESSAGE.reviews + '（' + aData[i]['comments'] + '）"><img src="/resource/img/js_images/comments.png"/>' + aData[i]['comments'] + '<div class = "comment_tip">评论</div></a>'
+		aHtml += '<a class="tag t_r" href="javascript:void(0);" title="' + MESSAGE.stayed + aData[i]['been'] + '"><img src="/resource/img/js_images/been_orange.png"/>' + aData[i]['been'] + '<div class = "been_tip">去过</div></a>';
+		aHtml += '<a href="' + aData[i]['url'] + '" class="pic"><img alt="度假别墅-' + aData[i]['title'] + '" class="lazy" data-original="' + aData[i]['imageUrl'] + '" /> </a>';
+		aHtml += '<div class="msg-text">';
+		aHtml += '<h3 class="tit"><a href="' + aData[i]['url'] + '">' + aData[i]['title'] + '</a></h3>';
+		aHtml += '<div class="add-type"><p class="address"><span>' + aData[i]['address'] + '</span> </p><p class="type-text">' + aData[i]['memo'] + '</p></div>';
+		aHtml += '<div class="serve-type"><p class="ms">' + aData[i]['subject'].join('<span>|</span>') + ' </p><p class="fw">' + MESSAGE.service + '：' + aData[i]['server'] + '</p></div>';
+		aHtml += '<div class="inner">';
+		aHtml += '<a href="' + aData[i]['url'] + '" class="xq-btn">' + MESSAGE.book + '</a>';
+		aHtml += '<a href="javascript:void(0);" data-id="' + aData[i]['id'] + '" class="icon favorite"></a>';
+		if (aData[i]['price'] > 100) {
+			aHtml += '<p class="price">¥' + aData[i]['price'] + '/<small>' + MESSAGE.night + '</small><span>' + MESSAGE.percaptial + '¥' + aData[i]['perCapita'] + '/' + MESSAGE.night + '</span></p>';
+		} else {
+			aHtml += MESSAGE.inquire_rate;
+		}
+		aHtml += '</div></div>';
+		if (aData[i]['discount_ratio'] < 1 || aData[i]['is_discount'] == 1) {
+			aHtml += '<span class="xsyh-icon">';
+			if (aData[i]['is_discount'] == 1) {
+				var di = aData[i]['discount_info'].split("#");
+				aHtml += "<p>" + di[0] + "</p>";
+			} else {
+				var discout = parseInt((1 - aData[i]['discount_ratio']).toFixed(2) * 100);
+				aHtml += "<font>" + discout + "%<em></em>OFF</font>";
+			}
+			aHtml += '<p>' + MESSAGE.promotion + '</p>';
+			aHtml += '</span>';
+		}
+		aHtml += '</li>';
+	}
+	aHtml += '</ul>';
+	searchResult.html('').html(aHtml);
+	_this.getPageFun(data['page'], data['pageTotal']);
+	$("#total").html(data['total']);
+	$("#limitInfo").html(data['limitInfo']);
+	$("img.lazy").lazyload({
+		effect: "fadeIn",
+	});
+};
+senseluxuryFed.getPageFun = function(iNow, total) {
+	var _this = this,
+		iNowNumb = iNow,
+		allPages = total,
+		pageHtml = '',
+		pageName = $('#pageName').val(),
+		subId = $('#subId').val(),
+		$pageCont = $('.page-list'),
+		showPageNum = 11;
+	$pageCont.attr({
+		'date-page-now': iNowNumb,
+		'date-page-all': allPages
+	});
+	if (allPages <= 1) {
+		$pageCont.html('');
+	} else {
+		iNowNumb = iNowNumb < 1 ? 1 : iNowNumb;
+		if (iNowNumb <= 5) {
+			pageHtml += (iNowNumb <= 1 ? '' : '<a href="javascript:void(0);" class="prve"><img src= "/resource/img/js_images/pageprev.png"/></a>');
+			var end = allPages - 1 >= 5 ? 5 : allPages - 1;
+			for (var i = 1; i <= end; i++) {
+				switch (pageName) {
+				case 'subject':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/subject/' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'destinations':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/destinations/' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'search':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/search/?q=' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'discount':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/discounts/' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'article':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/article' + '?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'place':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/place.html' + '?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'view':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/view' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'shop':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/shop' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'food':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/food' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'entertainment':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/entertainment' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'foods':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/food/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'views':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/sight/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'shops':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/shop/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'entertainments':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/entertainment/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				};
+			}
+			if (allPages > 6) {
+				pageHtml += '<span>···</span>';
+			}
+			switch (pageName) {
+			case 'subject':
+				pageHtml += '<a href="/subject/' + subId + '/?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'destinations':
+				pageHtml += '<a href="/destinations/' + subId + '/?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'search':
+				pageHtml += '<a href="/search/?q=' + subId + '/?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'discount':
+				pageHtml += '<a href="/discounts/' + subId + '/?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'article':
+				pageHtml += '<a href="/article' + '?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'place':
+				pageHtml += '<a href="/place.html' + '?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'view':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/view' + '/' + '?page=' + allPages + '&id=' + artId + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'shop':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/shop' + '/' + '?page=' + allPages + '&id=' + artId + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'food':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/food' + '/' + '?page=' + allPages + '&id=' + artId + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'entertainment':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/entertainment' + '/' + '?page=' + allPages + '&id=' + artId + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'foods':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/food/' + desName + '-' + desId + '-' + allPages + '.html' + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'views':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/sight/' + desName + '-' + desId + '-' + allPages + '.html' + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'shops':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/shop/' + desName + '-' + desId + '-' + allPages + '.html' + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'entertainments':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/entertainment/' + desName + '-' + desId + '-' + allPages + '.html' + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			};
+			pageHtml += (iNowNumb == allPages ? '' : '<a href="javascript:void(0);" class="next"><img src= "/resource/img/js_images/pagenext.png" /></a>');
+		} else if (iNowNumb >= allPages - 4) {
+			pageHtml += (iNowNumb <= 1 ? '' : '<a href="javascript:void(0);" class="prve"><img src= "/resource/img/js_images/pageprev.png"/></a>');
+			switch (pageName) {
+			case 'subject':
+				pageHtml += '<a href="/subject/' + subId + '/?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'destinations':
+				pageHtml += '<a href="/destinations/' + subId + '/?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'search':
+				pageHtml += '<a href="/search/?q=' + subId + '/?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'discount':
+				pageHtml += '<a href="/discounts/' + subId + '/?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'article':
+				pageHtml += '<a href="/article' + '?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'place':
+				pageHtml += '<a href="/place.html' + '?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'view':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/view' + '/' + '?page=' + '1' + '&id=' + artId + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'shop':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/shop' + '/' + '?page=' + '1' + '&id=' + artId + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'food':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/food' + '/' + '?page=' + '1' + '&id=' + artId + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'entertainment':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/entertainment' + '/' + '?page=' + '1' + '&id=' + artId + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'foods':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/food/' + desName + '-' + desId + '-' + '1' + '.html' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'views':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/sight/' + desName + '-' + desId + '-' + '1' + '.html' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'shops':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/shop/' + desName + '-' + desId + '-' + '1' + '.html' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'entertainments':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/entertainment/' + desName + '-' + desId + '-' + allPages + '.html' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			};
+			if (allPages > 6) {
+				pageHtml += '<span>···</span>';
+			}
+			var start = allPages - 4 > 2 ? allPages - 4 : 2;
+			for (var i = start; i <= allPages; i++) {
+				switch (pageName) {
+				case 'subject':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/subject/' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'destinations':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/destinations/' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'search':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/search/?q=' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'discount':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/discounts/' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'article':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/article' + '?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'place':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/place.html' + '?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'view':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/view' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'shop':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/shop' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'food':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/food' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'entertainment':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/entertainment' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'foods':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/food/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'views':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/sight/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'shops':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/shop/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'entertainments':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/entertainment/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				};
+			}
+			pageHtml += (iNowNumb == allPages ? '' : '<a href="javascript:void(0);" class="next"><img src= "/resource/img/js_images/pagenext.png"/></a>');
+		} else if (allPages >= 9 && iNowNumb >= 6 && iNowNumb <= allPages - 5) {
+			pageHtml += (iNowNumb <= 1 ? '' : '<a href="javascript:void(0);" class="prve"><img src= "/resource/img/js_images/pageprev.png"/></a>');
+			switch (pageName) {
+			case 'subject':
+				pageHtml += '<a href="/subject/' + subId + '/?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'destinations':
+				pageHtml += '<a href="/destinations/' + subId + '/?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'search':
+				pageHtml += '<a href="/search/?q=' + subId + '/?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'discount':
+				pageHtml += '<a href="/discounts/' + subId + '/?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'article':
+				pageHtml += '<a href="/article' + '?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'place':
+				pageHtml += '<a href="/place.html' + '?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'view':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/view' + '/' + '?page=' + '1' + '&id=' + artId + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'shop':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/shop' + '/' + '?page=' + '1' + '&id=' + artId + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'food':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/food' + '/' + '?page=' + '1' + '&id=' + artId + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'entertainment':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/entertainment' + '/' + '?page=' + '1' + '&id=' + artId + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'foods':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/food/' + desName + '-' + desId + '-' + '1' + '.html' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'views':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/sight/' + desName + '-' + desId + '-' + '1' + '.html' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'shops':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/shop/' + desName + '-' + desId + '-' + '1' + '.html' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			case 'entertainments':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/entertainment/' + desName + '-' + desId + '-' + allPages + '.html' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+				break;
+			};
+			pageHtml += '<span>···</span>';
+			for (var i = iNowNumb - 2; i <= iNowNumb + 2; i++) {
+				switch (pageName) {
+				case 'subject':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/subject/' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'destinations':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/destinations/' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'search':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/search/?q=' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'discount':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/discounts/' + subId + '/?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'article':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/article' + '?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'place':
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/place.html' + '?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'view':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/view' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'shop':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/shop' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'food':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/food' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'entertainment':
+					var artId = $('#artId').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/entertainment' + '/' + '?page=' + i + '&id=' + artId + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'foods':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/food/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'views':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/sight/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'shops':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/shop/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				case 'entertainments':
+					var desId = $('#des_id').val();
+					var desName = $('#des_name').val();
+					if (i == iNowNumb) {
+						pageHtml += '<b>' + i + '</b>';
+					} else {
+						pageHtml += '<a href="/entertainment/' + desName + '-' + desId + '-' + i + '.html' + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+					}
+					break;
+				};
+			}
+			pageHtml += '<span>···</span>';
+			switch (pageName) {
+			case 'subject':
+				pageHtml += '<a href="/subject/' + subId + '/?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'destinations':
+				pageHtml += '<a href="/destinations/' + subId + '/?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'search':
+				pageHtml += '<a href="/search/?q=' + subId + '/?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'discount':
+				pageHtml += '<a href="/discounts/' + subId + '/?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'article':
+				pageHtml += '<a href="/article' + '?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'place':
+				pageHtml += '<a href="/place.html' + '?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'view':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/view' + '/' + '?page=' + allPages + '&id=' + artId + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'shop':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/shop' + '/' + '?page=' + allPages + '&id=' + artId + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'food':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/food' + '/' + '?page=' + allPages + '&id=' + artId + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'entertainment':
+				var artId = $('#artId').val();
+				pageHtml += '<a href="/entertainment' + '/' + '?page=' + allPages + '&id=' + artId + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'foods':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/food/' + desName + '-' + desId + '-' + allPages + '.html' + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'views':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/sight/' + desName + '-' + desId + '-' + allPages + '.html' + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'shops':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/shop/' + desName + '-' + desId + '-' + allPages + '.html' + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			case 'entertainments':
+				var desId = $('#des_id').val();
+				var desName = $('#des_name').val();
+				pageHtml += '<a href="/entertainment/' + desName + '-' + desId + '-' + allPages + '.html' + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+				break;
+			};
+			pageHtml += (iNowNumb == allPages ? '' : '<a href="javascript:void(0);" class="next"><img src= "/resource/img/js_images/pagenext.png"/></a>');
+		}
+		$pageCont.html('').html(pageHtml);
+	}
+};
+senseluxuryFed.pageClickFun = function(pageNum) {
+	var href = window.location.href,
+		$pageName = $('#pageName').val(),
+		$mddCont = $('.class-search'),
+		$TM_mbox_top = $('.TM_mbox').offset().top,
+		_this = senseluxuryFed,
+		$subId = $('#subId').val(),
+		$destina_as = $mddCont.find('.sele-items').eq(0).find('a.cur'),
+		$destina_arr = [],
+		$destina_val = '',
+		$style_as = $mddCont.find('.sele-items').eq(1).find('a.cur'),
+		$style_arr = [],
+		$style_val = '',
+		$minPrice = $('#slider-range').attr('iNowMin'),
+		$maxPrice = $('#slider-range').attr('iNowMax'),
+		$minRoom = $('#slider-range1').attr('iNowMin'),
+		$maxRoom = $('#slider-range1').attr('iNowMax'),
+		priceTip = $('.search-result-hd').find('.price').attr('data-tip') || '',
+		domain = $('#domain').val();
+	$destina_as.each(function(i) {
+		$destina_arr.push($(this).attr('c_id'));
+	});
+	$destina_val = $destina_arr.join('|');
+	$style_as.each(function(i) {
+		$style_arr.push($(this).attr('tag_id'));
+	});
+	$style_val = $style_arr.join('|');
+	switch ($pageName) {
+	case 'subject':
+		$.ajax({
+			url: domain + '/subject_list/' + $subId + '?page=' + pageNum,
+			type: "POST",
+			data: {
+				destination: $destina_val,
+				order: priceTip,
+				styles: $style_val,
+				min_bedroom: $minRoom,
+				max_bedroom: $maxRoom,
+				min_price: $minPrice,
+				'max_price': $maxPrice
+			},
+			dataType: "jsonp",
+			jsonpCallback: 'jsonp',
+			success: function(data) {
+				if (data['code'] == 200) {
+					$('html,body').animate({
+						scrollTop: $TM_mbox_top
+					}, 200, function() {
+						_this.getSearchList(data['val'], $pageName);
+					});
+				};
+			}
+		});
+		break;
+	case 'destinations':
+		$.ajax({
+			url: domain + '/destinations_list/' + $subId + '?page=' + pageNum,
+			type: "POST",
+			data: {
+				order: priceTip,
+				styles: $style_val,
+				min_bedroom: $minRoom,
+				max_bedroom: $maxRoom,
+				min_price: $minPrice,
+				'max_price': $maxPrice
+			},
+			dataType: "jsonp",
+			jsonpCallback: 'jsonp',
+			success: function(data) {
+				if (data['code'] == 200) {
+					$('html,body').animate({
+						scrollTop: $TM_mbox_top
+					}, 200, function() {
+						_this.getSearchList(data['val'], $pageName);
+					});
+				};
+			}
+		});
+		break;
+	case 'search':
+		$.ajax({
+			url: domain + '/search_list?q=' + $subId + '&page=' + pageNum,
+			type: "POST",
+			data: {
+				min_bedroom: $minRoom,
+				max_bedroom: $maxRoom,
+				min_price: $minPrice,
+				'max_price': $maxPrice
+			},
+			dataType: "jsonp",
+			jsonpCallback: 'jsonp',
+			success: function(data) {
+				if (data['code'] == 200) {
+					$('html,body').animate({
+						scrollTop: $TM_mbox_top
+					}, 200, function() {
+						_this.getSearchList(data['val'], $pageName);
+					});
+				};
+			}
+		});
+		break;
+	case 'discount':
+		$.ajax({
+			url: domain + '/discount_list/' + $subId + '?page=' + pageNum,
+			type: "POST",
+			data: {},
+			dataType: "jsonp",
+			jsonpCallback: 'jsonp',
+			success: function(data) {
+				if (data['code'] == 200) {
+					$('html,body').animate({
+						scrollTop: $TM_mbox_top
+					}, 200, function() {
+						_this.getSearchList(data['val'], $pageName);
+					});
+				};
+			}
+		});
+		break;
+	};
+};
+senseluxuryFed.detailFun.fixedMenuFun = function() {
+	var $menuCont = $('.detail-type'),
+		menuTop = 710,
+		arrTop = [],
+		$fixMenu = $('#fixed-menu');
+	if ($(".dtit_date").length > 0) {
+		menuTop = 1120;
+	}
+	$('.floor-index').each(function(i) {
+		arrTop.push($(this).offset().top - 150);
+	});
+	arrTop[0] = $('#dt_slides').offset().top - 88;
+	$(window).scroll(function() {
+		var winTop = $(window).scrollTop();
+		if (winTop > menuTop) {
+			$fixMenu.show();
+		} else {
+			$fixMenu.hide();
+		};
+		for (i in arrTop) {
+			if (winTop > arrTop[i] - 150) {
+				$fixMenu.find('.detail-type li').eq(i).addClass('cur').siblings('li').removeClass('cur');
+			};
+		};
+	});
+	$menuCont.find('li').off().on('click', 'a', function() {
+		var _index = $(this).parent('li').index();
+		$('html,body').animate({
+			scrollTop: arrTop[_index]
+		}, 500);
+		return false;
+	});
+	$('.facility-btn').click(function() {
+		var facilityTop = $('#facility').offset().top;
+		$('html,body').animate({
+			scrollTop: facilityTop - 88
+		}, 500);
+		return false;
+	});
+	$('.server-btn').click(function() {
+		var serverTop = $('#server').offset().top;
+		$('html,body').animate({
+			scrollTop: serverTop - 88
+		}, 500);
+		return false;
+	});
+};
+senseluxuryFed.listFun.priceSlide = function(obj) {
+	var $slideId1 = $(obj),
+		slideArrType = $slideId1.attr('data-slider-type'),
+		slideArr1 = [parseInt($slideId1.attr('data-slider-min')), parseInt($slideId1.attr('data-slider-max')), parseInt($slideId1.attr('data-slider-step'))];
+	$slideId1.slider({
+		range: true,
+		step: slideArr1[2],
+		min: slideArr1[0],
+		max: slideArr1[1],
+		values: [slideArr1[0], slideArr1[1]],
+		slide: function(event, ui) {
+			var $price_area, $self, lock, max_price;
+			$self = $(this);
+			$price_area = $self.parents('.slider_box').find('label small');
+			max_price = parseInt($self.data('sliderMax'));
+			if (parseInt(ui.values[1]) == max_price) {
+				$price_area.html("¥" + ui.values[0] + "-¥" + ui.values[1] + "+");
+			} else {
+				$price_area.html("¥" + ui.values[0] + "-¥" + ui.values[1]);
+			}
+		},
+		change: function(event, ui) {
+			var $self, max_price, suffix;
+			$self = $(this);
+			max_price = parseInt($self.data('sliderMax'));
+			if (parseInt(ui.values[1]) == max_price) {
+				suffix = "+";
+			} else {
+				suffix = "";
+			}
+			$slideId1.siblings('label').find('small').html("¥" + $slideId1.slider("values", 0) + "-¥" + $slideId1.slider("values", 1) + suffix);
+			$slideId1.attr('iNowMin', $slideId1.slider("values", 0));
+			$slideId1.attr('iNowMax', $slideId1.slider("values", 1));
+			var $mddCont = $('.class-search'),
+				$pageName = $('#pageName').val(),
+				_this = senseluxuryFed,
+				$subId = $('#subId').val(),
+				$destina_as = $mddCont.find('.sele-items').eq(0).find('a.cur'),
+				$destina_arr = [],
+				$destina_val = '',
+				$style_as = $mddCont.find('.sele-items').eq(1).find('a.cur'),
+				$style_arr = [],
+				$style_val = '',
+				$minRoom = $('#slider-range1').attr('iNowMin'),
+				$maxRoom = $('#slider-range1').attr('iNowMax'),
+				priceTip = $('.search-result-hd').find('.price').attr('data-tip') || '',
+				domain = $('#domain').val();
+			$destina_as.each(function(i) {
+				$destina_arr.push($(this).attr('c_id'));
+			});
+			$destina_val = $destina_arr.join('|');
+			$style_as.each(function(i) {
+				$style_arr.push($(this).attr('tag_id'));
+			});
+			$style_val = $style_arr.join('|');
+			switch ($pageName) {
+			case 'subject':
+				$.ajax({
+					url: domain + '/subject_list/' + $subId,
+					type: "POST",
+					data: {
+						destination: $destina_val,
+						order: priceTip,
+						styles: $style_val,
+						min_bedroom: $minRoom,
+						max_bedroom: $maxRoom,
+						min_price: $slideId1.slider("values", 0),
+						'max_price': $slideId1.slider("values", 1)
+					},
+					dataType: "jsonp",
+					jsonpCallback: 'jsonp',
+					success: function(data) {
+						if (data['code'] == 200) {
+							_this.getSearchList(data['val'], $pageName);
+						};
+					}
+				});
+				break;
+			case 'destinations':
+				$.ajax({
+					url: domain + '/destinations_list/' + $subId,
+					type: "POST",
+					data: {
+						order: priceTip,
+						styles: $style_val,
+						min_bedroom: $minRoom,
+						max_bedroom: $maxRoom,
+						min_price: $slideId1.slider("values", 0),
+						'max_price': $slideId1.slider("values", 1)
+					},
+					dataType: "jsonp",
+					jsonpCallback: 'jsonp',
+					success: function(data) {
+						if (data['code'] == 200) {
+							_this.getSearchList(data['val'], $pageName);
+						};
+					}
+				});
+				break;
+			case 'search':
+				$.ajax({
+					url: domain + '/search_list?q=' + $subId,
+					type: "POST",
+					data: {
+						min_bedroom: $minRoom,
+						max_bedroom: $maxRoom,
+						min_price: $slideId1.slider("values", 0),
+						'max_price': $slideId1.slider("values", 1)
+					},
+					dataType: "jsonp",
+					jsonpCallback: 'jsonp',
+					success: function(data) {
+						if (data['code'] == 200) {
+							_this.getSearchList(data['val'], $pageName);
+						};
+					}
+				});
+				break;
+			};
+		}
+	});
+};
+senseluxuryFed.listFun.houseSlide = function(obj) {
+	var $slideId1 = $(obj),
+		slideArrType = $slideId1.attr('data-slider-type'),
+		slideArr1 = [parseInt($slideId1.attr('data-slider-min')), parseInt($slideId1.attr('data-slider-max')), parseInt($slideId1.attr('data-slider-step'))];
+	$slideId1.slider({
+		range: true,
+		step: slideArr1[2],
+		min: slideArr1[0],
+		max: slideArr1[1],
+		values: [slideArr1[0], slideArr1[1]],
+		slide: function(event, ui) {
+			var $bedroom_area, $self, lock, max_bedroom;
+			$self = $(this);
+			$bedroom_area = $self.parents('.slider_box').find('label small');
+			max_bedroom = parseInt($self.data('sliderMax'));
+			$bedroom_area.html(ui.values[0] + "-" + ui.values[1]);
+		},
+		change: function(event, ui) {
+			$slideId1.siblings('label').html("卧室：" + $slideId1.slider("values", 0) + "-" + $slideId1.slider("values", 1));
+			$slideId1.attr('iNowMin', $slideId1.slider("values", 0));
+			$slideId1.attr('iNowMax', $slideId1.slider("values", 1));
+			var $mddCont = $('.class-search'),
+				$pageName = $('#pageName').val(),
+				_this = senseluxuryFed,
+				$subId = $('#subId').val(),
+				$destina_as = $mddCont.find('.sele-items').eq(0).find('a.cur'),
+				$destina_arr = [],
+				$destina_val = '',
+				$style_as = $mddCont.find('.sele-items').eq(1).find('a.cur'),
+				$style_arr = [],
+				$style_val = '',
+				$minRoom = $('#slider-range1').attr('iNowMin'),
+				$maxRoom = $('#slider-range1').attr('iNowMax'),
+				$minPrice = $('#slider-range').attr('iNowMin'),
+				$maxPrice = $('#slider-range').attr('iNowMax'),
+				priceTip = $('.search-result-hd').find('.price').attr('data-tip') || '',
+				domain = $('#domain').val();
+			$destina_as.each(function(i) {
+				$destina_arr.push($(this).attr('c_id'));
+			});
+			$destina_val = $destina_arr.join('|');
+			$style_as.each(function(i) {
+				$style_arr.push($(this).attr('tag_id'));
+			});
+			$style_val = $style_arr.join('|');
+			switch ($pageName) {
+			case 'subject':
+				$.ajax({
+					url: domain + '/subject_list/' + $subId,
+					type: "POST",
+					data: {
+						destination: $destina_val,
+						order: priceTip,
+						styles: $style_val,
+						min_bedroom: $slideId1.slider("values", 0),
+						max_bedroom: $slideId1.slider("values", 1),
+						min_price: $minPrice,
+						'max_price': $maxPrice
+					},
+					dataType: "jsonp",
+					jsonpCallback: 'jsonp',
+					success: function(data) {
+						if (data['code'] == 200) {
+							_this.getSearchList(data['val'], $pageName);
+						};
+					}
+				});
+				break;
+			case 'destinations':
+				$.ajax({
+					url: domain + '/destinations_list/' + $subId,
+					type: "POST",
+					data: {
+						order: priceTip,
+						styles: $style_val,
+						min_bedroom: $slideId1.slider("values", 0),
+						max_bedroom: $slideId1.slider("values", 1),
+						min_price: $minPrice,
+						'max_price': $maxPrice
+					},
+					dataType: "jsonp",
+					jsonpCallback: 'jsonp',
+					success: function(data) {
+						if (data['code'] == 200) {
+							_this.getSearchList(data['val'], $pageName);
+						};
+					}
+				});
+				break;
+			case 'search':
+				$.ajax({
+					url: domain + '/search_list?q=' + $subId,
+					type: "POST",
+					data: {
+						min_bedroom: $minRoom,
+						max_bedroom: $maxRoom,
+						min_price: $minPrice,
+						'max_price': $maxPrice
+					},
+					dataType: "jsonp",
+					jsonpCallback: 'jsonp',
+					success: function(data) {
+						if (data['code'] == 200) {
+							_this.getSearchList(data['val'], $pageName);
+						};
+					}
+				});
+				break;
+			};
+		}
+	});
+};
+senseluxuryFed.listFun.classFun = function(obj) {
+	var $this = $(obj);
+	$this.find('.sele-items').on('click', 'dt', function() {
+		$(this).parent('.sele-items').toggleClass('curr');
+	});
+	$this.find('.sele-items').on('click', 'dd a', function() {
+		$(this).toggleClass('cur');
+		var $mddCont = $('.class-search'),
+			$pageName = $('#pageName').val(),
+			_this = senseluxuryFed,
+			$subId = $('#subId').val(),
+			$destina_as = $mddCont.find('.sele-items').eq(0).find('a.cur'),
+			$destina_arr = [],
+			$destina_val = '',
+			$style_as = $mddCont.find('.sele-items').eq(1).find('a.cur'),
+			$style_arr = [],
+			$style_val = '',
+			$minRoom = $('#slider-range1').attr('iNowMin'),
+			$maxRoom = $('#slider-range1').attr('iNowMax'),
+			$minPrice = $('#slider-range1').attr('iNowMin'),
+			$maxPrice = $('#slider-range1').attr('iNowMax'),
+			priceTip = $('.search-result-hd').find('.price').attr('data-tip') || '',
+			domain = $('#domain').val();
+		$destina_as.each(function(i) {
+			$destina_arr.push($(this).attr('c_id'));
+		});
+		$destina_val = $destina_arr.join('|');
+		$style_as.each(function(i) {
+			$style_arr.push($(this).attr('tag_id'));
+		});
+		$style_val = $style_arr.join('|');
+		switch ($pageName) {
+		case 'subject':
+			$.ajax({
+				url: domain + '/subject_list/' + $subId,
+				type: "POST",
+				data: {
+					destination: $destina_val,
+					order: priceTip,
+					styles: $style_val,
+					min_bedroom: $minRoom,
+					max_bedroom: $maxRoom,
+					min_price: $minPrice,
+					'max_price': $maxPrice
+				},
+				dataType: "jsonp",
+				jsonpCallback: 'jsonp',
+				success: function(data) {
+					if (data['code'] == 200) {
+						_this.getSearchList(data['val']);
+					};
+				}
+			});
+			break;
+		case 'destinations':
+			$.ajax({
+				url: domain + '/destinations_list/' + $subId,
+				type: "POST",
+				data: {
+					destination: $destina_val,
+					order: priceTip,
+					styles: $style_val,
+					min_bedroom: $minRoom,
+					max_bedroom: $maxRoom,
+					min_price: $minPrice,
+					'max_price': $maxPrice
+				},
+				dataType: "jsonp",
+				jsonpCallback: 'jsonp',
+				success: function(data) {
+					if (data['code'] == 200) {
+						_this.getSearchList(data['val']);
+					};
+				}
+			});
+			break;
+		};
+	});
+};
+senseluxuryFed.indexFun.banSlideFun = function(obj) {
+	var $this = $(obj),
+		$winW = $(window).width();
+	$ulItems = $this.find('.slides'), lis = $ulItems.find('li').length, iNow = 0, timer = null;
+	$this.hover(function() {
+		$(this).find('.prev').show();
+		$(this).find('.next').show();
+	}, function() {
+		$(this).find('.prev').hide();
+		$(this).find('.next').hide();
+	});
+	$ulItems.find('li').css('height', $winW * 3 / 8 + 'px');
+	$this.on('click', '.next', function() {
+		if (iNow < lis - 1) {
+			iNow++;
+		} else(iNow = 0);
+		$ulItems.find('li').eq(iNow).stop(true, true).fadeIn().siblings('li').fadeOut();
+		return false;
+	});
+	$this.on('click', '.prev', function() {
+		if (iNow > 0) {
+			iNow--;
+		} else(iNow = lis - 1);
+		$ulItems.find('li').eq(iNow).stop(true, true).fadeIn().siblings('li').fadeOut();
+		return false;
+	});
+	timer = setInterval(function() {
+		$this.find('.next').trigger('click');
+	}, 3000);
+	$this.hover(function() {
+		clearInterval(timer);
+	}, function() {
+		timer = setInterval(function() {
+			$this.find('.next').trigger('click');
+		}, 3000);
+	});
+};
+senseluxuryFed.Autocomplete = function(obj) {
+	var $inputId = $(obj),
+		comFun = senseluxuryFed.commonFun,
+		domain = $('#domain').val(),
+		gourl = 0;
+	if (getCookieCn("destination") && getCookieCn("destination") != "undefined") {
+		$inputId.val(getCookieCn("destination"));
+		$inputId.attr('data-type', getCookieCn("destination-type"));
+		$("#AutoSearch").attr('data-id', getCookieCn("destination-id"))
+	}
+	if (getCookie("c_start_time") && getCookie("c_start_time") != "undefined") {
+		var date = new Date(getCookie("c_start_time"));
+		if (date <= new Date()) {
+			date.setDate(new Date().getDate() + 3);
+		}
+		date = formatDate(date);
+		setCookie("c_start_time", date, '7d');
+		$('#rz_time_start').val(date);
+		$('#rz_time_start').attr("data-valname", date);
+	}
+	if (getCookie("c_end_time") && getCookie("c_end_time") != "undefined") {
+		var date = new Date(getCookie("c_start_time"));
+		if (date.getDate() <= (new Date()).getDate() + 3) {
+			date.setDate((new Date()).getDate() + 6);
+		}
+		date = formatDate(date);
+		setCookie("c_end_time", date, '7d');
+		$('#rz_time_end').val(date);
+		$('#rz_time_end').attr("data-valname", date);
+	}
+	if (getCookie("c_guest_amount") && getCookie("c_guest_amount") != "undefined") {
+		$('#people_numb').find('input').val(getCookie("c_guest_amount"))
+		$('#people_numb').find('input').attr("data-valname", getCookie("c_guest_amount"));
+	}
+	var _keyWord = $.trim($("#AutoSearch").val());
+	var _nilKeyWord = '未能检索到相关结果';
+	$('.D1main .txt-input').click(function() {
+		var _this = $(this);
+		if (_this.val() == '目的地/别墅') {
+			_this.val('');
+		}
+	})
+	$('.D1main .txt-input').blur(function() {
+		var _this = $(this);
+		if (_this.val() == '') {
+			_this.val('');
+		}
+	})
+	$('.D1main ul .li1 b.clear').on('click', function() {
+		$('#AutoSearch').val("");
+	});
+	$('#AutoSearch').click(function() {
+		var _this = $(this);
+		if ($(this).val() != '') {
+			$('.D1main ul .li1 b.clear').css('display', 'inline');
+		} else {
+			$('.D1main ul .li1 b.clear').css('display', 'none');
+		}
+		var getStr = getCookieCn("dest_history");
+		var getArr = getStr.split(',');
+		var thisItem;
+		var pushed = 0;
+		var sHtml = "";
+		for (var i in getArr) {
+			if (pushed <= 9) {
+				thisItem = getArr[i].split('_');
+				if (thisItem.length == 4) {
+					sHtml += '<li data-id="' + thisItem[3] + '" data-type="' + thisItem[2] + '"><span>' + thisItem[0] + '</span> <b>' + thisItem[1] + '</b></li>';
+				}
+				if (thisItem.length == 3) {
+					sHtml += '<li  data-id="' + thisItem[2] + '" data-type="' + thisItem[1] + '"><span>' + thisItem[0] + '</span></li>';
+				}
+				pushed++;
+			}
+		}
+		if (getArr[0] != "") {
+			$('.defList>.history').css('display', 'block');
+			$('.defList').css('display', 'block');
+			$('.defList>ul').empty();
+			$('.defList>ul').append($(sHtml));
+		} else {
+			$('.defList').css('display', 'block');
+			$('.defList>ul').empty();
+		}
+	});
+	$('.des-input').on("click", "ul li", function() {
+		keyw = $(this).text();
+		$inputId.val($(this).text());
+		$inputId.attr('data-id', $(this).attr('data-id'));
+		$inputId.attr('data-type', $(this).attr('data-type'));
+		$('.autoList').remove();
+		$('.defList').css('display', 'none');
+		$(obj).siblings('.s-btn').trigger('click');
+	});
+	$('.des-input').on("click", "p span", function() {
+		keyw = $(this).text();
+		$inputId.val($(this).text());
+		$inputId.attr('data-id', $(this).attr('data-id'));
+		$inputId.attr('data-type', $(this).attr('data-type'));
+		$('.autoList').remove();
+		$('.defList').css('display', 'none');
+	});
+	$('.des-input').mouseleave(function() {
+		$('.defList>ul').empty();
+		$('.des-input .autoList').remove();
+		$('.defList').css('display', 'none');
+	})
+	$(document).on('propertychange oninput', '.D1main .txt-input', function() {
+		var _this = $(this);
+		if (_this.val() == _keyWord) {
+			_this.val('');
+		}
+		if (_this.val() == _nilKeyWord) {
+			_this.val('');
+		}
+		if (_this.attr('data-id') && _this.attr('data-id') != '') {
+			_this.attr('data-id', '');
+		}
+		if (_this.attr('data-type') && _this.attr('data-type') != '') {
+			_this.attr('data-type', '');
+		}
+	});
+	var searchById = function(val) {
+			var vId = parseInt(val.substr(1, val.length));
+			if (isNaN(vId)) return;
+			window.location = "/villa/" + vId;
+		};
+	$('.search-btn').on('click', '.btn', function() {
+		var keyVal = $inputId.val(),
+			guestAmount = $('#people_numb').find('input').val(),
+			startTime = $('#rz_time_start').val(),
+			endTime = $('#rz_time_end').val(),
+			tourl = '';
+		guestAmount = guestAmount == "不限" ? "" : guestAmount == "10+" ? 11 : guestAmount;
+		var cookieArr;
+		if (getCookieCn("dest_history")) {
+			cookieArr = getCookieCn("dest_history").split(',');
+		} else {
+			cookieArr = [];
+		}
+		if ($("#AutoSearch").attr('data-type') == '1') {
+			var thisArr = $.trim($("#AutoSearch").val()).split(' ');
+			var thisPush = thisArr[0] + '_' + thisArr[1] + '_' + $("#AutoSearch").attr('data-type') + '_' + $("#AutoSearch").attr('data-id');
+			if (cookieArr.indexOf(thisPush) == -1) {
+				cookieArr.push(thisPush);
+			}
+		} else {
+			var thisStr = $.trim($inputId.val()) + '_' + $("#AutoSearch").attr('data-type') + '_' + $("#AutoSearch").attr('data-id');
+			if (cookieArr.indexOf(thisStr) == -1) {
+				cookieArr.push(thisStr);
+			}
+		}
+		var cookieStr = cookieArr.join(',');
+		setCookieCn("dest_history", cookieStr, 30);
+		if (keyVal.substr(0, 1) === "#") searchById(keyVal);
+		if (startTime == $('#rz_time_start').attr('data-valname')) {
+			startTime = false;
+		} else {
+			setCookie("c_start_time", startTime, '7d');
+		}
+		if (endTime == $('#rz_time_end').attr('data-valname')) {
+			endTime = false;
+		} else {
+			setCookie('c_end_time', endTime, '7d');
+		}
+		if (guestAmount == $('#people_numb').find('input').attr('data-valname')) {
+			guestAmount = false;
+		} else {
+			setCookie('c_guest_amount', guestAmount, '7d');
+		}
+		if (endTime && !startTime) {
+			$(".li2 .ui-datepicker-trigger").css('outline', '1px solid red');
+			return false;
+		}
+		var d_id = $("#AutoSearch").attr('data-id');
+		if ($("#AutoSearch").attr('data-type') == '1') {
+			tourl += '/villa/' + d_id;
+			tourl += startTime ? '/checkin/' + startTime.replace('/', '').replace('/', '') : '';
+			tourl += endTime ? '/checkout/' + endTime.replace('/', '').replace('/', '') : '';
+		} else {
+			tourl = '/destinations/' + d_id;
+			tourl += guestAmount ? '/pn/' + guestAmount : '';
+			tourl += startTime ? '/checkin/' + startTime.replace('/', '').replace('/', '') : '';
+			tourl += endTime ? '/checkout/' + endTime.replace('/', '').replace('/', '') : '';
+		}
+		var t = $inputId.attr('data-type');
+		var d_name = $inputId.attr('data-valname')
+		if (t && keyVal != d_name && keyVal != "") {
+			setCookieCn("destination", $inputId.val(), 7);
+			setCookieCn("destination-type", t, 7);
+			setCookieCn("destination-id", $("#AutoSearch").attr('data-id'), 7);
+			window.open(tourl);
+		} else {
+			$inputId.val("");
+		}
+	});
+	var keyw = '';
+	var tipsHtml = '';
+	$inputId.on('keyup', $inputId, function(e) {
+		var val = $(this).val();
+		if (val) {
+			$('.D1main ul .li1 b.clear').css('display', 'inline');
+		} else {
+			$('.D1main ul .li1 b.clear').css('display', 'none');
+		}
+		var getStr = getCookieCn("dest_history");
+		var getArr = getStr.split(',');
+		var thisItem;
+		var pushed = 0;
+		var sHtml = "";
+		for (var i in getArr) {
+			if (pushed <= 9) {
+				thisItem = getArr[i].split('_');
+				if (thisItem.length == 4) {
+					sHtml += '<li data-id="' + thisItem[3] + '" data-type="' + thisItem[2] + '"><span>' + thisItem[0] + '</span> <b>' + thisItem[1] + '</b></li>';
+				}
+				if (thisItem.length == 3) {
+					sHtml += '<li  data-id="' + thisItem[2] + '" data-type="' + thisItem[1] + '"><span>' + thisItem[0] + '</span></li>';
+				}
+				pushed++;
+			}
+		}
+		if ($(this).val() == '') {
+			$('.des-input .autoList').remove();
+			if (getArr[0] != "") {
+				console.info(1);
+				$('.defList>.history').css('display', 'block');
+				$('.defList').css('display', 'block');
+				$('.defList>ul').empty();
+				$('.defList>ul').append($(sHtml));
+			} else {
+				$('.defList').css('display', 'block');
+				$('.defList>ul').empty();
+			}
+		} else {
+			$('.defList').css('display', 'none');
+		}
+		keyw = "";
+		$(".ll_input_tip").hide();
+		$inputId.parent().css('outline', '0px solid red');
+		if (val == _nilKeyWord) {
+			$(this).val('');
+			return false;
+		}
+		e = e || event;
+		if (val.substr(0, 1) === "#") {
+			if (e.keyCode === 13) searchById(val);
+			$('.des-input .autoList').remove();
+			return;
+		}
+		if (e.which == 13 && $("#AutoSearch").attr('data-id') > 0) {
+			$("#AutoSearch").val(keyw);
+			$('.des-input .autoList').remove();
+			$('#rz_time_start').focus();
+			$("#rz_time_start").datepicker('show');
+			return false;
+		}
+		$.ajax({
+			url: domain + '/search_suggest/?q=' + encodeURIComponent(val),
+			type: "POST",
+			dataType: "jsonp",
+			jsonpCallback: 'aaa',
+			success: function(data) {
+				var sHtml = '';
+				sHtml += '<div class="autoList"><ul>';
+				var num = 0;
+				for (var i in data) {
+					num++;
+					sHtml += '<li data-id="' + data[i]['data_id'] + '" data-type="' + data[i]['type'] + '">' + data[i]['keywords'] + '</li>';
+				}
+				if (num == 0) {
+					sHtml += '<li data-id="-1">未能检索到相关结果</li>';
+				}
+				sHtml += '</ul></div>';
+				if (data != '') {
+					$("#AutoSearch").attr('data-id', data[0]['data_id']);
+					$("#AutoSearch").attr('data-type', data[0]['type']);
+					keyw = data[0]['keywords'];
+					tipsHtml = sHtml;
+				}
+				if ($('.autoList').length) {
+					$('.autoList').remove();
+					$('.des-input').append($(sHtml));
+				} else {
+					$('.des-input').append($(sHtml));
+				};
+				$(obj).siblings('.s-btn').click(function() {
+					if (!$inputId.attr('data-id') && $('.autoList').length == 0) {
+						return;
+					} else if (!$inputId.attr('data-id')) {
+						var obj = $('.des-input').find('.autoList ul li').eq(0);
+						$inputId.val(obj.text());
+						$inputId.attr('data-id', obj.attr('data-id'));
+						$inputId.attr('data-type', obj.attr('data-type'));
+					}
+					window.location.href = domain + '/search/?q=' + $inputId.val() + '&id=' + $inputId.attr('data-id') + '&type=' + $inputId.attr('data-type');
+				});
+			}
+		});
+	});
+	$('#clear_history').on('click', function() {
+		$('#AutoSearch').val('');
+		delCookie('dest_history');
+		delCookie("destination");
+		delCookie("c_start_time");
+		delCookie("c_end_time");
+		delCookie("c_guest_amount");
+		$('.defList>ul').empty();
+		$('.defList>ul').css('display', 'none');
+		$('.defList>.history').css('display', 'none');
+	});
+};
+senseluxuryFed.FqaFun = function() {
+	var $fqaCont = $('.fqa-main');
+	$fqaCont.find('.fqa-menu').on('click', 'li a', function() {
+		var $this = $(this),
+			_index = $this.parent('li').index();
+		$this.parent('li').siblings('li').children('a').removeClass('cur');
+		$this.addClass('cur');
+		$fqaCont.find('.fqtab-cont').eq(_index).show().siblings('.fqtab-cont').hide();
+	});
+};
+senseluxuryFed.detailFun.getCommentList = function(data) {
+	var aData = data['data'],
+		_this = senseluxuryFed.detailFun,
+		aHtml = '',
+		commentCont = $('.detail-app');
+	for (i in aData) {
+		aHtml += '<li> <div class="com-top"><i class="rx-icon"></i><span class="hes">' + aData[i]["userName"] + '</span><span class="hus">' + aData[i]["addTime"] + '</span></div><div class="yhlf-bg"><div class="yhrt-bg"><p>' + aData[i]["info"] + '</p></div></div></li>';
+	}
+	commentCont.find('ul').html('').html(aHtml);
+	_this.comGetPageFun(data['page'], data['pageTotal']);
+};
+senseluxuryFed.detailFun.comGetPageFun = function(iNow, total) {
+	var _this = this,
+		iNow = iNow,
+		allPage = total,
+		pageHtml = '',
+		$pageCont = $('.page-list');
+	$pageCont.attr({
+		'date-page-now': iNow,
+		'date-page-all': allPage
+	});
+	if (allPage <= 1) {
+		$pageCont.html('');
+	} else {
+		if (iNow == 1) {
+			pageHtml += '';
+		} else {
+			pageHtml += '<a href="javascript:void(0);" class="prve"><img src= "/resource/img/js_images/pageprev.png"/></a>';
+		};
+		for (var i = 0; i < allPage; i++) {
+			if ((i + 1) == iNow) {
+				pageHtml += '<b>' + (i + 1) + '</b>';
+			} else {
+				pageHtml += 'a href="javacript:void(0);" class="pageNumb" data-num="' + (i + 1) + '">' + (i + 1) + '</a>';
+			}
+		};
+		if (iNow == allPage) {
+			pageHtml += '';
+		} else {
+			pageHtml += '<a href="javascript:void(0);" class="next"><img src= "/resource/img/js_images/pagenext.png" /></a>';
+		};
+		$pageCont.html('').html(pageHtml);
+	}
+};
+senseluxuryFed.detailFun.comPageClickFun = function(pageNum) {
+	var _this = senseluxuryFed.detailFun,
+		$subId = $('#pid').val(),
+		domain = $('#domain').val();
+	$.ajax({
+		url: domain + '/detail_review/' + $subId + '?page=' + pageNum,
+		type: "GET",
+		dataType: "jsonp",
+		jsonpCallback: 'jsonp',
+		success: function(data) {
+			if (data['code'] == 200) {
+				_this.getCommentList(data['val']);
+				$('.detail-type').find('.items li').eq(4).children('a').trigger('click');
+			};
+		}
+	});
+};
+senseluxuryFed.detailFun.setcommentFun = function(infoText) {
+	var text = infoText,
+		_this = senseluxuryFed.detailFun,
+		$subId = $('#pid').val(),
+		domain = $('#domain').val();;
+	$.ajax({
+		url: domain + '/detail_addreview/' + $subId,
+		type: "POST",
+		data: {
+			info: text
+		},
+		dataType: "jsonp",
+		jsonpCallback: 'jsonp',
+		success: function(data) {
+			$('#top_textarea').val(data['msg']).css('color', '#f00');
+			if (data['code'] == 200) {
+				_this.comPageClickFun(0);
+				$('#top_textarea').val('');
+			};
+		}
+	});
+};
+senseluxuryFed.detailFun.commentFun = function() {
+	var _this = senseluxuryFed.detailFun,
+		$commentCont = $('.detail-app'),
+		$textarea = $('#top_textarea'),
+		$pageCont = $('.page-list'),
+		iNowNumb = $pageCont.attr('date-page-now'),
+		allNumb = $pageCont.attr('date-page-all');
+	_this.comGetPageFun(iNowNumb, allNumb);
+	$commentCont.find('.login-btn').click(function() {
+		$('.userlink').find('.login-btn').trigger('click');
+	});
+	$commentCont.find('.reg-btn').click(function() {
+		$('.userlink').find('.reg-btn').trigger('click');
+	});
+	$pageCont.on('click', '.pageNumb', function() {
+		var pageIndex = $(this).attr('data-num');
+		_this.comPageClickFun(parseInt(pageIndex));
+		iNowNumb = parseInt(pageIndex);
+		return false;
+	});
+	$pageCont.on('click', '.prve', function() {
+		_this.comPageClickFun(parseInt(iNowNumb) - 1);
+		iNowNumb = parseInt(iNowNumb) - 1;
+		return false;
+	});
+	$pageCont.on('click', '.next', function() {
+		_this.comPageClickFun(parseInt(iNowNumb) + 1);
+		iNowNumb = parseInt(iNowNumb) + 1;
+		return false;
+	});
+	$textarea.focus(function() {
+		var text = $(this).val();
+		if (text == '内容不能为空！' || text == '内容不能小于10个字符！') {
+			$('#top_textarea').val('').css('color', '#333');
+		};
+	});
+	$commentCont.find('.fbplBtn').on('click', 'a', function() {
+		var _text = $textarea.val();
+		if (_text == '内容不能为空！' || _text == '内容不能小于10个字符！') {
+			_text = '';
+		}
+		if (_text == '') {
+			$textarea.val('内容不能为空！').css('color', '#f00');
+		} else if (_text.length < 10) {
+			$textarea.val('内容不能小于10个字符！').css('color', '#f00');
+		} else {
+			_this.setcommentFun(_text);
+		}
+		return false;
+	});
+};
+
+function wrapAuto() {
+	var wrapHeight = $('.botInfo').height();
+	var wrapWidth = $(window).width();
+	$('.djInfo,.enjoy,.leftBg,.rightBg').height(wrapHeight);
+	$('.leftBg,.rightBg').width((wrapWidth - 1100) / 2);
+};
+$(function() {
+	wrapAuto();
+	var price_1 = 0,
+		price_2 = 0,
+		sumPrice = 0;
+	sumPrice = parseFloat($('#addPrice_3').val()) + parseFloat($('#addPrice_4').val()) + parseFloat($('#addPrice_5').val());
+	if (sumPrice > 0) {
+		$('.zj i').text(sumPrice);
+		$('#sumPrice').val(sumPrice);
+	}
+	$('.f-price').click(function() {
+		price_1 = $(this).find('input').attr('data-value');
+		var f_rate = $("#f-rate").val();
+		if ($(this).hasClass('cur')) {
+			$("#addPrice_1").val(0);
+			$(this).removeClass('cur');
+			price_1 = -price_1;
+		} else {
+			$("#addPrice_1").val(f_rate);
+			$(this).addClass('cur');
+			price_1 = price_1;
+		}
+		price_2 = parseFloat(price_2) + parseFloat(price_1);
+		sumPrice = parseFloat($('#addPrice_3').val()) + parseFloat($('#addPrice_4').val()) + parseFloat($('#addPrice_5').val()) + parseFloat(price_2);
+		if (sumPrice > 0) {
+			$('.zj i').text(sumPrice);
+			$('#sumPrice').val(sumPrice);
+		}
+	});
+	$('#submit_inquire').click(function() {
+		var input = $("<input>").attr("type", "hidden").attr("name", "t").val("inquire");
+		$("#order_form").append($(input));
+		$("#order_form").submit();
+	});
+	$('#pay_next').click(function() {
+		$("#order_form").submit();
+	});
+	$('.select-c').hover(function() {
+		$(this).find('.select-c-list').show();
+	}, function() {
+		$(this).find('.select-c-list').hide();
+	});
+	var countPrice = function() {
+			var url = $("#count-url").val();
+			var bookStart = $('#book_start').val();
+			var bookEnd = $('#book_end').val();
+			var pidVal = $('#pid').val();
+			var roomNumb = $('#book_bedroom').val();
+			if (bookStart == '' || bookEnd == '') {} else {
+				bookStart = bookStart.replace(/\//g, '-');
+				bookEnd = bookEnd.replace(/\//g, '-');
+				var startTime = new Date(Date.parse(bookStart)).getTime();
+				var endTime = new Date(Date.parse(bookEnd)).getTime();
+				var dates = Math.abs((startTime - endTime)) / (1000 * 60 * 60 * 24);
+				$.ajax({
+					url: url,
+					type: "get",
+					dataType: "json",
+					data: {
+						pid: pidVal,
+						start: bookStart,
+						end: bookEnd,
+						bedroom: roomNumb
+					},
+					success: function(data) {
+						if (data == '-1') {
+							$('.sumPriceCon').html('<span>总价：</span><p><span class="f12">参数错误！</span></p>')
+						} else {
+							$('.sumPriceCon').find('p b').html(data.price);
+							if (data.min_stay > dates) {
+								$('#booking_price_notice').html("提示：您预订的期间最短入住天数要求为" + data.min_stay + "天，小于该天数将无法预订成功");
+							} else {
+								$('#booking_price_notice').html("");
+							}
+							$('.sumPriceCon').find('p i').html(dates);
+						};
+					}
+				});
+			}
+		}
+	$('.select-c-list').eq(0).find('li').click(function() {
+		var liVal = $(this).text();
+		$(this).parents('.select-c-list').hide().siblings('span').text(liVal);
+		var value = $(this).attr('data-val');
+		$('#book_bedroom').val(value);
+		countPrice();
+	});
+	$('.select-c-list').eq(1).find('li').click(function() {
+		var liVal = $(this).text();
+		$(this).parents('.select-c-list').hide().siblings('span').text(liVal);
+		$('#book_adult').val(liVal);
+		countPrice();
+	});
+	$('.select-c-list').eq(2).find('li').click(function() {
+		var liVal = $(this).text();
+		$(this).parents('.select-c-list').hide().siblings('span').text(liVal);
+		$('#book_child').val(liVal);
+		countPrice();
+	});
+});
+window.onresize = function() {
+	wrapAuto();
+};
+
+function setCookie(name, value, time, fun) {
+	delCookie(name);
+	var strsec = getsec(time);
+	var exp = new Date();
+	exp.setTime(exp.getTime() + strsec * 1);
+	document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
+	if (fun) {
+		fun();
+	}
+};
+
+function __setCookie(name, value, fun) {
+	delCookie(name);
+	var exp = new Date();
+	document.cookie = name + "=" + escape(value) + ";path=/";
+	if (fun) {
+		fun();
+	}
+};
+
+function getCookieCn(c_name) {
+	if (document.cookie.length > 0) {
+		c_start = document.cookie.indexOf(c_name + "=");
+		if (c_start != -1) {
+			c_start = c_start + c_name.length + 1;
+			c_end = document.cookie.indexOf(";", c_start);
+			if (c_end == -1) c_end = document.cookie.length
+			return unescape(document.cookie.substring(c_start, c_end));
+		}
+	}
+	return "";
+}
+
+function setCookieCn(c_name, value, expiredays) {
+	var exdate = new Date();
+	exdate.setDate(exdate.getDate() + expiredays);
+	document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : "; expires=" + exdate.toGMTString()) + "; path=/";
+}
+
+function getsec(str) {
+	var str1 = str.substr(0, str.length - 1) * 1;
+	var str2 = str.substr(str.length - 1, str.length);
+	if (str2 == "s") {
+		return str1 * 1000;
+	} else if (str2 == "h") {
+		return str1 * 60 * 60 * 1000;
+	} else if (str2 == "d") {
+		return str1 * 24 * 60 * 60 * 1000;
+	}
+};
+
+function getCookie(name) {
+	var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+	if (arr = document.cookie.match(reg)) return (arr[2]);
+	else return null;
+};
+
+function delCookie(name) {
+	var exp = new Date();
+	exp.setTime(exp.getTime() - 1);
+	var cval = getCookie(name);
+	if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+};
+$(".immbook").click(function() {
+	$("#order-btn").trigger("click");
+});
+$("ul").delegate('li[class="available"]', 'click', function() {
+	$("#order-btn").trigger("click");
+});
+$(function() {
+	var index = 0;
+	var speed = 750;
+	var $ul = $(".index-say .say-slider .slider-ul");
+	var $arrowDown = $(".index-say .say-slider .slider-point .arrow-down");
+	var $a = $(".index-say .say-slider .slider-point .point-list a");
+	var slideTo = function(index, $this) {
+			var arrowDownLeft = -778 + index * 244.25;
+			$arrowDown.animate({
+				"left": arrowDownLeft + "px"
+			}, speed, function() {
+				$a.removeClass("active");
+				$this.addClass("active");
+			});
+			var ulLeft = 1100 * index;
+			$ul.animate({
+				"left": -ulLeft + "px"
+			}, speed, function() {});
+		};
+	$a.mouseenter(function(event) {
+		$arrowDown.stop();
+		$ul.stop();
+		var $this = $(this);
+		index = $this.data().index;
+		slideTo(index, $this);
+	});
+});
+(function() {
+	setInterval(autoA, 7000);
+	var n = 0;
+	var dir = 0;
+
+	function autoA() {
+		var len = $(".testimotial-btn li").length;
+		if (n >= len - 1 && dir == 1) dir = 0;
+		else if (n <= 0) dir = 1;
+		if (dir == 0) n--;
+		else n++;
+		$(".testimotial-btn li").removeClass("active");
+		$(".testimotial-btn li").eq(n).addClass("active");
+		$(".testimotial-box").attr("style", "transform:translate3d(" + (-n * 730) + "px,0,0);transition-duration:0.5s")
+	}
+	$(".testimotial-btn li").click(function() {
+		var index = $(this).index();
+		n = index;
+		$(".testimotial-btn li").removeClass("active")
+		$(this).addClass("active");
+		$(".testimotial-box").attr("style", "transform:translate3d(" + (-index * 730) + "px,0,0);transition-duration:0.5s")
+	})
+})()
+$(".icons-up-arrow").click(function() {
+	nums = nums < (-lenght / 3) ? (-lenght / 3) : nums >= 0 ? 0 : nums + 1;
+	autoS();
+})
+$(".icons-down-arrow").click(function() {
+	nums = nums > 0 ? (-lenght / 3) : nums - 1;
+	autoS();
+})
+var nums = 0;
+var lenght
+
+function autoS() {
+	lenght = $(".testimontial-right-item").length;
+	if (nums < -lenght / 3) {
+		nums = 0;
+		$(".testimotial-container").css("position", "static");
+	}
+	if (nums == -1) {
+		$(".testimotial-container").css("position", "absolute");
+	}
+	if (nums == (-lenght / 3) + 1) {}
+	$(".testimotial-container").css("top", 147 * 3 * nums + 'px');
+}
+
+function ajaxGetD() {
+	var limit = $(".testimotial-container").attr('data-limit');
+	var size = 51;
+	var html = "";
+	$.ajax({
+		type: 'get',
+		data: {
+			'limit': limit,
+			'size': size
+		},
+		url: rooturl,
+		dataType: 'jsonp',
+		jsonpCallback: 'jsonp',
+		success: function(data) {
+			if (data && data.code == "200") {
+				$(".testimotial-container").attr('data-limit', limit - 0 + 1);
+				$.each(data.val, function(i, item) {
+					if (item.headerimg == "" || item.headerimg == null) {
+						item.headerimg = '/resource/img/js_images/morentouxiang_03.png';
+					}
+					item.u_name = item.u_name == "" ? '第六感别墅度假用户' : item.u_name;
+					html += ' <div class="testimontial-right-item">' + '<div><img class="testimotial-right-avatar" src="' + item.headerimg + '" alt="">' + '<div class="testimotial-right-c">' + '<p>' + item.u_name + '</p>' + '<a href="http://www.senseluxury.com/villa/' + item.pid + '_' + item.title_en + '"><p class="color-ff8 testimotial-left-l"><i class="icon-laction"></i>' + item.p_title + ' | ' + item.des + '</p></a>' + '</div>' + '<p class="testimotial-right-info">"' + item.info + '" </p>' + ' </div></div>'
+				})
+				$(".testimotial-container").append(html);
+			}
+		}
+	})
+}
+var formatDate = function(date) {
+		var y = date.getFullYear();
+		var m = date.getMonth() + 1;
+		m = m < 10 ? '0' + m : m;
+		var d = date.getDate();
+		d = d < 10 ? ('0' + d) : d;
+		return y + '/' + m + '/' + d;
+	};;
+(function(a) {
+	a.fn.scrollLoading = function(b) {
+		var c = {
+			attr: "data-url",
+			container: a(window),
+			callback: a.noop
+		};
+		var d = a.extend({}, c, b || {});
+		d.cache = [];
+		a(this).each(function() {
+			var h = this.nodeName.toLowerCase(),
+				g = a(this).attr(d.attr);
+			var i = {
+				obj: a(this),
+				tag: h,
+				url: g
+			};
+			d.cache.push(i)
+		});
+		var f = function(g) {
+				if (a.isFunction(d.callback)) {
+					d.callback.call(g.get(0))
+				}
+			};
+		var e = function() {
+				var g = d.container.height();
+				if (d.container.get(0) === window) {
+					contop = a(window).scrollTop()
+				} else {
+					contop = d.container.offset().top
+				}
+				a.each(d.cache, function(m, n) {
+					var p = n.obj,
+						j = n.tag,
+						k = n.url,
+						l, h;
+					if (p) {
+						l = p.offset().top - contop, h = l + p.height();
+						if ((l >= 0 && l < g) || (h > 0 && h <= g)) {
+							if (k) {
+								if (j === "img") {
+									f(p.attr("src", k))
+								} else {
+									p.load(k, {}, function() {
+										f(p)
+									})
+								}
+							} else {
+								f(p)
+							}
+							n.obj = null
+						}
+					}
+				})
+			};
+		e();
+		d.container.bind("scroll", e)
+	}
+})(jQuery);

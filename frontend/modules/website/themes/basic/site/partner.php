@@ -1,7 +1,7 @@
 <?php
 	$this->title = '合作伙伴';
 	use frontend\modules\website\themes\basic\myasset\ThemeAsset;
-	
+	use yii\helpers\Url;
 	ThemeAsset::register($this);
 	$baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 ?>
@@ -12,30 +12,32 @@
  <div class="swiper-container">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <img alt="旅行的瞬间在这里度假，处处都有精彩" src="resource/img/large_1473316293.jpg#旅行的瞬间"></div>
+                <img alt="旅行的瞬间在这里度假，处处都有精彩" src="<?php echo $baseUrl?>img/large_1473316293.jpg#旅行的瞬间"></div>
             </div>
            </div>
           <div class=" tr-main">
             <div class="tr-left tr-fll tr-mb20">
-              
               <div class="tr-list-content">
-                <a target="_blank" href="hz_xiangqing.html">
+              
+              <?php foreach ($partner as $row) :?>
+              
+                <a target="_blank" href="<?php echo Url::toRoute(['partner/index','id'=>$row['id']]);?>">
                   <div class="tr-mt15 tr-bgcw tr-pro_box ">
                     <div class="tr-fll tr-pro-img_box" style="position:relative;">
-                      <img class="tr-vert" src="resource/img/default-info.png" source="http://file.hivilla.com/uploads/travels/smaill_1481881073.jpg"></div>
+                      <img class="tr-vert" src="<?php echo Yii::$app->params['img_url']."/".$row['img_url'];?>" source="<?php echo Yii::$app->params['img_url']."/".$row['img_url'];?>"></div>
                     <div class="tr-fll tr-ml20 tr-pro-text-w">
                       <div class="tr-mt10">
                         <div class="tr-fll">
-                          <img style="border-radius: 50%;width: 50px;height: 50px;" src="http://file.hivilla.com/uploads/travels/header_1481881042.jpg"></div>
+                          <img style="border-radius: 50%;width: 50px;height: 50px;" src="<?php echo Yii::$app->params['img_url']."/".$row['img_url'];?>"></div>
                         <div class="tr-fll tr-ml15">
-                          <div class="tr-fz18 tr-c444 tr-ellipsis" style="width:265px;line-height:53px;">珠海正和国际旅游有限公司</div>
+                          <div class="tr-fz18 tr-c444 tr-ellipsis" style="width:265px;line-height:53px;"><?php echo $row['name']?></div>
                         </div>
                         <div class="tr-cfb"></div>
                       </div>
                       <div class="tr-mt15">
-                        <div class="tr-c444 tr-fz14 tr-mt5">电话：0756-8978123</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">邮箱：72726374746@qq.com</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">地址：珠海市南屏科技工业园屏东六路8号五楼515C室</div>
+                        <div class="tr-c444 tr-fz14 tr-mt5">电话：<?php echo $row['telephone']?></div>
+                        <div class="tr-c444 tr-fz14 tr-mt5">邮箱：<?php echo $row['email']?></div>
+                        <div class="tr-c444 tr-fz14 tr-mt5">地址：<?php echo $row['address']?></div>
                         <!-- <a target="_blank" href="/travels/detail/70">
                           <span class="tr-curp tr-ml5 tr-c9e">... [详情]</span></a> -->
                       </div>
@@ -43,189 +45,31 @@
                     <div class="tr-cfb"></div>
                   </div>
                 </a>
-
-                <a target="_blank" href="hz_xiangqing.html">
-                  <div class="tr-mt15 tr-bgcw tr-pro_box ">
-                    <div class="tr-fll tr-pro-img_box" style="position:relative;">
-                      <img class="tr-vert" src="resource/img/default-info.png" source="http://file.hivilla.com/uploads/travels/smaill_1481796480.jpg"></div>
-                    <div class="tr-fll tr-ml20 tr-pro-text-w">
-                      <div class="tr-mt10">
-                        <div class="tr-fll">
-                          <img style="border-radius: 50%;width: 50px;height: 50px;" src="http://file.hivilla.com/uploads/travels/header_1481796480.jpg"></div>
-                        <div class="tr-fll tr-ml15">
-                          <div class="tr-fz18 tr-c444 tr-ellipsis" style="width:265px;line-height:53px;">珠海正和国际旅游有限公司</div>
-                        </div>
-                        <div class="tr-cfb"></div>
-                      </div>
-                      <div class="tr-mt15">
-                        <div class="tr-c444 tr-fz14 tr-mt5">电话：0756-8978123</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">邮箱：72726374746@qq.com</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">地址：珠海市南屏科技工业园屏东六路8号五楼515C室</div>
-                      </div>      
-                    </div>
-                    <div class="tr-cfb"></div>
-                  </div>
-                </a>
-
-                <a target="_blank" href="hz_xiangqing.html">
-                  <div class="tr-mt15 tr-bgcw tr-pro_box ">
-                    <div class="tr-fll tr-pro-img_box" style="position:relative;">
-                      <img class="tr-vert" src="resource/img/default-info.png" source="http://file.hivilla.com/uploads/travels/smaill_1481790221.jpg"></div>
-                    <div class="tr-fll tr-ml20 tr-pro-text-w">
-                      <div class="tr-mt10">
-                        <div class="tr-fll">
-                          <img style="border-radius: 50%;width: 50px;height: 50px;" src="http://file.hivilla.com/uploads/travels/header_1481790221.jpg"></div>
-                        <div class="tr-fll tr-ml15">
-                          <div class="tr-fz18 tr-c444 tr-ellipsis" style="width:265px;line-height:53px;">珠海正和国际旅游有限公司</div>
-                        </div>
-                        <div class="tr-cfb"></div>
-                      </div>
-                      <div class="tr-mt15">
-                        <div class="tr-c444 tr-fz14 tr-mt5">电话：0756-8978123</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">邮箱：72726374746@qq.com</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">地址：珠海市南屏科技工业园屏东六路8号五楼515C室</div>
-                      </div>      
-                    </div>
-                    <div class="tr-cfb"></div>
-                  </div>
-                </a>
                 
-                <a target="_blank" href="hz_xiangqing.html">
-                  <div class="tr-mt15 tr-bgcw tr-pro_box ">
-                    <div class="tr-fll tr-pro-img_box" style="position:relative;">
-                      <img class="tr-vert" src="resource/img/default-info.png" source="http://file.hivilla.com/uploads/travels/smaill_1481193333.jpg"></div>
-                    <div class="tr-fll tr-ml20 tr-pro-text-w">
-                      <div class="tr-mt10">
-                        <div class="tr-fll">
-                          <img style="border-radius: 50%;width: 50px;height: 50px;" src="http://file.hivilla.com/uploads/travels/header_1481193333.jpg"></div>
-                        <div class="tr-fll tr-ml15">
-                          <div class="tr-fz18 tr-c444 tr-ellipsis" style="width:265px;line-height:53px;">珠海正和国际旅游有限公司</div>
-                        </div>
-                        <div class="tr-cfb"></div>
-                      </div>
-                      <div class="tr-mt15">
-                        <div class="tr-c444 tr-fz14 tr-mt5">电话：0756-8978123</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">邮箱：72726374746@qq.com</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">地址：珠海市南屏科技工业园屏东六路8号五楼515C室</div>
-                      </div>      
-                    </div>
-                    <div class="tr-cfb"></div>
-                  </div>
-                </a>
-
-                <a target="_blank" href="hz_xiangqing.html">
-                  <div class="tr-mt15 tr-bgcw tr-pro_box ">
-                    <div class="tr-fll tr-pro-img_box" style="position:relative;">
-                      <img class="tr-vert" src="resource/img/default-info.png" source="http://file.hivilla.com/uploads/travels/smaill_1480916366.jpg"></div>
-                    <div class="tr-fll tr-ml20 tr-pro-text-w">
-                      <div class="tr-mt10">
-                        <div class="tr-fll">
-                          <img style="border-radius: 50%;width: 50px;height: 50px;" src="http://file.hivilla.com/uploads/travels/header_1480916367.jpg"></div>
-                        <div class="tr-fll tr-ml15">
-                          <div class="tr-fz18 tr-c444 tr-ellipsis" style="width:265px;line-height:53px;">珠海正和国际旅游有限公司</div>
-                        </div>
-                        <div class="tr-cfb"></div>
-                      </div>
-                      <div class="tr-mt15">
-                        <div class="tr-c444 tr-fz14 tr-mt5">电话：0756-8978123</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">邮箱：72726374746@qq.com</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">地址：珠海市南屏科技工业园屏东六路8号五楼515C室</div>
-                      </div>      
-                    </div>
-                    <div class="tr-cfb"></div>
-                  </div>
-                </a>
-
-                <a target="_blank" href="hz_xiangqing.html">
-                  <div class="tr-mt15 tr-bgcw tr-pro_box ">
-                    <div class="tr-fll tr-pro-img_box" style="position:relative;">
-                      <img class="tr-vert" src="resource/img/default-info.png" source="http://file.hivilla.com/uploads/travels/smaill_1480663399.jpg"></div>
-                    <div class="tr-fll tr-ml20 tr-pro-text-w">
-                      <div class="tr-mt10">
-                        <div class="tr-fll">
-                          <img style="border-radius: 50%;width: 50px;height: 50px;" src="http://file.hivilla.com/uploads/travels/header_1480663399.jpg"></div>
-                        <div class="tr-fll tr-ml15">
-                          <div class="tr-fz18 tr-c444 tr-ellipsis" style="width:265px;line-height:53px;">珠海正和国际旅游有限公司</div>
-                        </div>
-                        <div class="tr-cfb"></div>
-                      </div>
-                      <div class="tr-mt15">
-                        <div class="tr-c444 tr-fz14 tr-mt5">电话：0756-8978123</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">邮箱：72726374746@qq.com</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">地址：珠海市南屏科技工业园屏东六路8号五楼515C室</div>
-                      </div>      
-                    </div>
-                    <div class="tr-cfb"></div>
-                  </div>
-                </a>
-
-                <a target="_blank" href="hz_xiangqing.html">
-                  <div class="tr-mt15 tr-bgcw tr-pro_box ">
-                    <div class="tr-fll tr-pro-img_box" style="position:relative;">
-                      <img class="tr-vert" src="resource/img/default-info.png" source="http://file.hivilla.com/uploads/travels/smaill_1480650429.jpg"></div>
-                    <div class="tr-fll tr-ml20 tr-pro-text-w">
-                      <div class="tr-mt10">
-                        <div class="tr-fll">
-                          <img style="border-radius: 50%;width: 50px;height: 50px;" src="http://file.hivilla.com/uploads/travels/header_1480650430.jpg"></div>
-                        <div class="tr-fll tr-ml15">
-                          <div class="tr-fz18 tr-c444 tr-ellipsis" style="width:265px;line-height:53px;">珠海正和国际旅游有限公司</div>
-                        </div>
-                        <div class="tr-cfb"></div>
-                      </div>
-                      <div class="tr-mt15">
-                        <div class="tr-c444 tr-fz14 tr-mt5">电话：0756-8978123</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">邮箱：72726374746@qq.com</div>
-                        <div class="tr-c444 tr-fz14 tr-mt5">地址：珠海市南屏科技工业园屏东六路8号五楼515C室</div>
-                      </div>      
-                    </div>
-                    <div class="tr-cfb"></div>
-                  </div>
-                </a>
-
+				<?php endforeach;?>
                 
               </div>
-              <div class="tr-mt25 tr-tac tr-mb25 tr-fanyi" date-page-now="1" date-page-all="5"></div>
+              
+              <div class="tr-mt25 tr-tac tr-mb25 tr-fanyi" date-page-now="1" date-page-all="<?php echo $date_page_all;?>"></div>
             </div>
+            
             <div class="tr-right tr-flr tr-mb20">
               <div class="tr-mt10 tr-bottom-line tr-fz16 tr-pb10">推荐旅游路线</div>
 
+			<?php foreach($partner_route as $row) :?>
+
               <div class="tr-mt15 tr-ovh tr-posr tr-bgcw">
-              <a title="看北海道出名的夜景——函馆" href="#">
-                <img style="width: 100%" src="http://file.hivilla.com/uploads/destination/cover/kohsamui.jpg"></a>
+              <a target="_blank"  title="<?php echo $row['name']?>" href="<?php echo Url::toRoute(['partner/route','id'=>$row['id']])?>">
+                <img style="width: 100%" src="<?php echo Yii::$app->params['img_url']."/".$row['img_url'];?>"></a>
               <div class="tr-pl5 tr-pr5 tr-ellipsis">
-                <span class="tr-fz14 tr-c666">看北海道出名的夜景——函馆</span>
-                
+                <span class="tr-fz14 tr-c666"><?php echo $row['name']?></span>
               </div>
               <div class="tr-mt5 tr-mb5 tr-pl5 tr-pr5">
-                <div class="tr-fz10 tr-caf tr-ellipsis" style="width:74%;display:inline-block;">珠海正和国际旅游有限公司</div>
-                <span class="tr-flr tr-fz10 tr-caf" style="line-height:18px">2016.12.12</span>
+                <div class="tr-fz10 tr-caf tr-ellipsis" style="width:74%;display:inline-block;"><?php echo $row['partner_name']?></div>
+                <span class="tr-flr tr-fz10 tr-caf" style="line-height:18px"><?php echo substr($row['time'],0,10)?></span>
               </div>
             </div>
-
-            <div class="tr-mt15 tr-ovh tr-posr tr-bgcw">
-              <a title="记忆中的日本，记忆中的北海道" href="#">
-                <img style="width: 100%" src="http://file.hivilla.com/uploads/destination/cover/phuket.jpg"></a>
-              <div class="tr-pl5 tr-pr5">
-                <span class="tr-fz14 tr-c666">记忆中的日本，记忆中的北海道</span>
-              </div>
-              <div class="tr-mt5 tr-mb5 tr-pl5 tr-pr5">
-                <div class="tr-fz10 tr-caf tr-ellipsis" style="width:74%;display:inline-block;">珠海正和国际旅游有限公司</div>
-                <span class="tr-flr tr-fz10 tr-caf" style="line-height:18px">2016.12.12</span>
-              </div>
-            </div>
-            
-            <div class="tr-mt15 tr-ovh tr-posr tr-bgcw">
-              <a title="体验不一样的北海道的夏天" href="#">
-                <img style="width: 100%" src="http://file.hivilla.com/uploads/destination/cover/paris.jpg"></a>
-              <div class="tr-pl5 tr-pr5">
-                <span class="tr-fz14 tr-c666">体验不一样的北海道的夏天</span>
-              </div>
-              <div class="tr-mt5 tr-mb5 tr-pl5 tr-pr5">
-                <div class="tr-fz10 tr-caf tr-ellipsis" style="width:74%;display:inline-block;">珠海正和国际旅游有限公司</div>
-                <span class="tr-flr tr-fz10 tr-caf" style="line-height:18px">2016.12.12</span>
-              </div>
-            </div>
-
+			<?php endforeach;?>
             </div>
             <div class="tr-cfb"></div>
           </div>
@@ -257,7 +101,7 @@ function page(iNowNumb) {
           if (i == iNowNumb) {
             pageHtml += '<b>' + i + '</b>';
           } else {
-            pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+            pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['partner/page'])?>?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
           }
         }
         if (allPages > 6) {
@@ -266,12 +110,12 @@ function page(iNowNumb) {
         if (allPages == iNowNumb) {
           pageHtml += '<b>' + allPages + '</b>';
         } else {
-          pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+          pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['Partner/page'])?>?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
         }
         pageHtml += (iNowNumb == allPages ? '': '<a href="javascript:void(0);" class="next"><img src= "<?= $baseUrl?>img/js_images/pagenext.png" /></a>');
       } else if (iNowNumb >= allPages - 4) {
         pageHtml += (iNowNumb <= 1 ? '': '<a href="javascript:void(0);" class="prev"><img src= "<?= $baseUrl?>img/js_images/pageprev.png"/></a>');
-        pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+        pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['partner/page'])?>?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
         if (allPages > 6) {
           pageHtml += '<span>···</span>';
         }
@@ -280,34 +124,35 @@ function page(iNowNumb) {
           if (i == iNowNumb) {
             pageHtml += '<b>' + i + '</b>';
           } else {
-            pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+            pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['Partner/page'])?>?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
           }
         }
         pageHtml += (iNowNumb == allPages ? '': '<a href="javascript:void(0);" class="next"><img src= "<?= $baseUrl?>img/js_images/pagenext.png"/></a>');
       } else if (allPages >= 9 && iNowNumb >= 6 && iNowNumb <= allPages - 5) {
         pageHtml += (iNowNumb <= 1 ? '': '<a href="javascript:void(0);" class="prev"><img src= "<?= $baseUrl?>img/js_images/pageprev.png"/></a>');
-        pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+        pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['partner/page'])?>?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
         pageHtml += '<span>···</span>';
         for (var i = iNowNumb - 2; i <= iNowNumb + 2; i++) {
           if (i == iNowNumb) {
             pageHtml += '<b>' + i + '</b>';
           } else {
-            pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+            pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['partner/page'])?>?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
           }
         }
         pageHtml += '<span>···</span>';
-        pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+        pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['partner/page'])?>?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
         pageHtml += (iNowNumb == allPages ? '': '<a href="javascript:void(0);" class="next"><img src= "<?= $baseUrl?>img/js_images/pagenext.png"/></a>');
       }
       pageCont.html('').html(pageHtml);
     }
 
-	$('a').each(function() {
+    
+	$('.tr-fanyi a').each(function() {
       $(this).on('click',
       function() {
         if ($(this).hasClass('prev')) {
           var n = parseInt($('.tr-fanyi b').html()) - 1;
-          $.get("/travels/pageinfo?page=" + n,
+          $.get("<?php echo Url::toRoute(['partner/page'])?>?page=" + n,
           function(d) {
             if (d["code"] == 1) {
               $("html,body").animate({
@@ -322,7 +167,7 @@ function page(iNowNumb) {
           'json');
         } else if ($(this).hasClass('next')) {
           var n = parseInt($('.tr-fanyi b').html()) + 1;
-          $.get("/travels/pageinfo?page=" + n,
+          $.get("<?php echo Url::toRoute(['partner/page'])?>?page=" + n,
           function(d) {
             if (d["code"] == 1) {
               $("html,body").animate({
@@ -337,7 +182,7 @@ function page(iNowNumb) {
           'json');
         } else {
           var n = $(this).attr('data-num');
-          $.get("/travels/pageinfo?page=" + n,
+          $.get("<?php echo Url::toRoute(['partner/page'])?>?page=" + n,
           function(d) {
             if (d["code"] == 1) {
               $("html,body").animate({

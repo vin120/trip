@@ -8,7 +8,13 @@
 	$baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 ?>
 
-<style type="text/css">.tr-fanyi{ text-align: center; font-size: 20px; font-family: arial,'microsoft yahei'; padding: 10px 0 20px; font-weight:bold;} .tr-fanyi a, .tr-fanyi span, .tr-fanyi b{width: 42px; height: 42px; display: inline-block; line-height: 42px; margin: 0 2px;color: #8895a3; font-size: 16px;} .tr-fanyi a{background: #ffffff;} .tr-fanyi b{ background: #ff8000;color:#ffffff;} .tr-fanyi a:first-child, .tr-fanyi a:last-child {font-weight:bold;} .tr-fanyi span{ width: 30px; font-size: 20px;}</style>
+<style type="text/css">
+	.tr-fanyi{ text-align: center; font-size: 20px; font-family: arial,'microsoft yahei'; padding: 10px 0 20px; font-weight:bold;} 
+	.tr-fanyi a, .tr-fanyi span, .tr-fanyi b{width: 42px; height: 42px; display: inline-block; line-height: 42px; margin: 0 2px;color: #8895a3; font-size: 16px;} 
+	.tr-fanyi a{background: #ffffff;} .tr-fanyi b{ background: #ff8000;color:#ffffff;} 
+	.tr-fanyi a:first-child, .tr-fanyi a:last-child {font-weight:bold;} 
+	.tr-fanyi span{ width: 30px; font-size: 20px;}
+</style>
 
 
   <div class="swiper-container">
@@ -21,19 +27,20 @@
     <div class="tr-left tr-fll tr-mb20">
       <div class="tr-list-content">
       <?php foreach ($recruitment as $key => $value) {?>
-        <a target="_blank" href="zp_xiangqing.html">
+        <a target="_blank" href="<?php echo Url::toRoute(['job/index','id'=>$value['id']]);?>">
           <div class="tr-mt15 tr-bgcw tr-pro_box ">
             <div class="tr-cfl tr-ml20 tr-mr20">
               <div class="tr-mt10">
                 <div class="tr-cfl">
                   <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px"><?php echo $value['job_name'] ?></div>
-                  <div class="tr-caf tr-fz12">分类：<?php echo $value['type_name'] ?><div class="tr-flr tr-caf tr-fz12" style="line-height:18px">2016.12.25</div></div>
-
+                  <div class="tr-caf tr-fz12">分类：<?php echo $value['type_name'] ?>
+                  <div class="tr-flr tr-caf tr-fz12" style="line-height:18px"><?php echo substr($value['time'],0,10)?>
+                  </div></div>
                 </div>
                 <div class="tr-cfb"></div>
               </div>
-              <div class="tr-c444 tr-mt15 tr-mb15"><?php echo substr($value['introduct'], 0,50) ?>
-                <a target="_blank" href="zp_xiangqing.html">
+              <div class="tr-c444 tr-mt15 tr-mb15"><?php echo mb_substr($value['introduct'], 0,100,"utf8") ?>  ......
+                <a target="_blank" href="<?php echo Url::toRoute(['job/index','id'=>$value['id']]);?>">
                   <span class="tr-curp tr-ml5 tr-c9e">[查看详情]</span></a>
               </div>
             </div>
@@ -43,12 +50,12 @@
         <?php }?>
 
       </div>
-      <div class="tr-mt25 tr-tac tr-mb25 tr-fanyi" date-page-now="1" date-page-all="5"></div>
+      <div class="tr-mt25 tr-tac tr-mb25 tr-fanyi"  date-page-now="1" date-page-all="<?php echo $date_page_all;?>"></div>
     </div>
     <div class="tr-right tr-flr tr-mb20">
       <div class="tr-mt10 tr-bottom-line tr-fz16 tr-pb10">招聘分类</div>
 
-      <?php foreach($recruitment_type as $row){ ?>
+      <?php foreach($recruitment_type as $row): ?>
       <a href="<?php echo Url::toRoute(['job','type'=>$row['id']]);?>" >
         <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
           <div class="tr-pb10 tr-pt10">
@@ -57,7 +64,7 @@
           </div>
         </div>
       </a>
-      <?php }?>
+      <?php endforeach;?>
       
     </div>
     <div class="tr-cfb"></div>
@@ -70,7 +77,8 @@
 var pageID = 'travels';
 var MESSAGE = {};
 var COMMON_MESSAGE = '';
-page(2);
+
+page(1);
 
 function page(iNowNumb) {
     var pageCont = $(".tr-fanyi");
@@ -87,7 +95,7 @@ function page(iNowNumb) {
           if (i == iNowNumb) {
             pageHtml += '<b>' + i + '</b>';
           } else {
-            pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+            pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['job/page'])?>?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
           }
         }
         if (allPages > 6) {
@@ -96,12 +104,12 @@ function page(iNowNumb) {
         if (allPages == iNowNumb) {
           pageHtml += '<b>' + allPages + '</b>';
         } else {
-          pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+          pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['job/page'])?>?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
         }
         pageHtml += (iNowNumb == allPages ? '': '<a href="javascript:void(0);" class="next"><img src= "<?= $baseUrl?>img/js_images/pagenext.png" /></a>');
       } else if (iNowNumb >= allPages - 4) {
         pageHtml += (iNowNumb <= 1 ? '': '<a href="javascript:void(0);" class="prev"><img src= "<?= $baseUrl?>img/js_images/pageprev.png"/></a>');
-        pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+        pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['job/page'])?>?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
         if (allPages > 6) {
           pageHtml += '<span>···</span>';
         }
@@ -110,34 +118,34 @@ function page(iNowNumb) {
           if (i == iNowNumb) {
             pageHtml += '<b>' + i + '</b>';
           } else {
-            pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+            pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['job/page'])?>?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
           }
         }
         pageHtml += (iNowNumb == allPages ? '': '<a href="javascript:void(0);" class="next"><img src= "<?= $baseUrl?>img/js_images/pagenext.png"/></a>');
       } else if (allPages >= 9 && iNowNumb >= 6 && iNowNumb <= allPages - 5) {
         pageHtml += (iNowNumb <= 1 ? '': '<a href="javascript:void(0);" class="prev"><img src= "<?= $baseUrl?>img/js_images/pageprev.png"/></a>');
-        pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
+        pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['job/page'])?>?page=' + '1' + '" class="pageNumb" data-num="' + '1' + '">' + '1' + '</a>';
         pageHtml += '<span>···</span>';
         for (var i = iNowNumb - 2; i <= iNowNumb + 2; i++) {
           if (i == iNowNumb) {
             pageHtml += '<b>' + i + '</b>';
           } else {
-            pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
+            pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['job/page'])?>?page=' + i + '" class="pageNumb" data-num="' + i + '">' + i + '</a>';
           }
         }
         pageHtml += '<span>···</span>';
-        pageHtml += '<a href="javascript:void(0);" data-src="/travels/pageinfo?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
+        pageHtml += '<a href="javascript:void(0);" data-src="<?php echo Url::toRoute(['job/page'])?>?page=' + allPages + '" class="pageNumb" data-num="' + allPages + '">' + allPages + '</a>';
         pageHtml += (iNowNumb == allPages ? '': '<a href="javascript:void(0);" class="next"><img src= "<?= $baseUrl?>img/js_images/pagenext.png"/></a>');
       }
       pageCont.html('').html(pageHtml);
     }
 
-	$('a').each(function() {
+	$('.tr-fanyi a').each(function() {
       $(this).on('click',
       function() {
         if ($(this).hasClass('prev')) {
           var n = parseInt($('.tr-fanyi b').html()) - 1;
-          $.get("/travels/pageinfo?page=" + n,
+          $.get("<?php echo Url::toRoute(['job/page'])?>?page=" + n +"&type="+"<?php echo isset($_GET['type'])?$_GET['type']:''?>",
           function(d) {
             if (d["code"] == 1) {
               $("html,body").animate({
@@ -152,7 +160,7 @@ function page(iNowNumb) {
           'json');
         } else if ($(this).hasClass('next')) {
           var n = parseInt($('.tr-fanyi b').html()) + 1;
-          $.get("/travels/pageinfo?page=" + n,
+          $.get("<?php echo Url::toRoute(['job/page'])?>?page=" + n +"&type="+"<?php echo isset($_GET['type'])?$_GET['type']:''?>",
           function(d) {
             if (d["code"] == 1) {
               $("html,body").animate({
@@ -167,7 +175,7 @@ function page(iNowNumb) {
           'json');
         } else {
           var n = $(this).attr('data-num');
-          $.get("/travels/pageinfo?page=" + n,
+          $.get("<?php echo Url::toRoute(['job/page'])?>?page=" + n +"&type="+"<?php echo isset($_GET['type'])?$_GET['type']:''?>",
           function(d) {
             if (d["code"] == 1) {
               $("html,body").animate({

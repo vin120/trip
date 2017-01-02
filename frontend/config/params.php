@@ -6,4 +6,5 @@ return [
 	'cpid' => 'test1',
 	'cppwd' => 'santo20160913',
 	'dc' => '15',
+	'img_url' => 'http://www.images.com',	//访问路径
 ];

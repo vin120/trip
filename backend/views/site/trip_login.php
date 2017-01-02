@@ -18,7 +18,7 @@ $baseUrl = $this->assetBundles[LoginAsset::className()]->baseUrl . '/';
 <header id="mainHeader">
     <h1 id="logo">
         <!--<img src="<?= $baseUrl ?>/images/logo.png"> -->
-        <?= \Yii::t('app', 'Manager System');?>
+        <?= \Yii::t('app', '后台管理系统');?>
     </h1>
 </header>
 <main>

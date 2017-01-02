@@ -30,6 +30,9 @@
 					<th><?php echo yii::t('app','序号')?></th>
 					<th><?php echo yii::t('app','图片')?></th>
 					<th><?php echo yii::t('app','合作伙伴名称')?></th>
+					<th><?php echo yii::t('app','电话')?></th>
+					<th><?php echo yii::t('app','邮箱')?></th>
+					<th><?php echo yii::t('app','地址')?></th>
 					<th><?php echo yii::t('app','状态')?></th>
 					<th><?php echo yii::t('app','操作')?></th>
 				</tr>
@@ -39,8 +42,11 @@
 				<tr>
 					<td><input type="checkbox" name="ids[]" value="<?php echo $value['id']?>" class="checkall"></input></td>
 					<td><?php echo $key+1?></td>
-					<td><img src="<?php echo "/".Yii::$app->params['img_url_prefix']. $value['img_url']?>" align="absmiddle" width="90" height="50"/></td>
+					<td><img src="<?php echo Yii::$app->params['img_url'].'/'. $value['img_url']?>" align="absmiddle" width="90" height="50"/></td>
 					<td><?php echo $value['name']?></td>
+					<td><?php echo $value['telephone']?></td>
+					<td><?php echo $value['email']?></td>
+					<td><?php echo $value['address']?></td>
 					<td><?php echo $value['status'] == 1 ?  yii::t('app','启用') :  yii::t('app','禁用')?></td>
 					<td>
                         <a href="<?php echo Url::toRoute(['edit','id'=>$value['id']]);?>"><img src="<?=$baseUrl ?>images/write.png"></a>
@@ -97,7 +103,7 @@ window.onload = function(){
 	                        	str += "<tr>";
 	                        	str += "<td><input name='ids[]' type='checkbox' value='"+data[key]['id']+"' class='checkall'></input></td>";
 	                            str += "<td>"+(key+1)+"</td>";
-                                str += "<td><img src="+"<?php echo "/".Yii::$app->params['img_url_prefix']?>"+data[key]['img_url']+ " align='absmiddle' width='90' height='50'/></td>"
+                                str += "<td><img src="+"<?php echo Yii::$app->params['img_url']?>"+"/"+data[key]['img_url']+ " align='absmiddle' width='90' height='50'/></td>"
                                 str += "<td>"+data[key]['name']+"</td>";
                                 if(data[key]['status']==1)
 	                            	var status = "<?php echo yii::t('app','启用')?>";
