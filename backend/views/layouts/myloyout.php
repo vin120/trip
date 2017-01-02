@@ -39,7 +39,7 @@ $menu = Yii::$app->view->params['menu'];
         </div>
         <div class="r">
             <span id="userName"><?= Yii::$app->user->identity->admin_username;?></span>
-            <span id="exit"><a href="/site/logout" ><?= \Yii::t('app', 'Logout') ?></a></span>
+            <span id="exit"><a href="/site/logout" ><?= \Yii::t('app', '注销') ?></a></span>
         </div>
     </div>
 </header>

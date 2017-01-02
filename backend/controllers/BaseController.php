@@ -36,7 +36,7 @@ class BaseController extends Controller
         ];
     }
     public function init(){
-        $admin_tag = Yii::$app->user->identity->tag;
+        $admin_tag = isset(Yii::$app->user->identity->tag) ? Yii::$app->user->identity->tag : 1 ;
         //获取菜单
         $menu_arr = array();
         if($admin_tag == 1){

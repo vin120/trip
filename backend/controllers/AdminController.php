@@ -106,7 +106,7 @@ class AdminController extends BaseController
 		$id = isset($_GET['id'])?trim($_GET['id']):'';
 		$db = Yii::$app->db;
 		if($_POST){
-			// var_dump($_POST);exit;
+// 			var_dump($_POST);exit;
 			$admin_id = isset($_POST['admin_id'])?trim($_POST['admin_id']):'';
 			$user_name = isset($_POST['user_name'])?trim($_POST['user_name']):'';
 			$real_name = isset($_POST['real_name'])?trim($_POST['real_name']):'';
