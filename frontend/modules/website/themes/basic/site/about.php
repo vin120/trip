@@ -17,12 +17,19 @@
   <div class="tr-left tr-fll tr-bgcw tr-mt20 ">
 
     <div class=" tr-mt20 tr-pl15 tr-pr15 tr-posr" id="markdown-view">
-    	<?php echo $compony['introduct'];?>
+    	<?php 
+    		foreach($compony as $key =>$value) :
+    			echo "<div id='" .$key. "F'></div>";
+    			echo "<h3>".$value['name']."</h3>";
+    			echo $value['introduct'];
+    		endforeach;
+    	?>
+    	
     </div>
   </div>
   <div class="tr-right tr-flr tr-mt20">
     <!-- <div class="tr-bottom-line tr-mt15 tr-fz16 tr-pb10">栏目</div> -->
-    <a href="#">
+    <a href="#0F">
       <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
         <div class="tr-pb10 tr-pt10">
           <i class=" tr-ml5 tr-ic"></i>
@@ -30,7 +37,7 @@
         </div>
       </div>
     </a>
-    <a href="#">
+    <a href="#1F">
       <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
         <div class="tr-pb10 tr-pt10">
           <i class=" tr-ml5 tr-ic"></i>
@@ -38,7 +45,7 @@
         </div>
       </div>
     </a>
-    <a href="#">
+    <a href="#2F">
       <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
         <div class="tr-pb10 tr-pt10">
           <i class=" tr-ml5 tr-ic"></i>
@@ -46,7 +53,7 @@
         </div>
       </div>
     </a>
-    <a href="#">
+    <a href="#3F">
       <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
         <div class="tr-pb10 tr-pt10">
           <i class=" tr-ml5 tr-ic"></i>

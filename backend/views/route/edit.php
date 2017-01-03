@@ -43,15 +43,19 @@
 		<div class="searchResult">
 			<p>
 				<span><?php echo yii::t('app','合作伙伴名称：')?></span>
-				<select name="patner_id">
+				<select name="partner_id">
                     <?php foreach($partner as $row):?>
-                    	<option <?= $row['id']==$route['patner_id'] ? "selected='selected'" : ''?> value="<?= $row['id']?>"><?= $row['name']?></option>				    
+                    	<option <?= $row['id']==$route['partner_id'] ? "selected='selected'" : ''?> value="<?= $row['id']?>"><?= $row['name']?></option>				    
                     <?php endforeach?>
 				</select>
 			</p>
 			<p>
 				<span><?php echo yii::t('app','推荐路线名称：')?></span>
-				<input type="text" name="name" maxlength="12" value="<?php echo $route['name']?>"/>
+				<input type="text" name="name"  value="<?php echo $route['name']?>"/>
+			</p>
+			<p>
+				<span><?php echo yii::t('app','发布人：')?></span>
+				<input type="text" name="author"  value="<?php echo $route['author']?>"/>
 			</p>
 			<p>
                 <span><?php echo yii::t('app','图片预览：');?></span>

@@ -14,9 +14,9 @@ class RouteController extends BaseController
 	public function actionIndex()
 	{
 		$query = new Query();
-		$result = $query->select(['a.id','a.name','a.img_url','a.status','b.name as partner_name'])
+		$result = $query->select(['a.id','a.name','a.img_url','a.status','a.author','b.name as partner_name'])
 				->from('zh_partner_route a')
-				->join('LEFT JOIN','zh_partner b','a.patner_id=b.id')
+				->join('LEFT JOIN','zh_partner b','a.partner_id=b.id')
 				->limit(10)
 				->orderby('a.id desc')
 				->all();
@@ -36,8 +36,9 @@ class RouteController extends BaseController
 		
 		if($_POST) {
 		
-			$patner_id = isset($_POST['patner_id']) ? $_POST['patner_id'] : '';
+			$partner_id = isset($_POST['partner_id']) ? $_POST['partner_id'] : '';
 			$name = isset($_POST['name']) ? $_POST['name'] : '';
+			$author = isset($_POST['author']) ? $_POST['author'] : '' ;
 			$status = isset($_POST['status']) ? $_POST['status'] : '';
 			$introduct = isset($_POST['introduct']) ? $_POST['introduct'] : '';
 			$time = date('Y-m-d H:i:s',time());
@@ -53,7 +54,7 @@ class RouteController extends BaseController
 			}
 		
 			$result = Yii::$app->db->createCommand()
-					->insert('zh_partner_route',['patner_id'=>$patner_id,'name'=>$name,'status'=>$status,'introduct'=>$introduct,'img_url'=>$photo,'time'=>$time])->execute();
+					->insert('zh_partner_route',['partner_id'=>$partner_id,'name'=>$name,'author'=>$author,'status'=>$status,'introduct'=>$introduct,'img_url'=>$photo,'time'=>$time])->execute();
 		
 			if($result) {
 				Helper::show_message('保存成功', Url::toRoute(['index']));
@@ -80,8 +81,9 @@ class RouteController extends BaseController
 		
 		
 		if($_POST){
-			$patner_id = isset($_POST['patner_id']) ? $_POST['patner_id'] : '';
+			$partner_id = isset($_POST['partner_id']) ? $_POST['partner_id'] : '';
 			$name = isset($_POST['name']) ? $_POST['name'] : '';
+			$author = isset($_POST['author']) ? $_POST['author'] : '';
 			$status = isset($_POST['status']) ? $_POST['status'] : '';
 			$introduct = isset($_POST['introduct']) ? $_POST['introduct'] : '';
 			$time = date('Y-m-d H:i:s',time());
@@ -103,7 +105,7 @@ class RouteController extends BaseController
 			}
 		
 			$result = Yii::$app->db->createCommand()
-					->update('zh_partner_route',['patner_id'=>$patner_id,'name'=>$name,'status'=>$status,'introduct'=>$introduct,'img_url'=>$photo,'time'=>$time],"id=$id")
+					->update('zh_partner_route',['partner_id'=>$partner_id,'name'=>$name,'author'=>$author,'status'=>$status,'introduct'=>$introduct,'img_url'=>$photo,'time'=>$time],"id=$id")
 					->execute();
 		
 			if($result) {
@@ -115,9 +117,9 @@ class RouteController extends BaseController
 		}
 		
 		$query = new Query();
-		$route = $query->select(['a.id','a.patner_id','a.name','a.img_url','a.introduct','a.status','b.name as partner_name'])
+		$route = $query->select(['a.id','a.partner_id','a.name','a.author','a.img_url','a.introduct','a.status','b.name as partner_name'])
 				->from('zh_partner_route a')
-				->join('LEFT JOIN','zh_partner b','a.patner_id=b.id')
+				->join('LEFT JOIN','zh_partner b','a.partner_id=b.id')
 				->where(['a.id'=>$id])
 				->one();
 		
@@ -169,9 +171,9 @@ class RouteController extends BaseController
 		
 		
 		$query = new Query();
-		$result = $query->select(['a.id','a.name','a.img_url','a.status','b.name as partner_name'])
+		$result = $query->select(['a.id','a.name','a.img_url','a.status','a.author','b.name as partner_name'])
 				->from('zh_partner_route a')
-				->join('LEFT JOIN','zh_partner b','a.patner_id=b.id')
+				->join('LEFT JOIN','zh_partner b','a.partner_id=b.id')
 				->offset($pag)
 				->limit(10)
 				->orderby('a.id desc')

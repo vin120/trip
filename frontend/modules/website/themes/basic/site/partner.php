@@ -1,15 +1,22 @@
 <?php
-	$this->title = '合作伙伴';
+	$this->title = '珠海正和国际旅游有限公司-合作伙伴';
 	use frontend\modules\website\themes\basic\myasset\ThemeAsset;
 	use yii\helpers\Url;
 	ThemeAsset::register($this);
 	$baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 ?>
 
-<style type="text/css">.tr-fanyi{ text-align: center; font-size: 20px; font-family: arial,'microsoft yahei'; padding: 10px 0 20px; font-weight:bold;} .tr-fanyi a, .tr-fanyi span, .tr-fanyi b{width: 42px; height: 42px; display: inline-block; line-height: 42px; margin: 0 2px;color: #8895a3; font-size: 16px;} .tr-fanyi a{background: #ffffff;} .tr-fanyi b{ background: #ff8000;color:#ffffff;} .tr-fanyi a:first-child, .tr-fanyi a:last-child {font-weight:bold;} .tr-fanyi span{ width: 30px; font-size: 20px;}</style>
+<style type="text/css">
+.tr-fanyi{ text-align: center; font-size: 20px; font-family: arial,'microsoft yahei'; padding: 10px 0 20px; font-weight:bold;} 
+.tr-fanyi a, .tr-fanyi span, .tr-fanyi b{width: 42px; height: 42px; display: inline-block; line-height: 42px; margin: 0 2px;color: #8895a3; font-size: 16px;} 
+.tr-fanyi a{background: #ffffff;} 
+.tr-fanyi b{ background: #ff8000;color:#ffffff;} 
+.tr-fanyi a:first-child, .tr-fanyi a:last-child {font-weight:bold;} 
+.tr-fanyi span{ width: 30px; font-size: 20px;}
+</style>
 
 
- <div class="swiper-container">
+ 		<div class="swiper-container">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <img alt="旅行的瞬间在这里度假，处处都有精彩" src="<?php echo $baseUrl?>img/large_1473316293.jpg#旅行的瞬间"></div>
@@ -21,7 +28,7 @@
               
               <?php foreach ($partner as $row) :?>
               
-                <a target="_blank" href="<?php echo Url::toRoute(['partner/index','id'=>$row['id']]);?>">
+                <a href="<?php echo Url::toRoute(['partner/index','id'=>$row['id']]);?>">
                   <div class="tr-mt15 tr-bgcw tr-pro_box ">
                     <div class="tr-fll tr-pro-img_box" style="position:relative;">
                       <img class="tr-vert" src="<?php echo Yii::$app->params['img_url']."/".$row['img_url'];?>" source="<?php echo Yii::$app->params['img_url']."/".$row['img_url'];?>"></div>
@@ -38,8 +45,6 @@
                         <div class="tr-c444 tr-fz14 tr-mt5">电话：<?php echo $row['telephone']?></div>
                         <div class="tr-c444 tr-fz14 tr-mt5">邮箱：<?php echo $row['email']?></div>
                         <div class="tr-c444 tr-fz14 tr-mt5">地址：<?php echo $row['address']?></div>
-                        <!-- <a target="_blank" href="/travels/detail/70">
-                          <span class="tr-curp tr-ml5 tr-c9e">... [详情]</span></a> -->
                       </div>
                       </div>
                     <div class="tr-cfb"></div>
@@ -59,7 +64,7 @@
 			<?php foreach($partner_route as $row) :?>
 
               <div class="tr-mt15 tr-ovh tr-posr tr-bgcw">
-              <a target="_blank"  title="<?php echo $row['name']?>" href="<?php echo Url::toRoute(['partner/route','id'=>$row['id']])?>">
+              <a title="<?php echo $row['name']?>" href="<?php echo Url::toRoute(['partner/route_detail','id'=>$row['id']])?>">
                 <img style="width: 100%" src="<?php echo Yii::$app->params['img_url']."/".$row['img_url'];?>"></a>
               <div class="tr-pl5 tr-pr5 tr-ellipsis">
                 <span class="tr-fz14 tr-c666"><?php echo $row['name']?></span>
@@ -73,8 +78,6 @@
             </div>
             <div class="tr-cfb"></div>
           </div>
-
-
 
 
 <div class="Cmask"></div>

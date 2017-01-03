@@ -23,14 +23,13 @@
 			'enableClientScript'=>false
 		]);
 		?>
-		<table id="activitytype_table">
+		<table id="activity_table">
 			<thead>
 				<tr>
 					<th><input type="checkbox"></input></th>
 					<th>序号</th>
 					<th>活动名称</th>
-					<th>活动名称</th>
-					<th>状态</th>
+					<th>活动公寓</th>
 					<th>操作</th>
 				</tr>
 			</thead>
@@ -39,10 +38,18 @@
 				<tr>
 					<td><input type="checkbox" name="ids[]" value="<?php echo $row['id']?>"></input></td>
 					<td><?php echo ($key+1)?></td>
-					<td><?php echo $row['name']?></td>
-					<td><?php echo $row['status']==1?"启用":"禁用";?></td>
+					<td><?php echo $row['name'] ?></td>
+					<?php 
+						$apartment_str = '';
+						foreach($row['child'] as $v){
+							$apartment_str .= $v['apartment_code'].'|'.$v['apartment_name'].',';
+						}
+
+						$apartment_str = trim($apartment_str,',');
+					?>
+					<td><?php echo $apartment_str;?></td>
 					<td>
-						<a href="<?php echo Url::toRoute(['activitytype/edit','id'=>$row['id']]);?>"><img src="<?php echo $baseUrl; ?>images/write.png"></a>
+						<a href="<?php echo Url::toRoute(['activity/edit','id'=>$row['id']]);?>"><img src="<?php echo $baseUrl; ?>images/write.png"></a>
 						<a id="<?php echo $row['id']?>" class="delete"><img src="<?php echo $baseUrl; ?>images/delete.png"></a>
 					</td>
 				</tr>
@@ -54,7 +61,6 @@
 		?>
 		<p class="records">记录数:<em><?php echo $count;?></em></p>
 		<div class="btn">
-			<a href="<?php echo Url::toRoute(['activitytype/add']);?>"><input type="button" value="添加"></input></a>
 			<input id="del_submit" type="button" value="<?php echo yii::t('app','删除选择项')?>"></input>
 		</div>
 
@@ -87,7 +93,7 @@ window.onload = function(){
 		    	if(this_page==num){$("input#pag_input").val('fail');return false;}
 
 		    	$.ajax({
-	                url:"<?php echo Url::toRoute(['getactivitytypepage']);?>",
+	                url:"<?php echo Url::toRoute(['getactivitypage']);?>",
 	                type:'get',
 	                data:'pag='+num,
 	             	dataType:'json',
@@ -99,16 +105,22 @@ window.onload = function(){
 								str += '<td><input type="checkbox" name="ids[]" value="'+data[key]['id']+'"></input></td>';
 								str += '<td>'+(key+1)+'</td>';
 								str += '<td>'+data[key]['name']+'</td>';
-								var state = data[key]['status']==1?"启用":"禁用";
-								str += '<td>'+state+'</td>';
+								var apartment_str = '';
+								$.each(data[key]['child'],function(k){
+									apartment_str += data[key]['child'][k]['name']+',';
+								});
+								if(apartment_str!=''){
+									apartment_str = apartment_str.substring(0,apartment_str.length-1);
+								}
+								str += '<td>'+apartment_str+'</td>';
 								str += '<td>';
-								str += '<a href="<?php echo Url::toRoute(['activitytype/edit']);?>?id='+data[key]['id']+'"><img src="<?php echo $baseUrl; ?>images/write.png" ></a>';
+								str += '<a href="<?php echo Url::toRoute(['activity/edit']);?>?id='+data[key]['id']+'"><img src="<?php echo $baseUrl; ?>images/write.png" ></a>';
 								str += '<a class="delete" id="'+data[key]['id']+'" ><img src="<?php echo $baseUrl; ?>images/delete.png"></a>';
 								str += '</td>';
 								str += '</tr>';
 
 	                          });
-	    	                $("table#activitytype_table > tbody").html(str);
+	    	                $("table#activity_table > tbody").html(str);
 	    	            }
 	            	}
 	            });
@@ -127,7 +139,7 @@ window.onload = function(){
 
 	//delete删除确定button
 	$(document).on('click',"#promptBox > .btn .confirm_but_more",function(){
-		$("form#activitytype_index_form").submit();
+		$("form#activity_index_form").submit();
 	});
 
 	$(document).on('click',"#promptBox >span.op,#promptBox > .btn .cancel_but",function(){

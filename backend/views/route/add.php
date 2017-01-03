@@ -44,7 +44,7 @@
 		<div class="searchResult">
 			<p>
 				<span><?php echo yii::t('app','合作伙伴名称：')?></span>
-				<select name="patner_id">
+				<select name="partner_id">
                     <?php foreach($partner as $row):?>
 					    <option value="<?= $row['id']?>"><?= $row['name']?></option>
                     <?php endforeach?>
@@ -53,6 +53,10 @@
 			<p>
 				<span><?php echo yii::t('app','推荐路线名称：')?></span>
 				<input type="text" name="name" maxlength="12" />
+			</p>
+			<p>
+				<span><?php echo yii::t('app','发布人：')?></span>
+				<input type="text" name="author" maxlength="12" />
 			</p>
 			<p>
                 <span><?php echo yii::t('app','图片预览：');?></span>

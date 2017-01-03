@@ -31,6 +31,7 @@
 					<th><?php echo yii::t('app','图片')?></th>
 					<th><?php echo yii::t('app','合作伙伴名称')?></th>
 					<th><?php echo yii::t('app','推荐路线名称')?></th>
+					<th><?php echo yii::t('app','发布人')?></th>
 					<th><?php echo yii::t('app','状态')?></th>
 					<th><?php echo yii::t('app','操作')?></th>
 				</tr>
@@ -43,6 +44,7 @@
 					<td><img src="<?php echo  Yii::$app->params['img_url'].'/'. $value['img_url']?>" align="absmiddle" width="90" height="50"/></td>
 					<td><?php echo $value['partner_name']?></td>
 					<td><?php echo $value['name']?></td>
+					<td><?php echo $value['author']?></td>
 					<td><?php echo $value['status'] == 1 ?  yii::t('app','启用') :  yii::t('app','禁用')?></td>
 					<td>
                         <a href="<?php echo Url::toRoute(['edit','id'=>$value['id']]);?>"><img src="<?=$baseUrl ?>images/write.png"></a>
@@ -102,6 +104,7 @@ window.onload = function(){
                                 str += "<td><img src="+"<?php echo Yii::$app->params['img_url']?>"+"/"+data[key]['img_url']+ " align='absmiddle' width='90' height='50'/></td>"
                                 str += "<td>"+data[key]['partner_name']+"</td>";
                                 str += "<td>"+data[key]['name']+"</td>";
+                                str += "<td>"+data[key]['author']+"</td>";
                                 if(data[key]['status']==1)
 	                            	var status = "<?php echo yii::t('app','启用')?>";
 	                            else if(data[key]['status']==0)

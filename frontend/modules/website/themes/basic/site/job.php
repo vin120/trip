@@ -1,5 +1,5 @@
 <?php
-	$this->title = '招聘信息';
+	$this->title = '珠海正和国际旅游有限公司-招聘信息';
 	use frontend\modules\website\themes\basic\myasset\ThemeAsset;
 	use yii\helpers\Url;
 	
@@ -26,21 +26,21 @@
   <div class=" tr-main">
     <div class="tr-left tr-fll tr-mb20">
       <div class="tr-list-content">
-      <?php foreach ($recruitment as $key => $value) {?>
-        <a target="_blank" href="<?php echo Url::toRoute(['job/index','id'=>$value['id']]);?>">
+      <?php foreach ($recruitment as $row) {?>
+        <a href="<?php echo Url::toRoute(['job/index','id'=>$row['id']]);?>">
           <div class="tr-mt15 tr-bgcw tr-pro_box ">
             <div class="tr-cfl tr-ml20 tr-mr20">
               <div class="tr-mt10">
                 <div class="tr-cfl">
-                  <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px"><?php echo $value['job_name'] ?></div>
-                  <div class="tr-caf tr-fz12">分类：<?php echo $value['type_name'] ?>
-                  <div class="tr-flr tr-caf tr-fz12" style="line-height:18px"><?php echo substr($value['time'],0,10)?>
+                  <div class="tr-fz18 tr-c444 tr-ellipsis" style="width: 265px"><?php echo $row['job_name'] ?></div>
+                  <div class="tr-caf tr-fz12">分类：<?php echo $row['type_name'] ?>
+                  <div class="tr-flr tr-caf tr-fz12" style="line-height:18px"><?php echo substr($row['time'],0,10)?>
                   </div></div>
                 </div>
                 <div class="tr-cfb"></div>
               </div>
-              <div class="tr-c444 tr-mt15 tr-mb15"><?php echo mb_substr($value['introduct'], 0,100,"utf8") ?>  ......
-                <a target="_blank" href="<?php echo Url::toRoute(['job/index','id'=>$value['id']]);?>">
+              <div class="tr-c444 tr-mt15 tr-mb15"><?php echo mb_substr($row['introduct'], 0,100,"utf8") ?>  ......
+                <a target="_blank" href="<?php echo Url::toRoute(['job/index','id'=>$row['id']]);?>">
                   <span class="tr-curp tr-ml5 tr-c9e">[查看详情]</span></a>
               </div>
             </div>

@@ -27,7 +27,6 @@
                   </span>
                   <span class="tr-caf tr-fz14 tr-pr10 tr-pl10 tr-left-text"><?php echo substr($detail['time'],0,10)?></span>
                 </div>
-                
               </div>
               <div class="tr-flr tr-u-info tr-mt10 tr-mr10">
               </div>
@@ -54,12 +53,10 @@
 			?>
 				
 				<input type="hidden" name="recruitment_id" value="<?php echo $detail['id']?>">
-                <!-- <div class="msg err">&nbsp;</div>-->
                 <div class="item Lcfx Lmt15">
                   <div class="inputbox Lfll">*姓名：
                     <i class="icon icon1"></i>
                     <input name="username" type="text" placeholder="姓名" class="input2"></div>
-                  <!-- <span class="msg err Lcfl">&nbsp;</span>-->
                   <span class="msg err Lcfl Ldn">*请输入姓名</span>
                 </div>
                 <div class="item Lcfx Lmt15">
@@ -69,21 +66,18 @@
                     <input type="radio" name="gender" value="1">
                     <i>女</i>
                   </div>
-                  <!-- <span class="msg err Lcfl">&nbsp;</span>-->
                   <span class="msg err Lcfl Ldn"></span>
                 </div>
                 <div class="item Lcfx Lmt15">
                   <div class="inputbox Lfll">*年龄：
                     <i class="icon icon1"></i>
                     <input name="age" type="text" placeholder="年龄" class="input2"></div>
-                  <!-- <span class="msg err Lcfl">&nbsp;</span>-->
                   <span class="msg err Lcfl Ldn"></span>
                 </div>
                 <div class="item Lcfx Lmt15">
                   <div class="inputbox Lfll">*电话：
                     <i class="icon icon1"></i>
                     <input name="telephone" type="text" placeholder="电话" class="input2"></div>
-                  <!-- <span class="msg err Lcfl">&nbsp;</span>-->
                   <span class="msg err Lcfl Ldn">*请输入电话</span>
                 </div>
                 <div class="item Lcfx Lmt15">
@@ -96,7 +90,6 @@
                 <div class="item Lcfx Lmt15">
                   <div class="inputbox my-pl">*个人介绍：
                   </div>
-                  <!-- <span class="msg err Lcfl">&nbsp;</span>-->
                   <span class="msg err Lcfl Ldn">*请输入个人介绍</span>
                 </div>
                 <div class="my-pl">
@@ -119,7 +112,7 @@
             <div class="tr-bottom-line tr-fz16 tr-pb10">相关招聘</div>
  
             <?php foreach($job as $row) :?>
-            <a target="_blank" href="<?php echo Url::toRoute(['job/index','id'=>$row['id']]);?>">
+            <a href="<?php echo Url::toRoute(['job/index','id'=>$row['id']]);?>">
               <div class="tr-mt15 tr-ovh tr-posr tr-bgcw ">
                 <div class=" tr-bottom-line tr-pb10 tr-pt10 tr-pr10 tr-pl10 tr-mb10">
                   <!-- <div class="tr-fy-img tr-fll">
@@ -130,7 +123,6 @@
                   <div class="tr-cfb"></div>							  
                 </div>
                 <div class="tr-pb10">
-                  <!-- <i class=" tr-ml5 tr-ic"></i> -->
                   <span class="tr-caf tr-ml10 tr-pr10 tr-fz14"><?php echo $row['type_name']?></span>
                   <span class=" tr-caf tr-pr15 tr-pl15 tr-fz12 tr-left-text tr-fz14"><?php echo substr($row['time'],0,10)?></span>
                 </div>
