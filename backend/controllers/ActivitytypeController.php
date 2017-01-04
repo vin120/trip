@@ -86,6 +86,7 @@ class ActivitytypeController extends BaseController
 		$name = isset($_POST['name'])?trim($_POST['name']):'';
 		$activitytype_id = isset($_POST['activitytype_id'])?trim($_POST['activitytype_id']):'';
 
+
 		if($activitytype_id == ''){
 			$sql = "SELECT count(*) count FROM `zh_activity` WHERE name='{$name}' ";
 		}else{
@@ -102,12 +103,22 @@ class ActivitytypeController extends BaseController
 			// var_dump($_POST);exit;
 			$name = isset($_POST['name'])?trim($_POST['name']):'';
 			$state = isset($_POST['state'])?trim($_POST['state']):'';
+			$is_home_show = isset($_POST['is_home_show'])?trim($_POST['is_home_show']):0;
 
-			$sql = "INSERT INTO `zh_activity` (name,status) VALUES ('{$name}','{$state}') ";
-
+			
 			$commen = $db->beginTransaction();
 			try{
+
+				if($is_home_show == 1){
+					$sql = "UPDATE `zh_activity` SET is_home_show='0' ";
+					$db->createCommand($sql)->execute();
+				}
+
+				$sql = "INSERT INTO `zh_activity` (name,status,is_home_show) VALUES ('{$name}','{$state}','{$is_home_show}') ";
 				$db->createCommand($sql)->execute();
+
+
+
 				$commen->commit();
 				Helper::show_message('保存成功', Url::toRoute(['index']));
 			}catch(Exception $e){
@@ -127,11 +138,19 @@ class ActivitytypeController extends BaseController
 			$activitytype_id = isset($_POST['activitytype_id'])?trim($_POST['activitytype_id']):'';
 			$name = isset($_POST['name'])?trim($_POST['name']):'';
 			$state = isset($_POST['state'])?trim($_POST['state']):'';
+			$is_home_show = isset($_POST['is_home_show'])?trim($_POST['is_home_show']):0;
 			
-			$sql = "UPDATE `zh_activity` SET name='{$name}',status='{$state}' WHERE id='{$activitytype_id}' ";
+			
 
 			$commen = $db->beginTransaction();
 			try{
+
+				if($is_home_show == 1){
+					$sql = "UPDATE `zh_activity` SET is_home_show='0' ";
+					$db->createCommand($sql)->execute();
+				}
+
+				$sql = "UPDATE `zh_activity` SET name='{$name}',status='{$state}',is_home_show='{$is_home_show}' WHERE id='{$activitytype_id}' ";
 				$db->createCommand($sql)->execute();
 				$commen->commit();
 				Helper::show_message('保存成功', Url::toRoute(['index']));

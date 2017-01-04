@@ -3,7 +3,7 @@
 	use backend\views\myasset\PublicAsset;
 	use yii\helpers\Url;
 	use yii\widgets\ActiveForm;
-	
+	 
 	PublicAsset::register($this);
 	$baseUrl = $this->assetBundles[PublicAsset::className()]->baseUrl . '/';
 ?>
@@ -29,6 +29,7 @@
 					<th><input type="checkbox"></input></th>
 					<th>序号</th>
 					<th>活动名称</th>
+					<th>是否推荐显示</th>
 					<th>状态</th>
 					<th>操作</th>
 				</tr>
@@ -39,6 +40,7 @@
 					<td><input type="checkbox" name="ids[]" value="<?php echo $row['id']?>"></input></td>
 					<td><?php echo ($key+1)?></td>
 					<td><?php echo $row['name']?></td>
+					<td><?php echo $row['is_home_show']==1?"是":"否";?></td>
 					<td><?php echo $row['status']==1?"启用":"禁用";?></td>
 					<td>
 						<a href="<?php echo Url::toRoute(['activitytype/edit','id'=>$row['id']]);?>"><img src="<?php echo $baseUrl; ?>images/write.png"></a>
@@ -98,6 +100,8 @@ window.onload = function(){
 								str += '<td><input type="checkbox" name="ids[]" value="'+data[key]['id']+'"></input></td>';
 								str += '<td>'+(key+1)+'</td>';
 								str += '<td>'+data[key]['name']+'</td>';
+								var is_home_show = data[key]['is_home_show']==1?"是":"否";
+								str += '<td>'+is_home_show+'</td>';
 								var state = data[key]['status']==1?"启用":"禁用";
 								str += '<td>'+state+'</td>';
 								str += '<td>';

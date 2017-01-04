@@ -44,8 +44,8 @@
 	           		<span><?php echo $compony['QQ'];?></span>
 	           	</li>
 	           	<li>
-	           		<span>简介:</span>
-	           		<span><?php echo $compony['introduct'];?></span>
+	           		<span style="vertical-align: top;">简介:</span>
+	           		<span style="width: 70%;display: inline-block;" ><?php echo $compony['introduct'];?></span>
 	           	</li>
             </ul>
         </div>

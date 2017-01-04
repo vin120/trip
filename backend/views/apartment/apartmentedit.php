@@ -47,7 +47,7 @@
 </style>
 <style type="text/css">
 	div.apartment-box-div{
-		margin-left: 5%;
+		margin-left: 1%;
 	}
 	span.add_btn_tr{
 		display: inline-block;
@@ -60,7 +60,7 @@
 		cursor: pointer;
 	}
 	table.table-box-apartment{
-		width: 95%;
+		width: 99%;
 		/*margin: auto;*/
 	}
 	table.table-box-apartment th{
@@ -300,6 +300,7 @@
 						<th>卧室数量</th>
 						<th>价格</th>
 						<th>最少住天数</th>
+						<th>库存</th>
 						<th>税</th>
 						<th>押金</th>
 						<th>服务费</th>
@@ -312,10 +313,11 @@
 						<?php foreach($apartment_price as $k=>$row){ ?>
 						<tr>
 							<td><input type="hidden" name="apartment_price[]" value="<?php echo $row['type_id'] ?>" /><input style="width: 120px;" type="text" value="<?php echo $row['type_name'] ?>" placeholder="类型名" name="type_name[]" maxlength="20" /></td>
-							<td><input style="width: 65px;" value="<?php echo $row['room_count'] ?>" type="text" placeholder="卧室数量" name="room_num[]" maxlength="3" /></td>
-							<td><input style="width: 60px;" value="<?php echo $row['price'] ?>" onkeyup="clearNoNum(this)" onblur="clearNoNum(this)" type="text" placeholder="价格" name="p_price[]" maxlength="8" /></td>
-							<td><input style="width: 90px;" value="<?php echo $row['day'] ?>" type="text" placeholder="最少入住天数" name="live_day[]" maxlength="3" /></td>
-							<td><input style="width: 50px;" value="<?php echo $row['tax'] ?>" type="text" placeholder="税" name="tax[]" maxlength="3" /></td>
+							<td><input style="width: 60px;" value="<?php echo $row['room_count'] ?>" type="text" placeholder="卧室数量" name="room_num[]" maxlength="3" onkeyup="clearNoInt(this)" onblur="clearNoInt(this)" /></td>
+							<td><input style="width: 60px;" value="<?php echo $row['price'] ?>" onkeyup="clearNoNum(this)" onblur="clearNoNum(this)" type="text" placeholder="价格" name="p_price[]" maxlength="8"  /></td>
+							<td><input style="width: 50px;" value="<?php echo $row['day'] ?>" type="text" placeholder="最少入住天数" name="live_day[]" maxlength="3"  onkeyup="clearNoInt(this)" onblur="clearNoInt(this)" /></td>
+							<td><input style="width: 90px;" value="<?php echo $row['stock'] ?>" type="text" placeholder="库存" name="stock[]" maxlength="3"  onkeyup="clearNoInt(this)" onblur="clearNoInt(this)" /></td>
+							<td><input style="width: 50px;" value="<?php echo $row['tax'] ?>" type="text" placeholder="税" name="tax[]" maxlength="3"  onkeyup="clearNoInt(this)" onblur="clearNoInt(this)" /></td>
 							<td><input style="width: 55px;" value="<?php echo $row['deposit'] ?>" onkeyup="clearNoNum(this)" onblur="clearNoNum(this)" type="text" placeholder="押金" name="deposit[]" maxlength="8" /></td>
 							<td><input style="width: 50px;" value="<?php echo $row['service_charge'] ?>" type="text" placeholder="服务费" name="service_charge[]" onkeyup="clearNoNum(this)" onblur="clearNoNum(this)" maxlength="8" /></td>
 							<td><input style="width: 120px;" value="<?php echo $row['remark'] ?>" type="text" placeholder="备注" name="p_remark[]" maxlength="50" /></td>
@@ -428,10 +430,11 @@ window.onload = function(){
 		var str = '';
 		str += '<tr>';
 		str += '<td><input type="hidden" name="apartment_price[]" value="" /><input style="width: 120px;" type="text" placeholder="类型名" name="type_name[]" maxlength="20" value="" /></td>';
-		str += '<td><input style="width: 65px;" type="text" placeholder="卧室数量" value="" name="room_num[]" maxlength="3" /></td>';
+		str += '<td><input style="width: 60px;" type="text" placeholder="卧室数量" value="" name="room_num[]" maxlength="3"  onkeyup="clearNoInt(this)" onblur="clearNoInt(this)" /></td>';
 		str += '<td><input style="width: 60px;" type="text" onkeyup="clearNoNum(this)" onblur="clearNoNum(this)" placeholder="价格" value="" name="p_price[]" maxlength="8" /></td>';
-		str += '<td><input style="width: 90px;" type="text" placeholder="最少入住天数" value="" name="live_day[]" maxlength="3" /></td>';
-		str += '<td><input style="width: 50px;" type="text" placeholder="税" value="" name="tax[]" maxlength="3" /></td>';
+		str += '<td><input style="width: 90px;" type="text" placeholder="最少入住天数" value="" name="live_day[]" maxlength="3"  onkeyup="clearNoInt(this)" onblur="clearNoInt(this)" /></td>';
+		str += '<td><input style="width: 50px;" type="text" placeholder="库存" value="" name="stock[]" maxlength="3"  onkeyup="clearNoInt(this)" onblur="clearNoInt(this)" /></td>';
+		str += '<td><input style="width: 50px;" type="text" placeholder="税" value="" name="tax[]" maxlength="3"  onkeyup="clearNoInt(this)" onblur="clearNoInt(this)" /></td>';
 		str += '<td><input style="width: 55px;" type="text" onkeyup="clearNoNum(this)" onblur="clearNoNum(this)" placeholder="押金" value="" name="deposit[]" maxlength="8" /></td>';
 		str += '<td><input style="width: 50px;" type="text" onkeyup="clearNoNum(this)" onblur="clearNoNum(this)" placeholder="服务费" value="" name="service_charge[]" maxlength="8" /></td>';
 		str += '<td><input style="width: 120px;" type="text" placeholder="备注" value="" name="p_remark[]" maxlength="50" /></td>';

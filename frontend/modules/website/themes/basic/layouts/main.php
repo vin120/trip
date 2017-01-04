@@ -37,119 +37,34 @@
                        <i class="icon"></i>所有目的地
                      </p>
                    
-             
-                     <!-- start -->
-                     <div class="add-tiems Lcfx">
-                       <h3>亚洲</h3>
-                       <div class="lcfx dl-c">
-                         <dl class="dl-list">
-                         
-                         
-                           <dt>
-                             <a title="泰国 度假别墅" href="http://www.senseluxury.com/destinations/2">泰国</a>
-                           </dt>
-                           
-                           <dd>
-                             <a class="recommend" title="苏梅岛 度假别墅" href="http://www.senseluxury.com/destinations/25">苏梅岛</a></dd>
-                           <dd>
-                             <a class="recommend" title="普吉岛 度假别墅" href="http://www.senseluxury.com/destinations/26">普吉岛</a></dd>
-                           <dd>
-                             <a class="recommend" title="清迈 度假别墅" href="http://www.senseluxury.com/destinations/649">清迈</a></dd>
-                           <dd>
-                             <a title="华欣  度假别墅" href="http://www.senseluxury.com/destinations/695">华欣</a></dd>
-                           <dd>
-                             <a title="甲米 度假别墅" href="http://www.senseluxury.com/destinations/694">甲米</a></dd>
-                           <dd>
-                             <a title="曼谷 度假别墅" href="http://www.senseluxury.com/destinations/950">曼谷</a></dd>
-                           <dd>
-                             <a title="芭提雅 度假别墅" href="http://www.senseluxury.com/destinations/715">芭提雅</a></dd>
-                           <dd>
-                             <a title="小长岛 度假别墅" href="http://www.senseluxury.com/destinations/751">小长岛</a></dd>
-                           <dd>
-                             <a title="沽岛 度假别墅" href="http://www.senseluxury.com/destinations/979">沽岛</a></dd>
-                           <dd>&nbsp;</dd>
-                           
-                           <dt>
-                             <a title="中国 度假别墅" href="http://www.senseluxury.com/destinations/692">中国</a></dt>
-                           <dd>
-                             <a class="recommend" title="莫干山 度假别墅" href="http://www.senseluxury.com/destinations/811">莫干山</a></dd>
-                           <dd>
-                             <a class="recommend" title="大理 度假别墅" href="http://www.senseluxury.com/destinations/988">大理</a></dd>
-                           <!-- <dd><a class="recommend" title="北京 度假别墅" href="/destinations/900">-->
-                           <!--</a></dd>-->
-                        </dl>
-                           
-                         <dl class="dl-list">
-                           <dt>
-                             <a title="印度尼西亚 度假别墅" href="http://www.senseluxury.com/destinations/18">印度尼西亚</a>
-                             <i style="color:#f19149;">免签</i></dt>
-                           <dd>
-                             <a class="recommend" title="巴厘岛 度假别墅" href="http://www.senseluxury.com/destinations/85">巴厘岛</a></dd>
-                           <dd>
-                             <a title="龙目岛 度假别墅" href="http://www.senseluxury.com/destinations/84">龙目岛</a></dd>
-                         </dl>
-                         
-                         
-                         <dl class="dl-list">
-                           <dt>
-                             <a title="新加坡 度假别墅" href="http://www.senseluxury.com/destinations/965">新加坡</a></dt>
-                           <dd>
-                             <a title="圣淘沙岛 度假别墅" href="http://www.senseluxury.com/destinations/966">圣淘沙岛</a></dd>
-                         </dl>
-                         </div>
-                         </div>
-                         
+              		<?php
+                    	$zone_data = Yii::$app->view->params['zone_data'];
+                    	foreach($zone_data as $k1=>$v1){
+                    ?>
+
                       <div class="add-tiems Lcfx">
-                       <h3>印度洋</h3>
+                       <h3 z_id="<?php echo $v1['zone_id'] ?>"><?php echo $v1['zone_name'] ?></h3>
                        <div class="lcfx dl-c">
+                        <?php if(isset($v1['child2'])){?>
                          <dl class="dl-list">
-                           <dd>
-                             <a class="recommend" title="马尔代夫 度假别墅" href="http://www.senseluxury.com/destinations/647">马尔代夫</a></dd>
-                           <dd>
-                             <a class="recommend" title="毛里求斯 度假别墅" href="http://www.senseluxury.com/destinations/48">毛里求斯</a>
-                             <i style="color:#f19149;">免签</i></dd>
-                         </dl>
-                         
-                         <dl class="dl-list">
-                           <dd>
-                             <a class="recommend" title="斯里兰卡 度假别墅" href="http://www.senseluxury.com/destinations/663">斯里兰卡</a></dd>
-                           <dd>
-                             <a class="recommend" title="塞舌尔 度假别墅" href="http://www.senseluxury.com/destinations/800">塞舌尔
-                               <i style="color:#f19149;">免签</i></a>
-                           </dd>
-                         </dl>
-                       </div>
-                     </div>
-             
-                     
-                     <div class="add-tiems Lcfx">
-                       <h3>大洋洲</h3>
-                       <div class="lcfx dl-c">
-                         <dl class="dl-list">
+                           <?php foreach($v1['child2'] as $k2=>$v2){ ?>
                            <dt>
-                             <a target="_blank" title="新西兰 度假别墅" href="http://www.senseluxury.com/destinations/656">新西兰</a>
-                             <i style="color:#f19149;">HOT!</i></dt>
+                             <a  target="_blank" z_id="<?php echo $v2['zone_id'] ?>" title="<?php echo $v2['zone_name'] ?> 度假别墅" href="http://www.senseluxury.com/destinations/656"><?php echo $v2['zone_name'] ?></a>
+                             <!--<i style="color:#f19149;">HOT!</i>-->
+                           </dt>
+                           <?php if(isset($v2['child3'])){
+                            foreach($v2['child3'] as $k3=>$v3){
+                           ?>
                            <dd>
-                             <a class="recommend" target="_blank" title="奥克兰 度假别墅" href="http://www.senseluxury.com/destinations/741">奥克兰</a></dd>
-                           <dd>
-                             <a class="recommend" target="_blank" title="皇后镇 度假别墅" href="http://www.senseluxury.com/destinations/657">皇后镇</a></dd>
-                           <dd>
-                             <a target="_blank" title="陶波 度假别墅" href="http://www.senseluxury.com/destinations/689">陶波</a></dd>
-                           <dd>
-                             <a target="_blank" title="瓦纳卡 度假别墅" href="http://www.senseluxury.com/destinations/744">瓦纳卡</a></dd>
-                           <dd>
-                             <a target="_blank" title="惠灵顿 度假别墅" href="http://www.senseluxury.com/destinations/752">惠灵顿</a></dd>
-                           <dd>
-                             <a target="_blank" title="更多新西兰度假别墅" href="http://www.senseluxury.com/destinations/656">更多&gt;</a></dd>
-                        
-                           <dt>
-                             <a title="大溪地群岛  度假别墅" href="http://www.senseluxury.com/destinations/1013">大溪地群岛</a></dt>
-                           <dd>
-                             <a title="波拉波拉岛 度假别墅" href="http://www.senseluxury.com/destinations/1014">波拉波拉岛</a></dd>
+                             <a class="<?php echo $v3['highlight']==1?"recommend":"" ?>" target="_blank" z_id="<?php echo $v3['zone_id'] ?>" title="<?php echo $v3['zone_name'] ?> 度假别墅" href="http://www.senseluxury.com/destinations/741"><?php echo $v3['zone_name'] ?></a></dd>
+                           <?php }} ?>
+                          <?php }?>
                          </dl>
-                         
+                        <?php }?>
                        </div>
                        </div>
+
+                     <?php }?>
                       
                      <!-- end -->
                      </div>

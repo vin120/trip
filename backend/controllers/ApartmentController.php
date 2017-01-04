@@ -7,7 +7,7 @@ use backend\components\Helper;
 use yii\helpers\Url;
 
 class ApartmentController extends BaseController
-{
+{ 
 	public $layout = "myloyout";
 	public $enableCsrfValidation = false;
 
@@ -112,6 +112,7 @@ class ApartmentController extends BaseController
 			$state = isset($_POST['state'])?trim($_POST['state']):1;
 			$is_highlight = isset($_POST['is_highlight'])?trim($_POST['is_highlight']):0;
 			$desc = isset($_POST['desc'])?trim($_POST['desc']):'';
+			$time = date("Y-m-d H:i:s",time());
 
 			// var_dump($desc);
 
@@ -119,7 +120,7 @@ class ApartmentController extends BaseController
 			$desc =  addslashes(str_replace('src="'.$img_url,'src="',$desc));
 			// var_dump($desc);exit;
 
-			$sql = "INSERT INTO `zh_apartment` (apartment_code,apartment_name,zone_id,total_price,avg_price,star,status,highlight,`desc`) VALUES ('{$apartment_code}','{$apartment_name}','{$zone_id}','{$total_price}','{$avg_price}','{$star}','{$state}','{$is_highlight}','{$desc}')";
+			$sql = "INSERT INTO `zh_apartment` (apartment_code,apartment_name,zone_id,total_price,avg_price,star,status,highlight,`desc`,`time`) VALUES ('{$apartment_code}','{$apartment_name}','{$zone_id}','{$total_price}','{$avg_price}','{$star}','{$state}','{$is_highlight}','{$desc}','{$time}')";
 
 			$commen = $db->beginTransaction();
 			try{
@@ -262,11 +263,12 @@ class ApartmentController extends BaseController
 			$state = isset($_POST['state'])?trim($_POST['state']):1;
 			$is_highlight = isset($_POST['is_highlight'])?trim($_POST['is_highlight']):0;
 			$desc = isset($_POST['desc'])?trim($_POST['desc']):'';
+			$time = date("Y-m-d H:i:s",time());
 
 			$img_url = Yii::$app->params['img_url'];
 			$desc =  addslashes(str_replace('src="'.$img_url,'src="',$desc));
 
-			$sql = "UPDATE `zh_apartment` SET apartment_code='{$apartment_code}',apartment_name='{$apartment_name}',zone_id='{$zone_id}',total_price='{$total_price}',avg_price='{$avg_price}',star='{$star}',status='{$state}',highlight='{$is_highlight}',`desc`='{$desc}' WHERE apartment_id='{$apartment_id}' ";
+			$sql = "UPDATE `zh_apartment` SET apartment_code='{$apartment_code}',apartment_name='{$apartment_name}',zone_id='{$zone_id}',total_price='{$total_price}',avg_price='{$avg_price}',star='{$star}',status='{$state}',highlight='{$is_highlight}',`desc`='{$desc}',`time`='{$time}' WHERE apartment_id='{$apartment_id}' ";
 
 			$commen = $db->beginTransaction();
 			try{
@@ -368,18 +370,19 @@ class ApartmentController extends BaseController
 			$service_charge = isset($_POST['service_charge'])?$_POST['service_charge']:array();
 			$p_remark = isset($_POST['p_remark'])?$_POST['p_remark']:array();
 			$p_state = isset($_POST['p_state'])?$_POST['p_state']:array();
+			$stock = isset($_POST['stock'])?$_POST['stock']:array();
 
-			$in_sql = "INSERT INTO `zh_apartment_type` (apartment_id,type_name,room_count,price,day,remark,status,tax,deposit,service_charge) VALUES ";
+			$in_sql = "INSERT INTO `zh_apartment_type` (apartment_id,type_name,room_count,price,day,remark,status,tax,deposit,service_charge,stock) VALUES ";
 			$in_str = '';
 			$commen = $db->beginTransaction();
 			try{
 
 				foreach($apartment_price as $k=>$value){
 					if($value!=''){	//修改
-						$sql = "UPDATE `zh_apartment_type` SET apartment_id='{$apartment_id}',type_name='{$type_name[$k]}',room_count='{$room_num[$k]}',price='{$p_price[$k]}',day='{$live_day[$k]}',remark='{$p_remark[$k]}',status='{$p_state[$k]}',tax='{$tax[$k]}',deposit='{$deposit[$k]}',service_charge='{$service_charge[$k]}' WHERE type_id='{$value}' ";
+						$sql = "UPDATE `zh_apartment_type` SET apartment_id='{$apartment_id}',type_name='{$type_name[$k]}',room_count='{$room_num[$k]}',price='{$p_price[$k]}',day='{$live_day[$k]}',remark='{$p_remark[$k]}',status='{$p_state[$k]}',tax='{$tax[$k]}',deposit='{$deposit[$k]}',service_charge='{$service_charge[$k]}',stock='{$stock[$k]}' WHERE type_id='{$value}' ";
 						$db->createCommand($sql)->execute();
 					}else{	//新增
-						$in_str .= " ('{$apartment_id}','{$type_name[$k]}','{$room_num[$k]}','{$p_price[$k]}','{$live_day[$k]}','{$p_remark[$k]}','{$p_state[$k]}','{$tax[$k]}','{$deposit[$k]}','{$service_charge[$k]}'),";
+						$in_str .= " ('{$apartment_id}','{$type_name[$k]}','{$room_num[$k]}','{$p_price[$k]}','{$live_day[$k]}','{$p_remark[$k]}','{$p_state[$k]}','{$tax[$k]}','{$deposit[$k]}','{$service_charge[$k]}','{$stock[$k]}'),";
 					}
 				}
 

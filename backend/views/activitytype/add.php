@@ -42,6 +42,11 @@
 					<option value="0">禁用</option>
 				</select>
 			</p>
+			<p>
+				<span>是否推荐显示：</span>
+				<input type='checkbox' name="is_home_show" value="1" />
+				<span style="color:red;">(选择后其他被勾选活动将会自动取消勾选)</span>
+			</p>
 
 			<div class="btn">
 				<input type="submit" value="保存"></input>

@@ -15,11 +15,77 @@ class SiteController extends BaseController
 	}
 	
 	
-	
 	public function actionFeatured()
 	{
-		return $this->render('featured');
+		//获取推荐活动
+		$sql = "SELECT zap.apartment_id,zap.apartment_name,zap.zone_id FROM `zh_activity` za
+		LEFT JOIN `zh_activity_apartment` zaa ON za.id=zaa.activity_id
+		LEFT JOIN `zh_apartment` zap ON zap.apartment_id=zaa.apartment_id
+		WHERE za.is_home_show='1' AND za.status='1' AND zap.status='1'
+		LIMIT  6  ";
+		$data = Yii::$app->db->createCommand($sql)->queryAll();
+		$data_arr = array();
+		foreach ($data as $key => $value) {
+	
+			$sql = "SELECT img_url FROM `zh_apartment_img` WHERE apartment_id='{$value['apartment_id']}' AND status='1' ORDER BY img_id ASC limit 1 ";
+			$img = Yii::$app->db->createCommand($sql)->queryOne();
+			$value['img_url'] = $img['img_url'];
+	
+			$zone_name = '';
+			$sql = "SELECT zone_id,zone_name,parent_id,level FROM `zh_zone` WHERE zone_id='{$value['zone_id']}' ";
+			$res = Yii::$app->db->createCommand($sql)->queryOne();
+			if($res['levle'] = 3){
+				$sql = "SELECT a.zone_name zone_name2,b.zone_name zone_name1 FROM `zh_zone` a
+				LEFT JOIN `zh_zone` b ON a.parent_id=b.zone_id WHERE a.zone_id='{$res['parent_id']}' LIMIT 1 ";
+				$res1 = Yii::$app->db->createCommand($sql)->queryOne();
+				$zone_name = $res1['zone_name1'].'-'.$res1['zone_name2'].'-'.$res['zone_name'];
+			}else if($res['levle'] = 2){
+				$sql = "SELECT zone_name FROM `zh_zone` WHERE zone_id='{$res['parent_id']}'  ";
+				$res1 = Yii::$app->db->createCommand($sql)->queryOne();
+				$zone_name = $res1['zone_name'].'-'.$res['zone_name'];
+			}else{
+				$zone_name = $res['zone_name'];
+			}
+			$value['zone_name'] = $zone_name;
+			$data_arr[] = $value;
+	
+		}
+	
+	
+		$sql = "SELECT apartment_id,apartment_name,zone_id,total_price,avg_price FROM `zh_apartment` WHERE status='1' ORDER BY time DESC limit 8  ";
+	
+		$new_data = Yii::$app->db->createCommand($sql)->queryAll();
+		$new_data_arr = array();
+		foreach ($new_data as $key => $value) {
+			$sql = "SELECT img_url FROM `zh_apartment_img` WHERE apartment_id='{$value['apartment_id']}' AND status='1' ORDER BY img_id ASC limit 1 ";
+			$img = Yii::$app->db->createCommand($sql)->queryOne();
+			$value['img_url'] = $img['img_url'];
+	
+			$zone_name = '';
+			$sql = "SELECT zone_id,zone_name,parent_id,level FROM `zh_zone` WHERE zone_id='{$value['zone_id']}' ";
+			$res = Yii::$app->db->createCommand($sql)->queryOne();
+			if($res['levle'] = 3){
+				$sql = "SELECT a.zone_name zone_name2,b.zone_name zone_name1 FROM `zh_zone` a
+				LEFT JOIN `zh_zone` b ON a.parent_id=b.zone_id WHERE a.zone_id='{$res['parent_id']}' LIMIT 1 ";
+				$res1 = Yii::$app->db->createCommand($sql)->queryOne();
+				$zone_name = $res1['zone_name1'].'-'.$res1['zone_name2'].'-'.$res['zone_name'];
+			}else if($res['levle'] = 2){
+				$sql = "SELECT zone_name FROM `zh_zone` WHERE zone_id='{$res['parent_id']}'  ";
+				$res1 = Yii::$app->db->createCommand($sql)->queryOne();
+				$zone_name = $res1['zone_name'].'-'.$res['zone_name'];
+			}else{
+				$zone_name = $res['zone_name'];
+			}
+			$value['zone_name'] = $zone_name;
+			$new_data_arr[] = $value;
+	
+		}
+	
+		// var_dump($new_data_arr);exit;
+	
+		return $this->render('featured',['data'=>$data_arr,'new_data'=>$new_data_arr]);
 	}
+	
 	
 	
 	

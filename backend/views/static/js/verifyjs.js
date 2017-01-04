@@ -185,18 +185,67 @@ $(document).ready(function() {
 		if(flag == 0){return false;}
 
 		//验证手机号
+		if(!(/^1[34578]\d{9}$/.test(phone_number))){ 
+				//格式不正确
+				$("form#user_form input[type='text'][name='phone_number']").parents('p').append("<em class='error_tips'>手机号格式有误</em>");flag = 0;return false;
+		} 
+
+
+		//验证邮件
+		var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/; //验证邮箱的正则表达式
+		if(!reg.test(email)){
+			//邮箱格式有误
+			$("form#user_form input[type='text'][name='email']").parents('p').append("<em class='error_tips'>邮箱格式有误</em>");flag = 0;return false;
+		}
 
 
 		//验证密码长度
 		if(password.length <6){
 			$("form#user_form input[type='password'][name='password']").parents('p').append("<em class='error_tips'>密码长度需超过6位</em>");flag = 0;return false;
 		}
-
-		//验证邮件
+		//验证密码有效性
+		var num = 0;  
+	    var number = 0 ;  
+	    var bigLetter = 0 ;  
+	    var chars = 0 ;  
+		
+		//判断新密码不能是纯数字，纯英文，纯字母
+	    if (password.search(/[0-9]/) != -1) {  
+	        num += 1;  
+	        number =1;  
+	    }  
+	    if (password.search(/[A-Za-z]/) != -1) {  
+	        num += 1;  
+	        bigLetter = 1 ;  
+	    }  
+	    if (password.search(/[^A-Za-z0-9]/) != -1) {  
+	        num += 1;  
+	        chars = 1 ;  
+	    }  
+	    if (num >= 2 && (password.length >= 6 && password.length <= 16)) {  
+	    	$("form#user_form input[type='password'][name='password']").parents('p').find("em.error_tips").remove();
+	    }else if(password.length < 6 || password.length > 16){ 
+	        $("form#user_form input[type='password'][name='password']").parents('p').append("<em class='error_tips'>密码由6-16个字符组成</em>");flag = 0;return false;
+	    }else if(num == 1){  
+	        if(number==1){  
+	        	if(password != '888888'){
+	        		$("form#user_form input[type='password'][name='password']").parents('p').append("<em class='error_tips'>不能全为数字</em>");flag = 0;return false; 
+	        	}
+	        }   
+	        if(bigLetter==1){  
+	        	$("form#user_form input[type='password'][name='password']").parents('p').append("<em class='error_tips'>不能全为字母</em>");flag = 0;return false; 
+	        }  
+	        if(chars==1){  
+	        	$("form#user_form input[type='password'][name='password']").parents('p').append("<em class='error_tips'>不能全为字符</em>");flag = 0;return false; 
+	        }  
+	    }  
 
 		if(password != query_password){
 			$("form#user_form input[type='password'][name='query_password']").parents('p').append("<em class='error_tips'>密码不一致</em>");flag = 0;return false;
+
 		}
+
+		if(flag == 0){return false;}
 
 		//验证账号,手机号,邮箱唯一性
 		$.ajax({
@@ -262,10 +311,48 @@ $(document).ready(function() {
 			$("form#admin_form input[type='password'][name='password']").parents('p').append("<em class='error_tips'>密码长度需超过6位</em>");flag = 0;return false;
 		}
 
+		//验证密码有效性
+		var num = 0;  
+	    var number = 0 ;  
+	    var bigLetter = 0 ;  
+	    var chars = 0 ;  
+		
+		//判断新密码不能是纯数字，纯英文，纯字母
+	    if (password.search(/[0-9]/) != -1) {  
+	        num += 1;  
+	        number =1;  
+	    }  
+	    if (password.search(/[A-Za-z]/) != -1) {  
+	        num += 1;  
+	        bigLetter = 1 ;  
+	    }  
+	    if (password.search(/[^A-Za-z0-9]/) != -1) {  
+	        num += 1;  
+	        chars = 1 ;  
+	    }  
+	    if (num >= 2 && (password.length >= 6 && password.length <= 16)) {  
+	    	$("form#admin_form input[type='password'][name='password']").parents('p').find("em.error_tips").remove();
+	    }else if(password.length < 6 || password.length > 16){ 
+	        $("form#admin_form input[type='password'][name='password']").parents('p').append("<em class='error_tips'>密码由6-16个字符组成</em>");flag = 0;return false;
+	    }else if(num == 1){  
+	        if(number==1){  
+	        	if(password != '888888'){
+	        		$("form#admin_form input[type='password'][name='password']").parents('p').append("<em class='error_tips'>不能全为数字</em>");flag = 0;return false; 
+	        	}
+	        }   
+	        if(bigLetter==1){  
+	        	$("form#admin_form input[type='password'][name='password']").parents('p').append("<em class='error_tips'>不能全为字母</em>");flag = 0;return false; 
+	        }  
+	        if(chars==1){  
+	        	$("form#admin_form input[type='password'][name='password']").parents('p').append("<em class='error_tips'>不能全为字符</em>");flag = 0;return false; 
+	        }  
+	    }  
+
+
 		if(password != query_password){
 			$("form#admin_form input[type='password'][name='query_password']").parents('p').append("<em class='error_tips'>密码不一致</em>");flag = 0;return false;
 		}
-
+		if(flag == 0){return false;}
 		//验证账号唯一性
 		$.ajax({
 			url:verify_admin_info,
@@ -383,3 +470,13 @@ function clearNoNum(obj)
     //只能输入两个小数  
     obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');   
 } 
+
+function clearNoInt(obj){
+
+	if(obj.value.substr(0, 1)==0 && obj.value.length>1){
+		obj.value=obj.value.replace(/[^1-9]/,'');
+	}else{
+		obj.value=obj.value.replace(/\D/g,'');
+	}
+
+}
