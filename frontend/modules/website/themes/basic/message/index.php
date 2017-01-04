@@ -39,13 +39,14 @@
               <div class="tr-flr tr-u-info tr-mt10 tr-mr10"></div>
             </div>
           </div>
+          
           <div class="tr-left tr-fll tr-bgcw tr-mt20 ">
             <div class=" tr-mt20 tr-pl15 tr-pr15 tr-posr" id="markdown-view">
              <?php echo $message['content'];?>
             </div>
           </div>
+          
           <div class="tr-right tr-flr tr-mt20">
-           
             <div class="tr-bottom-line tr-fz16 tr-pb10">相关资讯</div>
             
             <?php foreach ($relate_message as $row):?>
@@ -56,7 +57,8 @@
                     <img src="<?php echo Yii::$app->params['img_url']."/".$row['img_url'];?>"></div>
                   <div class="tr-fll tr-ml15" style="width:50%;">
                     <div class="tr-mt10 tr-fz14 tr-c444 tr-ellipsis"><?php echo $row['title']?></div>
-                    <div class="tr-mt10 tr-fz10 tr-c666 tr-ellipsis-more"><?php echo mb_substr($row['content'], 0,50,"utf8") ?></div></div>
+                    <div class="tr-mt10 tr-fz10 tr-c666 tr-ellipsis-more"><?php echo mb_substr($row['content'], 0,50,"utf8") ?></div>
+                  </div>
                   <div class="tr-cfb"></div>
                 </div>
                 <div class="tr-pb10">
@@ -67,14 +69,10 @@
             </a>
            <?php endforeach;?>
             
+            
           </div>
           <div class="tr-cfb"></div>
         </div>
-
-
-
-
-
 
 
 

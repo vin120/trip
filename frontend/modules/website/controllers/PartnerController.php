@@ -84,7 +84,7 @@ class PartnerController extends BaseController
 		
 		
 		//侧边栏的推荐路线
-		$sql = "SELECT a.* , b.name partner_name  FROM `zh_partner_route` a LEFT JOIN `zh_partner` b ON a.partner_id=b.id WHERE a.status=1 AND b.status=1 ORDER BY a.time DESC LIMIT 4";
+		$sql = "SELECT a.* , b.name partner_name  FROM `zh_partner_route` a LEFT JOIN `zh_partner` b ON a.partner_id=b.id WHERE a.id!=$id AND a.status=1 AND b.status=1 ORDER BY RAND() DESC LIMIT 4";
 		$partner_route = Yii::$app->db->createCommand($sql)->queryAll();
 		
 		

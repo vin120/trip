@@ -16542,205 +16542,205 @@ senseluxuryFed.commonFun.loginRegFun = function() {
 			}
 		});
 	});
-	var mark;
-	$("#registerByPhoneForm").click(function() {
-		var data = {
-			username: $(".registerByPhone .phonenumber").val(),
-			password: $(".registerByPhone input[name='password']").val(),
-			repassword: $(".registerByPhone input[name='repassword']").val(),
-			code: $(".registerByPhone input[name='registerByCode']").val()
-		};
-		if (!data.username) {
-			alert("请输入手机号！")
-			return;
-		}
-		if (data.password != data.repassword || !data.password || !data.repassword) {
-			alert("两次密码不一致！");
-			return;
-		}
-		$.ajax({
-			data: {
-				pwd: data.password,
-				phone: data.username,
-				code: data.code,
-				imported: $(".registerByPhone input[name='imported']").val(),
-				mark: mark
-			},
-			type: 'post',
-			url: "/activity/double/register",
-			dataType: 'json',
-			success: function(data) {
-				if (data.code) {
-					$('.Cuser_dialog').find('.close').trigger('click');
-					alert("注册成功！");
-				} else {
-					alert(data.msg);
-				}
-			}
-		});
-	});
-	$("#getCode").click(function() {
-		if ($(this).attr("clock") != 0) {
-			return;
-		}
-		var $that = $(this);
-		var phone_number = $(this).parent().parent().parent().find(".phonenumber").val();
-		var data = {
-			'phone': phone_number
-		};
-		$(this).val("获取中...");
-		if (phone_number.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
-			if (slidetest) {
-				slidetest('getCode', phone_number, '/activity/double/phone_verify');
-			}
-		} else {
-			alert("请输入合适的手机号！");
-			$that.attr('clock', 0);
-			$that.val("获取验证码");
-		}
-	});
-	$("#validation_phone").click(function() {
-		var code = $(this).parent().parent().find(".code").val();
-		var phone_number = $(this).parent().parent().parent().find(".phonenumber").val();
-		if (!code) {
-			alert("请输入验证码！");
-			return;
-		}
-		if (phone_number.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
-			var data = {
-				mark: mark,
-				code: code,
-				phone: phone_number
-			};
-			$.ajax({
-				type: 'POST',
-				url: '/activity/double/phone_available',
-				data: data,
-				dataType: 'json',
-				success: function(data) {
-					if (data.code) {
-						$(".registerCode").hide(function() {
-							$(".registerPwd").show();
-						});
-					} else {
-						alert("验证码错误！")
-					}
-				}
-			});
-		}
-	});
-	$('.Cuser_dialog .signin_area form').validate({
-		rules: {
-			username: {
-				required: true
-			},
-			password: {
-				required: true,
-				minlength: 6,
-				maxlength: 16
-			}
-		},
-		errorPlacement: function(error, element) {
-			var $element;
-			$element = $(element);
-			$element.parents('.item').find('.msg').show().css({
-				"display": "block"
-			});
-			$element.parents('.item').find('.inputbox').css({
-				"border": "1px solid red"
-			});
-		},
-		submitHandler: function(form) {
-			var $self;
-			$self = $(form);
-			$self.ajaxSubmit(function(data) {
-				if (typeof data === 'string') {
-					data = $.parseJSON(data);
-				}
-				if (data.success !== 1) {} else {
-					$('.Cuser_dialog').find('.close').trigger('click');
-					var html = '<div class="userName"><a title="' + data.username + '" href="/ucenter">我的账户</a><span>|</span><a  href="/web/user/logout">退出</a></div>'
-					$(html).insertBefore('.userlink_lg');
-					$('.userlink_lg').remove();
-					$('.detail-app').find('.my-pl span').html('');
-					$('#top_textarea').val('').css('color', '#333');
-					window.location.reload();
-				}
-			});
-		}
-	});
-	$('.Cuser_dialog .signup_area form').validate({
-		rules: {
-			username: {
-				required: true,
-				email: true,
-				remote: {
-					url: '/web/user/checkusername',
-					type: 'post',
-					data: {
-						'username': function() {
-							return $('.Cuser_dialog .signup_area input[name=username]').val();
-						}
-					}
-				}
-			},
-			password: {
-				required: true,
-				minlength: 6,
-				maxlength: 16
-			},
-			repassword: {
-				required: true,
-				minlength: 6,
-				maxlength: 16,
-				equalTo: "#regpassword"
-			}
-		},
-		messages: {
-			username: {
-				email: "邮箱不正确",
-				remote: "邮箱已被注册"
-			},
-		},
-		success: function() {
-			$('.msg').remove();
-		},
-		errorPlacement: function(error, element) {
-			var $element;
-			$element = $(element);
-			if ($element.parents('.item').find('.msg')) {
-				$('.msg').remove();
-			}
-			$element.parents('.item').append('<span class="msg err Lcfl Ldn" style="display: none;"><label for="username" class="error"></label></span>');
-			$element.parents('.item').find('.msg').css('display', 'block');
-			$element.parents('.item').find('.msg').html(error);
-		},
-		submitHandler: function(form) {
-			var $self;
-			$self = $(form);
-			$self.find('.msg').html('&nbsp;');
-			$self.ajaxSubmit(function(data) {
-				if (typeof data === 'string') {
-					data = $.parseJSON(data);
-				}
-				if (data.success !== 1) {
-					$self.find('>.msg').html(data.message);
-				} else {
-					$('.Cuser_dialog').find('.close').trigger('click');
-					$('.userlink').html('<span>' + data.username + '</span><a href="/logout">退出</a>');
-					$('.detail-app').find('.my-pl span').html('');
-					$('#top_textarea').val('').css('color', '#333');
-				}
-			});
-		}
-	});
-	$('.userlink').find('.rssbox').on('click', 'button.btn1', function() {
-		var text = $(this).siblings('.input1').val();
-		$('.signup_area').find('input[name="username"]').val(text);
-		$(this).val('').parents('.rssbox').hide();
-		$('.userlink').find('.reg-btn').trigger('click');
-		return false;
-	});
+//	var mark;
+//	$("#registerByPhoneForm").click(function() {
+//		var data = {
+//			username: $(".registerByPhone .phonenumber").val(),
+//			password: $(".registerByPhone input[name='password']").val(),
+//			repassword: $(".registerByPhone input[name='repassword']").val(),
+//			code: $(".registerByPhone input[name='registerByCode']").val()
+//		};
+//		if (!data.username) {
+//			alert("请输入手机号！")
+//			return;
+//		}
+//		if (data.password != data.repassword || !data.password || !data.repassword) {
+//			alert("两次密码不一致！");
+//			return;
+//		}
+//		$.ajax({
+//			data: {
+//				pwd: data.password,
+//				phone: data.username,
+//				code: data.code,
+//				imported: $(".registerByPhone input[name='imported']").val(),
+//				mark: mark
+//			},
+//			type: 'post',
+//			url: "/activity/double/register",
+//			dataType: 'json',
+//			success: function(data) {
+//				if (data.code) {
+//					$('.Cuser_dialog').find('.close').trigger('click');
+//					alert("注册成功！");
+//				} else {
+//					alert(data.msg);
+//				}
+//			}
+//		});
+//	});
+//	$("#getCode").click(function() {
+//		if ($(this).attr("clock") != 0) {
+//			return;
+//		}
+//		var $that = $(this);
+//		var phone_number = $(this).parent().parent().parent().find(".phonenumber").val();
+//		var data = {
+//			'phone': phone_number
+//		};
+//		$(this).val("获取中...");
+//		if (phone_number.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
+//			if (slidetest) {
+//				slidetest('getCode', phone_number, '/activity/double/phone_verify');
+//			}
+//		} else {
+//			alert("请输入合适的手机号！");
+//			$that.attr('clock', 0);
+//			$that.val("获取验证码");
+//		}
+//	});
+//	$("#validation_phone").click(function() {
+//		var code = $(this).parent().parent().find(".code").val();
+//		var phone_number = $(this).parent().parent().parent().find(".phonenumber").val();
+//		if (!code) {
+//			alert("请输入验证码！");
+//			return;
+//		}
+//		if (phone_number.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
+//			var data = {
+//				mark: mark,
+//				code: code,
+//				phone: phone_number
+//			};
+//			$.ajax({
+//				type: 'POST',
+//				url: '/activity/double/phone_available',
+//				data: data,
+//				dataType: 'json',
+//				success: function(data) {
+//					if (data.code) {
+//						$(".registerCode").hide(function() {
+//							$(".registerPwd").show();
+//						});
+//					} else {
+//						alert("验证码错误！")
+//					}
+//				}
+//			});
+//		}
+//	});
+//	$('.Cuser_dialog .signin_area form').validate({
+//		rules: {
+//			username: {
+//				required: true
+//			},
+//			password: {
+//				required: true,
+//				minlength: 6,
+//				maxlength: 16
+//			}
+//		},
+//		errorPlacement: function(error, element) {
+//			var $element;
+//			$element = $(element);
+//			$element.parents('.item').find('.msg').show().css({
+//				"display": "block"
+//			});
+//			$element.parents('.item').find('.inputbox').css({
+//				"border": "1px solid red"
+//			});
+//		},
+//		submitHandler: function(form) {
+//			var $self;
+//			$self = $(form);
+//			$self.ajaxSubmit(function(data) {
+//				if (typeof data === 'string') {
+//					data = $.parseJSON(data);
+//				}
+//				if (data.success !== 1) {} else {
+//					$('.Cuser_dialog').find('.close').trigger('click');
+//					var html = '<div class="userName"><a title="' + data.username + '" href="/ucenter">我的账户</a><span>|</span><a  href="/web/user/logout">退出</a></div>'
+//					$(html).insertBefore('.userlink_lg');
+//					$('.userlink_lg').remove();
+//					$('.detail-app').find('.my-pl span').html('');
+//					$('#top_textarea').val('').css('color', '#333');
+//					window.location.reload();
+//				}
+//			});
+//		}
+//	});
+//	$('.Cuser_dialog .signup_area form').validate({
+//		rules: {
+//			username: {
+//				required: true,
+//				email: true,
+//				remote: {
+//					url: '/web/user/checkusername',
+//					type: 'post',
+//					data: {
+//						'username': function() {
+//							return $('.Cuser_dialog .signup_area input[name=username]').val();
+//						}
+//					}
+//				}
+//			},
+//			password: {
+//				required: true,
+//				minlength: 6,
+//				maxlength: 16
+//			},
+//			repassword: {
+//				required: true,
+//				minlength: 6,
+//				maxlength: 16,
+//				equalTo: "#regpassword"
+//			}
+//		},
+//		messages: {
+//			username: {
+//				email: "邮箱不正确",
+//				remote: "邮箱已被注册"
+//			},
+//		},
+//		success: function() {
+//			$('.msg').remove();
+//		},
+//		errorPlacement: function(error, element) {
+//			var $element;
+//			$element = $(element);
+//			if ($element.parents('.item').find('.msg')) {
+//				$('.msg').remove();
+//			}
+//			$element.parents('.item').append('<span class="msg err Lcfl Ldn" style="display: none;"><label for="username" class="error"></label></span>');
+//			$element.parents('.item').find('.msg').css('display', 'block');
+//			$element.parents('.item').find('.msg').html(error);
+//		},
+//		submitHandler: function(form) {
+//			var $self;
+//			$self = $(form);
+//			$self.find('.msg').html('&nbsp;');
+//			$self.ajaxSubmit(function(data) {
+//				if (typeof data === 'string') {
+//					data = $.parseJSON(data);
+//				}
+//				if (data.success !== 1) {
+//					$self.find('>.msg').html(data.message);
+//				} else {
+//					$('.Cuser_dialog').find('.close').trigger('click');
+//					$('.userlink').html('<span>' + data.username + '</span><a href="/logout">退出</a>');
+//					$('.detail-app').find('.my-pl span').html('');
+//					$('#top_textarea').val('').css('color', '#333');
+//				}
+//			});
+//		}
+//	});
+//	$('.userlink').find('.rssbox').on('click', 'button.btn1', function() {
+//		var text = $(this).siblings('.input1').val();
+//		$('.signup_area').find('input[name="username"]').val(text);
+//		$(this).val('').parents('.rssbox').hide();
+//		$('.userlink').find('.reg-btn').trigger('click');
+//		return false;
+//	});
 };
 senseluxuryFed.indexFun = function() {
 	var _this = senseluxuryFed.indexFun,

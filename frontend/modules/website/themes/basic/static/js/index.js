@@ -1872,7 +1872,7 @@ senseluxuryFed.commonFun.loginRegFun = function() {
 				mark: mark
 			},
 			type: 'post',
-			url: "/activity/double/register",
+			url: "/website/login/register",
 			dataType: 'json',
 			success: function(data) {
 				if (data.code) {
@@ -1898,7 +1898,7 @@ senseluxuryFed.commonFun.loginRegFun = function() {
 		if (phone_number.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
 			$.ajax({
 				type: 'POST',
-				url: '/activity/double/phone_verify',
+				url: '/website/login/getcode',
 				data: data,
 				dataType: 'json',
 				success: function(data) {

@@ -23,7 +23,7 @@ class MessageController extends BaseController
 		$message = Yii::$app->db->createCommand($sql)->queryOne();
 		
 		
-		$sql = " SELECT * FROM `zh_message` WHERE id!=$id ORDER BY time DESC LIMIT $limit ";
+		$sql = " SELECT * FROM `zh_message` WHERE id!=$id ORDER BY RAND() DESC LIMIT $limit ";
 		$relate_message = Yii::$app->db->createCommand($sql)->queryAll();
 		
 		
@@ -31,8 +31,6 @@ class MessageController extends BaseController
 	}
 	
 
-	
-	
 	
 	
 	//ajax 实现site/message 的翻页功能

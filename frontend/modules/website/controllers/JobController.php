@@ -29,7 +29,7 @@ class JobController extends BaseController
 			$type_id = $detail['type_id'];
 		}
 		
-		$sql = "SELECT a.* , b.name type_name FROM `zh_recruitment` a  LEFT JOIN `zh_recruitment_type` b  ON a.type_id=b.id WHERE a.status=1 AND a.type_id != $type_id  ORDER BY a.id ASC LIMIT 4";
+		$sql = "SELECT a.* , b.name type_name FROM `zh_recruitment` a  LEFT JOIN `zh_recruitment_type` b  ON a.type_id=b.id WHERE a.status=1 AND a.id != $id  ORDER BY RAND() LIMIT 4";
 		$job = Yii::$app->db->createCommand($sql)->queryAll();
 	
 		

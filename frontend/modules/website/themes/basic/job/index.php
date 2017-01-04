@@ -134,3 +134,26 @@
           </div>
           <div class="tr-cfb"></div>
         </div>
+        
+        
+
+<script type="text/javascript">
+<?php $this->beginBlock('js_end') ?>
+	var pageID = 'travels';
+	var MESSAGE = {};
+	var COMMON_MESSAGE = '';
+
+
+	if ('default' == pageID) {
+		senseluxuryFed.loadIndexFun();
+	} else if ('detail' == pageID || 'bankDetail' == pageID) {
+    	senseluxuryFed.loadDetailFun();
+  	} else if ('fqa' == pageID) {
+    	senseluxuryFed.loadFqaFun();
+  	} else {
+    	senseluxuryFed.loadListFun();
+  	}
+
+<?php $this->endBlock() ?>
+</script>
+<?php $this->registerJs($this->blocks['js_end'], \yii\web\View::POS_END); ?>

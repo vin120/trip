@@ -7,6 +7,8 @@ use yii\helpers\Url;
 use frontend\modules\website\controllers\BaseController;
 use yii\db\Query;
 use frontend\components\MyCurl;
+use yii\web\Session;
+use frontend\models\LoginForm;
 
 class LoginController extends BaseController
 {
@@ -15,31 +17,59 @@ class LoginController extends BaseController
 	public function actionLogin()
 	{
 		
-		if($_POST) {
-			$username = isset($_POST['username']) ? $_POST['username'] : '';
-			$password = isset($_POST['password']) ? $_POST['password'] : '';
-			
-			$sql = "SELECT `phone_number`,`password` FROM `zh_user` WHERE `phone_number` = '$username'";
-			$result = Yii::$app->db->createCommand($sql)->queryOne();
-			
-			if($result) {
-				if(md5($password) == $result['password']) {
-					//登录成功
-					
-				} else {
-					//密码错误
-					
-				}
+		$response = array();
+		
+		$model = new LoginForm();
+		
+		if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        	
+			$response['success'] = 1;
+			$response['username'] = Yii::$app->request->post('phone_number');
 				
-			}else {
-				//帐号不存在
-				
-			}
+		
+		} else {
+		
+			$response['success'] = 0;
 		}
+		
+
+		$response = json_encode($response);
+		echo $response;
+		
+		
+		
+// 		$response = array();
+		
+// 		$model = new LoginForm();
+// 		$model['username'] = Yii::$app->request->post('phone_number');
+// 		$model['password'] = Yii::$app->request->post('password');
+		
+// 		if ($model->login()) {
+			 
+// 			$response['success'] = 1;
+// 			$response['username'] = Yii::$app->request->post('phone_number');
+		
+		
+// 		} else {
+		
+// 			$response['success'] = 0;
+// 		}
+		
+		
+// 		$response = json_encode($response);
+// 		echo $response;
+		
 	}
 	
 	
-	public function actionRegister()
+	public function actionLogout()
+	{
+		Yii::$app->user->logout();
+		return $this->goBack();
+	}
+	
+	
+	public function actionGetcode()
 	{
 		if($_POST) {
 			
@@ -52,17 +82,77 @@ class LoginController extends BaseController
 			
 			$sm = "d1e9d6a4c2eb31323334";				//发送的短信内容(验证码)
 			
+			$tmp_sm = '1234';
 			
 			$response = array();
 			//发送短信
-			MyCurl::sentMessage($command, $cpid, $cppwd, $da,$dc, $sm);
+// 			MyCurl::sentMessage($command, $cpid, $cppwd, $da,$dc, $sm);
+			
+			
+			$session = Yii::$app->session;
+			
+			if(isset($session['code'])) {
+				unset($session['code']);
+			}
+			
+			$session['code'] = $tmp_sm;
 			
 			$response['code'] = 1;
 			$response['message'] = '发送验证成功';
-			
 			$response = json_encode($response);
 			
 			echo $response;
 		}
 	}
+	
+	
+	
+	public function actionRegister()
+	{
+		if($_POST) {
+			$phone_number = isset($_POST['phone']) ? $_POST['phone'] : '';
+			$password = isset($_POST['password']) ? $_POST['password'] : '';
+			$code = isset($_POST['code']) ? $_POST['code'] : '';
+			
+			$session = Yii::$app->session;
+			$session_code = isset($session['code']) ? $session['code'] : '0';
+			$response = array();
+			
+			if($code == $session_code) {
+				//验证码正确
+				$sql = "SELECT `user_id` FROM `zh_user` WHERE `phone_number`='{$phone_number}'";
+				$result = Yii::$app->db->createCommand($sql)->queryAll();
+				
+				if($result) {
+					
+					$response['msg'] = '该手机号已经被注册';
+					
+				} else {
+					
+					$password = md5($password);
+					$time = date('Y-m-d H:i:s',time());
+					
+						
+					$sql = "INSERT INTO `zh_user` (`phone_number`,`password`,`register_time`) VALUES ('$phone_number','$password','$time')";
+					Yii::$app->db->createCommand($sql)->execute();
+					
+					
+					$response['code']=1;
+					$response['msg'] = '注册成功';
+				}
+				
+				
+			} else {
+				//验证码不正确
+				$response['msg'] = '验证码不正确';
+			}
+			unset($session['code']);
+			$response = json_encode($response);
+			echo $response;
+		}	
+	}
+	
+
+	
+	
 }

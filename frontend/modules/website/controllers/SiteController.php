@@ -72,7 +72,7 @@ class SiteController extends BaseController
 		$partner = Yii::$app->db->createCommand($sql)->queryAll();
 		
 		
-		$sql = "SELECT a.* , b.name partner_name  FROM `zh_partner_route` a LEFT JOIN `zh_partner` b ON a.partner_id=b.id WHERE a.status=1 AND b.status=1 ORDER BY a.time DESC LIMIT 3";
+		$sql = "SELECT a.* , b.name partner_name  FROM `zh_partner_route` a LEFT JOIN `zh_partner` b ON a.partner_id=b.id WHERE a.status=1 AND b.status=1 ORDER BY RAND() DESC LIMIT 3";
 		$partner_route = Yii::$app->db->createCommand($sql)->queryAll();
 		
 		
@@ -129,9 +129,15 @@ class SiteController extends BaseController
     public function actionAbout()
     {
     	
+    	
+    	$sql = "SELECT * FROM `zh_about` WHERE `status`=1";
+    	$about = Yii::$app->db->createCommand($sql)->queryAll();
+    	
+    	
+    	
     	$sql = "SELECT `name`,`introduct` FROM `zh_about` WHERE `status`=1";
     	$compony = Yii::$app->db->createCommand($sql)->queryAll();
     	
-        return $this->render('about',['compony'=>$compony]);
+        return $this->render('about',['compony'=>$compony,'about'=>$about]);
     }
 }

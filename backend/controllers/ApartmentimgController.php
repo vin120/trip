@@ -147,7 +147,7 @@ class ApartmentimgController extends BaseController
 		//获取当前地区公寓
 		$sql = "SELECT a.apartment_id,a.apartment_code,a.apartment_name,count(b.img_id) img_num 
 		FROM `zh_apartment` a 
-		LEFT JOIN `zh_apartment_img` b ON a.apartment_id=b.apartment_id  WHERE a.zone_id='{$zone}'  ";
+		LEFT JOIN `zh_apartment_img` b ON a.apartment_id=b.apartment_id  WHERE a.zone_id='{$zone}' ";
 		$apartment = Yii::$app->db->createCommand($sql)->queryAll();
 
 		$result = array();

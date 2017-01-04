@@ -28,39 +28,18 @@
     </div>
   </div>
   <div class="tr-right tr-flr tr-mt20">
-    <!-- <div class="tr-bottom-line tr-mt15 tr-fz16 tr-pb10">栏目</div> -->
-    <a href="#0F">
+  
+    <?php foreach ($about as $key => $value):?>
+    <a href='#<?php echo $key?>F'>
       <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
         <div class="tr-pb10 tr-pt10">
           <i class=" tr-ml5 tr-ic"></i>
-          <span class="tr-caf tr-ml5">公司简介</span>
+          <span class="tr-caf tr-ml5"><?php echo $value['name'];?></span>
         </div>
       </div>
     </a>
-    <a href="#1F">
-      <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
-        <div class="tr-pb10 tr-pt10">
-          <i class=" tr-ml5 tr-ic"></i>
-          <span class="tr-caf tr-ml5">企业文化</span>
-        </div>
-      </div>
-    </a>
-    <a href="#2F">
-      <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
-        <div class="tr-pb10 tr-pt10">
-          <i class=" tr-ml5 tr-ic"></i>
-          <span class="tr-caf tr-ml5">理财增值</span>
-        </div>
-      </div>
-    </a>
-    <a href="#3F">
-      <div class="tr-mb15 tr-ovh tr-posr tr-bgcw ">
-        <div class="tr-pb10 tr-pt10">
-          <i class=" tr-ml5 tr-ic"></i>
-          <span class="tr-caf tr-ml5">高端定制</span>
-        </div>
-      </div>
-    </a>
+  	<?php endforeach;?>
+    
   </div>
   <div class="tr-cfb"></div>
 </div>
@@ -74,7 +53,7 @@
     	htmlDecode: "style,script,iframe"
 	});
 
-    var pageID = 'default';
+    var pageID = 'travels';
     var COMMON_MESSAGE ={};
     if ('default' == pageID) {
         senseluxuryFed.loadIndexFun();

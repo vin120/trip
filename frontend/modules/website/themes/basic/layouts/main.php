@@ -172,10 +172,20 @@
            <!--注册登录订阅开始-->
            <div class="userlink Lflr">
              <div class="line-1">
-               <span class="userlink_lg">
+             <?php if(isset(Yii::$app->user->identity->user_id)) {?>
+               	<div class="userName">
+               	<a title="<?php echo Yii::$app->user->identity->phone_number?>" href="<?php echo Url::toRoute(['user/index'])?>">我的账户</a>
+               	<span>|</span>
+               	<a  href="<?php echo Url::toRoute(['login/logout'])?>">退出</a>
+               	</div>
+             <?php } else {?>
+             	<span class="userlink_lg">
                  <a rel="nofollow" href="javascript:void(0);" class="login-btn">登录</a>
                  <span>|</span>
                  <a rel="nofollow" href="javascript:void(0);" class="reg-btn">注册</a>
+             
+             <?php }?>
+                 
              </div>
              <div class="line-2">
                <p class="mobile"><?php echo Yii::$app->view->params['400_number']?></p></div>
@@ -191,7 +201,7 @@
         <!--底部开始-->
        <div class="Cfoot">
          <div class="inner line-bottom Lcfx">
-           <a href="http://www.senseluxury.com/">
+           <a href="<?php echo Url::toRoute(['index'])?>">
              <i class="logo"></i>
            </a>
            <div class="info" id="com-info">
@@ -204,7 +214,7 @@
              <p>微信服务号</p>
            </div>
            <div style="margin-left: 40px;text-align: center;float: left;">
-             <a target="_blank" href="http://weibo.com/senseluxury?refer_flag=1001030201_&is_hot=1">
+             <a target="_blank" href="#">
                <div class=" icon_sprite sina_icon"></div>
              </a>
              <p style="margin-top: 4px;">官方微博</p></div>
@@ -247,10 +257,10 @@
            <div class="inner Lcfx">
              <div class="half Ltac">
                <span>
-                 <a href="/copyright " target="_blank">Copyright © 2013-2016</a>上海墅假网络科技有限公司 沪ICP备14011210号
-                 <a href="/licence" target="_blank">营业执照</a></span>
+                 <a href="# " target="_blank">Copyright © 2013-2016</a>珠海时间风暴科技有限公司 粤ICP备16011210号
+                 <a href="#" target="_blank">营业执照</a></span>
                <span>
-                 <a class="sitemap" target="_blank" href="/sitemap.xml">
+                 <a class="sitemap" target="_blank" href="#">
                    <font color="#eeeeee">站点地图</font></a>
                </span>
              </div>
@@ -260,7 +270,7 @@
        <!--底部结束-->
        
        
-       <input type="hidden" id="domain" value="http://www.senseluxury.com" />
+       <input type="hidden" id="domain" value="<?php echo Url::toRoute(['index'])?>" />
        <!-- 登录注册区域 -->
        <div id="signin_signup" class="Cdialog Cuser_dialog">
          <a href="javascript:void(0);" class="close">x</a>
@@ -269,41 +279,41 @@
              <h2 class="login-left-title">升级VIP，更多尊享服务</h2>
              <div class="text1">加入 Sense Luxury 付费会员计划，您可以 享受到迎宾宴会、接送机、私人订制等专享 服务。</div>
              <div class="text2">
-               <a href="http://www.senseluxury.com/vip" style="">了解特权</a></div>
+               <a href="<?php echo Url::toRoute(['index'])?>" style="">了解特权</a></div>
            </div>
          </div>
          
          
          <div class="signin_area Lfll">
            <div style="font-size: 18px;color: #444444;text-align: center;">登录</div>
-           <form action="/login" method="POST">
-             <!-- <div class="msg err">&nbsp;</div>-->
+           <form action="<?php echo Url::toRoute(['login/login'])?>" method="POST">
+           
              <div class="item Lcfx Lmt30">
                <div class="inputbox Lfll">
                  <i class="icon icon1"></i>
-                 <input name="username" type="text" placeholder="手机号码" class="input1"></div>
-               <!-- <span class="msg err Lcfl">&nbsp;</span>-->
-               <span class="msg err Lcfl Ldn">*请输入用户名</span></div>
+                 <input name="LoginForm[username]" type="text" placeholder="手机号码" class="input1"></div>
+               <span class="msg err Lcfl Ldn">*请输入手机号码</span></div>
              <div class="item Lcfx Lmt15">
                <div class="inputbox Lfll">
                  <i class="icon icon2"></i>
-                 <input name="password" type="password" placeholder="密码" class="input1"></div>
-               <span class="msg err Lcfl Ldn">*您输入的密码和账户名不匹配</span></div>
+                 <input name="LoginForm[password]" id="inputbox" type="password" placeholder="密码" class="input1"></div>
+               <span class="msg err Lcfl Ldn" id="msg">*您输入的密码和账户名不匹配</span></div>
              <div class="item Lmt15">
                <label class="label1">
-                 <input name="remember" type="checkbox" class="check1" value="1">自动登录</label>
+                 <input name="LoginForm[rememberMe]" type="checkbox" class="check1" valuse="1">自动登录</label>
                <label class="label1 Lflr">
-                 <a style="color: #ff8000" rel="nofollow" href="/web/user/forgetpassword">忘记密码？</a></label>
+                 <a style="color: #ff8000" rel="nofollow" href="<?php echo Url::toRoute(['login/forget'])?>">忘记密码？</a></label>
              </div>
              <div class="btnarea Ltac Lmt25">
                <button type="submit" class="Cbtn_middle_yellow">登录</button></div>
              <div class="Lcfx register_tip Lmt35">
-               <span>还没账号？现在</span>
-               <span class="signuptab curr">注册就送¥1500</span></div>
+               <span>还没账号？现在</span>	
+               <span class="signuptab curr">注册</span></div>
+               
            </form>
            <div id="wx_login" class="Ldn">
              <div class="qr-wrap" id="login_container"></div>
-             <button class="btn Lmt20" id="accountBtn">第六感账号登录</button></div>
+             <button class="btn Lmt20" id="accountBtn">账号登录</button></div>
          </div>
          
          
@@ -312,7 +322,7 @@
              <div class="item Lcfx Lmt25">
                <div class="inputbox Lfll">
                  <i class="icon icon1"></i>
-                 <input name="username" type="text" placeholder="手机号码" class="input1 phonenumber"></div>
+                 <input name="phone_number" type="text" placeholder="手机号码" class="input1 phonenumber"></div>
                <span class="msg err Lcfl Ldn">*手机号不正确</span></div>
              <div class="registerCode">
                <div class="inputbox Lfll  Lmt15" style="width: 140px">
@@ -341,54 +351,9 @@
              <span>已有账号</span>
              <span class="signintab curr">登录</span></div>
          </div>
-         <div class="other_area Lfll Ldn">
-           <div class="registerByPhone  ">
-             <div class="avatar Lmt30 Lpt30" style="border-radius: 50%;">
-               <div class="Ltac Lmb15">
-                 <img style="width: 75px;border-radius: 50%;height: 75px;" src=""></div>
-               <div class="Ltac Lc444 Lfz16 Lmb20"></div>
-               <div class="Ltac Lc444 Lfz16 Lmb10">你已经登录第三方账号
-                 <br>请绑定手机以确保您的账户安全</div></div>
-             <div class="binding">
-               <div class="item Lcfx">
-                 <div class="inputbox Lfll Lmt15">
-                   <i class="icon icon1"></i>
-                   <input name="username" type="text" placeholder="手机号码" class="input1 phonenumber"></div>
-               </div>
-               <div class="registerCode">
-                 <div class="inputbox Lfll  Lmt15" style="width: 140px">
-                   <i class="icon icon2"></i>
-                   <input class="code " name="registerByCode" type="text" placeholder="验证码"></div>
-                 <div class="inputbox Lfll  Lmt15" style="border: 0;padding-left:14px">
-                   <input id="bind_getCode" clock="0" type="button" value="获取验证码"></div>
-                 <div class="btnarea Ltac ">
-                   <input type="button" class="Cbtn_middle_yellow Lmt15" id="bind_validation_phone" value="绑定手机号"></div>
-               </div>
-             </div>
-             <div class="now-login Ldn">
-               <div class="Ltac Lmb15" style="width: 340px;margin-top: 150px">
-                 <img style="width: 75px;height: 75px;" src="<?= $baseUrl?>img/authority-icon.png"></div>
-               <div class="Ltac Lc444 Lfz16 Lmb20" id="bind-tip">绑定成功</div>
-               <div class="btnarea Ltac Lmt40">
-                 <input type="button" class="Cbtn_middle_yellow" id="bind_now_login" onclick="location.reload()" value="开始度假"></div>
-             </div>
-             <div class="setPsw Ldn">
-               <div class="item Lcfx">
-                 <div class="inputbox Lfll">
-                   <i class="icon icon2"></i>
-                   <input id="psw1" name="password" type="password" placeholder="密码" class="input1"></div>
-                 <span class="msg err Lcfl">&nbsp;</span></div>
-               <div class="item Lcfx">
-                 <div class="inputbox Lfll">
-                   <i class="icon icon2"></i>
-                   <input id="psw2" name="repassword" type="password" placeholder="确认密码" class="input1"></div>
-                 <span class="msg err Lcfl">&nbsp;</span></div>
-               <input type="hidden" value="2" name="imported" />
-               <div class="btnarea Ltac Lmt40">
-                 <input type="button" id="setPsw_btn" class="Cbtn_middle_yellow" value="确定"></div>
-             </div>
-           </div>
-         </div>
+         
+         
+         
 
 	    <?php $this->endBody() ?>
 	</body>
@@ -396,8 +361,16 @@
 
 
 <script type="text/javascript">
+<?php $this->beginBlock('js_end') ?>
+
+var COMMON_MESSAGE = {};
+var $centent = $('.signin_area'),
+emailInput = $centent.find('.input1[name = "username"]'),
+submitBtn = $centent.find('.Cbtn_middle_yellow');
+
 
 $("#getCode").click(function() {
+
     if ($(this).attr("clock") != 0) {
       return;
     }
@@ -406,11 +379,13 @@ $("#getCode").click(function() {
     var data = {
       'phone': phone_number
     };
-    $(this).val("验证码获取中。。。");
+
+    
+    $(this).val("验证码获取中...");
     if (phone_number.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
-      $.ajax({
+    	$.ajax({
           type:'POST',
-          url:'/website/login/register',
+          url:'<?php echo Url::toRoute(['login/getcode'])?>',
           data:data,
           dataType:'json',
           success:function(data){
@@ -426,7 +401,7 @@ $("#getCode").click(function() {
               var seconds = 0;
               var t = setInterval(function(){
                   seconds += 1;
-                  $that.val(50-seconds + "秒后重新获取验证码");
+                  $that.val(50-seconds + "秒后重新获取");
                   if(seconds == 50){
                       $that.attr('clock',0);
                       clearInterval(t);
@@ -440,93 +415,114 @@ $("#getCode").click(function() {
       $that.attr('clock', 0);
       $that.val("获取验证码");
     }
-
   });
-  $("#bind_validation_phone").click(function() {
-    var code = $(this).parent().parent().find(".code").val();
-    var phone_number = $(this).parent().parent().parent().find(".phonenumber").val();
-    if (!code) {
-      alert("请输入验证码！");
-      return;
-    }
-    if (phone_number.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
 
-      var data = {
-        mark: mark,
-        phone_code: code,
-        phone: phone_number,
-        type: ""
-      };
-                  $.ajax({
-                      type:'POST',
-                      url:'/bound_other',
-                      data:data,
-                      dataType:'json',
-                      success:function(data){
-                          if(data.code == 1)
-                          {
-                              console.log("绑定成功");
-                              $('.now-login').show();
-                              $('.binding').hide();
-                              $('.avatar').hide();
-                             $("#bind_now_login").click(function(){
-                                 //显示登录界面;
-                                 $('.signin_area').show();
-                                 $('.signup_area').hide();
-                                 $('.other_area').hide();
-                             })
 
-                          }else if(data.code==2)
-                          {
-                              //console.log("未注册");
-                              $('.binding').hide();
-                              $('.setPsw').show();
-                              //用户未注册情况。跳转设置密码
-                          }
-                      }
-                  });
-    }
-  });
-  $("#setPsw_btn").click(function() {
-    var pwd1 = $("#psw1").val();
-    var pwd2 = $("#psw2").val();
-    if (pwd2 != pwd1) {
-      alert("两次密码不同，请重新输入！");
-      return;
-    }
-    var data = {
-      pwd: pwd1,
-      type: "",
 
-    };
-            $.ajax({
-                type:'POST',
-                url:'/register_other',
-                data:data,
-                dataType:'json',
-                success:function(data){
-                    if(data.code == 1)
-                    {
-                        console.log("注册成功");
-                        $('.now-login').show();
-                        $("#bind-tip").html("注册成功，开始度假");
-                        $('.setPsw').hide();
-                        $('.avatar').hide();
-                       $("#bind_now_login").click(function(){
-                           //显示登录界面;
-                           $('.signin_area').show();
-                           $('.signup_area').hide();
-                           $('.other_area').hide();
-                       })
-                    }else if(data.code==2)
-                    {
-//                         console.log("注册失败");
-                        alert("注册失败");
-                        //用户未注册情况。跳转设置密码
-                    }
-                }
-            });
-  })
+var mark;
+$("#registerByPhoneForm").click(function() {
+	var data = {
+		username: $(".registerByPhone .phonenumber").val(),
+		password: $(".registerByPhone input[name='password']").val(),
+		repassword: $(".registerByPhone input[name='repassword']").val(),
+		code: $(".registerByPhone input[name='registerByCode']").val()
+	};
+	if (!data.username) {
+		alert("请输入手机号！")
+		return;
+	}
+	if (data.password != data.repassword || !data.password || !data.repassword) {
+		alert("两次密码不一致！");
+		return;
+	}
+	
+	$.ajax({
+		data: {
+			password: data.password,
+			phone: data.username,
+			code: data.code,
+			imported: $(".registerByPhone input[name='imported']").val(),
+			mark: mark
+		},
+		type: 'post',
+		url: "<?php echo Url::toRoute(['login/register'])?>",
+		dataType: 'json',
+		success: function(data) {
+			if (data.code) {
+				$('.Cuser_dialog').find('.close').trigger('click');
+				alert("注册成功！");
+				window.location.reload();
+			} else {
+				alert(data.msg);
+			}
+		}
+	});
+});
 
+
+
+$('.Cuser_dialog .signin_area form').validate({
+	rules: {
+		username: {
+			required: true
+		},
+		password: {
+			required: true,
+			minlength: 6,
+			maxlength: 16
+		}
+	},
+	errorPlacement: function(error, element) {
+		var $element;
+		$element = $(element);
+		$element.parents('.item').find('.msg').show().css({
+			"display": "block"
+		});
+		$element.parents('.item').find('.inputbox').css({
+			"border": "1px solid red"
+		});
+	},
+	submitHandler: function(form) {
+		var $self;
+		$self = $(form);
+		$self.ajaxSubmit(function(data) {
+			if (typeof data === 'string') {
+				data = $.parseJSON(data);
+			}
+			if (data.success !== 1) {
+				$('#msg').show().css({
+					"display": "block"
+				});
+				$('#inputbox').css({
+					"border": "1px solid red"
+				})
+			} else {
+				$('.Cuser_dialog').find('.close').trigger('click');
+				var html = '<div class="userName"><a title="' + data.username + '" href="user/index">我的账户</a><span>|</span><a  href="/login/logout">退出</a></div>'
+				$(html).insertBefore('.userlink_lg');
+				$('.userlink_lg').remove();
+				$('.detail-app').find('.my-pl span').html('');
+				$('#top_textarea').val('').css('color', '#333');
+				window.location.reload();
+			}
+		});
+	}
+});
+
+
+
+$('.userlink').find('.rssbox').on('click', 'button.btn1', function() {
+	var text = $(this).siblings('.input1').val();
+	$('.signup_area').find('input[name="username"]').val(text);
+	$(this).val('').parents('.rssbox').hide();
+	$('.userlink').find('.reg-btn').trigger('click');
+	return false;
+});
+
+
+
+
+<?php $this->endBlock() ?>
 </script>
+<?php $this->registerJs($this->blocks['js_end'], \yii\web\View::POS_END); ?>
 <?php $this->endPage() ?>
