@@ -43,7 +43,7 @@ use yii\helpers\Url;
                       </div>
                       <div class="tr-c444 tr-mt15"><?php echo mb_substr($row['content'], 0,100,"utf8")?>
                         <a href="<?php echo Url::toRoute(['message/index','id'=>$row['id']])?>">
-                          <span class="tr-curp tr-ml5 tr-c9e">... [详情]</span></a>
+                          <span class="tr-curp tr-ml5 tr-c9e"> ..「查看详情」</span></a>
                       </div>
                     </div>
                     <div class="tr-cfb"></div>

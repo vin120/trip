@@ -17,26 +17,30 @@ class BaseController extends Controller
 
 		$sql = "SELECT * FROM `zh_zone` WHERE parent_id='0' AND status='1' AND level='1' ";
 		$class = Yii::$app->db->createCommand($sql)->queryAll();
+		
 		foreach ($class as $key => $value) {
+			
 			$sql = "SELECT * FROM `zh_zone` WHERE parent_id='{$value['zone_id']}' AND status='1' AND level='2'";
 			$class2 = Yii::$app->db->createCommand($sql)->queryAll();
 
 			foreach ($class2 as $k => $v) {
+				
 				$sql = "SELECT * FROM `zh_zone` WHERE parent_id='{$v['zone_id']}' AND status='1' AND level='3'";
 				$class3 = Yii::$app->db->createCommand($sql)->queryAll();
 				$v['child3'] = $class3;
 				$class2[$k] = $v;
 			}
+			
 			$value['child2'] = $class2; 
 			$zone_data[] = $value;
 		}
-		// var_dump($zone_data);exit;
+		
 		
 		Yii::$app->view->params['400_number'] = $compony['400_number'];
 		Yii::$app->view->params['introduct'] = $compony['introduct'];
 		Yii::$app->view->params['address'] = $compony['address'];
-		Yii::$app->view->params['service_email'] = 'service@senseluxury.com';
-		Yii::$app->view->params['market_email'] = 'marketing@senseluxury.com';
+		Yii::$app->view->params['service_email'] = 'service@zhengheguoji.com';
+		Yii::$app->view->params['market_email'] = 'marketing@zhengheguoji.com';
 		Yii::$app->view->params['zone_data'] = $zone_data;
 		
 		

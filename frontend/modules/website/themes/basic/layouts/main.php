@@ -26,7 +26,7 @@
         <!--头部 开始-->
        <div class="header">
          <div class="wp Lcfx">
-           <a href="<?php echo Url::toRoute(['index']);?>" title="" class="logo Lfll"></a>
+           <a href="<?php echo Url::toRoute(['site/index']);?>" title="" class="logo Lfll"></a>
            <div class="nav Lfll">
              <ul id="nav_section" class="items Lcfx">
                <li class="navlink1">
@@ -39,31 +39,46 @@
                    
               		<?php
                     	$zone_data = Yii::$app->view->params['zone_data'];
+                    	$i = 0;
                     	foreach($zone_data as $k1=>$v1){
+                    	$i++;
                     ?>
-
+                    <?php 
+                    	if($i % 2 != 0) { 
+                    ?>
                       <div class="add-tiems Lcfx">
+                    <?php 
+                    	}
+                    ?>
                        <h3 z_id="<?php echo $v1['zone_id'] ?>"><?php echo $v1['zone_name'] ?></h3>
                        <div class="lcfx dl-c">
                         <?php if(isset($v1['child2'])){?>
+                        <?php foreach($v1['child2'] as $k2=>$v2){ ?>
+                         <?php $j=0; $j++;?>
+                         <?php if($j % 3 != 0) { ?> 	
                          <dl class="dl-list">
-                           <?php foreach($v1['child2'] as $k2=>$v2){ ?>
+                         <?php }?>
                            <dt>
-                             <a  target="_blank" z_id="<?php echo $v2['zone_id'] ?>" title="<?php echo $v2['zone_name'] ?> 度假别墅" href="http://www.senseluxury.com/destinations/656"><?php echo $v2['zone_name'] ?></a>
+                             <a z_id="<?php echo $v2['zone_id'] ?>" title="<?php echo $v2['zone_name'] ?> 度假别墅" href="<?php echo Url::toRoute(['destinations/index','id'=>$v2['zone_id']])?>"><?php echo $v2['zone_name'] ?></a>
                              <!--<i style="color:#f19149;">HOT!</i>-->
                            </dt>
                            <?php if(isset($v2['child3'])){
-                            foreach($v2['child3'] as $k3=>$v3){
+                            	foreach($v2['child3'] as $k3=>$v3){
                            ?>
                            <dd>
-                             <a class="<?php echo $v3['highlight']==1?"recommend":"" ?>" target="_blank" z_id="<?php echo $v3['zone_id'] ?>" title="<?php echo $v3['zone_name'] ?> 度假别墅" href="http://www.senseluxury.com/destinations/741"><?php echo $v3['zone_name'] ?></a></dd>
-                           <?php }} ?>
-                          <?php }?>
+                             <a class="<?php echo $v3['highlight']==1?"recommend":"" ?>" z_id="<?php echo $v3['zone_id'] ?>" title="<?php echo $v3['zone_name'] ?> 度假别墅" href="<?php echo Url::toRoute(['destinations/index','id'=>$v3['zone_id']])?>"><?php echo $v3['zone_name'] ?></a></dd>
+                           		<?php } ?>
+                           <?php }?>
+                         <?php if($j % 3 != 0) { ?> 
+                          <br/>	
                          </dl>
+                         <?php } ?> 
                         <?php }?>
+                        <?php }?>
+                       	</div>
+                       	<?php if($i % 2 == 0) {?>
                        </div>
-                       </div>
-
+                       <?php }?>
                      <?php }?>
                       
                      <!-- end -->
@@ -89,16 +104,14 @@
              <div class="line-1">
              <?php if(isset(Yii::$app->user->identity->user_id)) {?>
                	<div class="userName">
-               	<a title="<?php echo Yii::$app->user->identity->phone_number?>" href="<?php echo Url::toRoute(['user/index'])?>">我的账户</a>
-               	<span>|</span>
-               	<a  href="<?php echo Url::toRoute(['login/logout'])?>">退出</a>
+               	<a title="<?php echo Yii::$app->user->identity->phone_number?>" href="<?php echo Url::toRoute(['user/index'])?>">我的账户</a><span>|</span>
+               	<a  href="javascript:void(0);" class="quit-btn">退出</a>
                	</div>
              <?php } else {?>
              	<span class="userlink_lg">
                  <a rel="nofollow" href="javascript:void(0);" class="login-btn">登录</a>
                  <span>|</span>
                  <a rel="nofollow" href="javascript:void(0);" class="reg-btn">注册</a>
-             
              <?php }?>
                  
              </div>
@@ -156,13 +169,13 @@
            </div>
            <div class="link" style="width: 200px;">
              <div>
-               <a target="_blank" rel="nofollow" href="/about#us">关于团队</a></div>
+               <a rel="nofollow" href="#">关于团队</a></div>
              <div>
-               <a target="_blank" rel="nofollow" href="/about#advance">服务理念</a></div>
+               <a rel="nofollow" href="#">服务理念</a></div>
              <div>
-               <a href="/sitemap.html">网站地图</a></div>
+               <a href="#">网站地图</a></div>
              <div>
-               <a href="/jobs/society.html">加入我们</a></div>
+               <a href="#">加入我们</a></div>
            </div>
            <div class=" link" style="width: 150px;text-align: center;">
              <img alt="手机扫描下载APP，首单立享300折扣" src="<?= $baseUrl?>img/appstore.png" class="qrcode">
@@ -172,7 +185,7 @@
            <div class="inner Lcfx">
              <div class="half Ltac">
                <span>
-                 <a href="# " target="_blank">Copyright © 2013-2016</a>珠海时间风暴科技有限公司 粤ICP备16011210号
+                 <a href="# " target="_blank">Copyright © 2015-2017</a>珠海正和国际旅行有限公司 粤ICP备16011210号
                  <a href="#" target="_blank">营业执照</a></span>
                <span>
                  <a class="sitemap" target="_blank" href="#">
@@ -424,6 +437,21 @@ $('.Cuser_dialog .signin_area form').validate({
 	}
 });
 
+
+
+$('.quit-btn').click(function(){
+	$.ajax({
+        type:'GET',
+        url:'<?php echo Url::toRoute(['login/logout'])?>',
+        dataType:'json',
+        success:function(data){
+            if(data.code == 1){
+            	window.location.reload();
+            }
+        }
+        
+	});
+});
 
 
 $('.userlink').find('.rssbox').on('click', 'button.btn1', function() {

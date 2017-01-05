@@ -65,7 +65,12 @@ class LoginController extends BaseController
 	public function actionLogout()
 	{
 		Yii::$app->user->logout();
-		return $this->goBack();
+		$response = array();
+		$response['code'] = 1;
+		$response['msg'] = 'quit successful !';
+		$response = json_encode($response);
+		echo $response;
+		
 	}
 	
 	

@@ -6,7 +6,32 @@
 	$baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 ?>
 
-<style>.defList{ padding:0.875rem; padding-bottom:0; position:absolute; width:332px!important; border:none!important; left:0!important; background-color:#ffffff; z-index:500; display:none; } .defList div{ height:2rem; border-bottom:1px solid #dddddd; } .defList div img{ float:left; height:1rem; margin:0.5rem; margin-left:0; } .defList div.hot img{ margin:0.5rem 0.6rem 0.5rem 0.1rem; } .defList div span{ float:left; line-height:2rem; color:#888888; font-size:0.75rem; } .defList .history b{ float:right; line-height:2rem; font-weight:normal; color:#ff8000; } .defList .history b:hover{ cursor:pointer; } .defList ul{ overflow:hidden; padding:0.35rem 0!important; } .defList ul li{ line-height:1.5rem; width:100%; margin-left:1.4rem!important; } .defList ul li span{ font-size:0.875rem!important; display:inline-block; } .defList ul li b{ font-size:0.75rem!important; color:#888888; font-weight:normal; display:inline-block; } .defList ul li span:hover{ cursor:pointer; color:#ff8000; } .defList ul li b:hover{ cursor:pointer; } .defList p{ margin-left:1.4rem!important; line-height:1.5rem; padding:0.5rem 0!important; } .defList p span{ margin-right:10px; font-size:0.875rem; display:inline-block; } .defList p span:hover{ color:#ff8000; cursor:pointer; } .D1main ul .li1 input{ width:270px!important; } .D1main ul .li1 b.clear{ width:30px; font-size:20px; color:#888888; display:none; font-weight:normal } .D1main ul .li1 b.clear:hover{ cursor:pointer; } .check-ctn{ margin-left:0.5rem; margin-top:0.5rem; width: 5rem; height:1.2rem; position: relative; } .check-ctn input { visibility:hidden; } .check-ctn label.icon{ cursor: pointer; position: absolute; width: 0.8rem; height: 0.8rem; top: 0; left: 0; background: #ffffff; border:1px solid #aaaaaa; } .check-ctn label.filterspan{ position:relative; bottom:0.2rem; cursor: pointer; height: 1.2rem; line-height: 1.2rem; } .check-ctn label.icon>span{ display:none; content: ''; position: absolute; width: 7px; height: 4px; background: transparent; top: 2px; left: 2px; border: 2px solid #aaaaaa; border-top: none; border-right: none; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); }</style>
+
+<style>
+.defList{ padding:0.875rem; padding-bottom:0; position:absolute; width:332px!important; border:none!important; left:0!important; background-color:#ffffff; z-index:500; display:none; } 
+.defList div{ height:2rem; border-bottom:1px solid #dddddd; } 
+.defList div img{ float:left; height:1rem; margin:0.5rem; margin-left:0; } 
+.defList div.hot img{ margin:0.5rem 0.6rem 0.5rem 0.1rem; } 
+.defList div span{ float:left; line-height:2rem; color:#888888; font-size:0.75rem; } 
+.defList .history b{ float:right; line-height:2rem; font-weight:normal; color:#ff8000; } 
+.defList .history b:hover{ cursor:pointer; } .defList ul{ overflow:hidden; padding:0.35rem 0!important; } 
+.defList ul li{ line-height:1.5rem; width:100%; margin-left:1.4rem!important; } 
+.defList ul li span{ font-size:0.875rem!important; display:inline-block; } 
+.defList ul li b{ font-size:0.75rem!important; color:#888888; font-weight:normal; display:inline-block; } 
+.defList ul li span:hover{ cursor:pointer; color:#ff8000; } 
+.defList ul li b:hover{ cursor:pointer; } 
+.defList p{ margin-left:1.4rem!important; line-height:1.5rem; padding:0.5rem 0!important; } 
+.defList p span{ margin-right:10px; font-size:0.875rem; display:inline-block; } 
+.defList p span:hover{ color:#ff8000; cursor:pointer; } 
+.D1main ul .li1 input{ width:270px!important; } 
+.D1main ul .li1 b.clear{ width:30px; font-size:20px; color:#888888; display:none; font-weight:normal } 
+.D1main ul .li1 b.clear:hover{ cursor:pointer; } 
+.check-ctn{ margin-left:0.5rem; margin-top:0.5rem; width: 5rem; height:1.2rem; position: relative; } 
+.check-ctn input { visibility:hidden; } 
+.check-ctn label.icon{ cursor: pointer; position: absolute; width: 0.8rem; height: 0.8rem; top: 0; left: 0; background: #ffffff; border:1px solid #aaaaaa; } 
+.check-ctn label.filterspan{ position:relative; bottom:0.2rem; cursor: pointer; height: 1.2rem; line-height: 1.2rem; } 
+.check-ctn label.icon>span{ display:none; content: ''; position: absolute; width: 7px; height: 4px; background: transparent; top: 2px; left: 2px; border: 2px solid #aaaaaa; border-top: none; border-right: none; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); }
+</style>
 
  		<div class="D1Search">
           <div class="D1main">
@@ -17,12 +42,12 @@
                 <b class="clear">&times;</b>
                 <div class="defList">
                   <div class="history">
-                    <img src="resource/img/history.png" />
+                    <img src="<?php echo $baseUrl?>/img/history.png" />
                     <span>历史搜索</span>
                     <b id="clear_history">清空历史记录</b></div>
                   <ul></ul>
                   <div class="hot">
-                    <img src="resource/img/hot.png" />
+                    <img src="<?php echo $baseUrl?>/img/hot.png" />
                     <span>热门目的地</span></div>
                   <p>
                     <span data-id=2 5 data-type="2">苏梅岛</span>
@@ -267,7 +292,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;51
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 萨穆嘉纳26号别墅Samujana Villa 26 别墅预订，主题度假在线预订" href="/villa/1958_samujanavilla26" class="pic">
-                        <img alt="萨穆嘉纳26号别墅Samujana Villa 26" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/1/1958/0.jpg#samujanavilla26萨穆嘉纳26号别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="萨穆嘉纳26号别墅Samujana Villa 26" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/1/1958/0.jpg#samujanavilla26萨穆嘉纳26号别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -318,7 +343,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;62
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 比安卡别墅Iniala Beach House - Villa Bianca 别墅预订，主题度假在线预订" href="/villa/1902_inialabeachhousevillabianca" class="pic">
-                        <img alt="比安卡别墅Iniala Beach House - Villa Bianca" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/1/1902/16.jpg#inialabeachhousevillabianca比安卡别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="比安卡别墅Iniala Beach House - Villa Bianca" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/1/1902/16.jpg#inialabeachhousevillabianca比安卡别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -360,7 +385,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;41
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 萨穆嘉纳15号别墅Samujana Villa 15 别墅预订，主题度假在线预订" href="/villa/1953_samujanavilla15" class="pic">
-                        <img alt="萨穆嘉纳15号别墅Samujana Villa 15" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/1/1953/22.jpg#samujanavilla15萨穆嘉纳15号别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="萨穆嘉纳15号别墅Samujana Villa 15" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/1/1953/22.jpg#samujanavilla15萨穆嘉纳15号别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -407,7 +432,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;82
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 萨穆嘉纳27号别墅Samujana Villa 27 别墅预订，主题度假在线预订" href="/villa/1959_samujanavilla27" class="pic">
-                        <img alt="萨穆嘉纳27号别墅Samujana Villa 27" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/1/1959/5.jpg#samujanavilla27萨穆嘉纳27号别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="萨穆嘉纳27号别墅Samujana Villa 27" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/1/1959/5.jpg#samujanavilla27萨穆嘉纳27号别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -458,7 +483,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;328
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 卡利亚别墅Kalya Residence 别墅预订，主题度假在线预订" href="/villa/1580_kalyaresidence" class="pic">
-                        <img alt="卡利亚别墅Kalya Residence" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/1/1580/0.jpg#kalyaresidence卡利亚别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="卡利亚别墅Kalya Residence" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/1/1580/0.jpg#kalyaresidence卡利亚别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -500,7 +525,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;204
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 萨穆嘉纳30号别墅Samujana Villa 30 别墅预订，主题度假在线预订" href="/villa/1961_samujanavilla30" class="pic">
-                        <img alt="萨穆嘉纳30号别墅Samujana Villa 30" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/1/1961/1.jpg#samujanavilla30萨穆嘉纳30号别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="萨穆嘉纳30号别墅Samujana Villa 30" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/1/1961/1.jpg#samujanavilla30萨穆嘉纳30号别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -547,7 +572,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;6
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 卡玛拉崖景1号别墅Stunning 3 BR Kamala Cliff Villa 1 别墅预订，主题度假在线预订" href="/villa/4319_stunning3brkamalacliffvilla1" class="pic">
-                        <img alt="卡玛拉崖景1号别墅Stunning 3 BR Kamala Cliff Villa 1" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/4/4319/24.jpg#stunning3brkamalacliffvilla1卡玛拉崖景1号别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="卡玛拉崖景1号别墅Stunning 3 BR Kamala Cliff Villa 1" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/4/4319/24.jpg#stunning3brkamalacliffvilla1卡玛拉崖景1号别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -588,7 +613,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;639
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 吾玉别墅Villa Wayu 别墅预订，主题度假在线预订" href="/villa/1292_villawayu" class="pic">
-                        <img alt="吾玉别墅Villa Wayu" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/1/1292/1.jpg#villawayu吾玉别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="吾玉别墅Villa Wayu" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/1/1292/1.jpg#villawayu吾玉别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -616,7 +641,7 @@
                           <a target="_blank" title="吾玉别墅Villa Wayu 别墅预订" href="/villa/1292_villawayu" class="xq-btn">立即预订</a>
                           <a href="javascript:;" data-id="1292" class="icon favorite"></a>
                           <p class="price">
-                            <img style="width: 9px;position: absolute;margin-left: -9px;" src="resource/img/icon_xianshi.png">￥24516/
+                            <img style="width: 9px;position: absolute;margin-left: -9px;" src="<?php echo $baseUrl?>/img/icon_xianshi.png">￥24516/
                             <small>晚起</small>
                             <span price="3600--3780--6.81--1--5--7">人均 ￥2452 /晚起</span></p>
                         </div>
@@ -635,7 +660,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;244
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 萨穆嘉纳28号别墅Samujana Villa 28 别墅预订，主题度假在线预订" href="/villa/1960_samujanavilla28" class="pic">
-                        <img alt="萨穆嘉纳28号别墅Samujana Villa 28" class="lazy" data-original="http://image01.hivilla.com/uploads/destination/article/1/1960/0.jpg#samujanavilla28萨穆嘉纳28号别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="萨穆嘉纳28号别墅Samujana Villa 28" class="lazy" data-original="http://image01.hivilla.com/uploads/destination/article/1/1960/0.jpg#samujanavilla28萨穆嘉纳28号别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -687,7 +712,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;10
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 卡尔雅娜别墅Villa Kalyana 别墅预订，主题度假在线预订" href="/villa/4317_villakalyana" class="pic">
-                        <img alt="卡尔雅娜别墅Villa Kalyana" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/4/4317/2.jpg#villakalyana卡尔雅娜别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="卡尔雅娜别墅Villa Kalyana" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/4/4317/2.jpg#villakalyana卡尔雅娜别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -727,7 +752,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;164
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 金合欢别墅Villa Acacia 别墅预订，主题度假在线预订" href="/villa/1261_villaacacia" class="pic">
-                        <img alt="金合欢别墅Villa Acacia" class="lazy" data-original="http://image01.hivilla.com/uploads/destination/article/1/1261/3.jpg#villaacacia金合欢别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="金合欢别墅Villa Acacia" class="lazy" data-original="http://image01.hivilla.com/uploads/destination/article/1/1261/3.jpg#villaacacia金合欢别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -755,7 +780,7 @@
                           <a target="_blank" title="金合欢别墅Villa Acacia 别墅预订" href="/villa/1261_villaacacia" class="xq-btn">立即预订</a>
                           <a href="javascript:;" data-id="1261" class="icon favorite"></a>
                           <p class="price">
-                            <img style="width: 9px;position: absolute;margin-left: -9px;" src="resource/img/icon_xianshi.png">￥17025/
+                            <img style="width: 9px;position: absolute;margin-left: -9px;" src="<?php echo $baseUrl?>/img/icon_xianshi.png">￥17025/
                             <small>晚起</small>
                             <span price="2500--2500--6.81--1--2--4">人均 ￥4257 /晚起</span></p>
                         </div>
@@ -774,7 +799,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;82
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 萨穆嘉纳16号别墅Samujana Villa 16 别墅预订，主题度假在线预订" href="/villa/1954_samujanavilla16" class="pic">
-                        <img alt="萨穆嘉纳16号别墅Samujana Villa 16" class="lazy" data-original="http://image01.hivilla.com/uploads/destination/article/1/1954/0.jpg#samujanavilla16萨穆嘉纳16号别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="萨穆嘉纳16号别墅Samujana Villa 16" class="lazy" data-original="http://image01.hivilla.com/uploads/destination/article/1/1954/0.jpg#samujanavilla16萨穆嘉纳16号别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -821,7 +846,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;41
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 瑞纳赛斯别墅Villa Renaissance SV 09 别墅预订，主题度假在线预订" href="/villa/4328_villarenaissancesv09" class="pic">
-                        <img alt="瑞纳赛斯别墅Villa Renaissance SV 09" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/4/4328/2.jpg#villarenaissancesv09瑞纳赛斯别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="瑞纳赛斯别墅Villa Renaissance SV 09" class="lazy" data-original="http://image02.hivilla.com/uploads/destination/article/4/4328/2.jpg#villarenaissancesv09瑞纳赛斯别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -861,7 +886,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;123
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 布拉纳别墅Purana Residence 别墅预订，主题度假在线预订" href="/villa/1581_puranaresidence" class="pic">
-                        <img alt="布拉纳别墅Purana Residence" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/1/1581/0.jpg#puranaresidence布拉纳别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="布拉纳别墅Purana Residence" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/1/1581/0.jpg#puranaresidence布拉纳别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -902,7 +927,7 @@
                         <i class="icon iconfont newicon">&#xe602;</i>&nbsp;61
                         <div class="been_tip">去过</div></a>
                       <a target="_blank" title="第六感 别墅度假 萨穆嘉纳29号别墅Samujana Villa 29 别墅预订，主题度假在线预订" href="/villa/3219_samujanavilla29" class="pic">
-                        <img alt="萨穆嘉纳29号别墅Samujana Villa 29" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/3/3219/0.jpg#samujanavilla29萨穆嘉纳29号别墅" src="resource/img/default-info.png" /></a>
+                        <img alt="萨穆嘉纳29号别墅Samujana Villa 29" class="lazy" data-original="http://statics.hivilla.com/uploads/destination/article/3/3219/0.jpg#samujanavilla29萨穆嘉纳29号别墅" src="<?php echo $baseUrl?>/img/default-info.png" /></a>
                       <!-- 实时房态标记 开始 -->
                       <div class="hd-bg-w hd-bg-l icon-hd-hover  hidden">
                         <i class="icon-hd icon-hd-l"></i>
@@ -966,7 +991,7 @@
                   <br/>咨询</p></a>
               <div class="list qrcode" style="display:none;">
                 <div>
-                  <img src="resource/img/wx_qrcode.png" width="136" height="136" /></div>
+                  <img src="<?php echo $baseUrl?>/img/wx_qrcode.png" width="136" height="136" /></div>
               </div>
             </li>
             <li>
@@ -999,95 +1024,7 @@
             </li>
           </ul>
         </div>
-        <script src="resource/js/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript">
-          $('.side-bar>.items>li>a').each(function() {
-            if ($(this).next().hasClass('list')) {
-              $(this).next().mouseover(function() {
-                $(this).prev().addClass('hover');
-              });
-              $(this).next().mouseout(function() {
-                $(this).prev().removeClass('hover');
-              });
-            }
-          });
-          $(window).on('scroll resize',
-          function() {
-            if (($('.goTop').css('display') == 'list-item') && ($('.survey').offset().top - $(document).scrollTop()) > 0 && ($('.survey').offset().top - $(document).scrollTop()) < 537) {
-              $('.survey').css('position', 'static');
-            }
-          })
-          // var shaked = false;
-          // var shaking = false;
-          // $(window).scroll(function(){
-          //     if (shaked == false && $('.side-bar').css('display') == 'block'){
-          //         shaked = true;
-          //         shaking = true;
-          //         $('.svgsurvey').addClass('shake');
-          //         setTimeout(function(){shaking = false},2000);
-          //     }
-          //     else if(shaking == false){
-          //         $('.svgsurvey').removeClass('shake');
-          //     }
-          // });
-          </script>
-        <script type="text/javascript">
-          var $sideCont = $('#side-bar'),
-          $window = $(window),
-          winH = $window.height();
-
-          $sideCont.find('.items li').hover(function() {
-            var $this = $(this);
-            $this.find('.list').show();
-          },
-          function() {
-            var $this = $(this);
-            $this.find('.list').hide();
-          });
-          $window.scroll(function() {
-            var scrTop = $(window).scrollTop();
-            var topbar = parseInt($('.IN_main').css('height'));
-            var winhei = parseInt($(window).height());
-            if (scrTop < topbar) {
-              $('#side-bar').css('display', 'none');
-            } else {
-              $('#side-bar').css('display', 'block');
-              $('#side-bar').css('z-index', 10);
-            }
-            if (scrTop > winhei) {
-              $sideCont.find('.goTop').show();
-            } else {
-              $sideCont.find('.goTop').hide();
-            }
-          });
-          $sideCont.find('.items').on('click', '.goTop a',
-          function() {
-            $('html,body').animate({
-              scrollTop: 0
-            },
-            500);
-          });
-          //筛选
-          $('.check-ctn>label.filterspan').each(function() {
-            $(this).on('click',
-            function() {
-              if ($(this).prev().prev().is(':checked') == true) {
-                $(this).prev().children('span').css('display', 'block');
-              } else {
-                $(this).prev().children('span').css('display', 'none');
-              }
-            })
-          }) 
-          $('.check-ctn>input').each(function() {
-            $(this).on('click',
-            function() {
-              if ($(this).is(':checked') == true) {
-                $(this).next().children('span').css('display', 'block');
-              } else {
-                $(this).next().children('span').css('display', 'none');
-              }
-            })
-          })</script>
+    
         <!--侧边联系栏 e-->
         <!--内页中间内容结束-->
         <div id="map-warp">
@@ -1106,4 +1043,128 @@
             'contact': '联系客服咨询报价',
           }</script>
         
-        
+ 
+<script type="text/javascript">
+<?php $this->beginBlock('js_end') ?>
+	var pageID = 'travels';
+	var MESSAGE = {};
+	var COMMON_MESSAGE = '';
+
+
+
+
+
+
+
+
+
+
+	 var $sideCont = $('#side-bar'),
+     $window = $(window),
+     winH = $window.height();
+
+     $sideCont.find('.items li').hover(function() {
+       var $this = $(this);
+       $this.find('.list').show();
+     },
+     function() {
+       var $this = $(this);
+       $this.find('.list').hide();
+     });
+     $window.scroll(function() {
+       var scrTop = $(window).scrollTop();
+       var topbar = parseInt($('.IN_main').css('height'));
+       var winhei = parseInt($(window).height());
+       if (scrTop < topbar) {
+         $('#side-bar').css('display', 'none');
+       } else {
+         $('#side-bar').css('display', 'block');
+         $('#side-bar').css('z-index', 10);
+       }
+       if (scrTop > winhei) {
+         $sideCont.find('.goTop').show();
+       } else {
+         $sideCont.find('.goTop').hide();
+       }
+     });
+     $sideCont.find('.items').on('click', '.goTop a',
+     function() {
+       $('html,body').animate({
+         scrollTop: 0
+       },
+       500);
+     });
+     //筛选
+     $('.check-ctn>label.filterspan').each(function() {
+       $(this).on('click',
+       function() {
+         if ($(this).prev().prev().is(':checked') == true) {
+           $(this).prev().children('span').css('display', 'block');
+         } else {
+           $(this).prev().children('span').css('display', 'none');
+         }
+       })
+     }) 
+     $('.check-ctn>input').each(function() {
+       $(this).on('click',
+       function() {
+         if ($(this).is(':checked') == true) {
+           $(this).next().children('span').css('display', 'block');
+         } else {
+           $(this).next().children('span').css('display', 'none');
+         }
+       })
+     })
+
+	$('.side-bar>.items>li>a').each(function() {
+        if ($(this).next().hasClass('list')) {
+          $(this).next().mouseover(function() {
+            $(this).prev().addClass('hover');
+          });
+          $(this).next().mouseout(function() {
+            $(this).prev().removeClass('hover');
+          });
+        }
+      });
+      $(window).on('scroll resize',
+      function() {
+        if (($('.goTop').css('display') == 'list-item') && ($('.survey').offset().top - $(document).scrollTop()) > 0 && ($('.survey').offset().top - $(document).scrollTop()) < 537) {
+          $('.survey').css('position', 'static');
+        }
+      })
+      // var shaked = false;
+      // var shaking = false;
+      // $(window).scroll(function(){
+      //     if (shaked == false && $('.side-bar').css('display') == 'block'){
+      //         shaked = true;
+      //         shaking = true;
+      //         $('.svgsurvey').addClass('shake');
+      //         setTimeout(function(){shaking = false},2000);
+      //     }
+      //     else if(shaking == false){
+      //         $('.svgsurvey').removeClass('shake');
+      //     }
+      // });
+
+
+      
+      
+      
+      
+      
+      
+      
+	
+	if ('default' == pageID) {
+		senseluxuryFed.loadIndexFun();
+	} else if ('detail' == pageID || 'bankDetail' == pageID) {
+    	senseluxuryFed.loadDetailFun();
+  	} else if ('fqa' == pageID) {
+    	senseluxuryFed.loadFqaFun();
+  	} else {
+    	senseluxuryFed.loadListFun();
+  	}
+
+<?php $this->endBlock() ?>
+</script>
+<?php $this->registerJs($this->blocks['js_end'], \yii\web\View::POS_END); ?>      
