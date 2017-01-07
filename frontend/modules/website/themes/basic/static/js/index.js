@@ -1747,8 +1747,8 @@ senseluxuryFed.commonFun.sideBarFun = function() {
 		var scrTop = $(window).scrollTop();
 		var topbar = parseInt($('.IN_main').css('height'));
 		var winhei = parseInt($(window).height());
-		var _top = $('#side-bar').offset().top;
-		var _search = $('.D1Search').offset().top;
+//		var _top = $('#side-bar').offset().top;
+//		var _search = $('.D1Search').offset().top;
 		if (scrTop < topbar) {
 			$('#side-bar').css('display', 'none');
 		} else {
@@ -1847,88 +1847,88 @@ senseluxuryFed.commonFun.loginRegFun = function() {
 			}
 		});
 	});
-	var mark;
-	$("#registerByPhoneForm").click(function() {
-		var data = {
-			username: $(".registerByPhone .phonenumber").val(),
-			password: $(".registerByPhone input[name='password']").val(),
-			repassword: $(".registerByPhone input[name='repassword']").val(),
-			code: $(".registerByPhone input[name='registerByCode']").val()
-		};
-		if (!data.username) {
-			alert("请输入手机号！")
-			return;
-		}
-		if (data.password != data.repassword || !data.password || !data.repassword) {
-			alert("两次密码不一致！");
-			return;
-		}
-		$.ajax({
-			data: {
-				pwd: data.password,
-				phone: data.username,
-				code: data.code,
-				imported: $(".registerByPhone input[name='imported']").val(),
-				mark: mark
-			},
-			type: 'post',
-			url: "/website/login/register",
-			dataType: 'json',
-			success: function(data) {
-				if (data.code) {
-					$('.Cuser_dialog').find('.close').trigger('click');
-					alert("注册成功！");
-					window.location.reload();
-				} else {
-					alert(data.msg);
-				}
-			}
-		});
-	});
-	$("#getCode").click(function() {
-		if ($(this).attr("clock") != 0) {
-			return;
-		}
-		var $that = $(this);
-		var phone_number = $(this).parent().parent().parent().find(".phonenumber").val();
-		var data = {
-			'phone': phone_number
-		};
-		$(this).val("验证码获取中。。。");
-		if (phone_number.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
-			$.ajax({
-				type: 'POST',
-				url: '/website/login/getcode',
-				data: data,
-				dataType: 'json',
-				success: function(data) {
-					if (!data.code) {
-						alert(data.msg);
-						$that.attr('clock', 0);
-						clearInterval(t);
-						$that.val("获取验证码");
-						return;
-					}
-					$that.attr('clock', 1);
-					mark = data.mark;
-					var seconds = 0;
-					var t = setInterval(function() {
-						seconds += 1;
-						$that.val(50 - seconds + "秒后重新获取验证码");
-						if (seconds == 50) {
-							$that.attr('clock', 0);
-							clearInterval(t);
-							$that.val("获取验证码");
-						}
-					}, 1000);
-				}
-			})
-		} else {
-			alert("请输入合适的手机号！");
-			$that.attr('clock', 0);
-			$that.val("获取验证码");
-		}
-	});
+//	var mark;
+//	$("#registerByPhoneForm").click(function() {
+//		var data = {
+//			username: $(".registerByPhone .phonenumber").val(),
+//			password: $(".registerByPhone input[name='password']").val(),
+//			repassword: $(".registerByPhone input[name='repassword']").val(),
+//			code: $(".registerByPhone input[name='registerByCode']").val()
+//		};
+//		if (!data.username) {
+//			alert("请输入手机号！")
+//			return;
+//		}
+//		if (data.password != data.repassword || !data.password || !data.repassword) {
+//			alert("两次密码不一致！");
+//			return;
+//		}
+//		$.ajax({
+//			data: {
+//				pwd: data.password,
+//				phone: data.username,
+//				code: data.code,
+//				imported: $(".registerByPhone input[name='imported']").val(),
+//				mark: mark
+//			},
+//			type: 'post',
+//			url: "/website/login/register",
+//			dataType: 'json',
+//			success: function(data) {
+//				if (data.code) {
+//					$('.Cuser_dialog').find('.close').trigger('click');
+//					alert("注册成功！");
+//					window.location.reload();
+//				} else {
+//					alert(data.msg);
+//				}
+//			}
+//		});
+//	});
+//	$("#getCode").click(function() {
+//		if ($(this).attr("clock") != 0) {
+//			return;
+//		}
+//		var $that = $(this);
+//		var phone_number = $(this).parent().parent().parent().find(".phonenumber").val();
+//		var data = {
+//			'phone': phone_number
+//		};
+//		$(this).val("验证码获取中。。。");
+//		if (phone_number.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
+//			$.ajax({
+//				type: 'POST',
+//				url: '/website/login/getcode',
+//				data: data,
+//				dataType: 'json',
+//				success: function(data) {
+//					if (!data.code) {
+//						alert(data.msg);
+//						$that.attr('clock', 0);
+//						clearInterval(t);
+//						$that.val("获取验证码");
+//						return;
+//					}
+//					$that.attr('clock', 1);
+//					mark = data.mark;
+//					var seconds = 0;
+//					var t = setInterval(function() {
+//						seconds += 1;
+//						$that.val(50 - seconds + "秒后重新获取验证码");
+//						if (seconds == 50) {
+//							$that.attr('clock', 0);
+//							clearInterval(t);
+//							$that.val("获取验证码");
+//						}
+//					}, 1000);
+//				}
+//			})
+//		} else {
+//			alert("请输入合适的手机号！");
+//			$that.attr('clock', 0);
+//			$that.val("获取验证码");
+//		}
+//	});
 	$("#validation_phone").click(function() {
 		var code = $(this).parent().parent().find(".code").val();
 		var phone_number = $(this).parent().parent().parent().find(".phonenumber").val();
@@ -1959,46 +1959,46 @@ senseluxuryFed.commonFun.loginRegFun = function() {
 			});
 		}
 	});
-	$('.Cuser_dialog .signin_area form').validate({
-		rules: {
-			username: {
-				required: true
-			},
-			password: {
-				required: true,
-				minlength: 6,
-				maxlength: 16
-			}
-		},
-		errorPlacement: function(error, element) {
-			var $element;
-			$element = $(element);
-			$element.parents('.item').find('.msg').show().css({
-				"display": "block"
-			});
-			$element.parents('.item').find('.inputbox').css({
-				"border": "1px solid red"
-			});
-		},
-		submitHandler: function(form) {
-			var $self;
-			$self = $(form);
-			$self.ajaxSubmit(function(data) {
-				if (typeof data === 'string') {
-					data = $.parseJSON(data);
-				}
-				if (data.success !== 1) {} else {
-					$('.Cuser_dialog').find('.close').trigger('click');
-					var html = '<div class="userName"><a title="' + data.username + '" href="/ucenter">我的账户</a><span>|</span><a  href="/web/user/logout">退出</a></div>'
-					$(html).insertBefore('.userlink_lg');
-					$('.userlink_lg').remove();
-					$('.detail-app').find('.my-pl span').html('');
-					$('#top_textarea').val('').css('color', '#333');
-					window.location.reload();
-				}
-			});
-		}
-	});
+//	$('.Cuser_dialog .signin_area form').validate({
+//		rules: {
+//			username: {
+//				required: true
+//			},
+//			password: {
+//				required: true,
+//				minlength: 6,
+//				maxlength: 16
+//			}
+//		},
+//		errorPlacement: function(error, element) {
+//			var $element;
+//			$element = $(element);
+//			$element.parents('.item').find('.msg').show().css({
+//				"display": "block"
+//			});
+//			$element.parents('.item').find('.inputbox').css({
+//				"border": "1px solid red"
+//			});
+//		},
+//		submitHandler: function(form) {
+//			var $self;
+//			$self = $(form);
+//			$self.ajaxSubmit(function(data) {
+//				if (typeof data === 'string') {
+//					data = $.parseJSON(data);
+//				}
+//				if (data.success !== 1) {} else {
+//					$('.Cuser_dialog').find('.close').trigger('click');
+//					var html = '<div class="userName"><a title="' + data.username + '" href="/ucenter">我的账户</a><span>|</span><a  href="/web/user/logout">退出</a></div>'
+//					$(html).insertBefore('.userlink_lg');
+//					$('.userlink_lg').remove();
+//					$('.detail-app').find('.my-pl span').html('');
+//					$('#top_textarea').val('').css('color', '#333');
+//					window.location.reload();
+//				}
+//			});
+//		}
+//	});
 	$('.Cuser_dialog .signup_area form').validate({
 		rules: {
 			username: {

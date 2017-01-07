@@ -1,8 +1,10 @@
 <?php
 	$this->title = '度假屋详情';
 	use frontend\modules\website\themes\basic\myasset\ThemeAsset;
-	
+	use frontend\modules\website\themes\basic\myasset\ThemeAssetInner;
+	ThemeAssetInner::register($this);
 	ThemeAsset::register($this);
+	
 	$baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 ?>
 
@@ -55,14 +57,16 @@
                 </a>
                 <span class="xsyh-icon new-r-off">
                   <p>40%OFF</p>
-                  <p>10.27-12.20</p>
+                  <p>10.27-12.20</p> 
                 </span>
                 <ul class="tab_body">
-                  <li data-label-text="1/22">
+                  <?php foreach($apartment_img as $k=>$row){ ?>
+                  <li data-label-text="<?php echo ($k+1) ?>/<?php echo count($apartment_img) ?>">
                     <a href="#">
-                      <img alt="Senseluxury 度假别墅-萨穆嘉纳26号别墅-screenshot-0" src="http://statics.hivilla.com/uploads/destination/article/1/1958/0.jpg#samujanavilla26萨穆嘉纳26号别墅"></a>
+                      <img alt="" src="<?php echo Yii::$app->params['img_url'].'/'. $row['img_url']?>"></a>
                   </li>
-                  <li data-label-text="2/22">
+                  <?php } ?>
+                  <!--<li data-label-text="2/22">
                     <a href="#">
                       <img alt="Senseluxury 度假别墅-萨穆嘉纳26号别墅-screenshot-1" src="http://image01.hivilla.com/uploads/destination/article/1/1958/1.jpg#samujanavilla26萨穆嘉纳26号别墅"></a>
                   </li>
@@ -145,35 +149,17 @@
                   <li data-label-text="22/22">
                     <a href="#">
                       <img alt="Senseluxury 度假别墅-萨穆嘉纳26号别墅-screenshot-21" src="http://statics.hivilla.com/uploads/destination/article/1/1958/21.jpg#samujanavilla26萨穆嘉纳26号别墅"></a>
-                  </li>
+                  </li>-->
                 </ul>
                 <a href="javascript:;" class="prev"></a>
                 <a href="javascript:;" class="next"></a>
                 <div class="tabLabel">
-                  <a href="javascript:;" target="">15/16</a></div>
+                  <a href="javascript:;" target="">1/<?php echo count($apartment_img) ?></a></div>
                 <ul class="tabCon">
-                  <li class="active"></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
+                  <?php for($i=1;$i<=count($apartment_img);$i++){ ?>
+                  <li <?php $i==1?"class='active'":"" ?>></li>
+                  <?php }?>
+                 
                 </ul>
               </div>
             </div>
@@ -552,16 +538,25 @@
               <i class="ic ssfw">&#x1306;</i>设施&服务</div>
             <div class="de-ssfw floor-index">
               <ul class="itmes">
+                <?php foreach($service_arr as $row){ ?>
                 <li>
-                  <label>别墅景观：</label>
+                  <label><?php echo $row['name'] ?>：</label>
                   <table class="ssfw-table" border="0">
+                    <?php foreach($row['child'] as $k=>$v){
+                      if($k%2==0){
+                     ?>
                     <tr>
-                      <td width="260">海景</td>
-                      <td></td>
-                    </tr>
+                      <td width="260"><?php echo $v['name'] ?></td><?php }else{?>
+                      <td><?php echo $v['name'] ?></td>
+                    </tr><?php }?>
+                    <?php }?>
+                     <?php if(count($row['child'])/2!=0){?>
+                    <td></td></tr>
+                    <?php }?>
                   </table>
                 </li>
-                <li>
+                <?php }?>
+                <!--<li>
                   <label>主题：</label>
                   <table class="ssfw-table" border="0">
                     <tr>
@@ -632,7 +627,7 @@
                       <td></td>
                     </tr>
                   </table>
-                </li>
+                </li>-->
                 <li>
                   <label>备注：</label>禁止吸烟；禁止携带宠物</li></ul>
             </div>
@@ -1357,7 +1352,7 @@
     	htmlDecode: "style,script,iframe"
 	});
 
-    var pageID = '';
+    
     var COMMON_MESSAGE = {
             'favorate': "我想去",
     }
@@ -1377,6 +1372,8 @@
             pid: "1958",
             refreshtoken: "3021dc4c4c01bbf527e8395fb397c312"
           };
+
+   	var pageID = 'detail';
     if ('default' == pageID) {
         senseluxuryFed.loadIndexFun();
     } else if ('detail' == pageID || 'bankDetail' == pageID) {
@@ -1388,7 +1385,7 @@
     }
 
 
-
+	//google map
     var id_timer = window.setInterval(function() {
         if (typeof jQuery != 'undefined') {
 
@@ -1463,6 +1460,7 @@
         500);
       });
 
+      
       var starObj = {};
       $(".pj-star").on("click", ".star",
       function(e) {

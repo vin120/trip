@@ -1,10 +1,18 @@
 <?php
 	$this->title = '珠海正和国际旅游有限公司-今日精选';
+
+  use yii\helpers\Url;
 	use frontend\modules\website\themes\basic\myasset\ThemeAsset;
 	use frontend\modules\website\themes\basic\myasset\ThemeAssetDate;
+	use frontend\modules\website\themes\basic\myasset\ThemeAssetInner;
+	ThemeAssetInner::register($this);
 	ThemeAsset::register($this);
 	ThemeAssetDate::register($this);
+	
 	$baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
+
+
+
 ?>
 
 <style>.defList{ padding:0.875rem; padding-bottom:0; position:absolute; width:332px!important; border:none!important; left:0!important; background-color:#ffffff; z-index:500; display:none; } .defList div{ height:2rem; border-bottom:1px solid #dddddd; } .defList div img{ float:left; height:1rem; margin:0.5rem; margin-left:0; } .defList div.hot img{ margin:0.5rem 0.6rem 0.5rem 0.1rem; } .defList div span{ float:left; line-height:2rem; color:#888888; font-size:0.75rem; } .defList .history b{ float:right; line-height:2rem; font-weight:normal; color:#ff8000; } .defList .history b:hover{ cursor:pointer; } .defList ul{ overflow:hidden; padding:0.35rem 0!important; } .defList ul li{ line-height:1.5rem; width:100%; margin-left:1.4rem!important; } .defList ul li span{ font-size:0.875rem!important; display:inline-block; } .defList ul li b{ font-size:0.75rem!important; color:#888888; font-weight:normal; display:inline-block; } .defList ul li span:hover{ cursor:pointer; color:#ff8000; } .defList ul li b:hover{ cursor:pointer; } .defList p{ margin-left:1.4rem!important; line-height:1.5rem; padding:0.5rem 0!important; } .defList p span{ margin-right:10px; font-size:0.875rem; display:inline-block; } .defList p span:hover{ color:#ff8000; cursor:pointer; } .D1main ul .li1 input{ width:270px!important; } .D1main ul .li1 b.clear{ width:30px; font-size:20px; color:#888888; display:none; font-weight:normal } .D1main ul .li1 b.clear:hover{ cursor:pointer; } .check-ctn{ margin-left:0.5rem; margin-top:0.5rem; width: 5rem; height:1.2rem; position: relative; } .check-ctn input { visibility:hidden; } .check-ctn label.icon{ cursor: pointer; position: absolute; width: 0.8rem; height: 0.8rem; top: 0; left: 0; background: #ffffff; border:1px solid #aaaaaa; } .check-ctn label.filterspan{ position:relative; bottom:0.2rem; cursor: pointer; height: 1.2rem; line-height: 1.2rem; } .check-ctn label.icon>span{ display:none; content: ''; position: absolute; width: 7px; height: 4px; background: transparent; top: 2px; left: 2px; border: 2px solid #aaaaaa; border-top: none; border-right: none; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); }</style>
@@ -67,7 +75,7 @@
 	   <div class="wp Clt">    
         <div class="handpick">
             <?php foreach($data as $k=>$row){ ?>
-            <a target="_blank" href="<?php echo $row['apartment_id'] ?>">
+            <a target="_blank" href="<?php echo Url::toRoute(['destinations/detail','id'=>$row['apartment_id']])  ?>">
               <div class="lists">
                 <img alt="<?php echo $row['apartment_name'] ?>" src="<?php echo Yii::$app->params['img_url'].'/'. $row['img_url']?>" />
                 <h2><?php echo $row['apartment_name'] ?></h2>
@@ -85,10 +93,10 @@
             <ul class="TPList">
               <?php foreach($new_data as $row){ ?>
               <li>
-                <a target="_blank" class="aImg" title="<?php echo $row['apartment_name'] ?>" href="<?php echo $row['apartment_id'] ?>">
+                <a target="_blank" class="aImg" title="<?php echo $row['apartment_name'] ?>" href="<?php echo Url::toRoute(['destinations/detail','id'=>$row['apartment_id']])  ?>">
                   <img alt="<?php echo $row['apartment_name'] ?>" class="scrollLoading" src="<?php echo Yii::$app->params['img_url'].'/'. $row['img_url']?>" /></a>
                 <p class="title">
-                  <a class="Lfll" href="/villa/4336_mamshillvillasv21"><?php echo $row['apartment_name'] ?></a>￥
+                  <a class="Lfll" href="<?php echo Url::toRoute(['destinations/detail','id'=>$row['apartment_id']])  ?>"><?php echo $row['apartment_name'] ?></a>￥
                   <span class="money"><?php echo  $row['total_price'] ?></span>/晚起</p>
                 <p class="DQ">
                   <span class="Lfll"><?php echo $row['zone_name'] ?></span>￥

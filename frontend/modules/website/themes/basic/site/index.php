@@ -1,8 +1,10 @@
 <?php
 	$this->title = '珠海正和国际旅游,全球值得信赖的精品度假公寓短租平台,度假别墅,度假酒店,度假公寓预订';
 	use frontend\modules\website\themes\basic\myasset\ThemeAsset;
-	
+	use frontend\modules\website\themes\basic\myasset\ThemeAssetIndex;
+	ThemeAssetIndex::register($this);
 	ThemeAsset::register($this);
+	
 	$baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 ?>
 
@@ -2019,13 +2021,22 @@
 
 <script type="text/javascript">
 <?php $this->beginBlock('js_end') ?>
-    
-	var MESSAGE = {};
-	editormd.markdownToHTML("markdown-view", {
-    	htmlDecode: "style,script,iframe"
+
+
+
+	$(function() {
+	    $(".scrollLoading").scrollLoading();
 	});
 
-    var pageID = '';
+	var MESSAGE = {
+        'night': '晚起',
+        'inquire_rate': '联系客服咨询报价',
+        'perperson': '人均'
+      }
+
+
+	
+    var pageID = 'default';
     var COMMON_MESSAGE ={};
     if ('default' == pageID) {
         senseluxuryFed.loadIndexFun();
@@ -2036,88 +2047,11 @@
     } else {
         senseluxuryFed.loadListFun();
     }
-    
-
-    (function(a) {
-    	a.fn.scrollLoading = function(b) {
-    		var c = {
-    			attr: "data-url",
-    			container: a(window),
-    			callback: a.noop
-    		};
-    		var d = a.extend({}, c, b || {});
-    		d.cache = [];
-    		a(this).each(function() {
-    			var h = this.nodeName.toLowerCase(),
-    				g = a(this).attr(d.attr);
-    			var i = {
-    				obj: a(this),
-    				tag: h,
-    				url: g
-    			};
-    			d.cache.push(i)
-    		});
-    		var f = function(g) {
-    				if (a.isFunction(d.callback)) {
-    					d.callback.call(g.get(0))
-    				}
-    			};
-    		var e = function() {
-    				var g = d.container.height();
-    				if (d.container.get(0) === window) {
-    					contop = a(window).scrollTop()
-    				} else {
-    					contop = d.container.offset().top
-    				}
-    				a.each(d.cache, function(m, n) {
-    					var p = n.obj,
-    						j = n.tag,
-    						k = n.url,
-    						l, h;
-    					if (p) {
-    						l = p.offset().top - contop, h = l + p.height();
-    						if ((l >= 0 && l < g) || (h > 0 && h <= g)) {
-    							if (k) {
-    								if (j === "img") {
-    									f(p.attr("src", k))
-    								} else {
-    									p.load(k, {}, function() {
-    										f(p)
-    									})
-    								}
-    							} else {
-    								f(p)
-    							}
-    							n.obj = null
-    						}
-    					}
-    				})
-    			};
-    		e();
-    		d.container.bind("scroll", e)
-    	}
-    })(jQuery);
 
     
+  
 
-    $(function() {
-        $(".scrollLoading").scrollLoading();
-      });
 
-    $(function() {
-        var date = new Date();
-        var expiresDays = 30;
-        date.setTime(date.getTime() + expiresDays * 24 * 3600 * 1000);
-        var strCookie = document.cookie;
-        var arrCookie = strCookie.split("; ");
-        var langV;
-        for (var i = 0; i < arrCookie.length; i++) {
-          var arr = arrCookie[i].split("=");
-          if (arr[0] == 'lang') {
-            langV = arr[1];
-          }
-        }
-      });
 	
 
     //app动画
@@ -2207,8 +2141,7 @@
 
 
 
-
-    
+      
 
   <?php $this->endBlock() ?>
   </script>

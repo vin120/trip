@@ -26,7 +26,7 @@
         <!--头部 开始-->
        <div class="header">
          <div class="wp Lcfx">
-           <a href="<?php echo Url::toRoute(['site/index']);?>" title="" class="logo Lfll"></a>
+           <a href="<?php echo Url::toRoute(['site/index']);?>" title=""  class="logo Lfll" style="width:100px"></a>
            <div class="nav Lfll">
              <ul id="nav_section" class="items Lcfx">
                <li class="navlink1">
@@ -70,7 +70,6 @@
                            		<?php } ?>
                            <?php }?>
                          <?php if($j % 3 != 0) { ?> 
-                          <br/>	
                          </dl>
                          <?php } ?> 
                         <?php }?>

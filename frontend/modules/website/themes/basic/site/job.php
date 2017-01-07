@@ -1,10 +1,11 @@
 <?php
 	$this->title = '珠海正和国际旅游有限公司-招聘信息';
-	use frontend\modules\website\themes\basic\myasset\ThemeAsset;
 	use yii\helpers\Url;
-	
-	
+	use frontend\modules\website\themes\basic\myasset\ThemeAsset;
+	use frontend\modules\website\themes\basic\myasset\ThemeAssetInner;
+	ThemeAssetInner::register($this);
 	ThemeAsset::register($this);
+	
 	$baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 ?>
 

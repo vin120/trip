@@ -1,8 +1,10 @@
 <?php
 	$this->title = '度假屋查询，预订';
 	use frontend\modules\website\themes\basic\myasset\ThemeAsset;
-	
+	use frontend\modules\website\themes\basic\myasset\ThemeAssetInner;
+	ThemeAssetInner::register($this);
 	ThemeAsset::register($this);
+	
 	$baseUrl = $this->assetBundles[ThemeAsset::className()]->baseUrl . '/';
 ?>
 

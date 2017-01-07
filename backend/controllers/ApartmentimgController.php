@@ -145,14 +145,21 @@ class ApartmentimgController extends BaseController
 		$data = Yii::$app->db->createCommand($sql)->queryAll();
 
 		//获取当前地区公寓
-		$sql = "SELECT a.apartment_id,a.apartment_code,a.apartment_name,count(b.img_id) img_num 
-		FROM `zh_apartment` a 
-		LEFT JOIN `zh_apartment_img` b ON a.apartment_id=b.apartment_id  WHERE a.zone_id='{$zone}' ";
+		
+		$sql = "SELECT apartment_id,apartment_code,apartment_name FROM `zh_apartment`  WHERE zone_id='{$zone}' ";
 		$apartment = Yii::$app->db->createCommand($sql)->queryAll();
+		$apartment_arr = array();
+		foreach($apartment as $row){
+			$sql = "SELECT count(*) count FROM `zh_apartment_img` WHERE apartment_id='{$row['apartment_id']}' ";
+			$count = Yii::$app->db->createCommand($sql)->queryOne();
+			$row['img_num'] = $count['count'];
+			$apartment_arr[] = $row;
+
+		}
 
 		$result = array();
 		$result['data'] = $data;
-		$result['apartment'] = $apartment;
+		$result['apartment'] = $apartment_arr;
 
 		echo json_encode($result);
 	}
@@ -161,12 +168,19 @@ class ApartmentimgController extends BaseController
 		$zone = isset($_POST['zone'])?trim($_POST['zone']):'';
 
 		//获取当前地区公寓
-		$sql = "SELECT a.apartment_id,a.apartment_code,a.apartment_name,count(b.img_id) img_num 
-		FROM `zh_apartment` a 
-		LEFT JOIN `zh_apartment_img` b ON a.apartment_id=b.apartment_id  WHERE a.zone_id='{$zone}' ";
+		$sql = "SELECT apartment_id,apartment_code,apartment_name FROM `zh_apartment`  WHERE zone_id='{$zone}' ";
 		$apartment = Yii::$app->db->createCommand($sql)->queryAll();
+		$apartment_arr = array();
+		foreach($apartment as $row){
+			$sql = "SELECT count(*) count FROM `zh_apartment_img` WHERE apartment_id='{$row['apartment_id']}' ";
+			$count = Yii::$app->db->createCommand($sql)->queryOne();
+			$row['img_num'] = $count['count'];
+			$apartment_arr[] = $row;
 
-		echo json_encode($apartment);
+		}
+
+
+		echo json_encode($apartment_arr);
 	}
 
 	public function actionEdit(){

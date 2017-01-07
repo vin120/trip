@@ -16027,45 +16027,45 @@ senseluxuryFed.detailFunV1.dateFun = function() {
 		} else {
 			endDay = $('#start1').val();
 		};
-		$.ajax({
-			url: domain + '/web/detail/countcost',
-			type: "GET",
-			data: {
-				pid: pidVal,
-				start: qsDate,
-				end: endDay,
-				bedroom: textVal,
-				flag: flag,
-			},
-			dataType: "jsonp",
-			jsonpCallback: 'jsonp',
-			success: function(data) {
-				if (parseInt(data) == -1) {
-					$('#cost').html('参数错误');
-					$('#service').html('暂无价格');
-					$('#tax').html('暂无价格');
-					$('#clean_price').html('暂无价格');
-					$('#total').html('暂无价格');
-				} else if (parseInt(data) == -2) {
-					$('#cost').html('暂无价格');
-					$('#service').html('暂无价格');
-					$('#clean_price').html('暂无价格');
-					$('#total').html('暂无价格');
-				} else {
-					$('#cost').html('¥' + data.price);
-					$('#service').html('¥' + data.service_fee);
-					$('#tax').html('¥' + data.tax);
-					$('#clean_price').html('¥' + data.clean_price);
-					$('#total').html('¥' + data.total);
-					$('#sum-price').html(data.total);
-					if (data.mini_stay > data.day_diff) {
-						$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
-					} else {
-						$("#price_cal_notice").html("");
-					}
-				}
-			}
-		});
+//		$.ajax({
+//			url: domain + '/web/detail/countcost',
+//			type: "GET",
+//			data: {
+//				pid: pidVal,
+//				start: qsDate,
+//				end: endDay,
+//				bedroom: textVal,
+//				flag: flag,
+//			},
+//			dataType: "jsonp",
+//			jsonpCallback: 'jsonp',
+//			success: function(data) {
+//				if (parseInt(data) == -1) {
+//					$('#cost').html('参数错误');
+//					$('#service').html('暂无价格');
+//					$('#tax').html('暂无价格');
+//					$('#clean_price').html('暂无价格');
+//					$('#total').html('暂无价格');
+//				} else if (parseInt(data) == -2) {
+//					$('#cost').html('暂无价格');
+//					$('#service').html('暂无价格');
+//					$('#clean_price').html('暂无价格');
+//					$('#total').html('暂无价格');
+//				} else {
+//					$('#cost').html('¥' + data.price);
+//					$('#service').html('¥' + data.service_fee);
+//					$('#tax').html('¥' + data.tax);
+//					$('#clean_price').html('¥' + data.clean_price);
+//					$('#total').html('¥' + data.total);
+//					$('#sum-price').html(data.total);
+//					if (data.mini_stay > data.day_diff) {
+//						$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
+//					} else {
+//						$("#price_cal_notice").html("");
+//					}
+//				}
+//			}
+//		});
 	});
 	$dateBox.find('#start1').change(function() {
 		var qsDate = $dateBox.find('#start').val(),
@@ -16077,46 +16077,46 @@ senseluxuryFed.detailFunV1.dateFun = function() {
 		if (qsDate == '') {
 			return false;
 		} else {
-			$.ajax({
-				url: domain + '/web/detail/countcost',
-				type: "GET",
-				data: {
-					pid: pidVal,
-					start: qsDate,
-					end: endDay,
-					bedroom: textVal,
-					flag: flag,
-				},
-				dataType: "jsonp",
-				jsonpCallback: 'jsonp',
-				success: function(data) {
-					if (parseInt(data) == -1) {
-						$('#cost').html('参数错误');
-						$('#service').html('暂无价格');
-						$('#tax').html('暂无价格');
-						$('#clean_price').html('暂无价格');
-						$('#total').html('暂无价格');
-					} else if (parseInt(data) == -2) {
-						$('#cost').html('暂无价格');
-						$('#service').html('暂无价格');
-						$('#tax').html('暂无价格');
-						$('#clean_price').html('暂无价格');
-						$('#total').html('暂无价格');
-					} else {
-						$('#cost').html('¥' + data.price);
-						$('#service').html('¥' + data.service_fee);
-						$('#tax').html('¥' + data.tax);
-						$('#clean_price').html('¥' + data.clean_price);
-						$('#total').html('¥' + data.total);
-						$('#sum-price').html(data.total);
-						if (data.mini_stay > data.day_diff) {
-							$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
-						} else {
-							$("#price_cal_notice").html("");
-						}
-					}
-				}
-			});
+//			$.ajax({
+//				url: domain + '/web/detail/countcost',
+//				type: "GET",
+//				data: {
+//					pid: pidVal,
+//					start: qsDate,
+//					end: endDay,
+//					bedroom: textVal,
+//					flag: flag,
+//				},
+//				dataType: "jsonp",
+//				jsonpCallback: 'jsonp',
+//				success: function(data) {
+//					if (parseInt(data) == -1) {
+//						$('#cost').html('参数错误');
+//						$('#service').html('暂无价格');
+//						$('#tax').html('暂无价格');
+//						$('#clean_price').html('暂无价格');
+//						$('#total').html('暂无价格');
+//					} else if (parseInt(data) == -2) {
+//						$('#cost').html('暂无价格');
+//						$('#service').html('暂无价格');
+//						$('#tax').html('暂无价格');
+//						$('#clean_price').html('暂无价格');
+//						$('#total').html('暂无价格');
+//					} else {
+//						$('#cost').html('¥' + data.price);
+//						$('#service').html('¥' + data.service_fee);
+//						$('#tax').html('¥' + data.tax);
+//						$('#clean_price').html('¥' + data.clean_price);
+//						$('#total').html('¥' + data.total);
+//						$('#sum-price').html(data.total);
+//						if (data.mini_stay > data.day_diff) {
+//							$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
+//						} else {
+//							$("#price_cal_notice").html("");
+//						}
+//					}
+//				}
+//			});
 		}
 	});
 	$dateBox.find('.room-c-list').on('click', 'li', function() {
@@ -16140,46 +16140,46 @@ senseluxuryFed.detailFunV1.dateFun = function() {
 			if (datetime_to_unix(qsDate) >= datetime_to_unix(jsDate)) {
 				alert('离开日期应该在起住日期之后！')
 			} else {
-				$.ajax({
-					url: domain + '/web/detail/countcost',
-					type: "GET",
-					data: {
-						pid: pidVal,
-						start: qsDate,
-						end: jsDate,
-						bedroom: textVal,
-						flag: flag,
-					},
-					dataType: "jsonp",
-					jsonpCallback: 'jsonp',
-					success: function(data) {
-						if (parseInt(data) == -1) {
-							$('#cost').html('参数错误');
-							$('#service').html('暂无价格');
-							$('#tax').html('暂无价格');
-							$('#clean_price').html('暂无价格');
-							$('#total').html('暂无价格');
-						} else if (parseInt(data) == -2) {
-							$('#cost').html('暂无价格');
-							$('#service').html('暂无价格');
-							$('#tax').html('暂无价格');
-							$('#clean_price').html('暂无价格');
-							$('#total').html('暂无价格');
-						} else {
-							$('#cost').html('¥' + data.price);
-							$('#service').html('¥' + data.service_fee);
-							$('#tax').html('¥' + data.tax);
-							$('#clean_price').html('¥' + data.clean_price);
-							$('#total').html('¥' + data.total);
-							$('#sum-price').html(data.total);
-							if (data.mini_stay > data.day_diff) {
-								$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
-							} else {
-								$("#price_cal_notice").html("");
-							}
-						}
-					}
-				});
+//				$.ajax({
+//					url: domain + '/web/detail/countcost',
+//					type: "GET",
+//					data: {
+//						pid: pidVal,
+//						start: qsDate,
+//						end: jsDate,
+//						bedroom: textVal,
+//						flag: flag,
+//					},
+//					dataType: "jsonp",
+//					jsonpCallback: 'jsonp',
+//					success: function(data) {
+//						if (parseInt(data) == -1) {
+//							$('#cost').html('参数错误');
+//							$('#service').html('暂无价格');
+//							$('#tax').html('暂无价格');
+//							$('#clean_price').html('暂无价格');
+//							$('#total').html('暂无价格');
+//						} else if (parseInt(data) == -2) {
+//							$('#cost').html('暂无价格');
+//							$('#service').html('暂无价格');
+//							$('#tax').html('暂无价格');
+//							$('#clean_price').html('暂无价格');
+//							$('#total').html('暂无价格');
+//						} else {
+//							$('#cost').html('¥' + data.price);
+//							$('#service').html('¥' + data.service_fee);
+//							$('#tax').html('¥' + data.tax);
+//							$('#clean_price').html('¥' + data.clean_price);
+//							$('#total').html('¥' + data.total);
+//							$('#sum-price').html(data.total);
+//							if (data.mini_stay > data.day_diff) {
+//								$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
+//							} else {
+//								$("#price_cal_notice").html("");
+//							}
+//						}
+//					}
+//				});
 			}
 		}
 	});
@@ -16193,46 +16193,46 @@ senseluxuryFed.detailFunV1.dateFun = function() {
 				return false;
 			} else {
 				if (datetime_to_unix(qsDate) >= datetime_to_unix(jsDate)) {} else {
-					$.ajax({
-						url: domain + '/web/detail/countcost',
-						type: "GET",
-						data: {
-							pid: pidVal,
-							start: qsDate,
-							end: jsDate,
-							bedroom: textVal,
-							flag: flag,
-						},
-						dataType: "jsonp",
-						jsonpCallback: 'jsonp',
-						success: function(data) {
-							if (parseInt(data) == -1) {
-								$('#cost').html('参数错误');
-								$('#service').html('暂无价格');
-								$('#tax').html('暂无价格');
-								$('#clean_price').html('暂无价格');
-								$('#total').html('暂无价格');
-							} else if (parseInt(data) == -2) {
-								$('#cost').html('暂无价格');
-								$('#service').html('暂无价格');
-								$('#tax').html('暂无价格');
-								$('#clean_price').html('暂无价格');
-								$('#total').html('暂无价格');
-							} else {
-								$('#cost').html('¥' + data.price);
-								$('#service').html('¥' + data.service_fee);
-								$('#tax').html('¥' + data.tax);
-								$('#clean_price').html('¥' + data.clean_price);
-								$('#total').html('¥' + data.total);
-								$('#sum-price').html(data.total);
-								if (data.mini_stay > data.day_diff) {
-									$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
-								} else {
-									$("#price_cal_notice").html("");
-								}
-							}
-						}
-					});
+//					$.ajax({
+//						url: domain + '/web/detail/countcost',
+//						type: "GET",
+//						data: {
+//							pid: pidVal,
+//							start: qsDate,
+//							end: jsDate,
+//							bedroom: textVal,
+//							flag: flag,
+//						},
+//						dataType: "jsonp",
+//						jsonpCallback: 'jsonp',
+//						success: function(data) {
+//							if (parseInt(data) == -1) {
+//								$('#cost').html('参数错误');
+//								$('#service').html('暂无价格');
+//								$('#tax').html('暂无价格');
+//								$('#clean_price').html('暂无价格');
+//								$('#total').html('暂无价格');
+//							} else if (parseInt(data) == -2) {
+//								$('#cost').html('暂无价格');
+//								$('#service').html('暂无价格');
+//								$('#tax').html('暂无价格');
+//								$('#clean_price').html('暂无价格');
+//								$('#total').html('暂无价格');
+//							} else {
+//								$('#cost').html('¥' + data.price);
+//								$('#service').html('¥' + data.service_fee);
+//								$('#tax').html('¥' + data.tax);
+//								$('#clean_price').html('¥' + data.clean_price);
+//								$('#total').html('¥' + data.total);
+//								$('#sum-price').html(data.total);
+//								if (data.mini_stay > data.day_diff) {
+//									$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
+//								} else {
+//									$("#price_cal_notice").html("");
+//								}
+//							}
+//						}
+//					});
 				}
 			}
 		}
@@ -17541,55 +17541,55 @@ senseluxuryFed.detailFun.dateFun = function() {
 		} else {
 			endDay = $('#start1').val();
 		};
-		$.ajax({
-			url: domain + '/web/detail/countcost',
-			type: "GET",
-			data: {
-				pid: pidVal,
-				start: qsDate,
-				end: endDay,
-				bedroom: textVal,
-				flag: flag,
-			},
-			dataType: "jsonp",
-			jsonpCallback: 'jsonp',
-			success: function(data) {
-				if (parseInt(data) == -1) {
-					$('#cost').html('参数错误');
-					$('#service').html('暂无价格');
-					$('#tax').html('暂无价格');
-					$('#clean_price').html('暂无价格');
-					$('#total').html('暂无价格');
-				} else if (parseInt(data) == -2) {
-					$('#cost').html('暂无价格');
-					$('#service').html('暂无价格');
-					$('#tax').html('暂无价格');
-					$('#clean_price').html('暂无价格');
-					$('#total').html('暂无价格');
-				} else {
-					$('#cost').html('¥' + data.price);
-					$('#service').html('¥' + data.service_fee);
-					$('#tax').html('¥' + data.tax);
-					$('#clean_price').html('¥' + data.clean_price);
-					$('#total').html('¥' + data.total);
-					if (data.total_original && data.total_original > data.total) {
-						$('#total_original').html('¥' + data.total_original);
-					}
-					$('#sum-price').html(data.total);
-					if (data.mini_stay > data.day_diff) {
-						$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
-						$("#booking_price_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
-					} else {
-						if (isOrderDate._True) {
-							$("#price_cal_notice").html("提示：" + MESSAGE.house_status_busy);
-							$("#booking_price_notice").html("提示：" + MESSAGE.house_status_busy);
-						} else {
-							$("#price_cal_notice").html("");
-						}
-					}
-				}
-			}
-		});
+//		$.ajax({
+//			url: domain + '/web/detail/countcost',
+//			type: "GET",
+//			data: {
+//				pid: pidVal,
+//				start: qsDate,
+//				end: endDay,
+//				bedroom: textVal,
+//				flag: flag,
+//			},
+//			dataType: "jsonp",
+//			jsonpCallback: 'jsonp',
+//			success: function(data) {
+//				if (parseInt(data) == -1) {
+//					$('#cost').html('参数错误');
+//					$('#service').html('暂无价格');
+//					$('#tax').html('暂无价格');
+//					$('#clean_price').html('暂无价格');
+//					$('#total').html('暂无价格');
+//				} else if (parseInt(data) == -2) {
+//					$('#cost').html('暂无价格');
+//					$('#service').html('暂无价格');
+//					$('#tax').html('暂无价格');
+//					$('#clean_price').html('暂无价格');
+//					$('#total').html('暂无价格');
+//				} else {
+//					$('#cost').html('¥' + data.price);
+//					$('#service').html('¥' + data.service_fee);
+//					$('#tax').html('¥' + data.tax);
+//					$('#clean_price').html('¥' + data.clean_price);
+//					$('#total').html('¥' + data.total);
+//					if (data.total_original && data.total_original > data.total) {
+//						$('#total_original').html('¥' + data.total_original);
+//					}
+//					$('#sum-price').html(data.total);
+//					if (data.mini_stay > data.day_diff) {
+//						$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
+//						$("#booking_price_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
+//					} else {
+//						if (isOrderDate._True) {
+//							$("#price_cal_notice").html("提示：" + MESSAGE.house_status_busy);
+//							$("#booking_price_notice").html("提示：" + MESSAGE.house_status_busy);
+//						} else {
+//							$("#price_cal_notice").html("");
+//						}
+//					}
+//				}
+//			}
+//		});
 	});
 	$dateBox.find('#start1').change(function() {
 		var qsDate = $dateBox.find('#start').val(),
@@ -17601,48 +17601,48 @@ senseluxuryFed.detailFun.dateFun = function() {
 		if (qsDate == '') {
 			return false;
 		} else {
-			$.ajax({
-				url: domain + '/web/detail/countcost',
-				type: "GET",
-				data: {
-					pid: pidVal,
-					start: qsDate,
-					end: endDay,
-					bedroom: textVal,
-					flag: flag,
-				},
-				dataType: "jsonp",
-				jsonpCallback: 'jsonp',
-				success: function(data) {
-					if (parseInt(data) == -1) {
-						$('#cost').html('参数错误');
-						$('#service').html('暂无价格');
-						$('#tax').html('暂无价格');
-						$('#clean_price').html('暂无价格');
-						$('#total').html('暂无价格');
-					} else if (parseInt(data) == -2) {
-						$('#cost').html('暂无价格');
-						$('#service').html('暂无价格');
-						$('#tax').html('暂无价格');
-						$('#clean_price').html('暂无价格');
-						$('#total').html('暂无价格');
-					} else {
-						$('#cost').html('¥' + data.price);
-						$('#service').html('¥' + data.service_fee);
-						$('#tax').html('¥' + data.tax);
-						$('#clean_price').html('¥' + data.clean_price);
-						$('#total').html('¥' + data.total);
-						if (data.total_original && data.total_original > data.total) {
-							$('#total_original').html('¥' + data.total_original);
-						}
-						if (data.mini_stay > data.day_diff) {
-							$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
-						} else {
-							$("#price_cal_notice").html("");
-						}
-					}
-				}
-			});
+//			$.ajax({
+//				url: domain + '/web/detail/countcost',
+//				type: "GET",
+//				data: {
+//					pid: pidVal,
+//					start: qsDate,
+//					end: endDay,
+//					bedroom: textVal,
+//					flag: flag,
+//				},
+//				dataType: "jsonp",
+//				jsonpCallback: 'jsonp',
+//				success: function(data) {
+//					if (parseInt(data) == -1) {
+//						$('#cost').html('参数错误');
+//						$('#service').html('暂无价格');
+//						$('#tax').html('暂无价格');
+//						$('#clean_price').html('暂无价格');
+//						$('#total').html('暂无价格');
+//					} else if (parseInt(data) == -2) {
+//						$('#cost').html('暂无价格');
+//						$('#service').html('暂无价格');
+//						$('#tax').html('暂无价格');
+//						$('#clean_price').html('暂无价格');
+//						$('#total').html('暂无价格');
+//					} else {
+//						$('#cost').html('¥' + data.price);
+//						$('#service').html('¥' + data.service_fee);
+//						$('#tax').html('¥' + data.tax);
+//						$('#clean_price').html('¥' + data.clean_price);
+//						$('#total').html('¥' + data.total);
+//						if (data.total_original && data.total_original > data.total) {
+//							$('#total_original').html('¥' + data.total_original);
+//						}
+//						if (data.mini_stay > data.day_diff) {
+//							$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
+//						} else {
+//							$("#price_cal_notice").html("");
+//						}
+//					}
+//				}
+//			});
 		}
 	});
 	$dateBox.find('.room-c-list').on('click', 'li', function() {
@@ -17666,53 +17666,53 @@ senseluxuryFed.detailFun.dateFun = function() {
 			if (datetime_to_unix(qsDate) >= datetime_to_unix(jsDate)) {
 				alert('离开日期应该在起住日期之后！')
 			} else {
-				$.ajax({
-					url: domain + '/web/detail/countcost',
-					type: "GET",
-					data: {
-						pid: pidVal,
-						start: qsDate,
-						end: jsDate,
-						bedroom: textVal,
-						flag: flag
-					},
-					dataType: "jsonp",
-					jsonpCallback: 'jsonp',
-					success: function(data) {
-						if (parseInt(data) == -1) {
-							$('#cost').html('参数错误');
-							$('#service').html('暂无价格');
-							$('#tax').html('暂无价格');
-							$('#clean_price').html('暂无价格');
-							$('#total').html('暂无价格');
-						} else if (parseInt(data) == -2) {
-							$('#cost').html('暂无价格');
-							$('#service').html('暂无价格');
-							$('#tax').html('暂无价格');
-							$('#clean_price').html('暂无价格');
-							$('#total').html('暂无价格');
-						} else {
-							$('#cost').html('¥' + data.price);
-							$('#service').html('¥' + data.service_fee);
-							$('#tax').html('¥' + data.tax);
-							$('#clean_price').html('¥' + data.clean_price);
-							$('#total').html('¥' + data.total);
-							if (data.total_original && data.total_original > data.total) {
-								$('#total_original').html('¥' + data.total_original);
-							}
-							$('#sum-price').html(data.total);
-							if (data.mini_stay > data.day_diff) {
-								$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
-							} else {
-								if (isOrderDate._True) {
-									$("#price_cal_notice").html("提示：" + MESSAGE.house_status_busy);
-								} else {
-									$("#price_cal_notice").html("");
-								}
-							}
-						}
-					}
-				});
+//				$.ajax({
+//					url: domain + '/web/detail/countcost',
+//					type: "GET",
+//					data: {
+//						pid: pidVal,
+//						start: qsDate,
+//						end: jsDate,
+//						bedroom: textVal,
+//						flag: flag
+//					},
+//					dataType: "jsonp",
+//					jsonpCallback: 'jsonp',
+//					success: function(data) {
+//						if (parseInt(data) == -1) {
+//							$('#cost').html('参数错误');
+//							$('#service').html('暂无价格');
+//							$('#tax').html('暂无价格');
+//							$('#clean_price').html('暂无价格');
+//							$('#total').html('暂无价格');
+//						} else if (parseInt(data) == -2) {
+//							$('#cost').html('暂无价格');
+//							$('#service').html('暂无价格');
+//							$('#tax').html('暂无价格');
+//							$('#clean_price').html('暂无价格');
+//							$('#total').html('暂无价格');
+//						} else {
+//							$('#cost').html('¥' + data.price);
+//							$('#service').html('¥' + data.service_fee);
+//							$('#tax').html('¥' + data.tax);
+//							$('#clean_price').html('¥' + data.clean_price);
+//							$('#total').html('¥' + data.total);
+//							if (data.total_original && data.total_original > data.total) {
+//								$('#total_original').html('¥' + data.total_original);
+//							}
+//							$('#sum-price').html(data.total);
+//							if (data.mini_stay > data.day_diff) {
+//								$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
+//							} else {
+//								if (isOrderDate._True) {
+//									$("#price_cal_notice").html("提示：" + MESSAGE.house_status_busy);
+//								} else {
+//									$("#price_cal_notice").html("");
+//								}
+//							}
+//						}
+//					}
+//				});
 			}
 		}
 	});
@@ -17728,53 +17728,53 @@ senseluxuryFed.detailFun.dateFun = function() {
 				if (datetime_to_unix(qsDate) >= datetime_to_unix(jsDate)) {
 					alert('离开日期应该在起住日期之后！')
 				} else {
-					$.ajax({
-						url: domain + '/web/detail/countcost',
-						type: "GET",
-						data: {
-							pid: pidVal,
-							start: qsDate,
-							end: jsDate,
-							bedroom: textVal,
-							flag: flag,
-						},
-						dataType: "jsonp",
-						jsonpCallback: 'jsonp',
-						success: function(data) {
-							if (parseInt(data) == -1) {
-								$('#cost').html('参数错误');
-								$('#service').html('暂无价格');
-								$('#tax').html('暂无价格');
-								$('#clean_price').html('暂无价格');
-								$('#total').html('暂无价格');
-							} else if (parseInt(data) == -2) {
-								$('#cost').html('暂无价格');
-								$('#service').html('暂无价格');
-								$('#tax').html('暂无价格');
-								$('#clean_price').html('暂无价格');
-								$('#total').html('暂无价格');
-							} else {
-								$('#cost').html('¥' + data.price);
-								$('#service').html('¥' + data.service_fee);
-								$('#tax').html('¥' + data.tax);
-								$('#clean_price').html('¥' + data.clean_price);
-								$('#total').html('¥' + data.total);
-								if (data.total_original && data.total_original > data.total) {
-									$('#total_original').html('¥' + data.total_original);
-								}
-								$('#sum-price').html(data.total);
-								if (data.mini_stay > data.day_diff) {
-									$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
-								} else {
-									if (isOrderDate._True) {
-										$("#price_cal_notice").html("提示：" + MESSAGE.house_status_busy);
-									} else {
-										$("#price_cal_notice").html("");
-									}
-								}
-							}
-						}
-					});
+//					$.ajax({
+//						url: domain + '/web/detail/countcost',
+//						type: "GET",
+//						data: {
+//							pid: pidVal,
+//							start: qsDate,
+//							end: jsDate,
+//							bedroom: textVal,
+//							flag: flag,
+//						},
+//						dataType: "jsonp",
+//						jsonpCallback: 'jsonp',
+//						success: function(data) {
+//							if (parseInt(data) == -1) {
+//								$('#cost').html('参数错误');
+//								$('#service').html('暂无价格');
+//								$('#tax').html('暂无价格');
+//								$('#clean_price').html('暂无价格');
+//								$('#total').html('暂无价格');
+//							} else if (parseInt(data) == -2) {
+//								$('#cost').html('暂无价格');
+//								$('#service').html('暂无价格');
+//								$('#tax').html('暂无价格');
+//								$('#clean_price').html('暂无价格');
+//								$('#total').html('暂无价格');
+//							} else {
+//								$('#cost').html('¥' + data.price);
+//								$('#service').html('¥' + data.service_fee);
+//								$('#tax').html('¥' + data.tax);
+//								$('#clean_price').html('¥' + data.clean_price);
+//								$('#total').html('¥' + data.total);
+//								if (data.total_original && data.total_original > data.total) {
+//									$('#total_original').html('¥' + data.total_original);
+//								}
+//								$('#sum-price').html(data.total);
+//								if (data.mini_stay > data.day_diff) {
+//									$("#price_cal_notice").html(MESSAGE.prompts + data.mini_stay + MESSAGE.prompts_one);
+//								} else {
+//									if (isOrderDate._True) {
+//										$("#price_cal_notice").html("提示：" + MESSAGE.house_status_busy);
+//									} else {
+//										$("#price_cal_notice").html("");
+//									}
+//								}
+//							}
+//						}
+//					});
 				}
 			}
 		}
@@ -18395,7 +18395,7 @@ senseluxuryFed.commonFun.ShouCanFunData = function(data, dowith) {
 	if (dowith == '1') {
 		var arrVal = data || [];
 		$.ajax({
-			url: "/web/detail/collection",
+			url: "/website/destinations/collection",
 			type: "POST",
 			data: {
 				'trans': arrVal,
@@ -18409,7 +18409,7 @@ senseluxuryFed.commonFun.ShouCanFunData = function(data, dowith) {
 	} else if (dowith == '2') {
 		var pid = data;
 		$.ajax({
-			url: '/web/detail/collection',
+			url: '/website/destinations/collection',
 			type: "POST",
 			data: {
 				dowith: dowith,
@@ -18423,7 +18423,7 @@ senseluxuryFed.commonFun.ShouCanFunData = function(data, dowith) {
 	} else if (dowith == '3') {
 		var arrVal = data || [];
 		$.ajax({
-			url: '/web/detail/collection',
+			url: '/website/destinations/collection',
 			type: "POST",
 			data: {
 				dowith: dowith,
