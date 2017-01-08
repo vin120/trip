@@ -15,7 +15,7 @@
 	margin-left: 10px;
 	background-repeat: no-repeat;
 }
-@media (max-width: 1400px) {
+/*@media (max-width: 1400px) {
 	.header .slogan  { display: none;}
 	#destination_nav:before{
 		border-bottom: 11px solid #fff;
@@ -25,7 +25,7 @@
 		position: absolute;
 		top: -8px;
 	    left: 320px;
-	}
+	}*/
 	
 }
 .wp.width-screen{
@@ -42,12 +42,12 @@
 .width-screen .logo-xmas{
 	background: url(header_images/new-logo.png) no-repeat;
 	background-size: contain;
-	width: 70px;
+	width: 200px;
 	height: 80px;
 	position:relative;
 	top:-4px;
 	margin-right: 5px;
-	margin-top: 0px;
+	margin-top: 13px;
 }
 .width-screen .activityIcon
 {
@@ -76,7 +76,7 @@
 	position: relative;
 }
 .navlink-a.cur:hover:after{
-	border-top: 5px solid #ff9b14;
+	border-top: 5px solid #bc8745;
 }
 .navlink-a:after{
 	content: "";
@@ -182,7 +182,7 @@
 	height: 30px;
 	text-align: center;
 	line-height: 30px;
-	background: #ff8000;
+	background: #b8874a;
 	color: #fff;
 }
 .download-btn:hover .download-box{
@@ -198,7 +198,7 @@
 	content: "";
 	position: absolute;
 	top: -8px;
-    left: 460px;
+    /*left: 609px;*/
 }
 .header .userlink span.mobile{
 	margin-top: 0;
@@ -212,7 +212,7 @@
 		content: "";
 		position: absolute;
 		top: -8px;
-		left: 224px;
+		/*left: 569px;*/
 	}
 
 }

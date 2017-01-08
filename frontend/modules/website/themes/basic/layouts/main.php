@@ -55,7 +55,7 @@
                         <?php if(isset($v1['child2'])){?>
                         <?php foreach($v1['child2'] as $k2=>$v2){ ?>
                          <?php $j=0; $j++;?>
-                         <?php if($j % 3 != 0) { ?> 	
+                         <?php if($j % 3 != 0) { ?> 
                          <dl class="dl-list">
                          <?php }?>
                            <dt>
@@ -278,10 +278,6 @@
              <span>已有账号</span>
              <span class="signintab curr">登录</span></div>
          </div>
-         
-         
-         
-
 	    <?php $this->endBody() ?>
 	</body>
 </html>

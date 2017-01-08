@@ -434,7 +434,7 @@ body {
 	padding:0 5px
 }
 .userlink .reg-btn {
-	color:#ff9b14
+	color:#bc8745
 }
 .userlink .dy-icon {
 	width:12px;
@@ -515,7 +515,7 @@ body {
 	float:left
 }
 .header .logo {
-	width:110px;
+	width:240px;
 	background:url(index_images/new-logo.png) no-repeat;
 	margin-top:33px;
 	margin-right:10px;
@@ -527,7 +527,7 @@ body {
 	letter-spacing:.83em
 }
 .header .nav {
-	width:565px
+	/*width:565px;*/
 }
 .header .nav .items {
 	padding-top:53px;
@@ -555,19 +555,19 @@ body {
 	border-left:none
 }
 .header .nav li.navlink1 .ma:hover,.header .nav li.cur.navlink1 .ma {
-	color:#ff9b14
+	color:#bc8745
 }
 .header .nav li.navlink2 .ma:hover,.header .nav li.cur.navlink2 .ma {
-	color:#ff8000
+	color:#b8874a
 }
 .header .nav li.navlink3 .ma:hover,.header .nav li.cur.navlink3 .ma {
-	color:#ff8000
+	color:#b8874a
 }
 .header .nav li.navlink4 .ma:hover {
-	color:#ff8000
+	color:#b8874a
 }
 .header .nav li.navlink5 .ma:hover,.header .nav li.cur.navlink5 .ma {
-	color:#ff8000
+	color:#b8874a
 }
 .nav .navlink5 .dropbox {
 	display:none;
@@ -950,7 +950,7 @@ body {
 	height:60px;
 	float:left;
 	background:url("index_images/logo_bottom.png?v=200") left center no-repeat;
-	background-size:60%
+	background-size:80%
 }
 .Cfoot .info,.Cfoot .link,.Cfoot .contact,.Cfoot .separate {
 	float:left
@@ -1188,7 +1188,7 @@ body {
 	margin:0 5px;
 	color:#fff;
 	font-size:16px;
-	background-color:#ff8000
+	background-color:#b8874a
 }
 .page-list b.disable {
 	background:#fff;
@@ -1253,7 +1253,7 @@ body {
 	position:absolute
 }
 .Cbtn_middle_yellow {
-	background-color:#ff8000;
+	background-color:#b8874a;
 	height:36px;
 	line-height:36px;
 	font-size:16px;
@@ -1421,8 +1421,8 @@ body {
 .Cuser_dialog .left_img .login-left-box .text2 a {
 	padding:8px 22px 6px;
 	line-height:35px;
-	border:2px solid #ff8000;
-	color:#ff8000;
+	border:2px solid #b8874a;
+	color:#b8874a;
 	border-radius:20px;
 	font-size:16px
 }
@@ -1437,7 +1437,7 @@ body {
 .Cuser_dialog .register_tip {
 	text-align:center;
 	width:100%;
-	color:#ff8000;
+	color:#b8874a;
 	-webkit-user-select:none;
 	-moz-user-select:none;
 	-ms-user-select:none;
@@ -1447,7 +1447,7 @@ body {
 	font-size:14px
 }
 .Cuser_dialog .register_tip .signuptab,.Cuser_dialog .register_tip .signintab {
-	border-bottom:1px solid #ff8000;
+	border-bottom:1px solid #b8874a;
 	cursor:pointer
 }
 .LT-line::before {
@@ -1483,7 +1483,7 @@ body {
 	border-left:0!important
 }
 .D1main ul li .people-select a:hover {
-	background:#ff8000;
+	background:#b8874a;
 	color:#fff
 }
 .D1main ul li .people-select {
@@ -1700,7 +1700,7 @@ body {
 	margin:2px 0
 }
 .side-bar li:hover {
-	background-color:#ff8000
+	background-color:#b8874a
 }
 .side-bar li .list {
 	position:relative
@@ -1739,7 +1739,7 @@ body {
 	padding:10px 30px;
 	font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","华文细黑","STHeiti","微软雅黑","Microsoft YaHei",SimHei,sans-serif!important;
 	font-size:16px;
-	color:#ff8000
+	color:#b8874a
 }
 .side-bar li .tel>div:before {
 	content:'';
@@ -1847,7 +1847,7 @@ body {
 .signin_area #wx_login #accountBtn {
 	width:100%;
 	line-height:35px;
-	background:#ff8000;
+	background:#b8874a;
 	color:#fff;
 	font-size:18px;
 	border:0
@@ -1881,9 +1881,9 @@ body {
 	margin:0;
 	border:0;
 	background-color:#fff;
-	border:1px solid #ff8000;
+	border:1px solid #b8874a;
 	cursor:pointer;
-	color:#ff8000;
+	color:#b8874a;
 	font-size:16px;
 	line-height:48px;
 	width:140px
@@ -1929,7 +1929,7 @@ body {
 	border-radius:4px;
 	color:#fff;
 	cursor:pointer;
-	background-color:#ff8000
+	background-color:#b8874a
 }
 .gotobook {
 	float:right;
@@ -1945,7 +1945,7 @@ body {
 	border-radius:4px;
 	color:#fff;
 	cursor:pointer;
-	background-color:#ff8000
+	background-color:#b8874a
 }
 .header .userlink {
 	font-size:13px;
@@ -1966,7 +1966,7 @@ body {
 }
 .header .userlink .mobile {
 	background:url("index_images/mobile-icon.png") no-repeat scroll 10px center rgba(0,0,0,0);
-	color:#ff8000;
+	color:#b8874a;
 	font-size:18px;
 	font-style:italic;
 	margin-top:10px;
@@ -2023,7 +2023,7 @@ body {
 	width:88px
 }
 .D1main ul .li5 {
-	background-color:#ff8000
+	background-color:#b8874a
 }
 .D1main ul .li5 input {
 	color:#fff;
@@ -2074,7 +2074,7 @@ body {
 	position:absolute;
 	margin-top:6px;
 	margin-left:16px;
-	color:#ff8000;
+	color:#b8874a;
 	font-size:23px
 }
 .D1main ul li input {
@@ -2669,7 +2669,7 @@ body {
 	font-weight:bold
 }
 .search-result-hd .re-text em,.search-result-hd .re-text b {
-	color:#ff8000
+	color:#b8874a
 }
 .search-result-cm {
 	width:858px;
@@ -2811,7 +2811,7 @@ body {
 	width:75px;
 	height:30px;
 	float:right;
-	background:#ff8000;
+	background:#b8874a;
 	color:#fff;
 	text-indent:15px;
 	line-height:30px;
@@ -2937,7 +2937,7 @@ body {
 	width:80px;
 	height:24px;
 	float:right;
-	background:#ff8000;
+	background:#b8874a;
 	color:#fff;
 	line-height:24px;
 	position:relative;
@@ -3267,7 +3267,7 @@ body {
 	line-height:24px;
 	position:relative;
 	display:inline-block;
-	background-color:#ff8000;
+	background-color:#b8874a;
 	color:white;
 	border:0
 }
@@ -3389,7 +3389,7 @@ body {
 	margin-right:20px
 }
 .de-info .add a,.jg-left .add a {
-	color:#ff8000
+	color:#b8874a
 }
 .de-info .add i,.jg-left .add i {
 	width:9px;
@@ -4015,7 +4015,7 @@ body {
 	cursor:pointer
 }
 .detail-app .star-active {
-	background-color:#ff8000
+	background-color:#b8874a
 }
 .detail-app ul li .com-top .rx-icon img {
 	width:20px;
@@ -4100,7 +4100,7 @@ body {
 	margin-left:15px
 }
 .my-pl p span a {
-	color:#ff8000
+	color:#b8874a
 }
 .my-pl .textarea {
 	border:1px solid #d3d3d3;
@@ -4120,7 +4120,7 @@ body {
 }
 .fbplBtn a {
 	color:#fff;
-	background:#ff8000;
+	background:#b8874a;
 	width:86px;
 	height:30px;
 	text-align:center;
@@ -4782,7 +4782,7 @@ body {
 }
 .sumPriceCon p {
 	margin-top:20px;
-	color:#ff8000;
+	color:#b8874a;
 	font-size:14px;
 	float:left
 }
@@ -5887,7 +5887,7 @@ body {
 	font-size:14px;
 	text-align:center;
 	padding:3px 0;
-	border:1px solid #ff8000;
+	border:1px solid #b8874a;
 	border-radius:4px;
 	margin-left:2%;
 	display:none
@@ -5905,7 +5905,7 @@ body {
 	content:"";
 	border-left:13px solid transparent;
 	border-right:13px solid transparent;
-	border-bottom:14px solid #ff8000;
+	border-bottom:14px solid #b8874a;
 	position:absolute;
 	margin-left:-11px;
 	top:-14px

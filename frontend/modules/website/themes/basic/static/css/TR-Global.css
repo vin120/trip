@@ -931,27 +931,3 @@ body {
     margin-top:15px;
 } 
 
-
-/*补充*/
-.tr-u-info .hz_btn {
-    width:75px;
-    height:30px;
-    float:right;
-    background:#ff8000;
-    color:#fff;
-    text-indent:15px;
-    line-height:30px;
-    position:relative;
-}
-
-.tr-flr.tr-u-info.tr-mr10.tr-pt5 {
-    padding-top:5px;
-}
-
-.sq-zw .input2 {
-    width: 178px; 
-    padding: 0 5px;
-    height: 26px;
-    line-height: 26px;
-    border: 1px solid #cbcbcb;
-}

@@ -573,7 +573,7 @@ body {
 }
 
 .userlink .reg-btn {
-	color: #ff9b14
+	color: #bc8745
 }
 
 .userlink .dy-icon {
@@ -668,7 +668,7 @@ body {
 }
 
 .header .logo {
-	width: 70px;
+	width: 200px;
 	background: url(index_images/new-logo.png) no-repeat;
 	margin-top: 30px;
 	margin-right: 20px;
@@ -715,23 +715,23 @@ body {
 }
 
 .header .nav li.navlink1 .ma:hover,.header .nav li.cur.navlink1 .ma {
-	color: #ff9b14
+	color: #bc8745
 }
 
 .header .nav li.navlink2 .ma:hover,.header .nav li.cur.navlink2 .ma {
-	color: #ff8000
+	color: #b8874a
 }
 
 .header .nav li.navlink3 .ma:hover,.header .nav li.cur.navlink3 .ma {
-	color: #ff8000
+	color: #b8874a
 }
 
 .header .nav li.navlink4 .ma:hover {
-	color: #ff8000
+	color: #b8874a
 }
 
 .header .nav li.navlink5 .ma:hover,.header .nav li.cur.navlink5 .ma {
-	color: #ff8000
+	color: #b8874a
 }
 
 .nav .navlink5 .dropbox {
@@ -1187,7 +1187,7 @@ body {
 	height: 60px;
 	float: left;
 	background: url("index_images/logo_bottom.png?v=200") left center no-repeat;
-	background-size: 60%
+	background-size: 80%
 }
 
 .Cfoot .info,.Cfoot .link,.Cfoot .contact,.Cfoot .separate {
@@ -1476,7 +1476,7 @@ body {
 	margin: 0 5px;
 	color: #fff;
 	font-size: 16px;
-	background-color: #ff8000
+	background-color: #b8874a
 }
 
 .page-list b.disable {
@@ -1554,7 +1554,7 @@ body {
 }
 
 .Cbtn_middle_yellow {
-	background-color: #ff8000;
+	background-color: #b8874a;
 	height: 36px;
 	line-height: 36px;
 	font-size: 16px;
@@ -1749,8 +1749,8 @@ body {
 .Cuser_dialog .left_img .login-left-box .text2 a {
 	padding: 8px 22px 6px;
 	line-height: 35px;
-	border: 2px solid #ff8000;
-	color: #ff8000;
+	border: 2px solid #b8874a;
+	color: #b8874a;
 	border-radius: 20px;
 	font-size: 16px
 }
@@ -1767,7 +1767,7 @@ body {
 .Cuser_dialog .register_tip {
 	text-align: center;
 	width: 100%;
-	color: #ff8000;
+	color: #b8874a;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -1779,7 +1779,7 @@ body {
 }
 
 .Cuser_dialog .register_tip .signuptab,.Cuser_dialog .register_tip .signintab {
-	border-bottom: 1px solid #ff8000;
+	border-bottom: 1px solid #b8874a;
 	cursor: pointer
 }
 
@@ -1820,7 +1820,7 @@ body {
 }
 
 .D1main ul li .people-select a:hover {
-	background: #ff8000;
+	background: #b8874a;
 	color: #fff
 }
 
@@ -2074,7 +2074,7 @@ body {
 }
 
 .side-bar li:hover {
-	background-color: #ff8000
+	background-color: #b8874a
 }
 
 .side-bar li .list {
@@ -2117,7 +2117,7 @@ body {
 	padding: 10px 30px;
 	font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","华文细黑","STHeiti","微软雅黑","Microsoft YaHei",SimHei,sans-serif!important;
 	font-size: 16px;
-	color: #ff8000
+	color: #b8874a
 }
 
 .side-bar li .tel>div:before {
@@ -2246,7 +2246,7 @@ body {
 .signin_area #wx_login #accountBtn {
 	width: 100%;
 	line-height: 35px;
-	background: #ff8000;
+	background: #b8874a;
 	color: #fff;
 	font-size: 18px;
 	border: 0
@@ -2284,9 +2284,9 @@ body {
 	margin: 0;
 	border: 0;
 	background-color: #fff;
-	border: 1px solid #ff8000;
+	border: 1px solid #b8874a;
 	cursor: pointer;
-	color: #ff8000;
+	color: #b8874a;
 	font-size: 16px;
 	line-height: 48px;
 	width: 140px
@@ -2340,7 +2340,7 @@ body {
 	border-radius: 4px;
 	color: #fff;
 	cursor: pointer;
-	background-color: #ff8000
+	background-color: #b8874a
 }
 
 .gotobook {
@@ -2357,7 +2357,7 @@ body {
 	border-radius: 4px;
 	color: #fff;
 	cursor: pointer;
-	background-color: #ff8000
+	background-color: #b8874a
 }
 
 .header .userlink {
@@ -2383,7 +2383,7 @@ body {
 
 .header .userlink .mobile {
 	background: url("index_images/mobile-icon.png") no-repeat scroll 10px center rgba(0,0,0,0);
-	color: #ff8000;
+	color: #b8874a;
 	font-size: 18px;
 	font-style: italic;
 	margin-top: 10px;
@@ -2451,7 +2451,7 @@ body {
 }
 
 .D1main ul .li5 {
-	background-color: #ff8000
+	background-color: #b8874a
 }
 
 .D1main ul .li5 input {
@@ -2509,7 +2509,7 @@ body {
 	position: absolute;
 	margin-top: 6px;
 	margin-left: 16px;
-	color: #ff8000;
+	color: #b8874a;
 	font-size: 23px
 }
 
@@ -2802,7 +2802,7 @@ body {
 }
 
 .slides_bg {
-	background-color: #EEE
+	background-color: #FFF;
 }
 
 .IN_main {
@@ -3695,15 +3695,17 @@ body {
 }
 
 .display_bx {
-	width: 1100px;
-	margin: 0 auto;
+	background-color: #FFF;
+	width: 100%;
+	margin: 0;
+	padding:0 82px;
 	border-top: 1px solid #fff;
 	border-bottom: 1px solid #fff
 }
 
 .display_num {
 	padding: 15px 0;
-	border-bottom: 1px solid #d2d2d2;
+	/*border-bottom: 1px solid #d2d2d2;*/
 	letter-spacing: 2px
 }
 
@@ -4074,7 +4076,7 @@ body {
 }
 
 .slV1_I_L_con .slV1_I_L_con_ul li strong span {
-	color: #ff8000;
+	color: #b8874a;
 	padding: 0 2px;
 	font-size: 18px
 }
@@ -4244,13 +4246,13 @@ body {
 
 .slV1_I_L_con.con3 .slV1_I_L_con_div {
 	float: left;
-	width: 190px;
-	text-align: left
+	/*width: 190px;*/
+	text-align: left;
 }
 
 .slV1_I_L_con.con3 .slV1_I_L_con_div ul {
 	margin-top: 12px;
-	height: 648px
+	/*height: 648px;*/
 }
 
 .slV1_I_L_con.con3 .slV1_I_L_con_div ul li {
@@ -4261,7 +4263,9 @@ body {
 	height: 57px;
 	padding: 20px 0 10px 0;
 	margin-bottom: 3px;
-	box-shadow: 0 0 2px #ccc
+	box-shadow: 0 0 2px #ccc;
+	width: 183px;
+	float: left;
 }
 
 .slV1_I_L_con.con3 .slV1_I_L_con_div ul li p {
@@ -4676,7 +4680,7 @@ body {
 }
 
 .search-cont .search-btn .btn {
-	background: #ff9b14;
+	background: #bc8745;
 	text-align: center;
 	color: #fff;
 	height: 42px;
@@ -4874,11 +4878,11 @@ body {
 }
 
 .D1Search.indexD1Sh .D1main ul .li5 {
-	border: 1px solid #ff8000
+	border: 1px solid #b8874a
 }
 
 .D1Search.indexD1Sh .D1main ul .li5 {
-	background: #ff8000
+	background: #b8874a
 }
 
 .D1Search.indexD1Sh .D1main ul .li5 input {
@@ -4951,7 +4955,7 @@ body {
 }
 
 .D1Search.indexD1Sh .D1main ul li .people-select a:hover {
-	background: #ff8000;
+	background: #b8874a;
 	color: #fff
 }
 
@@ -5246,7 +5250,8 @@ body {
 
 .w1100-a {
 	width: 1100px;
-	margin: 0 auto
+	margin: 0 auto;
+	margin-bottom: 60px;
 }
 
 .testimonial {
@@ -5274,7 +5279,7 @@ body {
 }
 
 .color-ff8 {
-	color: #ff8000
+	color: #b8874a
 }
 
 .testimontial-left {
@@ -5478,12 +5483,12 @@ i.icon-laction {
 
 .testimotial-btn li:hover {
 	width: 32px;
-	background: #ff8000
+	background: #b8874a
 }
 
 .testimotial-btn li.active {
 	width: 32px;
-	background: #ff8000
+	background: #b8874a
 }
 
 .testimotial-btn li:first-child {
@@ -5560,7 +5565,7 @@ i.icon-laction {
 	font-size: 14px;
 	text-align: center;
 	padding: 3px 0;
-	border: 1px solid #ff8000;
+	border: 1px solid #b8874a;
 	border-radius: 4px;
 	margin-left: 2%;
 	display: none
@@ -5580,7 +5585,7 @@ i.icon-laction {
 	content: "";
 	border-left: 13px solid transparent;
 	border-right: 13px solid transparent;
-	border-bottom: 14px solid #ff8000;
+	border-bottom: 14px solid #b8874a;
 	position: absolute;
 	margin-left: -11px;
 	top: -14px

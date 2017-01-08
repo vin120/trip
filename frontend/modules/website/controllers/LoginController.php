@@ -22,42 +22,19 @@ class LoginController extends BaseController
 		$model = new LoginForm();
 		
 		if ($model->load(Yii::$app->request->post()) && $model->login()) {
-        	
+        	//登录成功
 			$response['success'] = 1;
 			$response['username'] = Yii::$app->request->post('phone_number');
 				
 		
 		} else {
-		
+			//登录失败
 			$response['success'] = 0;
 		}
 		
 
 		$response = json_encode($response);
 		echo $response;
-		
-		
-		
-// 		$response = array();
-		
-// 		$model = new LoginForm();
-// 		$model['username'] = Yii::$app->request->post('phone_number');
-// 		$model['password'] = Yii::$app->request->post('password');
-		
-// 		if ($model->login()) {
-			 
-// 			$response['success'] = 1;
-// 			$response['username'] = Yii::$app->request->post('phone_number');
-		
-		
-// 		} else {
-		
-// 			$response['success'] = 0;
-// 		}
-		
-		
-// 		$response = json_encode($response);
-// 		echo $response;
 		
 	}
 	
